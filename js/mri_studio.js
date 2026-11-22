@@ -25,14 +25,14 @@ const COLL = { brain: 'Brain (IXI, 4 sequences)', body: 'Whole body & regions, 5
 const get = async (u) => { try { const r = await fetch(u, { cache: 'no-store' }); return r.ok ? r.json() : null; } catch { return null; } };
 async function loadCollections() {
   const C = {};
-  const ixi = await get('/meridian-anatomy-lab/rt/imaging/ixi_full/index.json');
+  const ixi = await get('/meridian-4D/rt/imaging/ixi_full/index.json');
   if (ixi && Object.keys(ixi.subjects).length) C.brain = { base: 'ixi_full', subjects: ixi.subjects, label: (s) => `IXI${String(s).padStart(3, '0')} (${ixi.subjects[s].T1?.site || ''})`, seqs: SEQ };
-  const body = await get('/meridian-anatomy-lab/rt/imaging/body_mri/index.json');
+  const body = await get('/meridian-4D/rt/imaging/body_mri/index.json');
   if (body && Object.keys(body.subjects).length) {
     const subs = {}; for (const [sid, m] of Object.entries(body.subjects)) subs[sid] = { MRI: { file: `${sid}.u8`, shape_zyx: m.shape_zyx, spacing_mm_zyx: m.spacing_mm_zyx, site: m.study }, _labels: { file: `${sid}_labels.u8`, names: m.labels, present: m.present, overlap: m.overlap_voxels }, _m: m };
     C.body = { base: 'body_mri', subjects: subs, label: (s) => `${s} · ${body.subjects[s].study.replace(/^mri /, '')}`, seqs: { MRI: 'MRI (sequence as acquired)' }, source: body.source };
   }
-  const f = await get('/meridian-anatomy-lab/rt/imaging/fmri/index.json');
+  const f = await get('/meridian-4D/rt/imaging/fmri/index.json');
   if (f) C.fmri = { base: 'fmri', subjects: { 'sub-1 run-1': { EPI: { file: 'mean.u8', shape_zyx: f.shape_zyx, spacing_mm_zyx: f.spacing_mm_zyx, site: 'ds000105' }, _fmri: f } }, label: (s) => s, seqs: { EPI: 'Mean functional image (EPI)' } };
   return C;
 }
@@ -115,7 +115,7 @@ export async function openMriStudio(opts = {}) {
 const meta = (V, s = V.seq === 'FUSION' ? 'T1' : V.seq) => V.idx.subjects[V.sub][s];
 async function fetchBin(V, file, kind = Uint8Array) {
   const key = `${V.idx.base}/${file}`;
-  if (!cache.has(key)) cache.set(key, new kind(await (await fetch(`/meridian-anatomy-lab/rt/imaging/${key}`)).arrayBuffer()));
+  if (!cache.has(key)) cache.set(key, new kind(await (await fetch(`/meridian-4D/rt/imaging/${key}`)).arrayBuffer()));
   return cache.get(key);
 }
 async function vol(V, s) { return fetchBin(V, V.idx.subjects[V.sub][s].file); }

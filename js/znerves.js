@@ -15,7 +15,7 @@ const DESC = /corticospinal|rubrospinal|reticulospinal|vestibulospinal|tectospin
 const xsColor = (n) => (DESC.test(n) ? '#ff6b6b' : ASC.test(n) ? '#4cc9f0' : /proprius/i.test(n) ? '#c9b6ff' : /central canal/i.test(n) ? '#5fa8ff' : /white matter/i.test(n) ? '#f1e3b0' : '#bdbdbd');
 
 export async function setupZNerves(B, atlas, root) {
-  const Z = await fetch('/meridian-anatomy-lab/rt/brain/z_nerves.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const Z = await fetch('/meridian-4D/rt/brain/z_nerves.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!Z) return null;
   const ix = atlas.index, span = ix.bbox_span, mn = ix.bbox_min, up = span.indexOf(Math.max(...span)), c = [0, 1, 2].map((a) => mn[a] + span[a] / 2);
   // BodyParts3D raw mm -> app metres (same mapping as atlas_data.js)
@@ -87,7 +87,7 @@ export async function setupZNerves(B, atlas, root) {
 
 // geometries only (for the 3D Atlas): [{ geometry, name, group, path, color }]
 export async function zNerveGeoms(atlas, { crossSection = false } = {}) {
-  const Z = await fetch('/meridian-anatomy-lab/rt/brain/z_nerves.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const Z = await fetch('/meridian-4D/rt/brain/z_nerves.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!Z) return [];
   const ix = atlas.index, span = ix.bbox_span, mn = ix.bbox_min, up = span.indexOf(Math.max(...span)), c = [0, 1, 2].map((a) => mn[a] + span[a] / 2);
   const P = (x, y, z) => { const a = (x - c[0]) / 1000, b = (y - c[1]) / 1000, d = (z - c[2]) / 1000; return up === 2 ? new THREE.Vector3(a, d, -b) : new THREE.Vector3(a, b, d); };

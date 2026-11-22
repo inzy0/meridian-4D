@@ -26,7 +26,7 @@ export async function initExerciseLibrary() {
   card.innerHTML = `<h2>Exercise library</h2><p class="fine" id="ex-count">Loading…</p>
     <div class="ex-row"><input id="ex-quick" type="search" placeholder="Find an exercise (e.g. squat, curl, plank)"><button class="primary small" id="ex-open">Open library</button></div>
     <div id="ex-hud" class="ex-hud" hidden></div>`;
-  const [lib, cust] = await Promise.all([fetch('/meridian-anatomy-lab/rt/exercises/library.json').then((r) => r.json()).catch(() => ({ exercises: [] })), loadCustom()]);
+  const [lib, cust] = await Promise.all([fetch('/meridian-4D/rt/exercises/library.json').then((r) => r.json()).catch(() => ({ exercises: [] })), loadCustom()]);
   E.lib = lib.exercises; E.rule = lib.rule; E.sources = lib.sources;
   Object.assign(E, cust);
   $('#ex-count').textContent = `${E.lib.length.toLocaleString()} exercises from open libraries + ${E.custom.length} of your own (create as many as you like). Live rep / hold counting from the camera.`;

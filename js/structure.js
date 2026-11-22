@@ -30,10 +30,10 @@ let EXPLAIN = null;
 const LABEL = { 'Introduction': 'What it is', 'Structure and Function': 'What it does and why it is needed', 'Blood Supply and Lymphatics': 'Blood supply and lymphatics',
   'Nerves': 'Nerves', 'Muscles': 'Muscles', 'Physiologic Variants': 'Normal variants', 'Surgical Considerations': 'Surgical considerations', 'Clinical Significance': 'Clinical significance' };
 export async function aboutHtml(name) {
-  if (!EXPLAIN) { try { EXPLAIN = (await (await fetch('/meridian-anatomy-lab/rt/atlas/explain/index.json')).json()); } catch { EXPLAIN = { map: {} }; } }
+  if (!EXPLAIN) { try { EXPLAIN = (await (await fetch('/meridian-4D/rt/atlas/explain/index.json')).json()); } catch { EXPLAIN = { map: {} }; } }
   const m = EXPLAIN.map[name];
   if (!m) return '<p class="fine muted">No StatPearls anatomy chapter matches this structure or a parent of it, so nothing is shown (nothing here is written by a model).</p>';
-  const c = await (await fetch(`/meridian-anatomy-lab/rt/atlas/explain/${m.f}.json`)).json();
+  const c = await (await fetch(`/meridian-4D/rt/atlas/explain/${m.f}.json`)).json();
   const secs = Object.entries(c.sections).map(([k, v], i) => `<details ${i < 2 ? 'open' : ''}><summary>${esc(LABEL[k] || k)}</summary><p class="fine about-t">${esc(v).split(String.fromCharCode(10, 10)).join('</p><p class="fine about-t">')}</p></details>`).join('');
   return `${m.via ? `<p class="fine"><b>No chapter of its own:</b> shown from the chapter for its parent, <b>${esc(m.via)}</b>.</p>` : ''}${secs}
     <p class="fine cite">Verbatim from: <i>${esc(c.title)}</i>${c.authors ? `. ${esc(c.authors)}` : ''}. ${esc(c.publisher)}, StatPearls [Internet], chapter ${esc(c.chapter)}. Licence <a href="${esc(c.licence)}" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a> (unchanged text). <a href="${esc(c.link)}" target="_blank" rel="noopener">Find on NCBI Bookshelf</a>. First passage of each section only.</p>`;
@@ -53,7 +53,7 @@ async function related(name) {
 export async function initStructure(state) {
   window.__structure = { ends: () => Object.fromEntries([...computeMuscleEnds().entries()]) }; // for the S1 attachment check (tools/anatomy_lab_s1.py)
   S = state;
-  try { partof = (await (await fetch('/meridian-anatomy-lab/rt/atlas/partof.json')).json()).parent; } catch { partof = {}; }
+  try { partof = (await (await fetch('/meridian-4D/rt/atlas/partof.json')).json()).parent; } catch { partof = {}; }
 }
 
 // ------------------------------------------------------------------ hierarchy and divisions
@@ -274,7 +274,7 @@ export function renderStructure(mesh) {
       };
     } else {
       const e = computeMuscleEnds().get(p.name) || { origin: [], insertion: [] };
-      let s1 = ''; try { S.s1 = S.s1 || (await (await fetch('/meridian-anatomy-lab/rt/atlas/s1_report.json')).json()); const r = S.s1.rows.find((x) => x.muscle === p.name);
+      let s1 = ''; try { S.s1 = S.s1 || (await (await fetch('/meridian-4D/rt/atlas/s1_report.json')).json()); const r = S.s1.rows.find((x) => x.muscle === p.name);
         if (r) { const v = (k, lab) => r[`strict_${k}_agrees`] === undefined ? `${lab}: not checkable (the chapter's ${k} clause names no known bone)` : r[`strict_${k}_agrees`] ? `${lab}: <b class="good">agrees</b> with the chapter` : `${lab}: <b class="poor">differs</b>, the chapter's ${k} clause names ${esc(r[`strict_${k}_bones`].join(', '))}`;
           s1 = `<p class="fine"><b>Checked against <i>${esc(r.chapter)}</i></b> (gate S1, strict clause rule): ${v('origin', 'origin')} · ${v('insertion', 'insertion')}. Overall: origin ${S.s1.strict_origin.agree}/${S.s1.strict_origin.evaluable}, insertion ${S.s1.strict_insertion.agree}/${S.s1.strict_insertion.evaluable} muscles agree.</p>`; } } catch { /* report not built */ }
       if (e.ends) { d.innerHTML = `<h3 class="st-h">Attachments (both ends at the same chain level, so not labelled origin/insertion)</h3><p class="fine">End 1: ${e.ends[0].map(esc).join(' · ') || 'no bone within 15 mm'}<br>End 2: ${e.ends[1].map(esc).join(' · ') || 'no bone within 15 mm'}</p>`; return; }

@@ -19,7 +19,7 @@ const ORG_COL = ['#ff8fab', '#ffd166', '#f78c6b', '#90e0ef', '#06d6a0', '#b388ff
 const SYM = '#ff9e00', PARA = '#b388ff';
 
 export async function setupAutonomic(B, atlas, root) {
-  const [AU, SC] = await Promise.all([fetch('/meridian-anatomy-lab/rt/brain/autonomic.json').then((r) => r.json()).catch(() => null), fetch('/meridian-anatomy-lab/rt/brain/spinal_cord.json').then((r) => r.json()).catch(() => null)]);
+  const [AU, SC] = await Promise.all([fetch('/meridian-4D/rt/brain/autonomic.json').then((r) => r.json()).catch(() => null), fetch('/meridian-4D/rt/brain/spinal_cord.json').then((r) => r.json()).catch(() => null)]);
   B.AU = AU; const A = atlas.anchors;
   const right = new THREE.Vector3(-A.leftX, 0, 0), ant = new THREE.Vector3(0, 0, A.anterior);
   const add = (geometry, color, kind, group, extra = {}) => {

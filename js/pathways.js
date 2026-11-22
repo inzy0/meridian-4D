@@ -13,7 +13,7 @@ const FAM_COL = { 'Ascending sensory': '#4cc9f0', 'Descending motor': '#ff6b6b',
 const unside = (n) => n.replace(/\b(left|right) /g, '');
 
 export async function setupPathways(B, scene, hooks) {
-  const D = await fetch('/meridian-anatomy-lab/rt/brain/pathways.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const D = await fetch('/meridian-4D/rt/brain/pathways.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const el = $('#br-paths'); if (!D || !el) return null;
   const G = new THREE.Group(); scene.add(G);
   const P = { D, G, cur: null, side: 'L', speed: 1, t: 0, play: true, reverse: false, multi: [], fade: false };

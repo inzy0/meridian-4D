@@ -38,7 +38,7 @@ export function vertebralCanal(atlas) {
 }
 
 export async function spinalCordGeometry(atlas, canal = vertebralCanal(atlas)) {
-  const SC = await fetch('/meridian-anatomy-lab/rt/brain/spinal_cord.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const SC = await fetch('/meridian-4D/rt/brain/spinal_cord.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!SC || !canal) return null;
   const v = SC.v, pos = new Float32Array(v.length), { top, end } = canal.cordT;
   for (let i = 0; i < v.length; i += 3) { const c = canal.along(top + (end - top) * v[i]).addScaledVector(canal.right, v[i + 1] / 1000).addScaledVector(canal.ant, v[i + 2] / 1000); pos[i] = c.x; pos[i + 1] = c.y; pos[i + 2] = c.z; }

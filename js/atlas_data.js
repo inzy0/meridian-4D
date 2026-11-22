@@ -13,7 +13,7 @@ export function loadAtlas(onStatus = () => {}) {
 
 async function load(onStatus) {
   onStatus('Loading atlas index…');
-  const res = await fetch('/meridian-anatomy-lab/rt/atlas/index.json');
+  const res = await fetch('/meridian-4D/rt/atlas/index.json');
   if (!res.ok) throw new Error('Atlas not built yet. Run: .venv\\Scripts\\python.exe -m tools.anatomy_lab_build');
   const index = await res.json();
   const span = index.bbox_span, mn = index.bbox_min;
@@ -23,7 +23,7 @@ async function load(onStatus) {
   const parts = []; // { part, geometry }
   for (const L of index.layers) {
     onStatus(`Loading ${L.label} (${(L.bytes / 1e6).toFixed(1)} MB)…`);
-    const buf = await (await fetch(`/meridian-anatomy-lab/rt/atlas/${L.file}`)).arrayBuffer();
+    const buf = await (await fetch(`/meridian-4D/rt/atlas/${L.file}`)).arrayBuffer();
     for (const p of index.parts.filter((q) => q.layer === L.key)) {
       const q = new Uint16Array(buf, p.vOff, p.vCount * 3);
       const pos = new Float32Array(q.length);

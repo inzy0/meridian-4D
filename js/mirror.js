@@ -3,7 +3,7 @@
 // motion, movement phase, textbook prime movers, and a short extrapolated
 // "ghost". Nothing is uploaded; there is no network call after load.
 
-import { FilesetResolver, HandLandmarker, FaceLandmarker, PoseLandmarker } from '/meridian-anatomy-lab/rt/vendor/mediapipe/vision_bundle.mjs';
+import { FilesetResolver, HandLandmarker, FaceLandmarker, PoseLandmarker } from '/meridian-4D/rt/vendor/mediapipe/vision_bundle.mjs';
 import {
   handBones, CARPALS, handJoints, FACE_OVAL, JAW, EYE_R, EYE_L, NOSE, SKULL_LABELS, BRAIN_LABELS,
   POSE_BONES, POSE_JOINTS, MUSCLE_ACTIONS, MODEL_ACCURACY, OPENSTAX_AP2E,
@@ -71,7 +71,7 @@ export async function setPoseModel(name) {
   if (state.worker) { await new Promise((res) => { state.onModel = res; state.worker.postMessage({ type: 'pose-model', pose: name }); setTimeout(res, 30000); }); return; }
   if (!state.landmarkers.pose || !state.fileset) return;
   const old = state.landmarkers.pose;
-  state.landmarkers.pose = await PoseLandmarker.createFromOptions(state.fileset, { baseOptions: { modelAssetPath: `/meridian-anatomy-lab/rt/models/pose_landmarker_${name}.task`, delegate: 'GPU' }, runningMode: 'VIDEO', numPoses: 1 });
+  state.landmarkers.pose = await PoseLandmarker.createFromOptions(state.fileset, { baseOptions: { modelAssetPath: `/meridian-4D/rt/models/pose_landmarker_${name}.task`, delegate: 'GPU' }, runningMode: 'VIDEO', numPoses: 1 });
   old.close?.();
 }
 
@@ -101,8 +101,8 @@ async function startMirrorInner() {
     catch (err) {
       console.warn('detection worker unavailable, using the main thread:', err);
       state.worker = null; state.engine = 'main thread';
-      const fs = await FilesetResolver.forVisionTasks('/meridian-anatomy-lab/rt/vendor/mediapipe/wasm'); state.fileset = fs;
-      const base = (file) => ({ modelAssetPath: `/meridian-anatomy-lab/rt/models/${file}`, delegate: 'GPU' });
+      const fs = await FilesetResolver.forVisionTasks('/meridian-4D/rt/vendor/mediapipe/wasm'); state.fileset = fs;
+      const base = (file) => ({ modelAssetPath: `/meridian-4D/rt/models/${file}`, delegate: 'GPU' });
       [state.landmarkers.hand, state.landmarkers.face, state.landmarkers.pose] = await Promise.all([
         HandLandmarker.createFromOptions(fs, { baseOptions: base('hand_landmarker.task'), runningMode: 'VIDEO', numHands: 2 }),
         FaceLandmarker.createFromOptions(fs, { baseOptions: base('face_landmarker.task'), runningMode: 'VIDEO', numFaces: 1 }),
@@ -155,7 +155,7 @@ export function initMirrorUI() {
 // ------------------------------------------------------------------ detection worker
 function startWorker(pose) {
   return new Promise((resolve, reject) => {
-    let w; try { w = new Worker('/meridian-anatomy-lab/js/pose_worker.js', { type: 'module' }); } catch (e) { reject(e); return; }
+    let w; try { w = new Worker('/meridian-4D/js/pose_worker.js', { type: 'module' }); } catch (e) { reject(e); return; }
     const to = setTimeout(() => { w.terminate(); reject(new Error('worker did not become ready in 90 s')); }, 90000);
     w.onerror = (e) => { clearTimeout(to); reject(e.error || new Error(e.message || 'worker error')); };
     w.onmessage = (e) => {

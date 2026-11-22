@@ -1,6 +1,6 @@
 # Meridian Anatomy Lab (static public demo)
 
-Live site: https://inzy0.github.io/meridian-anatomy-lab/
+Live site: https://inzy0.github.io/meridian-4D/
 
 Free, non-commercial, education only. Not a medical device; no diagnosis or advice. The camera runs on your own device
 (MediaPipe in the browser); notes stay in your browser. Clinical search, care pathways, medications, DNA -> Protein and

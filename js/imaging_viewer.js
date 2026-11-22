@@ -57,7 +57,7 @@ export function filterGrey(g, w, h, kind) {
 const PLANES = { d: 'Depth plane (slice through axis 0)', r: 'Row plane (axis 1)', c: 'Column plane (axis 2)' };
 
 export async function openViewer(ctx) {
-  if (!DS) { try { DS = await (await fetch('/meridian-anatomy-lab/rt/imaging/datasets.json', { cache: 'no-store' })).json(); } catch { DS = {}; } }
+  if (!DS) { try { DS = await (await fetch('/meridian-4D/rt/imaging/datasets.json', { cache: 'no-store' })).json(); } catch { DS = {}; } }
   let host = $('#img-viewer');
   if (!host) { host = document.createElement('div'); host.id = 'img-viewer'; host.className = 'iv'; document.body.appendChild(host); }
   host.hidden = false;
@@ -108,19 +108,19 @@ class Viewer {
     const s = this.samples[this.k]; this.s = s;
     this.items = []; $('#iv-note', this.host).value = ''; this.draft = null;
     if (s.png) {
-      const img = new Image(); img.src = `/meridian-anatomy-lab/rt/imaging/${this.task}/${s.hi || s.png}`; await img.decode();
+      const img = new Image(); img.src = `/meridian-4D/rt/imaging/${this.task}/${s.hi || s.png}`; await img.decode();
       const n = s.hi ? s.hi_size : (s.native || [64, 64]); // 224 px copy when available, else the native 64 px image (the PNG is a nearest-neighbour 256 px copy)
       const off = document.createElement('canvas'); off.width = n[1]; off.height = n[0];
       const o = off.getContext('2d'); o.imageSmoothingEnabled = false; o.drawImage(img, 0, 0, n[1], n[0]);
       this.src = o.getImageData(0, 0, n[1], n[0]); this.vol = null;
     } else {
-      this.vol = new Uint8Array(await (await fetch(`/meridian-anatomy-lab/rt/imaging/${this.task}/${s.vol}`)).arrayBuffer());
+      this.vol = new Uint8Array(await (await fetch(`/meridian-4D/rt/imaging/${this.task}/${s.vol}`)).arrayBuffer());
       this.shape = s.shape; this.slice = Math.floor(s.shape[0] / 2);
     }
     $('#iv-vol', this.host).hidden = !this.vol;
     $('#iv-res', this.host).textContent = s.hi ? `Showing the 224 px copy of this test image (matched to the 64 px original, r = ${s.hi_r}). The model was run on the 64 px version.` : s.png ? 'Native 64 px image (no higher-resolution copy for this set yet).' : '64³ volume as used by the model.';
     this.header(); this.makeSlice(); this.fit();
-    try { const r = await fetch(`/meridian-anatomy-lab/rt/annotations/${this.task}/${this.k}.json`, { cache: 'no-store' }); if (r.ok) { const a = await r.json(); this.items = a.items || []; $('#iv-note', this.host).value = a.note || ''; $('#iv-saved', this.host).textContent = `Loaded saved labels (${a.saved}).`; } else $('#iv-saved', this.host).textContent = 'No saved labels yet. Anything you add is saved automatically.'; } catch { /* none */ }
+    try { const r = await fetch(`/meridian-4D/rt/annotations/${this.task}/${this.k}.json`, { cache: 'no-store' }); if (r.ok) { const a = await r.json(); this.items = a.items || []; $('#iv-note', this.host).value = a.note || ''; $('#iv-saved', this.host).textContent = `Loaded saved labels (${a.saved}).`; } else $('#iv-saved', this.host).textContent = 'No saved labels yet. Anything you add is saved automatically.'; } catch { /* none */ }
     this.listItems(); this.draw();
   }
 

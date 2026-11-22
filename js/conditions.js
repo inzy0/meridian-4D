@@ -4,7 +4,7 @@
 
 let data = null;
 export async function loadConditions() {
-  if (!data) data = fetch('/meridian-anatomy-lab/rt/conditions.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!data) data = fetch('/meridian-4D/rt/conditions.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   return data;
 }
 

@@ -15,7 +15,7 @@
 // (no hardware sync), so fast movements can differ by up to one frame
 // (~33 ms at 30 fps).
 
-import { FilesetResolver, PoseLandmarker } from '/meridian-anatomy-lab/rt/vendor/mediapipe/vision_bundle.mjs';
+import { FilesetResolver, PoseLandmarker } from '/meridian-4D/rt/vendor/mediapipe/vision_bundle.mjs';
 
 const cams = [];            // { id, label, video, lm, res, t, n, fps, q, locked, resid, used }
 let fileset = null, modelFile = 'pose_landmarker_full.task';
@@ -31,8 +31,8 @@ export function setMulticamModel(file) { modelFile = file; }
 export async function addCamera(deviceId, label) {
   if (cams.length >= 3) throw new Error('Up to 3 extra cameras (4 in total)');
   if (cams.some((c) => c.id === deviceId)) return;
-  fileset ||= await FilesetResolver.forVisionTasks('/meridian-anatomy-lab/rt/vendor/mediapipe/wasm');
-  const lm = await PoseLandmarker.createFromOptions(fileset, { baseOptions: { modelAssetPath: `/meridian-anatomy-lab/rt/models/${modelFile}`, delegate: 'GPU' }, runningMode: 'VIDEO', numPoses: 1 });
+  fileset ||= await FilesetResolver.forVisionTasks('/meridian-4D/rt/vendor/mediapipe/wasm');
+  const lm = await PoseLandmarker.createFromOptions(fileset, { baseOptions: { modelAssetPath: `/meridian-4D/rt/models/${modelFile}`, delegate: 'GPU' }, runningMode: 'VIDEO', numPoses: 1 });
   const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: deviceId }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false });
   const video = document.createElement('video'); video.muted = true; video.playsInline = true; video.srcObject = stream; await video.play();
   const c = { id: deviceId, label, video, lm, res: null, t: 0, lastVT: -1, n: 0, fpsT: performance.now(), fps: 0, q: null, locked: null, resid: null, used: 0, capT: null, fresh: false, lag: null };

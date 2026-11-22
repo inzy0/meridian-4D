@@ -61,9 +61,9 @@ async function qTissue() {
 }
 let RX = null;
 async function qOrder(kind) {
-  RX = RX || (await api('/meridian-anatomy-lab/rt/molecular/reactions/index.json'));
+  RX = RX || (await api('/meridian-4D/rt/molecular/reactions/index.json'));
   const ids = Object.entries(RX.pathways).filter(([, v]) => v.n_reactions >= 5).map(([id]) => id); if (!ids.length) return null;
-  const pid = pick(ids), P = await api(`/meridian-anatomy-lab/rt/molecular/reactions/${pid}.json`), rs = P.reactions;
+  const pid = pick(ids), P = await api(`/meridian-4D/rt/molecular/reactions/${pid}.json`), rs = P.reactions;
   if (kind === 'order') {
     const i = Math.floor(Math.random() * (rs.length - 1)), a = rs[i], b = rs[i + 1];
     if (!b.preceding.includes(a.id)) return null; // only ask when Reactome itself links the two steps

@@ -95,7 +95,7 @@ async function load() {
       for (const n of r.notes || []) { await put('notes', n); }
       for (const n of r.notes || []) for (const m of n.media || []) {
         if (!(await getOne('media', m.id)) && (r.media || []).includes(`${m.id}.${m.ext}`)) {
-          const b = await (await fetch(`/meridian-anatomy-lab/rt/notes/media/${m.id}.${m.ext}`)).blob(); await put('media', { ...m, blob: b });
+          const b = await (await fetch(`/meridian-4D/rt/notes/media/${m.id}.${m.ext}`)).blob(); await put('media', { ...m, blob: b });
         }
       }
       S.notes = (await getAll('notes')).filter((n) => !n.deleted);

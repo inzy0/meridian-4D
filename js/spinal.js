@@ -22,7 +22,7 @@ const ORD = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 
 const regionOf = (s) => (s.startsWith('Co') ? 'Co' : s[0]);
 
 export async function setupSpinal(B, atlas, root) {
-  const D = await fetch('/meridian-anatomy-lab/rt/brain/spinal_detail.json').then((r) => r.json()).catch(() => null);
+  const D = await fetch('/meridian-4D/rt/brain/spinal_detail.json').then((r) => r.json()).catch(() => null);
   if (!D || !B.canal) return null;
   B.SD = D;
   const A = atlas.anchors, right = B.right, get = (n) => atlas.byName.get(n)?.geometry;

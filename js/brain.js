@@ -63,11 +63,11 @@ export async function startBrain() {
   B.atlas = atlas;
   status.textContent = 'Loading tracts and connectome…';
   const [TJ, bin, CON] = await Promise.all([
-    fetch('/meridian-anatomy-lab/rt/brain/tracts.json').then((r) => r.json()), fetch('/meridian-anatomy-lab/rt/brain/tracts.bin').then((r) => r.arrayBuffer()), fetch('/meridian-anatomy-lab/rt/brain/connectome.json').then((r) => r.json()),
+    fetch('/meridian-4D/rt/brain/tracts.json').then((r) => r.json()), fetch('/meridian-4D/rt/brain/tracts.bin').then((r) => r.arrayBuffer()), fetch('/meridian-4D/rt/brain/connectome.json').then((r) => r.json()),
   ]);
   B.TJ = TJ; B.CON = CON;
   // brain membership from the BodyParts3D part-of tree (a name pattern alone caught the heart's ventricles)
-  const parent = (await (await fetch('/meridian-anatomy-lab/rt/atlas/partof.json')).json()).parent;
+  const parent = (await (await fetch('/meridian-4D/rt/atlas/partof.json')).json()).parent;
   const inBrain = (n) => { for (let k = 0; k < 14 && n; k++) { n = parent[n]; if (n === 'brain' || n === 'encephalon') return true; } return false; };
   B.planes = [new THREE.Plane(new THREE.Vector3(-1, 0, 0), 9), new THREE.Plane(new THREE.Vector3(0, -1, 0), 9), new THREE.Plane(new THREE.Vector3(0, 0, -1), 9)];
 

@@ -57,7 +57,7 @@ export async function startGenome() {
   $('#gn-speed').oninput = (e) => { G.speed = +e.target.value / 8; };
   $('#gn-pos').oninput = (e) => { G.playing = false; $('#gn-play').textContent = '▶'; G.scrub = +e.target.value / 1000; };
   $('#gn-journey').onclick = () => (G.journey ? stopJourney() : journey());
-  G.concepts = await fetch('/meridian-anatomy-lab/rt/genome/concepts.json').then((r) => r.json()).then((j) => j.concepts).catch(() => ({}));
+  G.concepts = await fetch('/meridian-4D/rt/genome/concepts.json').then((r) => r.json()).then((j) => j.concepts).catch(() => ({}));
   initThree(); chem();
   if (!G.pending) load('HBB');
 }

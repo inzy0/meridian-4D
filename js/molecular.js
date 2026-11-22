@@ -33,8 +33,8 @@ export async function startMolecular() {
   new ResizeObserver(resize).observe(canvas.parentElement); resize();
   let atlas; try { atlas = await loadAtlas((m) => { status.textContent = m; }); } catch (e) { status.textContent = e.message; return; }
   M.atlas = atlas;
-  const TM = await api('/meridian-anatomy-lab/rt/molecular/tissue_map.json'); M.TM = TM;
-  const parent = (await api('/meridian-anatomy-lab/rt/atlas/partof.json')).parent;
+  const TM = await api('/meridian-4D/rt/molecular/tissue_map.json'); M.TM = TM;
+  const parent = (await api('/meridian-4D/rt/atlas/partof.json')).parent;
   const inBrain = (n) => { for (let k = 0; k < 14 && n; k++) { n = parent[n]; if (n === 'brain') return true; } return false; };
   const rules = Object.entries(TM.map).map(([t, r]) => ({ t, re: new RegExp(r.re), layer: r.layer ? new RegExp(`^(${r.layer})$`) : null }));
   const root = new THREE.Group(); scene.add(root);
@@ -148,13 +148,13 @@ export async function openPathway(id, keepPlay = false) {
 // ------------------------------------------------------------------ reaction player (Reactome reactions cached by tools/reactome_reactions.py)
 let RXI = null;
 async function reactionSection(pid) {
-  RXI = RXI || (await api('/meridian-anatomy-lab/rt/molecular/reactions/index.json').catch(() => ({ pathways: {} })));
+  RXI = RXI || (await api('/meridian-4D/rt/molecular/reactions/index.json').catch(() => ({ pathways: {} })));
   const card = $('#mol-card');
   if (!RXI.pathways?.[pid]) {
     const cached = Object.entries(RXI.pathways || {}).map(([id, v]) => `<a href="#" data-pw="${id}">${esc(v.name)}</a>`).join(' · ');
     card.insertAdjacentHTML('beforeend', `<p class="fine muted">Reaction-level steps are cached for: ${cached || 'none yet'}.</p>`); bindLinks(card); return;
   }
-  const R = await api(`/meridian-anatomy-lab/rt/molecular/reactions/${pid}.json`);
+  const R = await api(`/meridian-4D/rt/molecular/reactions/${pid}.json`);
   card.insertAdjacentHTML('beforeend', `<div class="rx-box"><p class="fine"><b>Reactions, in order</b> (${R.reactions.length}; Reactome, ordered by "preceding event") <button class="primary small" id="rx-play">▶ Play reactions</button></p>
     ${R.summary ? `<details><summary class="fine">Pathway summary (Reactome)</summary><p class="fine about-t">${esc(R.summary)}</p></details>` : ''}
     <canvas id="rx-cv" width="460" height="230"></canvas><div id="rx-txt" class="fine"></div>

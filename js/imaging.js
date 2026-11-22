@@ -20,7 +20,7 @@ const BENCH3D = {
 };
 export async function startImaging() {
   const host = $('#img-cards');
-  try { M = await (await fetch('/meridian-anatomy-lab/rt/imaging/metrics.json', { cache: 'no-store' })).json(); } catch { M = null; }
+  try { M = await (await fetch('/meridian-4D/rt/imaging/metrics.json', { cache: 'no-store' })).json(); } catch { M = null; }
   if (!M || !Object.keys(M).length) { host.innerHTML = '<p class="muted">No trained models yet. Training runs in the background (tools/imaging_train.py); reload this tab when it finishes.</p>'; return; }
   const order = ['pneumoniamnist', 'chestmnist', 'organamnist', 'organcmnist', 'organsmnist', 'organmnist3d', 'nodulemnist3d', 'fracturemnist3d', 'adrenalmnist3d', 'vesselmnist3d', 'breastmnist', 'octmnist', 'ixi_brain_age', 'retinamnist', 'pathmnist', 'bloodmnist', 'tissuemnist', 'synapsemnist3d'];
   const keys = order.filter((k) => M[k]).concat(Object.keys(M).filter((k) => !order.includes(k)));
@@ -57,7 +57,7 @@ async function openTask(task) {
   document.querySelectorAll('.img-card').forEach((b) => b.classList.toggle('on', b.dataset.task === task));
   const m = M[task]; const g = $('#img-gallery');
   let S = [];
-  try { S = await (await fetch(`/meridian-anatomy-lab/rt/imaging/${task}/samples.json`, { cache: 'no-store' })).json(); } catch { /* none */ }
+  try { S = await (await fetch(`/meridian-4D/rt/imaging/${task}/samples.json`, { cache: 'no-store' })).json(); } catch { /* none */ }
   const extra = m.per_label_auc ? `<details><summary class="fine">Per-finding AUC on the test set</summary><p class="fine mono">${Object.entries(m.per_label_auc).map(([k, v]) => `${esc(k)} ${v.toFixed(3)}`).join(' · ')}</p></details>` : '';
   $('#img-detail').innerHTML = `<h2>${esc(m.modality)} · ${esc(title(m))}</h2>
     <p class="fine">Train ${m.n.train.toLocaleString()} · validation ${m.n.val.toLocaleString()} · test ${m.n.test.toLocaleString()} · ${m.minutes} min on GPU · trained ${esc(m.trained || '')}.
@@ -69,7 +69,7 @@ async function openTask(task) {
       : `<div>Truth: <b>${esc(Array.isArray(s.truth) ? (s.truth.join(', ') || 'no finding') : s.truth)}</b>${s.pred ? ` · model: <b>${esc(s.pred)}</b>` : ''}</div>
          <div class="probs">${top.map(([k, v]) => `<span><i style="width:${Math.round(v * 100)}%"></i>${esc(k)} ${(v * 100).toFixed(0)}%</span>`).join('')}</div>`;
     return `<figure class="img-item ${ok === true ? 'ok' : ok === false ? 'bad' : ''}" data-k="${k}" title="Double-click for the big view">
-      ${s.png ? `<img src="/meridian-anatomy-lab/rt/imaging/${task}/${s.png}" alt="test image ${k + 1}" loading="lazy">` : `<canvas class="vol" data-vol="/meridian-anatomy-lab/rt/imaging/${task}/${s.vol}" data-shape="${s.shape.join(',')}" width="192" height="64"></canvas><input class="volz" type="range" min="0" max="${s.shape[0] - 1}" value="${Math.floor(s.shape[0] / 2)}" aria-label="Slice">`}
+      ${s.png ? `<img src="/meridian-4D/rt/imaging/${task}/${s.png}" alt="test image ${k + 1}" loading="lazy">` : `<canvas class="vol" data-vol="/meridian-4D/rt/imaging/${task}/${s.vol}" data-shape="${s.shape.join(',')}" width="192" height="64"></canvas><input class="volz" type="range" min="0" max="${s.shape[0] - 1}" value="${Math.floor(s.shape[0] / 2)}" aria-label="Slice">`}
       <figcaption>${ok === true ? '<span class="q good">correct</span>' : ok === false ? '<span class="q poor">wrong</span>' : ''} ${body}<button class="ghost-btn iv-open" data-open="${k}">Open big view</button></figcaption></figure>`;
   }).join('') || '<p class="muted">No samples saved for this model.</p>';
   g.querySelectorAll('canvas.vol').forEach(initVolume);

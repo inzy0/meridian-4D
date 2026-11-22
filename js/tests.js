@@ -15,7 +15,7 @@ let D = null, byId = {}, cat = 'all', sys = null, cur = null;
 
 export async function startTests(openId) {
   if (!D) {
-    D = await (await fetch('/meridian-anatomy-lab/rt/clinical/tests.json')).json();
+    D = await (await fetch('/meridian-4D/rt/clinical/tests.json')).json();
     D.tests.forEach((t) => { byId[t.id] = t; });
     buildUI();
   }

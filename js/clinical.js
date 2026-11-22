@@ -36,7 +36,7 @@ export async function startClinical(openId) {
 
 let PROC = null;
 async function browseProcedures(region) {
-  PROC = PROC || (await (await fetch('/meridian-anatomy-lab/rt/clinical/procedures.json')).json());
+  PROC = PROC || (await (await fetch('/meridian-4D/rt/clinical/procedures.json')).json());
   const host = $('#cl-results'), all = PROC.procedures, count = {};
   all.forEach((p) => (p.regions.length ? p.regions : ['Region not determined']).forEach((r) => { count[r] = (count[r] || 0) + 1; }));
   const regs = Object.keys(count).sort((a, b) => (a.startsWith('Region') ? 1 : b.startsWith('Region') ? -1 : count[b] - count[a]));
@@ -99,7 +99,7 @@ function procedureCards(d) {
 const STOP = new Set(['skin', 'body', 'heart', 'brain', 'head', 'neck', 'trunk', 'mouth', 'nose', 'liver']);
 async function structuresIn(d) {
   if (!NAMES) {
-    const idx = await (await fetch('/meridian-anatomy-lab/rt/atlas/index.json')).json();
+    const idx = await (await fetch('/meridian-4D/rt/atlas/index.json')).json();
     const base = new Set(idx.parts.map((p) => p.name.replace(/\b(left|right) /, '')));
     NAMES = [...base].filter((n) => n.includes(' ') || (n.length >= 5 && !STOP.has(n))).map((n) => ({ n, re: new RegExp(`\\b${n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(s|es)?\\b`, 'i') }));
   }
@@ -152,7 +152,7 @@ async function openDrug(g) {
 // ---------------------------------------------------------------- surgical instruments and equipment (StatPearls Equipment sections)
 let EQ = null, eqFam = null;
 async function browseEquipment(q = '') {
-  EQ = EQ || (await (await fetch('/meridian-anatomy-lab/rt/clinical/equipment.json')).json());
+  EQ = EQ || (await (await fetch('/meridian-4D/rt/clinical/equipment.json')).json());
   const host = $('#cl-results'), fc = {}; EQ.items.forEach((it) => it.families.forEach((f) => { fc[f] = (fc[f] || 0) + 1; }));
   const list = EQ.items.filter((it) => (!eqFam || it.families.includes(eqFam)) && (!q || it.item.toLowerCase().includes(q.toLowerCase())));
   host.innerHTML = `<p class="fine"><b>Surgical instruments and equipment</b>: ${EQ.items.length.toLocaleString()} items from the Equipment sections of ${Object.keys(EQ.procedures).length} StatPearls procedure chapters (verbatim), grouped by instrument family.</p>
@@ -176,7 +176,7 @@ function openEquipment(it) {
 // ---------------------------------------------------------------- conditions by organ (incl. cancers)
 let ORG = null, orgSel = null, typeSel = null;
 async function browseOrgans() {
-  ORG = ORG || (await (await fetch('/meridian-anatomy-lab/rt/clinical/organs.json')).json());
+  ORG = ORG || (await (await fetch('/meridian-4D/rt/clinical/organs.json')).json());
   const host = $('#cl-results'), sys = [...new Set(Object.values(ORG.organs).map((o) => o.system))];
   const list = ORG.items.filter((it) => (!orgSel || it.organs.includes(orgSel)) && (!typeSel || it.types.includes(typeSel)));
   const tc = {}; ORG.items.filter((it) => !orgSel || it.organs.includes(orgSel)).forEach((it) => it.types.forEach((t) => { tc[t] = (tc[t] || 0) + 1; }));
@@ -204,7 +204,7 @@ let TESTS = null;
 async function carePathway(d, names) {
   const R = $('#cl-reader');
   R.innerHTML = `<h2 class="cl-h">${esc(d.title)} <small>care pathway</small></h2><p class="fine muted">Assembling the course of care from the chapter…</p>`;
-  const [cp, T] = await Promise.all([fetch(`/api/clinical/pathway?q=${encodeURIComponent(d.title)}`).then((r) => r.json()).catch((e) => ({ error: String(e) })), TESTS || fetch('/meridian-anatomy-lab/rt/clinical/tests.json').then((r) => r.json()).catch(() => null)]);
+  const [cp, T] = await Promise.all([fetch(`/api/clinical/pathway?q=${encodeURIComponent(d.title)}`).then((r) => r.json()).catch((e) => ({ error: String(e) })), TESTS || fetch('/meridian-4D/rt/clinical/tests.json').then((r) => r.json()).catch(() => null)]);
   TESTS = T;
   if (cp.error || cp.refused || !cp.found) { R.innerHTML += `<p class="muted">${esc(cp.error || cp.banner || 'No pathway found.')}</p>`; return; }
   const full = d.sections.map((x) => x.text).join(' \n');

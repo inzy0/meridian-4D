@@ -20,7 +20,7 @@ let FilesetResolver, HandLandmarker, FaceLandmarker, PoseLandmarker;
 const L = {};
 let fs = null, delegate = 'GPU';
 const AB = { done: false, ms: { GPU: [], CPU: [] }, pose: 'full' }; // backend choice by measured speed
-const opts = (file, extra) => ({ baseOptions: { modelAssetPath: `/meridian-anatomy-lab/rt/models/${file}`, delegate }, runningMode: 'VIDEO', ...extra });
+const opts = (file, extra) => ({ baseOptions: { modelAssetPath: `/meridian-4D/rt/models/${file}`, delegate }, runningMode: 'VIDEO', ...extra });
 
 async function make(poseModel) {
   [L.hand, L.face, L.pose] = await Promise.all([
@@ -34,8 +34,8 @@ onmessage = async (e) => {
   const m = e.data;
   try {
     if (m.type === 'init') {
-      ({ FilesetResolver, HandLandmarker, FaceLandmarker, PoseLandmarker } = await import('/meridian-anatomy-lab/rt/vendor/mediapipe/vision_bundle.mjs'));
-      fs = await FilesetResolver.forVisionTasks('/meridian-anatomy-lab/rt/vendor/mediapipe/wasm');
+      ({ FilesetResolver, HandLandmarker, FaceLandmarker, PoseLandmarker } = await import('/meridian-4D/rt/vendor/mediapipe/vision_bundle.mjs'));
+      fs = await FilesetResolver.forVisionTasks('/meridian-4D/rt/vendor/mediapipe/wasm');
       AB.pose = m.pose;
       try { await make(m.pose); } catch (err) { delegate = 'CPU'; AB.done = true; await make(m.pose); }
       postMessage({ type: 'ready', delegate });
