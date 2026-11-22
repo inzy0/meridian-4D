@@ -1,0 +1,816 @@
+{
+ "pneumoniamnist": {
+  "task": "pneumoniamnist",
+  "modality": "X-ray (chest)",
+  "kind": "binary",
+  "input": "64x64",
+  "n": {
+   "train": 4708,
+   "val": 524,
+   "test": 624
+  },
+  "epochs": 25,
+  "best_epoch": 18,
+  "val": {
+   "auc": 0.9981529086927544,
+   "acc": 0.9770992366412213
+  },
+  "test": {
+   "auc": 0.9803911900065746,
+   "acc": 0.842948717948718
+  },
+  "minutes": 2.3,
+  "labels": {
+   "0": "normal",
+   "1": "pneumonia"
+  },
+  "bench": {
+   "res28": [
+    0.944,
+    0.854
+   ],
+   "res224": [
+    0.956,
+    0.864
+   ]
+  },
+  "trained": "2026-11-20 02:54",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9810395207831105,
+    "min": 0.9800460223537146,
+    "max": 0.9826813499890423
+   },
+   "acc": {
+    "mean": 0.8915598290598291,
+    "min": 0.842948717948718,
+    "max": 0.9230769230769231
+   }
+  }
+ },
+ "chestmnist": {
+  "task": "chestmnist",
+  "modality": "X-ray (chest)",
+  "kind": "multilabel",
+  "input": "64x64",
+  "n": {
+   "train": 78468,
+   "val": 11219,
+   "test": 22433
+  },
+  "epochs": 10,
+  "best_epoch": 10,
+  "val": {
+   "auc": 0.8027769725951135,
+   "acc": 0.9498172742668687
+  },
+  "test": {
+   "auc": 0.8040183541648018,
+   "acc": 0.9482681763473454
+  },
+  "minutes": 19.6,
+  "labels": {
+   "0": "atelectasis",
+   "1": "cardiomegaly",
+   "2": "effusion",
+   "3": "infiltration",
+   "4": "mass",
+   "5": "nodule",
+   "6": "pneumonia",
+   "7": "pneumothorax",
+   "8": "consolidation",
+   "9": "edema",
+   "10": "emphysema",
+   "11": "fibrosis",
+   "12": "pleural",
+   "13": "hernia"
+  },
+  "bench": {
+   "res28": [
+    0.768,
+    0.947
+   ],
+   "res224": [
+    0.773,
+    0.947
+   ]
+  },
+  "per_label_auc": {
+   "atelectasis": 0.7914450441923493,
+   "cardiomegaly": 0.9036815413859659,
+   "effusion": 0.8730720197883362,
+   "infiltration": 0.69292827004567,
+   "mass": 0.7961461531767835,
+   "nodule": 0.700854404077565,
+   "pneumonia": 0.7417886076218079,
+   "pneumothorax": 0.8411927817083193,
+   "consolidation": 0.7949256081927034,
+   "edema": 0.8815287884885631,
+   "emphysema": 0.8434714098964488,
+   "fibrosis": 0.7816890417189526,
+   "pleural": 0.7558050553692689,
+   "hernia": 0.8577282326444936
+  },
+  "trained": "2026-11-20 03:14"
+ },
+ "breastmnist": {
+  "task": "breastmnist",
+  "modality": "Ultrasound (breast)",
+  "kind": "binary",
+  "input": "64x64",
+  "n": {
+   "train": 546,
+   "val": 78,
+   "test": 156
+  },
+  "epochs": 60,
+  "best_epoch": 44,
+  "val": {
+   "auc": 0.9657477025898078,
+   "acc": 0.9102564102564102
+  },
+  "test": {
+   "auc": 0.9045530492898914,
+   "acc": 0.8717948717948718
+  },
+  "minutes": 0.8,
+  "labels": {
+   "0": "malignant",
+   "1": "normal, benign"
+  },
+  "bench": {
+   "res28": [
+    0.901,
+    0.863
+   ],
+   "res224": [
+    0.891,
+    0.833
+   ]
+  },
+  "trained": "2026-11-20 03:14",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9007240323029797,
+    "min": 0.8909774436090225,
+    "max": 0.906641604010025
+   },
+   "acc": {
+    "mean": 0.8739316239316239,
+    "min": 0.8717948717948718,
+    "max": 0.8782051282051282
+   }
+  }
+ },
+ "octmnist": {
+  "task": "octmnist",
+  "modality": "OCT (retina)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 97477,
+   "val": 10832,
+   "test": 1000
+  },
+  "epochs": 12,
+  "best_epoch": 12,
+  "val": {
+   "auc": 0.9963501901896884,
+   "acc": 0.9758124076809453
+  },
+  "test": {
+   "auc": 0.9884166666666667,
+   "acc": 0.85
+  },
+  "minutes": 35.5,
+  "labels": {
+   "0": "choroidal neovascularization",
+   "1": "diabetic macular edema",
+   "2": "drusen",
+   "3": "normal"
+  },
+  "bench": {
+   "res28": [
+    0.943,
+    0.743
+   ],
+   "res224": [
+    0.958,
+    0.763
+   ]
+  },
+  "trained": "2026-11-20 03:50"
+ },
+ "ixi_brain_age": {
+  "task": "ixi_brain_age",
+  "modality": "MRI T1 (brain)",
+  "kind": "regression",
+  "input": "64x64x64",
+  "n": {
+   "train": 394,
+   "val": 56,
+   "test": 113
+  },
+  "epochs": 60,
+  "best_epoch": 52,
+  "val": {
+   "mae_years": 6.527089595794678,
+   "r": 0.8605258442349538
+  },
+  "test": {
+   "mae_years": 6.916784763336182,
+   "r": 0.8598113576556534
+  },
+  "minutes": 4.6,
+  "labels": null,
+  "bench": null,
+  "baseline": {
+   "mae_years_predicting_train_mean": 14.57675838470459
+  },
+  "trained": "2026-11-21 10:44",
+  "seed_summary": {
+   "n_runs": 3,
+   "mae_years": {
+    "mean": 6.224850018819173,
+    "min": 4.8205366134643555,
+    "max": 6.937228679656982
+   },
+   "r": {
+    "mean": 0.8862861857680727,
+    "min": 0.8598113576556534,
+    "max": 0.9291881252093266
+   }
+  }
+ },
+ "organmnist3d": {
+  "task": "organmnist3d",
+  "modality": "CT (3D organ volumes)",
+  "kind": "multiclass",
+  "input": "64x64x64",
+  "n": {
+   "train": 971,
+   "val": 161,
+   "test": 610
+  },
+  "epochs": 40,
+  "best_epoch": 13,
+  "val": {
+   "auc": 1.0,
+   "acc": 0.9937888198757764
+  },
+  "test": {
+   "auc": 0.9969242632658194,
+   "acc": 0.9098360655737705
+  },
+  "minutes": 4.1,
+  "labels": {
+   "0": "liver",
+   "1": "kidney-right",
+   "2": "kidney-left",
+   "3": "femur-right",
+   "4": "femur-left",
+   "5": "bladder",
+   "6": "heart",
+   "7": "lung-right",
+   "8": "lung-left",
+   "9": "spleen",
+   "10": "pancreas"
+  },
+  "bench": null,
+  "trained": "2026-11-21 10:48",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9947438186241747,
+    "min": 0.9915588998203172,
+    "max": 0.9969242632658194
+   },
+   "acc": {
+    "mean": 0.9005464480874318,
+    "min": 0.8754098360655738,
+    "max": 0.9163934426229509
+   }
+  }
+ },
+ "nodulemnist3d": {
+  "task": "nodulemnist3d",
+  "modality": "CT (3D lung nodules)",
+  "kind": "binary",
+  "input": "64x64x64",
+  "n": {
+   "train": 1158,
+   "val": 165,
+   "test": 310
+  },
+  "epochs": 40,
+  "best_epoch": 13,
+  "val": {
+   "auc": 0.9097948122338366,
+   "acc": 0.8242424242424242
+  },
+  "test": {
+   "auc": 0.8864329268292683,
+   "acc": 0.8258064516129032
+  },
+  "minutes": 4.8,
+  "labels": {
+   "0": "benign",
+   "1": "malignant"
+  },
+  "bench": null,
+  "trained": "2026-11-21 10:53",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.8891958841463415,
+    "min": 0.8864329268292683,
+    "max": 0.8935149898373984
+   },
+   "acc": {
+    "mean": 0.856989247311828,
+    "min": 0.8258064516129032,
+    "max": 0.8838709677419355
+   }
+  }
+ },
+ "fracturemnist3d": {
+  "task": "fracturemnist3d",
+  "modality": "CT (3D rib fractures)",
+  "kind": "multiclass",
+  "input": "64x64x64",
+  "n": {
+   "train": 1027,
+   "val": 103,
+   "test": 240
+  },
+  "epochs": 40,
+  "best_epoch": 27,
+  "val": {
+   "auc": 0.798894516267567,
+   "acc": 0.6310679611650486
+  },
+  "test": {
+   "auc": 0.7478803140397091,
+   "acc": 0.5833333333333334
+  },
+  "minutes": 4.2,
+  "labels": {
+   "0": "buckle rib fracture",
+   "1": "nondisplaced rib fracture",
+   "2": "displaced rib fracture"
+  },
+  "bench": null,
+  "trained": "2026-11-21 10:57",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.7572175845497431,
+    "min": 0.7478803140397091,
+    "max": 0.7659523873566432
+   },
+   "acc": {
+    "mean": 0.5986111111111111,
+    "min": 0.5833333333333334,
+    "max": 0.6208333333333333
+   }
+  }
+ },
+ "adrenalmnist3d": {
+  "task": "adrenalmnist3d",
+  "modality": "CT (3D adrenal glands)",
+  "kind": "binary",
+  "input": "64x64x64",
+  "n": {
+   "train": 1188,
+   "val": 98,
+   "test": 298
+  },
+  "epochs": 40,
+  "best_epoch": 34,
+  "val": {
+   "auc": 0.9081937799043063,
+   "acc": 0.8877551020408163
+  },
+  "test": {
+   "auc": 0.9119675969875324,
+   "acc": 0.8523489932885906
+  },
+  "minutes": 4.7,
+  "labels": {
+   "0": "normal",
+   "1": "hyperplasia"
+  },
+  "bench": null,
+  "trained": "2026-11-21 11:02",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9077695504503934,
+    "min": 0.9055123093475097,
+    "max": 0.9119675969875324
+   },
+   "acc": {
+    "mean": 0.8512304250559284,
+    "min": 0.8456375838926175,
+    "max": 0.8557046979865772
+   }
+  }
+ },
+ "vesselmnist3d": {
+  "task": "vesselmnist3d",
+  "modality": "MRA (3D brain vessels)",
+  "kind": "binary",
+  "input": "64x64x64",
+  "n": {
+   "train": 1335,
+   "val": 191,
+   "test": 382
+  },
+  "epochs": 40,
+  "best_epoch": 34,
+  "val": {
+   "auc": 0.9819795589026358,
+   "acc": 0.93717277486911
+  },
+  "test": {
+   "auc": 0.9528366604925568,
+   "acc": 0.9450261780104712
+  },
+  "minutes": 5.5,
+  "labels": {
+   "0": "vessel",
+   "1": "aneurysm"
+  },
+  "bench": null,
+  "trained": "2026-11-21 11:08",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9545974251675013,
+    "min": 0.9512931330177677,
+    "max": 0.9596624819921795
+   },
+   "acc": {
+    "mean": 0.9520069808027923,
+    "min": 0.9450261780104712,
+    "max": 0.9581151832460733
+   }
+  }
+ },
+ "organamnist": {
+  "task": "organamnist",
+  "modality": "CT (abdomen, axial)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 34561,
+   "val": 6491,
+   "test": 17778
+  },
+  "epochs": 12,
+  "best_epoch": 12,
+  "val": {
+   "auc": 0.9999753367820637,
+   "acc": 0.9885995994453859
+  },
+  "test": {
+   "auc": 0.9986354563677078,
+   "acc": 0.9583755203059962
+  },
+  "minutes": 8.7,
+  "labels": {
+   "0": "bladder",
+   "1": "femur-left",
+   "2": "femur-right",
+   "3": "heart",
+   "4": "kidney-left",
+   "5": "kidney-right",
+   "6": "liver",
+   "7": "lung-left",
+   "8": "lung-right",
+   "9": "pancreas",
+   "10": "spleen"
+  },
+  "bench": {
+   "res28": [
+    0.997,
+    0.935
+   ],
+   "res224": [
+    0.998,
+    0.951
+   ]
+  },
+  "trained": "2026-11-21 11:16"
+ },
+ "organcmnist": {
+  "task": "organcmnist",
+  "modality": "CT (abdomen, coronal)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 12975,
+   "val": 2392,
+   "test": 8216
+  },
+  "epochs": 15,
+  "best_epoch": 9,
+  "val": {
+   "auc": 0.9997692050972902,
+   "acc": 0.9874581939799331
+  },
+  "test": {
+   "auc": 0.9943846339732104,
+   "acc": 0.9266066212268744
+  },
+  "minutes": 4.2,
+  "labels": {
+   "0": "bladder",
+   "1": "femur-left",
+   "2": "femur-right",
+   "3": "heart",
+   "4": "kidney-left",
+   "5": "kidney-right",
+   "6": "liver",
+   "7": "lung-left",
+   "8": "lung-right",
+   "9": "pancreas",
+   "10": "spleen"
+  },
+  "bench": {
+   "res28": [
+    0.992,
+    0.9
+   ],
+   "res224": [
+    0.994,
+    0.92
+   ]
+  },
+  "trained": "2026-11-21 11:21",
+  "seed_summary": {
+   "n_runs": 3,
+   "auc": {
+    "mean": 0.9950591861758324,
+    "min": 0.9938163306692666,
+    "max": 0.9969765938850202
+   },
+   "acc": {
+    "mean": 0.9295277507302823,
+    "min": 0.9234420642648491,
+    "max": 0.9385345666991236
+   }
+  }
+ },
+ "organsmnist": {
+  "task": "organsmnist",
+  "modality": "CT (abdomen, sagittal)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 13932,
+   "val": 2452,
+   "test": 8827
+  },
+  "epochs": 15,
+  "best_epoch": 10,
+  "val": {
+   "auc": 0.9957485652124565,
+   "acc": 0.9257748776508973
+  },
+  "test": {
+   "auc": 0.9777655209975087,
+   "acc": 0.7833918658660927
+  },
+  "minutes": 5.0,
+  "labels": {
+   "0": "bladder",
+   "1": "femur-left",
+   "2": "femur-right",
+   "3": "heart",
+   "4": "kidney-left",
+   "5": "kidney-right",
+   "6": "liver",
+   "7": "lung-left",
+   "8": "lung-right",
+   "9": "pancreas",
+   "10": "spleen"
+  },
+  "bench": {
+   "res28": [
+    0.972,
+    0.782
+   ],
+   "res224": [
+    0.974,
+    0.778
+   ]
+  },
+  "trained": "2026-11-21 11:26"
+ },
+ "retinamnist": {
+  "task": "retinamnist",
+  "modality": "Fundus photography (retina)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 1080,
+   "val": 120,
+   "test": 400
+  },
+  "epochs": 60,
+  "best_epoch": 17,
+  "val": {
+   "auc": 0.8347190681285266,
+   "acc": 0.5583333333333333
+  },
+  "test": {
+   "auc": 0.727895019710758,
+   "acc": 0.5475
+  },
+  "minutes": 1.3,
+  "labels": {
+   "0": "0",
+   "1": "1",
+   "2": "2",
+   "3": "3",
+   "4": "4"
+  },
+  "bench": {
+   "res28": [
+    0.717,
+    0.524
+   ],
+   "res224": [
+    0.71,
+    0.493
+   ]
+  },
+  "trained": "2026-11-21 18:48",
+  "seed": null
+ },
+ "synapsemnist3d": {
+  "task": "synapsemnist3d",
+  "modality": "Electron microscopy (3D synapses)",
+  "kind": "binary",
+  "input": "64x64x64",
+  "n": {
+   "train": 1230,
+   "val": 177,
+   "test": 352
+  },
+  "epochs": 40,
+  "best_epoch": 28,
+  "val": {
+   "auc": 0.98078165374677,
+   "acc": 0.9322033898305084
+  },
+  "test": {
+   "auc": 0.9657177964366168,
+   "acc": 0.90625
+  },
+  "minutes": 5.0,
+  "labels": {
+   "0": "inhibitory synapse",
+   "1": "excitatory synapse"
+  },
+  "bench": null,
+  "trained": "2026-11-21 18:53",
+  "seed": null
+ },
+ "bloodmnist": {
+  "task": "bloodmnist",
+  "modality": "Microscopy (blood smear)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 11959,
+   "val": 1712,
+   "test": 3421
+  },
+  "epochs": 15,
+  "best_epoch": 15,
+  "val": {
+   "auc": 0.9998627156559899,
+   "acc": 0.9865654205607477
+  },
+  "test": {
+   "auc": 0.9993166531138362,
+   "acc": 0.9874305758550131
+  },
+  "minutes": 4.2,
+  "labels": {
+   "0": "basophil",
+   "1": "eosinophil",
+   "2": "erythroblast",
+   "3": "immature granulocytes(myelocytes, metamyelocytes and promyelocytes)",
+   "4": "lymphocyte",
+   "5": "monocyte",
+   "6": "neutrophil",
+   "7": "platelet"
+  },
+  "bench": {
+   "res28": [
+    0.998,
+    0.958
+   ],
+   "res224": [
+    0.998,
+    0.963
+   ]
+  },
+  "trained": "2026-11-21 18:57",
+  "seed": null
+ },
+ "pathmnist": {
+  "task": "pathmnist",
+  "modality": "Histopathology (colon)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 89996,
+   "val": 10004,
+   "test": 7180
+  },
+  "epochs": 10,
+  "best_epoch": 10,
+  "val": {
+   "auc": 0.9999466804139716,
+   "acc": 0.9947021191523391
+  },
+  "test": {
+   "auc": 0.9877311371485893,
+   "acc": 0.8792479108635097
+  },
+  "minutes": 21.2,
+  "labels": {
+   "0": "adipose",
+   "1": "background",
+   "2": "debris",
+   "3": "lymphocytes",
+   "4": "mucus",
+   "5": "smooth muscle",
+   "6": "normal colon mucosa",
+   "7": "cancer-associated stroma",
+   "8": "colorectal adenocarcinoma epithelium"
+  },
+  "bench": {
+   "res28": [
+    0.983,
+    0.907
+   ],
+   "res224": [
+    0.989,
+    0.909
+   ]
+  },
+  "trained": "2026-11-21 19:18",
+  "seed": null
+ },
+ "tissuemnist": {
+  "task": "tissuemnist",
+  "modality": "Microscopy (kidney cortex)",
+  "kind": "multiclass",
+  "input": "64x64",
+  "n": {
+   "train": 165466,
+   "val": 23640,
+   "test": 47280
+  },
+  "epochs": 8,
+  "best_epoch": 8,
+  "val": {
+   "auc": 0.9538544991165052,
+   "acc": 0.7502115059221658
+  },
+  "test": {
+   "auc": 0.9539450176881654,
+   "acc": 0.7449661590524534
+  },
+  "minutes": 27.5,
+  "labels": {
+   "0": "Collecting Duct, Connecting Tubule",
+   "1": "Distal Convoluted Tubule",
+   "2": "Glomerular endothelial cells",
+   "3": "Interstitial endothelial cells",
+   "4": "Leukocytes",
+   "5": "Podocytes",
+   "6": "Proximal Tubule Segments",
+   "7": "Thick Ascending Limb"
+  },
+  "bench": {
+   "res28": [
+    0.93,
+    0.676
+   ],
+   "res224": [
+    0.933,
+    0.681
+   ]
+  },
+  "trained": "2026-11-21 19:46",
+  "seed": null
+ }
+}

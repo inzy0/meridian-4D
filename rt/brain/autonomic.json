@@ -1,0 +1,570 @@
+{
+ "rule": "a sentence is filed under an organ when it contains one of the organ's words AND \"sympathetic\" or \"parasympathetic\"; the system is the one named in the sentence (\"both\" when both are named). Outflow sentences contain \"thoracolumbar\", \"craniosacral\", or a spinal level pattern (T1, L2, S2-S4) together with a system name. Sentences are unchanged.",
+ "licence": "StatPearls chapters, CC BY-NC-ND 4.0 (unchanged text)",
+ "outflow": {
+  "sympathetic": [
+   {
+    "text": "The preganglionic neurons of the SANS arise from the thoracic and lumbar regions of the spinal cord (T1 to L2) with the cell bodies distributed in four regions of the gray matter in the spinal cord bilaterally and symmetrically.[1][2] As opposed to the parasympathetic nervous system, the first-order neurons of the SANS are short before synapsing on postsynaptic neurons found within sympathetic ganglia.",
+    "chapter": "Neuroanatomy, Sympathetic Nervous System",
+    "id": "statpearls:article-29800"
+   },
+   {
+    "text": "The sympathetic nervous system contains cell bodies that lie within the lateral gray column of the spinal cord running from T1 to L2.",
+    "chapter": "Physiology, Autonomic Nervous System",
+    "id": "statpearls:article-779"
+   },
+   {
+    "text": "Presynaptic fibers exit the spinal cord via anterior roots, enter the anterior rami of T1 to L2 spinal nerves, and proceed to the sympathetic trunks through white rami communicantes.",
+    "chapter": "Anatomy, Autonomic Nervous System",
+    "id": "statpearls:article-32322"
+   },
+   {
+    "text": "Calcitonin gene-related peptide, a potent vasodilator, has also been identified in paravertebral sympathetic neurons.[26][27][28][29]\n\nParasympathetic Nervous System\n\nParasympathetic fibers exit the CNS via cranial nerves III (oculomotor), VII (facial), IX (glossopharyngeal), and X (vagus), as well as through the S2 to S4 spinal nerve roots.",
+    "chapter": "Anatomy, Autonomic Nervous System",
+    "id": "statpearls:article-32322"
+   },
+   {
+    "text": "The term “parasympathetic” historically refers to the craniosacral autonomic outflow that complements the thoracolumbar sympathetic system, with its name originating from the Greek para, meaning “beside.”\n\nThe vagus nerve constitutes approximately 75% of the PNS and provides parasympathetic innervation to most thoracic and abdominal viscera.",
+    "chapter": "Anatomy, Autonomic Nervous System",
+    "id": "statpearls:article-32322"
+   },
+   {
+    "text": "These nerves are composed of preganglionic motor (visceral efferent) and sensory (visceral afferent) nerve fibers supplying the abdominopelvic organs.[1][2] The thoracic, lumbar, and sacral splanchnic nerves carry presynaptic sympathetic fibers, while the pelvic splanchnic nerves carry preganglionic parasympathetic fibers.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   },
+   {
+    "text": "Red lines mark the thoracolumbar or sympathetic outflow.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   },
+   {
+    "text": "The hindgut and pelvic viscera receive sympathetic innervation from the sacral splanchnic nerves and parasympathetic innervation from the pelvic splanchnic nerves.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   }
+  ],
+  "parasympathetic": [
+   {
+    "text": "The preganglionic neurons of the SANS arise from the thoracic and lumbar regions of the spinal cord (T1 to L2) with the cell bodies distributed in four regions of the gray matter in the spinal cord bilaterally and symmetrically.[1][2] As opposed to the parasympathetic nervous system, the first-order neurons of the SANS are short before synapsing on postsynaptic neurons found within sympathetic ganglia.",
+    "chapter": "Neuroanatomy, Sympathetic Nervous System",
+    "id": "statpearls:article-29800"
+   },
+   {
+    "text": "It hydrolyzes acetylcholine into choline and acetate in less than 1 millisecond, making it 1 of the fastest enzymes in the body.[1] Besides a small contribution from neurogenic placodes to the ciliary ganglion and oculomotor nerves, the parasympathetic nervous system arises from neural crest cells.[6] The PNS specifically forms from cranial and sacral neural crest cells.",
+    "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+    "id": "statpearls:article-26653"
+   },
+   {
+    "text": "The parasympathetic nervous system is comprised of a cranial portion, consisting of cranial nerves III, VII, IX, and X and pelvic splanchnic nerves that exit from S2 to S4.",
+    "chapter": "Physiology, Autonomic Nervous System",
+    "id": "statpearls:article-779"
+   },
+   {
+    "text": "Calcitonin gene-related peptide, a potent vasodilator, has also been identified in paravertebral sympathetic neurons.[26][27][28][29]\n\nParasympathetic Nervous System\n\nParasympathetic fibers exit the CNS via cranial nerves III (oculomotor), VII (facial), IX (glossopharyngeal), and X (vagus), as well as through the S2 to S4 spinal nerve roots.",
+    "chapter": "Anatomy, Autonomic Nervous System",
+    "id": "statpearls:article-32322"
+   },
+   {
+    "text": "The term “parasympathetic” historically refers to the craniosacral autonomic outflow that complements the thoracolumbar sympathetic system, with its name originating from the Greek para, meaning “beside.”\n\nThe vagus nerve constitutes approximately 75% of the PNS and provides parasympathetic innervation to most thoracic and abdominal viscera.",
+    "chapter": "Anatomy, Autonomic Nervous System",
+    "id": "statpearls:article-32322"
+   },
+   {
+    "text": "These nerves are composed of preganglionic motor (visceral efferent) and sensory (visceral afferent) nerve fibers supplying the abdominopelvic organs.[1][2] The thoracic, lumbar, and sacral splanchnic nerves carry presynaptic sympathetic fibers, while the pelvic splanchnic nerves carry preganglionic parasympathetic fibers.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   },
+   {
+    "text": "Blue lines show the sacral or parasympathetic outflow.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   },
+   {
+    "text": "The hindgut and pelvic viscera receive sympathetic innervation from the sacral splanchnic nerves and parasympathetic innervation from the pelvic splanchnic nerves.",
+    "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+    "id": "statpearls:article-26875"
+   }
+  ]
+ },
+ "organs": {
+  "Eye (pupil, lens)": {
+   "sympathetic": [
+    {
+     "text": "The effects in which SANS acts in direct contrast to the PANS function include the following:\n\n- In the eye, sympathetic activation causes the radial muscle of the iris (alpha-1) to contract, which leads to mydriasis, allowing more light to enter.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "The following changes take place on activation of the sympathetic nervous system:\n\n- Heart rate and cardiac muscle contractility increase\n\n- The ciliary muscle relaxes, and the pupil becomes dilated for the betterment of far vision.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "For example, a tumor within the apex of the lung, known as a Pancoast tumor, can compress the sympathetic ganglia and cause Horner syndrome, resulting in ptosis, miosis, and anhydrosis of the ipsilateral eye.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "The PNS also gives excitatory signals to the vas deferens, seminal vesicles, and prostate.[5]\n\n- In the eye, parasympathetic stimulation of M3 receptors causes contraction of the iris's sphincter muscle, leading to pupil constriction (miosis).",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    }
+   ],
+   "both": [],
+   "mesh": "^iris$|^lens$|ciliary"
+  },
+  "Lacrimal and salivary glands": {
+   "sympathetic": [],
+   "parasympathetic": [
+    {
+     "text": "Cranial nerves carrying parasympathetic functions include the oculomotor nerve (III) acting on the eyes, the facial nerve (VII) working on the lacrimal gland, the salivary glands, and the mucous membranes within the nasal cavity, the glossopharyngeal nerve (IX) acting on the parotid gland, and the vagus nerve (X) acting on the viscera of the abdomen and thorax.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "- In salivary glands, parasympathetic stimulation of M1 and M3 receptors leads to high-volume secretion of potassium ions, water, and amylase.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Parasympathetic fibers to the head stimulate salivation, whereas fibers synapsing onto the ENS enhance peristaltic and secretory activity.[33]\n\nAdditionally, the vagus nerve modulates the respiratory cycle.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [
+    {
+     "text": "Symptoms of cholinergic toxicity can be remembered by the mnemonic SLUDGE, which stands for salivation, lacrimation, urinary frequency, diarrhea/diaphoresis, gastrointestinal pain, and emesis.[18] [Figure] Diagram of Efferent Sympathetic (red) and Parasympathetic (blue) Nervous System Henry Vandyke Carter, Public Domain, via Wikimedia Commons",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "The diagram shows parasympathetic (blue) and sympathetic (red) outflows from the central nervous system to target organs, including ocular, salivary, thoracic, abdominal, and pelvic structures.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "The diagram shows parasympathetic (blue) and sympathetic (red) outflows from the central nervous system to target organs, including ocular, salivary, thoracic, abdominal, and pelvic structures.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "mesh": "lacrimal gland|submandibular gland|sublingual gland|parotid"
+  },
+  "Heart": {
+   "sympathetic": [
+    {
+     "text": "- In the heart (beta-1, beta-2), sympathetic activation causes an increased heart rate, the force of contraction, and rate of conduction, allowing for increased cardiac output to supply the body with oxygenated blood.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "This sympathetic denervation can lead to impaired myocardial coronary blood flow and reduced myocardial contractility.[17] Diabetic neuropathy plays a crucial role in morbidity and mortality in patients with both type 1 and type 2 diabetes mellitus and causes dysfunction of many systems, including the heart, the Gastroenterol tract, the genitourinary system, and sexuality.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "The following changes take place on activation of the sympathetic nervous system:\n\n- Heart rate and cardiac muscle contractility increase\n\n- The ciliary muscle relaxes, and the pupil becomes dilated for the betterment of far vision.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "The sympathetic nervous system exerts its influence to increase heart rate and cause vasoconstriction and venoconstriction.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the heart, parasympathetic stimulation of M2 receptors causes decreased heart rate and conduction velocity through the AV node.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "This branch carries parasympathetic fibers toward the cardiac plexus.",
+     "chapter": "Neuroanatomy, Cranial Nerve 10 (Vagus Nerve)",
+     "id": "statpearls:article-30952"
+    }
+   ],
+   "both": [
+    {
+     "text": "The sympathetic component is better known as “fight or flight” and the parasympathetic component as “rest and digest.” It functions without conscious control throughout the lifespan of an organism to control cardiac muscle, smooth muscle, and exocrine and endocrine glands, which in turn regulate blood pressure, urination, bowel movements, and thermoregulation.[1] The autonomic nervous system is composed of many cells that perform a diverse set of functions.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    }
+   ],
+   "mesh": "wall of ventricle|wall of atrium|papillary muscle"
+  },
+  "Lungs and airways": {
+   "sympathetic": [
+    {
+     "text": "For example, a tumor within the apex of the lung, known as a Pancoast tumor, can compress the sympathetic ganglia and cause Horner syndrome, resulting in ptosis, miosis, and anhydrosis of the ipsilateral eye.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the lungs, parasympathetic stimulation of M3 receptors leads to bronchoconstriction.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "In nonpathological states, parasympathetic activity during expiration contracts and stiffens airways, preventing collapse.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [],
+   "mesh": "bronchial tree|main bronchus|trachea"
+  },
+  "Stomach and intestines": {
+   "sympathetic": [
+    {
+     "text": "Sympathetic stimulation of the male genitals causes sperm emission, which is sensed by the hypogastric nerve.[16]\n\nDiabetic autonomic neuropathy is one of the most common causes of sympathetic nerve neuropathy.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "This sympathetic denervation can lead to impaired myocardial coronary blood flow and reduced myocardial contractility.[17] Diabetic neuropathy plays a crucial role in morbidity and mortality in patients with both type 1 and type 2 diabetes mellitus and causes dysfunction of many systems, including the heart, the Gastroenterol tract, the genitourinary system, and sexuality.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "Without this feature of the sympathetic nervous system, OI will occur.[8]\n\nNeurogenic bowel results from destruction or disease processes that damage nerves controlling bowel function and results in fecal incontinence or constipation.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "Physiologic effects include increases in heart rate and blood pressure, stimulation of glycogenolysis, and inhibition of gastrointestinal peristalsis.[3] Sympathetic innervation extends broadly to most organs and tissues, but structures such as cartilage and avascular epithelia lack direct sympathetic input.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the stomach and intestines, parasympathetic stimulation of M receptors leads to increased motility and relaxation of sphincters.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "- In the pancreas, parasympathetic stimulation of M3 receptors leads to the release of digestive enzymes and insulin.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "- In the kidneys and bladder, parasympathetic stimulation of M3 receptors stimulates ureter peristalsis, contraction of the detrusor muscle, and relaxation of the internal urethral sphincter, aiding in the flow and excretion of urine.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Furthermore, disruption of the vagus along the GI tract can cause gastroparesis.[10] Vagus nerve stimulators are implantable in cases of intractable epilepsy and treatment-resistant depression.[11] There are many ways that parasympathetic dysfunction can manifest, given the scope of organs on which it acts.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    }
+   ],
+   "both": [
+    {
+     "text": "Symptoms of cholinergic toxicity can be remembered by the mnemonic SLUDGE, which stands for salivation, lacrimation, urinary frequency, diarrhea/diaphoresis, gastrointestinal pain, and emesis.[18] [Figure] Diagram of Efferent Sympathetic (red) and Parasympathetic (blue) Nervous System Henry Vandyke Carter, Public Domain, via Wikimedia Commons",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "The sympathetic component is better known as “fight or flight” and the parasympathetic component as “rest and digest.” It functions without conscious control throughout the lifespan of an organism to control cardiac muscle, smooth muscle, and exocrine and endocrine glands, which in turn regulate blood pressure, urination, bowel movements, and thermoregulation.[1] The autonomic nervous system is composed of many cells that perform a diverse set of functions.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "Similar to sympathetic neurons, parasympathetic neurons express and release several neuropeptides, including vasoactive intestinal peptide, neuropeptide Y, and calcitonin gene-related peptide (see Image.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Input may originate from postganglionic sympathetic neurons or preganglionic parasympathetic neurons.[38]\n\nThe submucosal plexus regulates the movement of water and electrolytes across the intestinal wall.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "mesh": "^stomach$|duodenum|jejunum|ileum|colon|rectum|esophagus"
+  },
+  "Liver and gallbladder": {
+   "sympathetic": [
+    {
+     "text": "Physiologic effects include increases in heart rate and blood pressure, stimulation of glycogenolysis, and inhibition of gastrointestinal peristalsis.[3] Sympathetic innervation extends broadly to most organs and tissues, but structures such as cartilage and avascular epithelia lack direct sympathetic input.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Mikael Häggström, Public Domain, via Wikimedia Commons\n\nThe GSN provides the foregut's inhibitory sympathetic tone.[5][6] Sympathetic outflow from the greater splanchnic nerve causes all of the following:\n\n- Alimentary canal: inhibits the motility and secretory functions of the distal esophagus, stomach, and duodenum until the major duodenal papilla's level\n\n- Liver: stimulates gluconeogenesis, glycogenolysis, and glucose release.",
+     "chapter": "Anatomy, Thorax, Greater Splanchnic Nerves",
+     "id": "statpearls:article-22428"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the gallbladder, parasympathetic stimulation of M3 receptors stimulates contraction to release bile.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    }
+   ],
+   "both": [],
+   "mesh": "liver|hepatovenous|gallbladder"
+  },
+  "Pancreas": {
+   "sympathetic": [],
+   "parasympathetic": [
+    {
+     "text": "- In the pancreas, parasympathetic stimulation of M3 receptors leads to the release of digestive enzymes and insulin.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    }
+   ],
+   "both": [],
+   "mesh": "^pancreas$"
+  },
+  "Adrenal medulla": {
+   "sympathetic": [
+    {
+     "text": "This feature of the adrenal gland is an important component of the sympathetic nervous system as it allows systemic effects to occur on major organ systems.[7] The ANS is involved in several processes to maintain homeostasis.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "Dorsal root ganglia and the sympathetic chain, including the adrenal medulla, originate from trunk neural crest cells.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Lumbar Splanchnic Nerves\n\nLumbar splanchnic nerves provide sympathetic innervation to the smooth muscles in the kidneys, adrenal glands, large intestine, and some pelvic viscera.[14]\n\nSacral Splanchnic Nerves\n\nThe sacral splanchnic nerves supply sympathetic efferents to the rectum, bladder, and reproductive organs.",
+     "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+     "id": "statpearls:article-26875"
+    },
+    {
+     "text": "Common side effects of splanchnicectomy include increased bowel movements and orthostatic hypotension, attributed to alimentary canal and adrenal medulla sympathetic block, respectively.",
+     "chapter": "Anatomy, Thorax, Greater Splanchnic Nerves",
+     "id": "statpearls:article-22428"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "Parasympathetic ganglia express receptors for interleukin 1, a key cytokine in the inflammatory immune response.[34] Activation of these receptors stimulates the hypothalamic-pituitary-adrenal axis and the SNS, resulting in the release of glucocorticoids and norepinephrine, respectively.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Postganglionic nicotinic receptors and those on the adrenal medulla are N-type, whereas muscarinic receptors on parasympathetic effectors and sweat glands are M-type.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [
+    {
+     "text": "- Lastly, the adrenal medulla (nicotinic receptor) increases the release of epinephrine and norepinephrine to act elsewhere in the body.[1] Neurons of the peripheral autonomic nervous system, which includes both the sympathetic nervous system and parasympathetic nervous system, arise from neural crest cells that originate between the neural and non-neural ectoderm.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    }
+   ],
+   "mesh": "adrenal gland"
+  },
+  "Kidney": {
+   "sympathetic": [
+    {
+     "text": "This feature of the adrenal gland is an important component of the sympathetic nervous system as it allows systemic effects to occur on major organ systems.[7] The ANS is involved in several processes to maintain homeostasis.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "Dorsal root ganglia and the sympathetic chain, including the adrenal medulla, originate from trunk neural crest cells.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Lumbar Splanchnic Nerves\n\nLumbar splanchnic nerves provide sympathetic innervation to the smooth muscles in the kidneys, adrenal glands, large intestine, and some pelvic viscera.[14]\n\nSacral Splanchnic Nerves\n\nThe sacral splanchnic nerves supply sympathetic efferents to the rectum, bladder, and reproductive organs.",
+     "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+     "id": "statpearls:article-26875"
+    },
+    {
+     "text": "Common side effects of splanchnicectomy include increased bowel movements and orthostatic hypotension, attributed to alimentary canal and adrenal medulla sympathetic block, respectively.",
+     "chapter": "Anatomy, Thorax, Greater Splanchnic Nerves",
+     "id": "statpearls:article-22428"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the kidneys and bladder, parasympathetic stimulation of M3 receptors stimulates ureter peristalsis, contraction of the detrusor muscle, and relaxation of the internal urethral sphincter, aiding in the flow and excretion of urine.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Parasympathetic ganglia express receptors for interleukin 1, a key cytokine in the inflammatory immune response.[34] Activation of these receptors stimulates the hypothalamic-pituitary-adrenal axis and the SNS, resulting in the release of glucocorticoids and norepinephrine, respectively.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Postganglionic nicotinic receptors and those on the adrenal medulla are N-type, whereas muscarinic receptors on parasympathetic effectors and sweat glands are M-type.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [
+    {
+     "text": "- Lastly, the adrenal medulla (nicotinic receptor) increases the release of epinephrine and norepinephrine to act elsewhere in the body.[1] Neurons of the peripheral autonomic nervous system, which includes both the sympathetic nervous system and parasympathetic nervous system, arise from neural crest cells that originate between the neural and non-neural ectoderm.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    }
+   ],
+   "mesh": "^kidney$"
+  },
+  "Urinary bladder": {
+   "sympathetic": [
+    {
+     "text": "- In the urinary bladder, there is relaxation of the detrusor muscle and contraction of the urethral sphincter (beta-22) to help stop urine output during sympathetic activation.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "Sympathetic supply to pelvic organs, such as the bladder and external genitalia, is transmitted via the hypogastric plexuses, whereas gonadal innervation is mediated by the gonadal plexus, with fibers originating from upper lumbar and lowest thoracic levels.[10][11][12] For more information, see the StatPearls article, Anatomy, Thorax, Greater Splanchnic Nerves.[13]\n\nThe 2-neuron rule for SNS and PNS circuits exhibits several exceptions.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Lumbar Splanchnic Nerves\n\nLumbar splanchnic nerves provide sympathetic innervation to the smooth muscles in the kidneys, adrenal glands, large intestine, and some pelvic viscera.[14]\n\nSacral Splanchnic Nerves\n\nThe sacral splanchnic nerves supply sympathetic efferents to the rectum, bladder, and reproductive organs.",
+     "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+     "id": "statpearls:article-26875"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the gallbladder, parasympathetic stimulation of M3 receptors stimulates contraction to release bile.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "- In the kidneys and bladder, parasympathetic stimulation of M3 receptors stimulates ureter peristalsis, contraction of the detrusor muscle, and relaxation of the internal urethral sphincter, aiding in the flow and excretion of urine.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Structure\n\nS2, S3, and S4 spinal branches converge to form 2 to 4 pelvic splanchnic nerves, which are large, bilateral nerve bundles dispersed in loose connective tissue.[9][10] The pelvic splanchnic nerves join the inferior hypogastric plexus at the coccygeus muscle's lower medial edge.[11]\n\nFunction\n\nThe nervi erigentes carry parasympathetic motor and visceral afferent sensory fibers supplying the bladder, descending colon, sigmoid colon, rectum, and reproductive organs.",
+     "chapter": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+     "id": "statpearls:article-26875"
+    }
+   ],
+   "both": [
+    {
+     "text": "The sympathetic component is better known as “fight or flight” and the parasympathetic component as “rest and digest.” It functions without conscious control throughout the lifespan of an organism to control cardiac muscle, smooth muscle, and exocrine and endocrine glands, which in turn regulate blood pressure, urination, bowel movements, and thermoregulation.[1] The autonomic nervous system is composed of many cells that perform a diverse set of functions.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    }
+   ],
+   "mesh": "urinary bladder"
+  },
+  "Genitals": {
+   "sympathetic": [
+    {
+     "text": "However, if the sympathetic fibers to the penis are damaged or compromised, a sustained erection of over 4 hours, called priapism, can occur and result in devastating consequences to the penis.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "Sympathetic stimulation of the male genitals causes sperm emission, which is sensed by the hypogastric nerve.[16]\n\nDiabetic autonomic neuropathy is one of the most common causes of sympathetic nerve neuropathy.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "Sympathetic supply to pelvic organs, such as the bladder and external genitalia, is transmitted via the hypogastric plexuses, whereas gonadal innervation is mediated by the gonadal plexus, with fibers originating from upper lumbar and lowest thoracic levels.[10][11][12] For more information, see the StatPearls article, Anatomy, Thorax, Greater Splanchnic Nerves.[13]\n\nThe 2-neuron rule for SNS and PNS circuits exhibits several exceptions.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "By contrast, vasodilation of erectile tissue is predominantly mediated by the PNS, with sympathetic activity favoring vasoconstriction and ejaculation.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "The actions of the PNS are listed below: - In the male reproductive tract, parasympathetic stimulation of M3 receptors causes smooth muscle relaxation in the helicine arteries of the penis, allowing blood to fill the corpora cavernosa and corpus spongiosum, causing an erection.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Parasympathetic innervation is largely confined to the head, viscera, and external genitalia, with minimal presence in musculoskeletal tissue and skin, rendering the PNS anatomically smaller than the SNS.[5] The ENS comprises reflex pathways that regulate digestive functions, including smooth muscle contraction and relaxation, secretion and absorption, and local blood flow.[6]\n\nPresynaptic neurons of both the SNS and PNS utilize acetylcholine (ACh) as their neurotransmitter.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [
+    {
+     "text": "Because of this catecholamine release, the symptoms are largely that of sympathetic activation, such as hypertension, tachycardia/palpitations, hyperglycemia, and diaphoresis.[14]\n\nErections are a product of parasympathetic activity.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "Disruption of sexual function can also negatively impact mental health.[12] Conversely, if the sympathetic fibers become disrupted, the unopposed parasympathetic tone can result in priapism, that is, a painful erection lasting longer than 4 hours and is unrelated to sexual activity.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    }
+   ],
+   "mesh": "penis|testis|deferent duct|seminal vesicle|prostate"
+  },
+  "Blood vessels and sweat glands": {
+   "sympathetic": [
+    {
+     "text": "These postganglionic neurons then travel to their effector sites and release the neurotransmitters epinephrine or norepinephrine, except for sympathetic innervation of sweat glands and the arrectores pili muscles, the small muscles attached to hair follicles, which use acetylcholine as their postganglionic neurotransmitter.[3] These neurotransmitters act on adrenergic receptors.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "It can be a complication of neck surgeries that damage the sympathetic input.[9] There are even reports after minimally invasive thyroidectomy.[10] For more information on Horner syndrome, please refer to our accompanying article.[11]\n\nHyperhidrosis, otherwise known as excessive sweating, is a common indication for minimally invasive thoracic sympathectomy.",
+     "chapter": "Neuroanatomy, Sympathetic Nervous System",
+     "id": "statpearls:article-29800"
+    },
+    {
+     "text": "The sympathetic nervous system exerts its influence to increase heart rate and cause vasoconstriction and venoconstriction.",
+     "chapter": "Physiology, Autonomic Nervous System",
+     "id": "statpearls:article-779"
+    },
+    {
+     "text": "In most cases, an increase in sympathetic signals induces arteriolar vasoconstriction, whereas withdrawal of sympathetic tone permits vasodilation.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "parasympathetic": [
+    {
+     "text": "- In the vasculature, parasympathetic stimulation of M3 receptors leads to vasodilation.",
+     "chapter": "Neuroanatomy, Parasympathetic Nervous System",
+     "id": "statpearls:article-26653"
+    },
+    {
+     "text": "Postganglionic nicotinic receptors and those on the adrenal medulla are N-type, whereas muscarinic receptors on parasympathetic effectors and sweat glands are M-type.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "both": [
+    {
+     "text": "Calcitonin gene-related peptide, a potent vasodilator, has also been identified in paravertebral sympathetic neurons.[26][27][28][29]\n\nParasympathetic Nervous System\n\nParasympathetic fibers exit the CNS via cranial nerves III (oculomotor), VII (facial), IX (glossopharyngeal), and X (vagus), as well as through the S2 to S4 spinal nerve roots.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ],
+   "mesh": null
+  }
+ },
+ "chapters": {
+  "statpearls:article-120417": "Anatomy, Head and Neck, Sympathetic Chain",
+  "statpearls:article-22428": "Anatomy, Thorax, Greater Splanchnic Nerves",
+  "statpearls:article-24471": "Anatomy, Back, Lumbar Sympathetic Chain",
+  "statpearls:article-26653": "Neuroanatomy, Parasympathetic Nervous System",
+  "statpearls:article-26875": "Anatomy, Abdomen and Pelvis, Splanchnic Nerves",
+  "statpearls:article-29800": "Neuroanatomy, Sympathetic Nervous System",
+  "statpearls:article-30952": "Neuroanatomy, Cranial Nerve 10 (Vagus Nerve)",
+  "statpearls:article-32322": "Anatomy, Autonomic Nervous System",
+  "statpearls:article-779": "Physiology, Autonomic Nervous System"
+ }
+}

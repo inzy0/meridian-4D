@@ -1,0 +1,14 @@
+17:15:58 body s0175 mri whole body (320, 240, 360) labels present 49 · fetched so far 29 MB
+17:16:12 body s0280 mri whole body (320, 240, 72) labels present 14 · fetched so far 34 MB
+17:16:31 body s0286 mri whole body (320, 240, 72) labels present 16 · fetched so far 40 MB
+17:18:29 body s0537 mri head (568, 568, 155) labels present 3 · fetched so far 93 MB
+17:18:48 body s0501 mri cervical spine (320, 320, 22) labels present 4 · fetched so far 97 MB
+17:19:00 body s0809 mri chest (320, 260, 72) labels present 25 · fetched so far 103 MB
+17:19:24 body s0447 mri heart (312, 104, 384) labels present 32 · fetched so far 114 MB
+17:20:11 body s0216 mri abdomen (260, 148, 320) labels present 39 · fetched so far 130 MB
+17:20:31 body s0284 mri pelvis (320, 260, 80) labels present 26 · fetched so far 137 MB
+17:20:49 body s0145 mri shoulder (27, 320, 320) labels present 3 · fetched so far 142 MB
+17:21:33 body s0056 mri knee (640, 26, 640) labels present 1 · fetched so far 154 MB
+17:21:45 body s0458 mri ankle (22, 320, 320) labels present 0 · fetched so far 157 MB
+17:21:45 body subjects 12
+17:21:45 DONE

@@ -1,0 +1,1321 @@
+{
+ "pathways": [
+  {
+   "id": "dcml",
+   "name": "Dorsal column - medial lemniscus (touch, vibration, proprioception)",
+   "family": "Ascending sensory",
+   "direction": "up",
+   "steps": [
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Dorsal root enters (lumbar)"
+    },
+    {
+     "k": "cord",
+     "v": "T6",
+     "label": "Gracile fasciculus ascends"
+    },
+    {
+     "k": "cord",
+     "v": "C1",
+     "label": "Upper cord"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Gracile / cuneate nuclei (medulla)"
+    },
+    {
+     "k": "x",
+     "v": "",
+     "label": "Internal arcuate fibres cross"
+    },
+    {
+     "k": "t",
+     "v": "ML",
+     "label": "Medial lemniscus"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus (VPL)"
+    },
+    {
+     "k": "t",
+     "v": "TR_S",
+     "label": "Superior thalamic radiation"
+    },
+    {
+     "k": "s",
+     "v": "postcentral gyrus",
+     "label": "Primary somatosensory cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The arcuate fibers decussate at the caudal medulla and ascend via the medial lemniscus contralaterally in the brainstem until synapsing at the ventral posterolateral nucleus of the thalamus, the point at which the 3rd-order neuron of the DCML pathway commences.",
+     "chapter": "Neuroanatomy, Medial Lemniscus (Reils Band, Reils Ribbon)",
+     "id": "statpearls:article-24829"
+    },
+    {
+     "text": "The medial lemniscus begins ascending contralaterally in the medial aspect of the medulla and is also supplied by the anterior spinal artery.",
+     "chapter": "Neuroanatomy, Medial Lemniscus (Reils Band, Reils Ribbon)",
+     "id": "statpearls:article-24829"
+    },
+    {
+     "text": "As the fibers ascend, the medial lemniscus shifts posteriorly and laterally.",
+     "chapter": "Neuroanatomy, Medial Lemniscus (Reils Band, Reils Ribbon)",
+     "id": "statpearls:article-24829"
+    },
+    {
+     "text": "The paramedian arteries, branches of the basilar artery, supply the medial basal pons, pontine nuclei, corticospinal fibers, and the medial lemniscus as it ascends through the pons.",
+     "chapter": "Neuroanatomy, Medial Lemniscus (Reils Band, Reils Ribbon)",
+     "id": "statpearls:article-24829"
+    },
+    {
+     "text": "The spinothalamic tract, carrying sensory information about pain and temperature from the spine to the thalamus, lies in the anteromedial pontine tegmentum, medial to the descending tract, and the nucleus of the trigeminal (V) nerve.[8] The medial lemniscus, a medial structure lying posterior to the corticospinal tract, conveys sensory inputs about proprioception and vibration from the spine to the thalamus.",
+     "chapter": "Millard-Gubler Syndrome",
+     "id": "statpearls:article-25163"
+    },
+    {
+     "text": "These afferents decussate via internal arcuate fibers, which travel ventromedially through the medullary tegmentum, cross contralaterally at the level of the caudal medulla to ascend within the medial lemniscus, and synapse on the ventral posterolateral nucleus of the thalamus.",
+     "chapter": "Brown-Séquard Syndrome",
+     "id": "statpearls:article-18668"
+    }
+   ]
+  },
+  {
+   "id": "stt",
+   "name": "Spinothalamic tract (pain, temperature, crude touch)",
+   "family": "Ascending sensory",
+   "direction": "up",
+   "steps": [
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Dorsal horn (second-order neuron)"
+    },
+    {
+     "k": "x",
+     "v": "",
+     "label": "Crosses in the anterior white commissure"
+    },
+    {
+     "k": "cord",
+     "v": "T6",
+     "label": "Ascends in the lateral funiculus"
+    },
+    {
+     "k": "cord",
+     "v": "C1",
+     "label": "Upper cord"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Medulla"
+    },
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Pons"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus (VPL)"
+    },
+    {
+     "k": "t",
+     "v": "TR_S",
+     "label": "Superior thalamic radiation"
+    },
+    {
+     "k": "s",
+     "v": "postcentral gyrus",
+     "label": "Somatosensory cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The spinothalamic tract (STT) is a sensory tract that carries nociceptive, temperature, crude touch, and pressure from our skin to the somatosensory area of the thalamus.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The anterior spinothalamic tract carries sensory input about crude touch.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The lateral spinothalamic tract carries information about pain and temperature.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The spinothalamic tract ascends in the ventrolateral aspect of the spinal white matter over the length of the spinal cord.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The spinothalamic tract of the anterolateral system terminates in the ventral posterolateral nucleus (VPL) of the thalamus, the third-order neurons of this pathway.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The main function of the spinothalamic tract is to carry pain and temperature via the lateral part of the pathway and crude touch via the anterior part.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    }
+   ]
+  },
+  {
+   "id": "scb",
+   "name": "Spinocerebellar tracts (unconscious proprioception)",
+   "family": "Ascending sensory",
+   "direction": "up",
+   "steps": [
+    {
+     "k": "cord",
+     "v": "L2",
+     "label": "Clarke's nucleus region"
+    },
+    {
+     "k": "cord",
+     "v": "C1",
+     "label": "Lateral funiculus"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Medulla"
+    },
+    {
+     "k": "t",
+     "v": "ICP",
+     "label": "Inferior cerebellar peduncle"
+    },
+    {
+     "k": "s",
+     "v": "cerebellum",
+     "label": "Cerebellum"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The dorsal spinocerebellar tract (DSCT), also known as the posterior spinocerebellar tract or Flechsig tract, is a somatosensory part of the sensory nervous system that relays unconscious proprioceptive information from the lower limbs and trunk of the body to the cerebellum.",
+     "chapter": "Neuroanatomy, Spinocerebellar Dorsal Tract",
+     "id": "statpearls:article-20674"
+    },
+    {
+     "text": "Spinocerebellar tracts: Dorsal and ventral spinocerebellar tracts within the lateral region of the spinal cord carry ipsilateral afferents mediating proprioception.",
+     "chapter": "Brown-Séquard Syndrome",
+     "id": "statpearls:article-18668"
+    },
+    {
+     "text": "The ventral spinocerebellar tract does not decussate, while the dorsal spinocerebellar tract decussates twice, making both tracts ipsilateral.[3][5]",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The dorsal spinocerebellar tracts carry proprioceptive information to the cerebellum, contributing to the patellar tendon reflexes’ role in maintaining balance.",
+     "chapter": "Westphal Sign",
+     "id": "statpearls:article-57152"
+    },
+    {
+     "text": "Spinocerebellar ataxia (SCA) is a progressive neurodegenerative inherited (autosomal dominant) heterogeneous disease that mainly affects the cerebellum.",
+     "chapter": "Spinocerebellar Ataxia",
+     "id": "statpearls:article-29364"
+    },
+    {
+     "text": "- Identify the etiology of spinocerebellar ataxia medical conditions and emergencies.",
+     "chapter": "Spinocerebellar Ataxia",
+     "id": "statpearls:article-29364"
+    }
+   ]
+  },
+  {
+   "id": "cst",
+   "name": "Corticospinal tract (voluntary movement)",
+   "family": "Descending motor",
+   "direction": "down",
+   "steps": [
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Primary motor cortex"
+    },
+    {
+     "k": "t",
+     "v": "CST",
+     "label": "Corticospinal tract"
+    },
+    {
+     "k": "s",
+     "v": "internal capsule",
+     "label": "Internal capsule"
+    },
+    {
+     "k": "s",
+     "v": "peduncle of midbrain",
+     "label": "Cerebral peduncle"
+    },
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Pons"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Medullary pyramids"
+    },
+    {
+     "k": "x",
+     "v": "",
+     "label": "Pyramidal decussation"
+    },
+    {
+     "k": "cord",
+     "v": "C5",
+     "label": "Lateral corticospinal tract"
+    },
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Anterior horn motor neuron"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "During mid-to-late gestation, the motor cortex initially demonstrates bilateral corticospinal projections.",
+     "chapter": "Neuroanatomy, Pyramidal Tract Lesions",
+     "id": "statpearls:article-28112"
+    },
+    {
+     "text": "Ipsilateral corticospinal projections to the spinal cord undergo regression during this developmental period.",
+     "chapter": "Neuroanatomy, Pyramidal Tract Lesions",
+     "id": "statpearls:article-28112"
+    },
+    {
+     "text": "Brainstem pyramidal tract lesions commonly present as alternating hemiplegia or crossed hemiplegia due to involvement of ipsilateral cranial nerve nuclei and contralateral CST fibers.",
+     "chapter": "Neuroanatomy, Pyramidal Tract Lesions",
+     "id": "statpearls:article-28112"
+    },
+    {
+     "text": "It divides into the corticospinal tract, which synapses with the lower motor neurons innervating the muscles in the limbs and trunk, and the corticobulbar tract, which synapses with the cranial nerves to control muscular movements of the face, head, and neck.",
+     "chapter": "Neuroanatomy, Pyramidal Tract",
+     "id": "statpearls:article-36626"
+    },
+    {
+     "text": "Decussation of the fibers (i.e., the crossing of fibers to the opposite side of the body) occurs at the level of the lower medulla, where 85 to 90% of the fibers cross to form the lateral corticospinal tract (LCST).",
+     "chapter": "Neuroanatomy, Pyramidal Tract",
+     "id": "statpearls:article-36626"
+    },
+    {
+     "text": "Within the spinal cord, the lateral corticospinal tract descends in the lateral funiculus and terminates at each level of the spinal cord by synapsing with lower motor neurons controlling gross and fine motor movements.",
+     "chapter": "Neuroanatomy, Pyramidal Tract",
+     "id": "statpearls:article-36626"
+    }
+   ]
+  },
+  {
+   "id": "cbt",
+   "name": "Corticobulbar tract (face, jaw, tongue, throat muscles)",
+   "family": "Descending motor",
+   "direction": "down",
+   "steps": [
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex (face area)"
+    },
+    {
+     "k": "t",
+     "v": "CBT",
+     "label": "Corticobulbar tract"
+    },
+    {
+     "k": "s",
+     "v": "internal capsule",
+     "label": "Internal capsule (genu)"
+    },
+    {
+     "k": "s",
+     "v": "peduncle of midbrain",
+     "label": "Midbrain"
+    },
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Cranial nerve nuclei (pons)"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Cranial nerve nuclei (medulla)"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "From here, the corticobulbar fibers pass through the corona radiata, genu of the internal capsule, peduncle of the cerebrum, base of the pons, and then to the medullary pyramid.",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    },
+    {
+     "text": "The corticobulbar tract may synapse either directly on the motor nuclei or indirectly through interneurons.",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    },
+    {
+     "text": "From the cerebral cortex, the corticobulbar fiber passes into the corona radiata.",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    },
+    {
+     "text": "Corticobulbar fibers pass through the genu or bend of the internal capsule.",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    },
+    {
+     "text": "Corticobulbar fibers pass through middle 1/3 of crus cerebri and then enter the pons and medulla to terminate at corresponding nerve nuclei.",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    },
+    {
+     "text": "Processes of neurons situated in percental gyrus terminating at cranial nerve nuclei directly or indirectly through interneuron form corticobulbar tract.[5]",
+     "chapter": "Neuroanatomy, Corticobulbar Tract",
+     "id": "statpearls:article-20039"
+    }
+   ]
+  },
+  {
+   "id": "rst",
+   "name": "Reticulospinal tract (posture, tone)",
+   "family": "Descending motor",
+   "direction": "down",
+   "steps": [
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Pontine reticular formation"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Medullary reticular formation"
+    },
+    {
+     "k": "t",
+     "v": "RST",
+     "label": "Reticulospinal tract"
+    },
+    {
+     "k": "cord",
+     "v": "C5",
+     "label": "Spinal cord"
+    },
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Lumbar cord"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The GPi influences the pedunculopontine nucleus through the descending reticulospinal tract, contributing to postural control through actions on axial and proximal appendicular musculature.[16] Thalamostriatal connections facilitate interactions between basal ganglia and cerebellar pathways, making the GPi a potential therapeutic target.[17][18][19]",
+     "chapter": "Holmes Tremor",
+     "id": "statpearls:article-22966"
+    },
+    {
+     "text": "- Reticulospinal: originates from the reticular formation housed in the brainstem, and it facilitates, influences, and supplements the corticospinal tract.[6] The reticulospinal tract does not decussate.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "Functionally, it comprises ascending pathways until the cortex (extrathalamic control modulatory system or ascending reticular activating system: ARAS) and descending pathways to the spinal cord through the reticulospinal pathways.",
+     "chapter": "Neuroanatomy, Mesencephalon Midbrain",
+     "id": "statpearls:article-837"
+    },
+    {
+     "text": "This can occur when there is a lesion to descending motor nerves, predominantly the dorsal reticulospinal pathway, which can occur anywhere from the cortex to the spinal cord.",
+     "chapter": "Clonus",
+     "id": "statpearls:article-19620"
+    },
+    {
+     "text": "The long descending motor tract divides into both medial and lateral systems; the tectospinal tract is part of the medial system, which also includes the vestibulospinal and reticulospinal tracts.",
+     "chapter": "Neuroanatomy, Tectospinal Tract",
+     "id": "statpearls:article-36620"
+    },
+    {
+     "text": "The medial (pontine) reticulospinal tract originates in the pontine reticular formation and projects down to the ventromedial spinal cord via the ipsilateral anterior funiculus, which contains alpha and gamma motor neurons of the extensor muscles.",
+     "chapter": "Neuroanatomy, Extrapyramidal System",
+     "id": "statpearls:article-21494"
+    }
+   ]
+  },
+  {
+   "id": "bg",
+   "name": "Basal ganglia motor loop (cortex - striatum - pallidum - thalamus - cortex)",
+   "family": "Feedback loop",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex"
+    },
+    {
+     "k": "t",
+     "v": "CS_S",
+     "label": "Corticostriatal fibres"
+    },
+    {
+     "k": "s",
+     "v": "putamen",
+     "label": "Putamen (striatum)"
+    },
+    {
+     "k": "s",
+     "v": "caudate nucleus",
+     "label": "Caudate nucleus"
+    },
+    {
+     "k": "s",
+     "v": "globus pallidus",
+     "label": "Globus pallidus"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus (VA/VL)"
+    },
+    {
+     "k": "t",
+     "v": "TR_A",
+     "label": "Anterior thalamic radiation"
+    },
+    {
+     "k": "s",
+     "v": "superior frontal gyrus",
+     "label": "Supplementary / premotor cortex"
+    },
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Back to motor cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "These antibodies cross-react with basal ganglia cells, especially striatum cells, which are important in controlling motor movements.",
+     "chapter": "Sydenham Chorea",
+     "id": "statpearls:article-29792"
+    },
+    {
+     "text": "Findings revealed that pathophysiological strengthening of striatal and pallidal synapses following dopamine depletion can result in the emergence of synchronized oscillatory activity in the mid-β range, with spike-phase association between the neuronal populations of the basal ganglia.",
+     "chapter": "Normal EEG Waveforms",
+     "id": "statpearls:article-20901"
+    },
+    {
+     "text": "The majority of effects of cannabinoids and endocannabinoids (endogenous cannabinoids) appear to be carried out by two inhibitory G-protein coupled-receptors (GPCRs), CB1 (present in high levels in several brain regions, including the prefrontal cortex, hippocampus, amygdala, basal ganglia, and the cerebellum) and CB2 (present in a restricted distribution in the brain stem and periphery including immune cells and neurons).[6][7]",
+     "chapter": "Dronabinol",
+     "id": "statpearls:article-91507"
+    },
+    {
+     "text": "If cross-sectional imaging demonstrates basal ganglia infarction or hemorrhage, consultation with a neurologist or neurosurgeon is recommended.",
+     "chapter": "Methanol Toxicity",
+     "id": "statpearls:article-25070"
+    },
+    {
+     "text": "However, the mesopontine tegmentum also projects to the basal ganglia, thalamus, basal forebrain, and tectum.",
+     "chapter": "Physiology, Acetylcholine",
+     "id": "statpearls:article-17079"
+    },
+    {
+     "text": "In addition, it reacts with iron to enhance the Fenton reaction, leading to free radical damage.[25] Once it enters the bloodstream and passes the blood-brain barrier, neurotoxic effects can be observed, including dizziness, seizure, coma, and, ultimately, death.[2][16][26] The cortex, basal ganglia, and brainstem are most sensitive to hydrogen sulfide.",
+     "chapter": "Hydrogen Sulfide Toxicity",
+     "id": "statpearls:article-30340"
+    }
+   ]
+  },
+  {
+   "id": "cb",
+   "name": "Cerebellar loop (cortex - pons - cerebellum - thalamus - cortex)",
+   "family": "Feedback loop",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex"
+    },
+    {
+     "k": "t",
+     "v": "CPT_F",
+     "label": "Corticopontine fibres"
+    },
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Pontine nuclei"
+    },
+    {
+     "k": "x",
+     "v": "",
+     "label": "Crosses to the opposite cerebellum"
+    },
+    {
+     "k": "t",
+     "v": "MCP",
+     "label": "Middle cerebellar peduncle"
+    },
+    {
+     "k": "s",
+     "v": "cerebellum",
+     "label": "Cerebellar cortex / dentate nucleus"
+    },
+    {
+     "k": "t",
+     "v": "SCP",
+     "label": "Superior cerebellar peduncle"
+    },
+    {
+     "k": "t",
+     "v": "DRTT",
+     "label": "Dentato-rubro-thalamic tract"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus (VL)"
+    },
+    {
+     "k": "t",
+     "v": "TR_S",
+     "label": "Thalamocortical fibres"
+    },
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Back to motor cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The approach passes through the foramen of Luschka and involves an incision in the inferior cerebellar peduncle.",
+     "chapter": "Neuroanatomy, Nucleus Solitarius",
+     "id": "statpearls:article-26022"
+    },
+    {
+     "text": "Hypertension is the most common risk factor for LMS, followed by smoking and diabetes mellitus.[16] Multiple brainstem structures may be involved, including the nucleus ambiguus, vestibular nuclei, inferior cerebellar peduncle, glossopharyngeal and vagal nerve rootlets, spinothalamic tract, spinal trigeminal nucleus and tract, and descending sympathetic tract.",
+     "chapter": "Neuroanatomy, Nucleus Ambiguus",
+     "id": "statpearls:article-26017"
+    },
+    {
+     "text": "The inferior cerebellar peduncle links the medulla and cerebellum, carrying critical afferent information, including proprioceptive input involved in balance and posture.",
+     "chapter": "Anatomy, Central Nervous System",
+     "id": "statpearls:article-32323"
+    },
+    {
+     "text": "The ventral portion of pons contains pontine nuclei, vertically traversing corticopontine and corticospinal tracts, and transversely crossing fibers arising from pontine nuclei that project to the opposite cerebellum through the middle cerebellar peduncle.",
+     "chapter": "Neuroanatomy, Pons",
+     "id": "statpearls:article-27423"
+    },
+    {
+     "text": "Pontocerebellar fibers arise from the pontine nuclei and project into the cerebellum through the middle cerebellar peduncles.",
+     "chapter": "Neuroanatomy, Pons",
+     "id": "statpearls:article-27423"
+    },
+    {
+     "text": "The ascending fibers include the medial, lateral, spinal, and trigeminal lemnisci and the superior cerebellar peduncle.",
+     "chapter": "Neuroanatomy, Pons",
+     "id": "statpearls:article-27423"
+    }
+   ]
+  },
+  {
+   "id": "ctx_thal",
+   "name": "Thalamocortical - corticothalamic loop (feedforward and feedback)",
+   "family": "Feedback loop",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus"
+    },
+    {
+     "k": "t",
+     "v": "TR_S",
+     "label": "Thalamocortical (feedforward)"
+    },
+    {
+     "k": "s",
+     "v": "postcentral gyrus",
+     "label": "Cortex"
+    },
+    {
+     "k": "t",
+     "v": "TR_P",
+     "label": "Corticothalamic (feedback)"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Thalamus"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "Functionally, thalamocortical radiations, also called thalamocortical fibers, relay sensory or motor information from the thalamus to distinct areas of the cerebral cortex through relay neurons.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    },
+    {
+     "text": "There are also corticothalamic fibers, which relay information back to the thalamus from the cerebral cortex.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    },
+    {
+     "text": "Thalamocortical interneurons receive sensory or motor information from the body and signal distinct thalamic nuclei to relay selected information via relay neurons in the thalamocortical radiations to the cerebral cortex.[1] Thalamocortical radiations can be separated into four distinct pathways, including the anterior thalamic radiations, posterior thalamic radiations, superior thalamic radiations, and inferior thalamic radiations.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    },
+    {
+     "text": "Thalamocortical radiations, or fibers, have a tree-like appearance and extend from the thalamus through the internal capsule and project to the cerebral cortex.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    },
+    {
+     "text": "Once the information is processed in the cerebral cortex, it is relayed back to the area of original activity in the thalamus via corticothalamic fibers.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    },
+    {
+     "text": "These corticothalamic projections, which synapse with the thalamic reticular neurons, are more numerous than the thalamocortical projections to the cerebral cortex.",
+     "chapter": "Neuroanatomy, Thalamocortical Radiations",
+     "id": "statpearls:article-30012"
+    }
+   ]
+  },
+  {
+   "id": "papez",
+   "name": "Papez circuit (memory and emotion)",
+   "family": "Limbic",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "s",
+     "v": "hippocampus",
+     "label": "Hippocampus"
+    },
+    {
+     "k": "t",
+     "v": "F",
+     "label": "Fornix"
+    },
+    {
+     "k": "s",
+     "v": "mammillary body",
+     "label": "Mammillary body"
+    },
+    {
+     "k": "thal",
+     "v": "",
+     "label": "Anterior thalamic nucleus (mammillothalamic tract)"
+    },
+    {
+     "k": "t",
+     "v": "TR_A",
+     "label": "Anterior thalamic radiation"
+    },
+    {
+     "k": "s",
+     "v": "cingulate gyrus",
+     "label": "Cingulate gyrus"
+    },
+    {
+     "k": "t",
+     "v": "C_PH",
+     "label": "Cingulum"
+    },
+    {
+     "k": "s",
+     "v": "parahippocampal gyrus",
+     "label": "Parahippocampal gyrus (entorhinal)"
+    },
+    {
+     "k": "s",
+     "v": "hippocampus",
+     "label": "Back to hippocampus"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "A bidirectional projection between the hippocampus and entorhinal cortex completes the Papez circuit.",
+     "chapter": "Neuroanatomy, Mammillary Bodies",
+     "id": "statpearls:article-24702"
+    },
+    {
+     "text": "Reciprocal dopaminergic and cholinergic projections from the tegmentum help regulate the information transmitted from the mammillary bodies to the anterior thalamic nucleus (Papez circuit) and the cerebellum.",
+     "chapter": "Neuroanatomy, Mammillary Bodies",
+     "id": "statpearls:article-24702"
+    },
+    {
+     "text": "Deep brain stimulation has been used to treat Alzheimer disease, Parkinson disease, and dementia.[28][29][30] Optimal results occur when the stimulation probe is positioned near the fornix to activate hippocampal fibers projecting to the mammillary bodies.[31] These treatments have modified the rate of brain atrophy in individuals with Alzheimer disease.[32] The mechanisms by which Papez circuit activation slows atrophy are unknown.",
+     "chapter": "Neuroanatomy, Mammillary Bodies",
+     "id": "statpearls:article-24702"
+    },
+    {
+     "text": "The fornix terminates just off of midline within the mamillary body; this white matter tract plays a vital role in the Papez circuit.",
+     "chapter": "Neuroimaging In Epilepsy Surgery",
+     "id": "statpearls:article-25796"
+    },
+    {
+     "text": "The mammillary bodies constitute one of the primary nuclei within the Papez circuit.",
+     "chapter": "Neuroanatomy, Mammillary Bodies",
+     "id": "statpearls:article-24702"
+    },
+    {
+     "text": "Stimulation of the Papez circuit has been hypothesized to improve memory and attention while reducing the incidence of depression in individuals with dementia.",
+     "chapter": "Neuroanatomy, Mammillary Bodies",
+     "id": "statpearls:article-24702"
+    }
+   ]
+  },
+  {
+   "id": "amyg",
+   "name": "Amygdala - hypothalamus (stria terminalis; fear and stress output)",
+   "family": "Limbic",
+   "direction": "down",
+   "steps": [
+    {
+     "k": "s",
+     "v": "amygdala",
+     "label": "Amygdala"
+    },
+    {
+     "k": "s",
+     "v": "stria terminalis",
+     "label": "Stria terminalis"
+    },
+    {
+     "k": "s",
+     "v": "hypothalamus",
+     "label": "Hypothalamus"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Brainstem autonomic centres"
+    },
+    {
+     "k": "cord",
+     "v": "T1",
+     "label": "Sympathetic outflow T1-L2"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The amygdala is also necessary for learning by fear, amygdala lesions disrupt the acquisition of both active avoidance (escape from fear), and passive avoidance of conditioned responses, but do not affect retention.",
+     "chapter": "Neuroanatomy, Amygdala",
+     "id": "statpearls:article-17489"
+    },
+    {
+     "text": "This process is facilitated by projection neurons which engage the cingulate and insular cortices through connections with the parabrachial nucleus of the brainstem as well as with the amygdala and is considered as the ascending pathway which initiates the conscious perception of pain.",
+     "chapter": "Physiology, Pain",
+     "id": "statpearls:article-26536"
+    },
+    {
+     "text": "Additionally, the nucleus solitarius contributes to blood pressure and heart rate regulation through connections with parasympathetic vagal nuclei and sympathetic premotor regions.[4] The nucleus solitarius also sends projections to limbic structures, including the amygdala.",
+     "chapter": "Neuroanatomy, Nucleus Solitarius",
+     "id": "statpearls:article-26022"
+    },
+    {
+     "text": "Within the nucleus solitarius, 2 specific neuronal subpopulations send projections to the ventrolateral bed nucleus of the stria terminalis: aldosterone-sensitive 11β-hydroxysteroid dehydrogenase type 2 (HSD2) neurons, which respond to sodium depletion, and A2 noradrenergic neurons, which are activated by immune and stress-related stimuli.",
+     "chapter": "Neuroanatomy, Nucleus Solitarius",
+     "id": "statpearls:article-26022"
+    },
+    {
+     "text": "The majority of effects of cannabinoids and endocannabinoids (endogenous cannabinoids) appear to be carried out by two inhibitory G-protein coupled-receptors (GPCRs), CB1 (present in high levels in several brain regions, including the prefrontal cortex, hippocampus, amygdala, basal ganglia, and the cerebellum) and CB2 (present in a restricted distribution in the brain stem and periphery including immune cells and neurons).[6][7]",
+     "chapter": "Dronabinol",
+     "id": "statpearls:article-91507"
+    },
+    {
+     "text": "These striae terminate in the higher-order cortex.[3] Some olfactory projections travel medially to the septal area and the contralateral bulb via the anterior commissure, while others travel laterally to the amygdala and piriform cortex—the primary olfactory cortex— where the conscious perception of odorants is processed.[4]",
+     "chapter": "Neuroanatomy, Cranial Nerve",
+     "id": "statpearls:article-20096"
+    }
+   ]
+  },
+  {
+   "id": "vis",
+   "name": "Visual pathway",
+   "family": "Special senses",
+   "direction": "up",
+   "steps": [
+    {
+     "k": "s",
+     "v": "optic nerve",
+     "label": "Optic nerve"
+    },
+    {
+     "k": "s",
+     "v": "optic chiasm",
+     "label": "Optic chiasm (nasal fibres cross)"
+    },
+    {
+     "k": "s",
+     "v": "optic tract",
+     "label": "Optic tract"
+    },
+    {
+     "k": "s",
+     "v": "lateral geniculate body",
+     "label": "Lateral geniculate body"
+    },
+    {
+     "k": "t",
+     "v": "OR",
+     "label": "Optic radiation"
+    },
+    {
+     "k": "s",
+     "v": "occipital lobe",
+     "label": "Primary visual cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The visual pathway has substantial clinical significance, as disruption at any point along its course produces characteristic, often localizing visual deficits.[1] Surgical interventions involving the orbit, sellar region, temporal lobe, or posterior cerebral circulation carry predictable risks to specific components of this pathway, with injury patterns that correlate closely with anatomic involvement.",
+     "chapter": "Neuroanatomy, Visual Pathway",
+     "id": "statpearls:article-31204"
+    },
+    {
+     "text": "These structures extend from the globe through the optic nerve (cranial nerve II), optic chiasm, optic tracts, lateral geniculate nuclei (LGN), and optic radiations, ultimately terminating in the occipital lobe.",
+     "chapter": "Neuroanatomy, Visual Pathway",
+     "id": "statpearls:article-31204"
+    },
+    {
+     "text": "The image highlights the distribution of crossed and uncrossed fibers as they pass through landmarks like the commissure of Gudden, the lateral geniculate body, the pulvinar, and the superior colliculus.",
+     "chapter": "Neuroanatomy, Visual Pathway",
+     "id": "statpearls:article-31204"
+    },
+    {
+     "text": "The lateral geniculate nucleus (LGN) belongs to the category of sensory projection nuclei of the thalamus and plays an essential role in normal visual processing.",
+     "chapter": "Neuroanatomy, Nucleus Lateral Geniculate",
+     "id": "statpearls:article-24097"
+    },
+    {
+     "text": "The lateral geniculate nucleus has broadly distributed connectivity projecting to various regions of the extrastriate cortex and receiving input from the same as well as from hindbrain and other midbrain structures.",
+     "chapter": "Neuroanatomy, Nucleus Lateral Geniculate",
+     "id": "statpearls:article-24097"
+    },
+    {
+     "text": "The lateral geniculate nucleus is also the point of origin for the optic radiations (Meyer's loop, central bundle, and Baum’s loop) that project via the internal capsule to the primary visual cortex (V1), primarily synapsing onto spiny stellate neurons in layers 4C-alpha and 4C*-beta*.",
+     "chapter": "Neuroanatomy, Nucleus Lateral Geniculate",
+     "id": "statpearls:article-24097"
+    }
+   ]
+  },
+  {
+   "id": "pup",
+   "name": "Pupillary light reflex (visual input to midbrain)",
+   "family": "Reflex",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "s",
+     "v": "optic nerve",
+     "label": "Optic nerve"
+    },
+    {
+     "k": "s",
+     "v": "optic chiasm",
+     "label": "Optic chiasm"
+    },
+    {
+     "k": "s",
+     "v": "optic tract",
+     "label": "Optic tract"
+    },
+    {
+     "k": "s",
+     "v": "superior colliculus",
+     "label": "Pretectal area / superior colliculus"
+    },
+    {
+     "k": "s",
+     "v": "posterior commissure",
+     "label": "Posterior commissure (both sides)"
+    },
+    {
+     "k": "s",
+     "v": "ciliary ganglion",
+     "label": "Ciliary ganglion (oculomotor parasympathetic)"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "The optic tracts join the brachium of the superior colliculus, and then signals travel to the pretectal area of the midbrain.",
+     "chapter": "Pupillary Light Reflex",
+     "id": "statpearls:article-28080"
+    },
+    {
+     "text": "Each pretectal area sends bilateral signals to the preganglionic parasympathetic nuclei in the midbrain called Edinger-Westphal nuclei.[2][3] There are a minority of axons that go to the hypothalamus and the olivary pretectal nucleus (OPN).[4] Efferent parasympathetic preganglionic fibers travel on the oculomotor nerve and synapse with the ciliary ganglion, which sends postganglionic axons to directly innervate the iris sphincter muscles.",
+     "chapter": "Pupillary Light Reflex",
+     "id": "statpearls:article-28080"
+    },
+    {
+     "text": "And, because of the crossing fibers, there is not only a direct pupillary reflex but also a consensual pupillary light reflex.",
+     "chapter": "Pupillary Light Reflex",
+     "id": "statpearls:article-28080"
+    },
+    {
+     "text": "With the near response (accommodation) intact it can be assumed that the afferent and efferent pathways are grossly intact and that the deficit is related to degeneration in bilateral olivary pretectal nuclei or their projections.[6]",
+     "chapter": "Pupillary Light Reflex",
+     "id": "statpearls:article-28080"
+    },
+    {
+     "text": "A smaller subset of fibers bypasses the LGN and projects to the pretectal nucleus of the midbrain, contributing to the PLR.",
+     "chapter": "Neuroanatomy, Pupillary Light Reflexes and Pathway",
+     "id": "statpearls:article-890"
+    },
+    {
+     "text": "The PLR pathway parallels the visual pathway, but the optic tract fibers involved terminate in the pretectal nucleus of the midbrain rather than the LGN of the thalamus.",
+     "chapter": "Neuroanatomy, Pupillary Light Reflexes and Pathway",
+     "id": "statpearls:article-890"
+    }
+   ]
+  },
+  {
+   "id": "aud",
+   "name": "Auditory pathway",
+   "family": "Special senses",
+   "direction": "up",
+   "steps": [
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Cochlear nuclei / superior olive"
+    },
+    {
+     "k": "s",
+     "v": "inferior colliculus",
+     "label": "Inferior colliculus"
+    },
+    {
+     "k": "s",
+     "v": "brachium of inferior colliculus",
+     "label": "Brachium of the inferior colliculus"
+    },
+    {
+     "k": "s",
+     "v": "medial geniculate body",
+     "label": "Medial geniculate body"
+    },
+    {
+     "k": "t",
+     "v": "AR",
+     "label": "Acoustic radiation"
+    },
+    {
+     "k": "s",
+     "v": "superior temporal gyrus",
+     "label": "Primary auditory cortex"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "Panel C illustrates the ascending auditory pathway.",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    },
+    {
+     "text": "Panel D demonstrates the ascending pathways (red/black), descending pathways from the cortex (orange) and brainstem (blue), and crossed auditory pathways (blue).",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    },
+    {
+     "text": "Transient hearing reduction can occur afterward as the descending auditory pathways and peripheral auditory structures readjust to a quieter environment.",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    },
+    {
+     "text": "Peripheral auditory impulses reach the auditory cortex via a series of ascending auditory pathways.",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    },
+    {
+     "text": "In this combined illustration, the ascending auditory pathway is represented by the red and black arrows, which stand for binaural ascending signals.",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    },
+    {
+     "text": "Ascending auditory information is modulated by an extensive network of descending auditory pathways.",
+     "chapter": "Auditory Pathway",
+     "id": "statpearls:article-18007"
+    }
+   ]
+  },
+  {
+   "id": "lang",
+   "name": "Language network (Wernicke - arcuate fasciculus - Broca)",
+   "family": "Association",
+   "direction": "forward",
+   "steps": [
+    {
+     "k": "s",
+     "v": "posterior part of superior temporal gyrus",
+     "label": "Wernicke's area"
+    },
+    {
+     "k": "s",
+     "v": "supramarginal gyrus",
+     "label": "Supramarginal gyrus"
+    },
+    {
+     "k": "t",
+     "v": "AF",
+     "label": "Arcuate fasciculus"
+    },
+    {
+     "k": "s",
+     "v": "inferior frontal gyrus",
+     "label": "Broca's area"
+    },
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex (speech output)"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "Wernicke aphasia (WA) represents a fluent aphasia characterized by markedly impaired auditory–verbal comprehension with relatively preserved rate, prosody, and grammar but frequent semantic and phonemic paraphasias, neologisms, and jargon.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    },
+    {
+     "text": "Carl Wernicke and Ludwig Lichtheim developed the classical model of aphasia in the 19th century, which was further refined neuroanatomically by Norman Geschwind in the 1960s.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    },
+    {
+     "text": "This model provides the foundation for understanding the clinical features of aphasia and the corresponding neuroanatomical lesions.[1] According to this model, language processing begins with comprehension in the Wernicke area, located in the posterior section of the superior temporal gyrus, Brodmann area 22.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    },
+    {
+     "text": "Information is then conveyed through the arcuate fasciculus to the Broca area in the inferior frontal gyrus, responsible for language output or expression.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    },
+    {
+     "text": "[Figure] The Broca and Wernicke Areas of the Brain.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    },
+    {
+     "text": "The Wernicke area is responsible for language comprehension, while the Broca area is responsible for language expression.",
+     "chapter": "Wernicke Aphasia",
+     "id": "statpearls:article-31335"
+    }
+   ]
+  },
+  {
+   "id": "callosal",
+   "name": "Interhemispheric transfer (corpus callosum)",
+   "family": "Association",
+   "direction": "forward",
+   "steps": [
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex, one side"
+    },
+    {
+     "k": "t",
+     "v": "CC",
+     "label": "Corpus callosum"
+    },
+    {
+     "k": "x",
+     "v": "",
+     "label": "Crosses the midline"
+    },
+    {
+     "k": "s",
+     "v": "precentral gyrus",
+     "label": "Motor cortex, other side"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "It is composed of approximately 200 million heavily myelinated nerve fibers that form homotopic or heterotopic projections to contralateral neurons in the same anatomical layer.[1] During infancy, the corpus callosum expands rapidly due to an increase in the number of axons, axon diameter, and myelin.",
+     "chapter": "Neuroanatomy, Corpus Callosum",
+     "id": "statpearls:article-20027"
+    },
+    {
+     "text": "There are approximately 200 million axons that form the corpus callosum, which arises primarily from neurons in neocortical layers II/III, V, and VI.[5] At 12 to 13 weeks of gestation, nerve fibers begin to cross the midline, giving rise to connections that later become the corpus callosum.",
+     "chapter": "Neuroanatomy, Corpus Callosum",
+     "id": "statpearls:article-20027"
+    },
+    {
+     "text": "Intratelencephalic neurons, which project to the striatum and across the corpus callosum, are particularly vulnerable to degeneration.",
+     "chapter": "Physiology, Motor Cortex",
+     "id": "statpearls:article-764"
+    },
+    {
+     "text": "Lesions involving the substantia nigra, mesencephalic tegmentum, genu of the corpus callosum, and nuclei within the ascending arousal network are linked to significantly poorer outcomes.[15][26][27] The neuron-specific enolase level-to-GCS score ratio, known as the NGR, also provides prognostic value.",
+     "chapter": "Diffuse Axonal Injury",
+     "id": "statpearls:article-20506"
+    },
+    {
+     "text": "Glioblastoma multiforme is a malignant primary brain tumor that is commonly found in the cerebral hemisphere and can cross the corpus callosum.",
+     "chapter": "Neuroanatomy, Cerebral Hemisphere",
+     "id": "statpearls:article-19184"
+    },
+    {
+     "text": "As the Latin translation of \"cingulate\" would suggest, the cingulate gyrus wraps around the corpus callosum like a \"belt.\" It begins beneath the rostrum of the corpus callosum, curves around the genu, and projects above the superior surface of the body of the corpus callosum, reaching its posterior end where it terminates at the isthmus of the cingulate gyrus.",
+     "chapter": "Neuroanatomy, Cingulate Cortex",
+     "id": "statpearls:article-19561"
+    }
+   ]
+  },
+  {
+   "id": "auto",
+   "name": "Central autonomic output (hypothalamus - brainstem - spinal cord)",
+   "family": "Autonomic",
+   "direction": "down",
+   "steps": [
+    {
+     "k": "s",
+     "v": "hypothalamus",
+     "label": "Hypothalamus"
+    },
+    {
+     "k": "s",
+     "v": "peduncle of midbrain",
+     "label": "Midbrain"
+    },
+    {
+     "k": "pons",
+     "v": "",
+     "label": "Pons"
+    },
+    {
+     "k": "hind",
+     "v": "",
+     "label": "Medulla (vasomotor centres, vagal nuclei)"
+    },
+    {
+     "k": "cord",
+     "v": "T1",
+     "label": "Lateral horn T1 (sympathetic)"
+    },
+    {
+     "k": "cord",
+     "v": "L2",
+     "label": "Lateral horn L2"
+    },
+    {
+     "k": "cord",
+     "v": "S3",
+     "label": "Sacral parasympathetic S2-S4"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "These pressure-sensitive receptors, located in the carotid sinus, aortic arch, and great vessels, relay information to the autonomic nervous system.[12] The baroreflex arc consists of afferent and efferent limbs.",
+     "chapter": "Carotid Sinus Hypersensitivity",
+     "id": "statpearls:article-18973"
+    },
+    {
+     "text": "The glossopharyngeal nerve primarily innervates the carotid sinus, particularly through the branch known as the sinus nerve of Hering.[11] Afferent fibers from this nerve synapse in the nucleus tractus solitarius of the medullary brainstem, which relays information to the autonomic nervous system to regulate MAP.",
+     "chapter": "Anatomy, Head and Neck: Carotid Sinus",
+     "id": "statpearls:article-18972"
+    },
+    {
+     "text": "Anticholinergic medications (shorthand: \"anticholinergics\") are drugs that block and inhibit the activity of the neurotransmitter acetylcholine (ACh) at both central and peripheral nervous system synapses.[1] In doing so, these drugs inhibit the actions of the parasympathetic nervous system (the \"rest and digest\" function of the autonomic nervous system) via selective blockade of ACh from binding to its receptors in neurons.",
+     "chapter": "Anticholinergic Medications",
+     "id": "statpearls:article-17682"
+    },
+    {
+     "text": "The autonomic nervous system (ANS), a component of the peripheral nervous system, regulates involuntary physiologic processes, including heart rate, blood pressure, respiration, digestion, and sexual arousal.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "Neurotransmitters of the Autonomic Nervous System).[35][36] For additional details on cholinergic receptors, refer to the relevant StatPearls article.[37]",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    },
+    {
+     "text": "[Figure] Neurotransmitters of the Autonomic Nervous System.",
+     "chapter": "Anatomy, Autonomic Nervous System",
+     "id": "statpearls:article-32322"
+    }
+   ]
+  },
+  {
+   "id": "stretch",
+   "name": "Stretch (myotatic) reflex",
+   "family": "Reflex",
+   "direction": "loop",
+   "steps": [
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Muscle spindle afferent enters (L2-L4, patellar)"
+    },
+    {
+     "k": "cord",
+     "v": "L3",
+     "label": "Synapse on the alpha motor neuron"
+    },
+    {
+     "k": "cord",
+     "v": "L4",
+     "label": "Motor neuron fires back to the muscle"
+    }
+   ],
+   "quotes": [
+    {
+     "text": "First described in 1875 by Wilhelm Heinrich Erb and Carl Friedrich Otto Westphal, the deep tendon reflex (DTR) is essential in examining and diagnosing neurologic disease.[1] Deep tendon reflexes or, more accurately, the 'muscle stretch reflex' can aid in evaluating neurologic disease affecting afferent nerves, spinal cord synaptic connections, motor nerves, and descending motor pathways.",
+     "chapter": "Physiology, Deep Tendon Reflexes",
+     "id": "statpearls:article-20297"
+    },
+    {
+     "text": "In contrast, the stretch reflex occurs after the passive stretching of the muscle spindle during posture and ambulation.",
+     "chapter": "Physiology, Deep Tendon Reflexes",
+     "id": "statpearls:article-20297"
+    },
+    {
+     "text": "The myotatic reflex is monosynaptic and induced by sudden passive stretch of muscle fibers.",
+     "chapter": "Neuroanatomy, Spinal Cord Myotatic Reflex",
+     "id": "statpearls:article-850"
+    },
+    {
+     "text": "These fibers transmit signals to the dorsal horn and synapse with interneurons that relay inhibitory signals to the muscle-tendon complex.[19] This pathway, initiated by GTOs, constitutes the Golgi-tendon reflex, also known as autogenic inhibition or the inverse stretch reflex.[20]",
+     "chapter": "Physiology, Counterstrain and Facilitated Positional Release (FPR)",
+     "id": "statpearls:article-102987"
+    },
+    {
+     "text": "The brachioradialis reflex is a deep tendon reflex mediated by the C5-C6 nerve roots and the radial nerve.[4] The reflex is initiated when a tap stretches the brachioradialis tendon, stimulating muscle spindle receptors.[5] These receptors generate a sensory impulse that follows a reflex arc, traveling via the afferent sensory nerve fibers to the spinal cord.",
+     "chapter": "Bekhterev-Jacobsohn Reflex",
+     "id": "statpearls:article-18193"
+    },
+    {
+     "text": "These factors include abnormal intraspinal processing of afferent signals, loss of descending supraspinal inhibitory control over spinal reflexes, including diminished inhibitory control of the corticospinal tract, and increased excitability of motor neurons.[8] The stretch reflex, also known as the myotatic reflex, is a monosynaptic reflex triggered by passive stretching of the muscle.",
+     "chapter": "Spasticity",
+     "id": "statpearls:article-29252"
+    }
+   ]
+  }
+ ],
+ "licence": "StatPearls, CC BY-NC-ND 4.0 (sentences unchanged)",
+ "rule": "ONLY the route index below (the order of stations a signal passes, which of the app's real 3D objects stand for each station, where the route crosses the midline). It is a navigation schematic, labelled so in the app. The 3D objects are real: BodyParts3D structures, HCP1065 tract streamlines (Yeh 2022, CC BY-SA 4.0), the spinal cord segments, and a thalamus position estimated from the endpoints of the HCP thalamic radiations (the reference body has no thalamus mesh). Every explanation shown is a verbatim StatPearls sentence (CC BY-NC-ND 4.0) that names the pathway, filed mechanically, with chapter and licence. Animation timing in the app is illustrative."
+}

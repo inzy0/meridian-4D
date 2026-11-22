@@ -1,0 +1,522 @@
+{
+ "source": "OpenNeuro ds000105 'Visual object recognition' (Haxby et al.), subject 1, runs 1-12. Licence: Public Domain Dedication and License v1.0 (PDDL), from the dataset's dataset_description.json (read 2026-11-21).",
+ "method": "Spatial smoothing 6 mm FWHM; per-run GLM (one regressor per category: events boxcar * SPM canonical double-gamma HRF; constant; cosine drift > 128 s; OLS); contrasts combined over 12 runs by fixed effects, t = sum(c'b) / sqrt(sum(s^2 c'(X'X)^-1 c)). No motion correction or realignment between runs; OLS without a temporal-autocorrelation model, so t is larger than a full analysis would give. Voxels in the brightest 40% of run 1's mean image. Single subject, uncorrected: a teaching map, not a validated finding. Image, time slider and signal plot show run 1.",
+ "shape_zyx": [
+  64,
+  64,
+  40
+ ],
+ "T": 121,
+ "tr_s": 2.5,
+ "spacing_mm_zyx": [
+  3.75,
+  3.75,
+  3.5
+ ],
+ "dof_total": 1296,
+ "runs": 12,
+ "categories": [
+  "bottle",
+  "cat",
+  "chair",
+  "face",
+  "house",
+  "scissors",
+  "scrambledpix",
+  "shoe"
+ ],
+ "events": [
+  {
+   "onset": 12.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 14.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 16.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 18.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 20.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 22.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 24.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 26.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 28.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 30.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 32.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 34.0,
+   "duration": 0.5,
+   "trial_type": "scissors"
+  },
+  {
+   "onset": 48.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 50.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 52.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 54.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 56.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 58.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 60.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 62.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 64.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 66.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 68.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 70.0,
+   "duration": 0.5,
+   "trial_type": "face"
+  },
+  {
+   "onset": 84.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 86.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 88.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 90.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 92.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 94.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 96.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 98.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 100.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 102.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 104.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 106.0,
+   "duration": 0.5,
+   "trial_type": "cat"
+  },
+  {
+   "onset": 120.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 122.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 124.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 126.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 128.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 130.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 132.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 134.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 136.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 138.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 140.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 142.0,
+   "duration": 0.5,
+   "trial_type": "shoe"
+  },
+  {
+   "onset": 156.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 158.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 160.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 162.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 164.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 166.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 168.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 170.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 172.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 174.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 176.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 178.0,
+   "duration": 0.5,
+   "trial_type": "house"
+  },
+  {
+   "onset": 192.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 194.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 196.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 198.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 200.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 202.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 204.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 206.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 208.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 210.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 212.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 214.0,
+   "duration": 0.5,
+   "trial_type": "scrambledpix"
+  },
+  {
+   "onset": 228.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 230.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 232.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 234.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 236.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 238.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 240.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 242.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 244.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 246.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 248.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 250.0,
+   "duration": 0.5,
+   "trial_type": "bottle"
+  },
+  {
+   "onset": 264.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 266.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 268.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 270.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 272.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 274.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 276.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 278.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 280.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 282.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 284.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  },
+  {
+   "onset": 286.0,
+   "duration": 0.5,
+   "trial_type": "chair"
+  }
+ ],
+ "tmaps": {
+  "faces > all other objects": "t0.f32",
+  "houses > all other objects": "t1.f32",
+  "faces > houses": "t2.f32",
+  "all pictures > scrambled": "t3.f32"
+ },
+ "contrasts": [
+  "faces > all other objects",
+  "houses > all other objects",
+  "faces > houses",
+  "all pictures > scrambled"
+ ]
+}

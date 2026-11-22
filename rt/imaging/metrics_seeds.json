@@ -1,0 +1,616 @@
+{
+  "pneumoniamnist#seed1": {
+    "task": "pneumoniamnist",
+    "modality": "X-ray (chest)",
+    "kind": "binary",
+    "input": "64x64",
+    "n": {
+      "train": 4708,
+      "val": 524,
+      "test": 624
+    },
+    "epochs": 25,
+    "best_epoch": 23,
+    "val": {
+      "auc": 0.9973531371988955,
+      "acc": 0.982824427480916
+    },
+    "test": {
+      "auc": 0.9800460223537146,
+      "acc": 0.9086538461538461
+    },
+    "minutes": 2.2,
+    "labels": {
+      "0": "normal",
+      "1": "pneumonia"
+    },
+    "bench": {
+      "res28": [
+        0.944,
+        0.854
+      ],
+      "res224": [
+        0.956,
+        0.864
+      ]
+    },
+    "trained": "2026-11-21 11:45",
+    "seed": 1
+  },
+  "breastmnist#seed1": {
+    "task": "breastmnist",
+    "modality": "Ultrasound (breast)",
+    "kind": "binary",
+    "input": "64x64",
+    "n": {
+      "train": 546,
+      "val": 78,
+      "test": 156
+    },
+    "epochs": 60,
+    "best_epoch": 30,
+    "val": {
+      "auc": 0.949874686716792,
+      "acc": 0.8974358974358975
+    },
+    "test": {
+      "auc": 0.906641604010025,
+      "acc": 0.8717948717948718
+    },
+    "minutes": 0.6,
+    "labels": {
+      "0": "malignant",
+      "1": "normal, benign"
+    },
+    "bench": {
+      "res28": [
+        0.901,
+        0.863
+      ],
+      "res224": [
+        0.891,
+        0.833
+      ]
+    },
+    "trained": "2026-11-21 11:46",
+    "seed": 1
+  },
+  "organcmnist#seed1": {
+    "task": "organcmnist",
+    "modality": "CT (abdomen, coronal)",
+    "kind": "multiclass",
+    "input": "64x64",
+    "n": {
+      "train": 12975,
+      "val": 2392,
+      "test": 8216
+    },
+    "epochs": 15,
+    "best_epoch": 8,
+    "val": {
+      "auc": 0.9998561313879267,
+      "acc": 0.9841137123745819
+    },
+    "test": {
+      "auc": 0.9938163306692666,
+      "acc": 0.9234420642648491
+    },
+    "minutes": 3.9,
+    "labels": {
+      "0": "bladder",
+      "1": "femur-left",
+      "2": "femur-right",
+      "3": "heart",
+      "4": "kidney-left",
+      "5": "kidney-right",
+      "6": "liver",
+      "7": "lung-left",
+      "8": "lung-right",
+      "9": "pancreas",
+      "10": "spleen"
+    },
+    "bench": {
+      "res28": [
+        0.992,
+        0.9
+      ],
+      "res224": [
+        0.994,
+        0.92
+      ]
+    },
+    "trained": "2026-11-21 11:50",
+    "seed": 1
+  },
+  "organmnist3d#seed1": {
+    "task": "organmnist3d",
+    "modality": "CT (3D organ volumes)",
+    "kind": "multiclass",
+    "input": "64x64x64",
+    "n": {
+      "train": 971,
+      "val": 161,
+      "test": 610
+    },
+    "epochs": 40,
+    "best_epoch": 9,
+    "val": {
+      "auc": 1.0,
+      "acc": 0.9813664596273292
+    },
+    "test": {
+      "auc": 0.9915588998203172,
+      "acc": 0.8754098360655738
+    },
+    "minutes": 4.0,
+    "labels": {
+      "0": "liver",
+      "1": "kidney-right",
+      "2": "kidney-left",
+      "3": "femur-right",
+      "4": "femur-left",
+      "5": "bladder",
+      "6": "heart",
+      "7": "lung-right",
+      "8": "lung-left",
+      "9": "spleen",
+      "10": "pancreas"
+    },
+    "bench": null,
+    "trained": "2026-11-21 11:54",
+    "seed": 1
+  },
+  "nodulemnist3d#seed1": {
+    "task": "nodulemnist3d",
+    "modality": "CT (3D lung nodules)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1158,
+      "val": 165,
+      "test": 310
+    },
+    "epochs": 40,
+    "best_epoch": 18,
+    "val": {
+      "auc": 0.9171506000774293,
+      "acc": 0.8848484848484849
+    },
+    "test": {
+      "auc": 0.8876397357723578,
+      "acc": 0.8838709677419355
+    },
+    "minutes": 4.8,
+    "labels": {
+      "0": "benign",
+      "1": "malignant"
+    },
+    "bench": null,
+    "trained": "2026-11-21 11:58",
+    "seed": 1
+  },
+  "fracturemnist3d#seed1": {
+    "task": "fracturemnist3d",
+    "modality": "CT (3D rib fractures)",
+    "kind": "multiclass",
+    "input": "64x64x64",
+    "n": {
+      "train": 1027,
+      "val": 103,
+      "test": 240
+    },
+    "epochs": 40,
+    "best_epoch": 34,
+    "val": {
+      "auc": 0.8139892720160612,
+      "acc": 0.6213592233009708
+    },
+    "test": {
+      "auc": 0.7659523873566432,
+      "acc": 0.6208333333333333
+    },
+    "minutes": 4.2,
+    "labels": {
+      "0": "buckle rib fracture",
+      "1": "nondisplaced rib fracture",
+      "2": "displaced rib fracture"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:03",
+    "seed": 1
+  },
+  "adrenalmnist3d#seed1": {
+    "task": "adrenalmnist3d",
+    "modality": "CT (3D adrenal glands)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1188,
+      "val": 98,
+      "test": 298
+    },
+    "epochs": 40,
+    "best_epoch": 31,
+    "val": {
+      "auc": 0.8953349282296651,
+      "acc": 0.8367346938775511
+    },
+    "test": {
+      "auc": 0.9055123093475097,
+      "acc": 0.8456375838926175
+    },
+    "minutes": 4.9,
+    "labels": {
+      "0": "normal",
+      "1": "hyperplasia"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:08",
+    "seed": 1
+  },
+  "vesselmnist3d#seed1": {
+    "task": "vesselmnist3d",
+    "modality": "MRA (3D brain vessels)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1335,
+      "val": 191,
+      "test": 382
+    },
+    "epochs": 40,
+    "best_epoch": 36,
+    "val": {
+      "auc": 0.9636901559978484,
+      "acc": 0.9424083769633508
+    },
+    "test": {
+      "auc": 0.9596624819921795,
+      "acc": 0.9581151832460733
+    },
+    "minutes": 7.5,
+    "labels": {
+      "0": "vessel",
+      "1": "aneurysm"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:15",
+    "seed": 1
+  },
+  "ixi_brain_age#seed1": {
+    "task": "ixi_brain_age",
+    "modality": "MRI T1 (brain)",
+    "kind": "regression",
+    "input": "64x64x64",
+    "n": {
+      "train": 394,
+      "val": 56,
+      "test": 113
+    },
+    "epochs": 60,
+    "best_epoch": 52,
+    "val": {
+      "mae_years": 4.73956823348999,
+      "r": 0.933398676136816
+    },
+    "test": {
+      "mae_years": 4.8205366134643555,
+      "r": 0.9291881252093266
+    },
+    "minutes": 2.6,
+    "labels": null,
+    "bench": null,
+    "baseline": {
+      "mae_years_predicting_train_mean": 14.57675838470459
+    },
+    "trained": "2026-11-21 12:18",
+    "seed": 1
+  },
+  "pneumoniamnist#seed2": {
+    "task": "pneumoniamnist",
+    "modality": "X-ray (chest)",
+    "kind": "binary",
+    "input": "64x64",
+    "n": {
+      "train": 4708,
+      "val": 524,
+      "test": 624
+    },
+    "epochs": 25,
+    "best_epoch": 18,
+    "val": {
+      "auc": 0.9980862610682663,
+      "acc": 0.9770992366412213
+    },
+    "test": {
+      "auc": 0.9826813499890423,
+      "acc": 0.9230769230769231
+    },
+    "minutes": 2.4,
+    "labels": {
+      "0": "normal",
+      "1": "pneumonia"
+    },
+    "bench": {
+      "res28": [
+        0.944,
+        0.854
+      ],
+      "res224": [
+        0.956,
+        0.864
+      ]
+    },
+    "trained": "2026-11-21 12:21",
+    "seed": 2
+  },
+  "breastmnist#seed2": {
+    "task": "breastmnist",
+    "modality": "Ultrasound (breast)",
+    "kind": "binary",
+    "input": "64x64",
+    "n": {
+      "train": 546,
+      "val": 78,
+      "test": 156
+    },
+    "epochs": 60,
+    "best_epoch": 50,
+    "val": {
+      "auc": 0.9515455304928989,
+      "acc": 0.8846153846153846
+    },
+    "test": {
+      "auc": 0.8909774436090225,
+      "acc": 0.8782051282051282
+    },
+    "minutes": 0.7,
+    "labels": {
+      "0": "malignant",
+      "1": "normal, benign"
+    },
+    "bench": {
+      "res28": [
+        0.901,
+        0.863
+      ],
+      "res224": [
+        0.891,
+        0.833
+      ]
+    },
+    "trained": "2026-11-21 12:21",
+    "seed": 2
+  },
+  "organcmnist#seed2": {
+    "task": "organcmnist",
+    "modality": "CT (abdomen, coronal)",
+    "kind": "multiclass",
+    "input": "64x64",
+    "n": {
+      "train": 12975,
+      "val": 2392,
+      "test": 8216
+    },
+    "epochs": 15,
+    "best_epoch": 14,
+    "val": {
+      "auc": 0.999923184829094,
+      "acc": 0.9874581939799331
+    },
+    "test": {
+      "auc": 0.9969765938850202,
+      "acc": 0.9385345666991236
+    },
+    "minutes": 4.3,
+    "labels": {
+      "0": "bladder",
+      "1": "femur-left",
+      "2": "femur-right",
+      "3": "heart",
+      "4": "kidney-left",
+      "5": "kidney-right",
+      "6": "liver",
+      "7": "lung-left",
+      "8": "lung-right",
+      "9": "pancreas",
+      "10": "spleen"
+    },
+    "bench": {
+      "res28": [
+        0.992,
+        0.9
+      ],
+      "res224": [
+        0.994,
+        0.92
+      ]
+    },
+    "trained": "2026-11-21 12:26",
+    "seed": 2
+  },
+  "organmnist3d#seed2": {
+    "task": "organmnist3d",
+    "modality": "CT (3D organ volumes)",
+    "kind": "multiclass",
+    "input": "64x64x64",
+    "n": {
+      "train": 971,
+      "val": 161,
+      "test": 610
+    },
+    "epochs": 40,
+    "best_epoch": 12,
+    "val": {
+      "auc": 1.0,
+      "acc": 0.9937888198757764
+    },
+    "test": {
+      "auc": 0.9957482927863875,
+      "acc": 0.9163934426229509
+    },
+    "minutes": 4.9,
+    "labels": {
+      "0": "liver",
+      "1": "kidney-right",
+      "2": "kidney-left",
+      "3": "femur-right",
+      "4": "femur-left",
+      "5": "bladder",
+      "6": "heart",
+      "7": "lung-right",
+      "8": "lung-left",
+      "9": "spleen",
+      "10": "pancreas"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:31",
+    "seed": 2
+  },
+  "nodulemnist3d#seed2": {
+    "task": "nodulemnist3d",
+    "modality": "CT (3D lung nodules)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1158,
+      "val": 165,
+      "test": 310
+    },
+    "epochs": 40,
+    "best_epoch": 16,
+    "val": {
+      "auc": 0.9075687185443283,
+      "acc": 0.8787878787878788
+    },
+    "test": {
+      "auc": 0.8935149898373984,
+      "acc": 0.8612903225806452
+    },
+    "minutes": 5.1,
+    "labels": {
+      "0": "benign",
+      "1": "malignant"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:36",
+    "seed": 2
+  },
+  "fracturemnist3d#seed2": {
+    "task": "fracturemnist3d",
+    "modality": "CT (3D rib fractures)",
+    "kind": "multiclass",
+    "input": "64x64x64",
+    "n": {
+      "train": 1027,
+      "val": 103,
+      "test": 240
+    },
+    "epochs": 40,
+    "best_epoch": 23,
+    "val": {
+      "auc": 0.8026223901973601,
+      "acc": 0.6407766990291263
+    },
+    "test": {
+      "auc": 0.757820052252877,
+      "acc": 0.5916666666666667
+    },
+    "minutes": 5.5,
+    "labels": {
+      "0": "buckle rib fracture",
+      "1": "nondisplaced rib fracture",
+      "2": "displaced rib fracture"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:41",
+    "seed": 2
+  },
+  "adrenalmnist3d#seed2": {
+    "task": "adrenalmnist3d",
+    "modality": "CT (3D adrenal glands)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1188,
+      "val": 98,
+      "test": 298
+    },
+    "epochs": 40,
+    "best_epoch": 32,
+    "val": {
+      "auc": 0.8941387559808612,
+      "acc": 0.8673469387755102
+    },
+    "test": {
+      "auc": 0.9058287450161382,
+      "acc": 0.8557046979865772
+    },
+    "minutes": 7.9,
+    "labels": {
+      "0": "normal",
+      "1": "hyperplasia"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:49",
+    "seed": 2
+  },
+  "vesselmnist3d#seed2": {
+    "task": "vesselmnist3d",
+    "modality": "MRA (3D brain vessels)",
+    "kind": "binary",
+    "input": "64x64x64",
+    "n": {
+      "train": 1335,
+      "val": 191,
+      "test": 382
+    },
+    "epochs": 40,
+    "best_epoch": 35,
+    "val": {
+      "auc": 0.9706831629908553,
+      "acc": 0.9424083769633508
+    },
+    "test": {
+      "auc": 0.9512931330177677,
+      "acc": 0.9528795811518325
+    },
+    "minutes": 9.1,
+    "labels": {
+      "0": "vessel",
+      "1": "aneurysm"
+    },
+    "bench": null,
+    "trained": "2026-11-21 12:58",
+    "seed": 2
+  },
+  "ixi_brain_age#seed2": {
+    "task": "ixi_brain_age",
+    "modality": "MRI T1 (brain)",
+    "kind": "regression",
+    "input": "64x64x64",
+    "n": {
+      "train": 394,
+      "val": 56,
+      "test": 113
+    },
+    "epochs": 60,
+    "best_epoch": 60,
+    "val": {
+      "mae_years": 6.648558616638184,
+      "r": 0.8696604987337208
+    },
+    "test": {
+      "mae_years": 6.937228679656982,
+      "r": 0.8698590744392383
+    },
+    "minutes": 3.8,
+    "labels": null,
+    "bench": null,
+    "baseline": {
+      "mae_years_predicting_train_mean": 14.57675838470459
+    },
+    "trained": "2026-11-21 13:02",
+    "seed": 2
+  }
+}

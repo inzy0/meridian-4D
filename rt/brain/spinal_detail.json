@@ -1,0 +1,280 @@
+{
+ "segments": [
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C8",
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "T5",
+  "T6",
+  "T7",
+  "T8",
+  "T9",
+  "T10",
+  "T11",
+  "T12",
+  "L1",
+  "L2",
+  "L3",
+  "L4",
+  "L5",
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5",
+  "Co1"
+ ],
+ "facts": {
+  "extent": {
+   "text": "It begins at the first cervical vertebra level and ends at the first lumbar vertebra in an adult.[1] But in the case of young children, the spinal cord is relatively longer relative to the length of the vertebral column.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "conus": {
+   "text": "examined MRI images of 231 men and 273 women with a mean age of 46 and found the mean position of the conus to be at the lower third of L1, with a mean variation from the middle one-third of T12 to the upper one-third of L3.",
+   "chapter": "Neuroanatomy, Conus Medullaris",
+   "id": "statpearls:article-19953"
+  },
+  "length": {
+   "text": "It is approximately 42.3 cm in length in males and 38.9 cm in females.[1] Even though the spinal cord is almost symmetrical, it is enlarged in a fusiform shape in two regions in the form of cervical and lumbosacral enlargements.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "count": {
+   "text": "The spinal nerves are 31 pairs – 8 pairs of cervical, 12 pairs of thoracic, five pairs of lumbar, five pairs of sacral, and one pair of coccygeal nerves.[10] Thus there are 31 pairs of spinal segments.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "cerv_enl": {
+   "text": "This enlargement spreads from the fourth cervical segment to the second thoracic segment.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "lumb_enl": {
+   "text": "This second enlargement extends from the second lumbar segment to the third sacral segment of the spinal cord.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "exit_cerv": {
+   "text": "Vertebrae  - Cervical: 7  - Thoracic: 12  - Lumbar: 5  - Sacrum: 5 (fused)  - Coccyx: 4 (fused)  Spinal Nerves  - Cervical: 8  - Thoracic: 12  - 5 Lumbar: 5  - Sacral: 5  - Coccygeal: 1  Cervical nerves C1-C7 exit above their corresponding vertebrae (eg, C2 exits above C2 and below C1 vertebrae).",
+   "chapter": "Physiology, Spinal Cord",
+   "id": "statpearls:article-29330"
+  },
+  "exit_rest": {
+   "text": "The remainder of the spinal nerves exits below their corresponding vertebrae (eg, the T1 spinal nerve exits below T1 and above T2.)  Three connective tissue layers, termed meninges, conceal the spinal cord.",
+   "chapter": "Physiology, Spinal Cord",
+   "id": "statpearls:article-29330"
+  },
+  "roots_caudal": {
+   "text": "On the other hand, since the spinal cord usually extends to the level of the L1 or L2 vertebral levels, the more caudal nerve roots travel in a somewhat vertical fashion until exiting at their respective intervertebral foramina.",
+   "chapter": "Neuroanatomy, Spinal Nerves",
+   "id": "statpearls:article-29351"
+  },
+  "drg": {
+   "text": "While the dorsal root fibers synapse in the dorsal horn of the spinal cord, the sensory cell bodies of these pseudounipolar neurons are in the dorsal root ganglion, an oval enlargement just outside the cord.",
+   "chapter": "Neuroanatomy, Spinal Nerves",
+   "id": "statpearls:article-29351"
+  },
+  "gray": {
+   "text": "Grey Matter: When taking a transverse section of the spinal cord, in the middle is the grey matter, which appears roughly in the form of an H (butterfly) shaped mass.",
+   "chapter": "Neuroanatomy, Spinal Cord",
+   "id": "statpearls:article-29308"
+  },
+  "lateral_horn": {
+   "text": "Of note, the thoracic spinal cord is the only region in which lateral horns are found, which are outpouchings of gray matter containing cell bodies of sympathetic nerves.",
+   "chapter": "Physiology, Spinal Cord",
+   "id": "statpearls:article-29330"
+  },
+  "autonomic_horn": {
+   "text": "Autonomic central neuronal bodies originate in the regions of the cord’s lateral horn of the cord’s gray matter, specifically in the intermediolateral nucleus.",
+   "chapter": "Neuroanatomy, Spinal Nerves",
+   "id": "statpearls:article-29351"
+  },
+  "cauda": {
+   "text": "The cauda equina is a group of nerves and nerve roots stemming from the distal end of the spinal cord, typically levels L1-L5 and contains axons of nerves that give both motor and sensory innervation to the legs, bladder, anus, and perineum.",
+   "chapter": "Cauda Equina and Conus Medullaris Syndromes",
+   "id": "statpearls:article-19025"
+  }
+ },
+ "tracts": [
+  {
+   "id": "dc",
+   "name": "Dorsal column (gracile and cuneate fasciculi)",
+   "direction": "ascending",
+   "funiculus": "posterior",
+   "hcp": "ML",
+   "quotes": [
+    {
+     "text": "The major tracts and their most defining features are as follows:  Ascending Tracts  - Dorsal column: contains the gracile fasciculus and cuneate fasciculus, which together form the dorsal funiculus.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The dorsal column is responsible for pressure and vibration sensation, 2-point discrimination, movement sense, and conscious proprioception.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The dorsal column decussates at the superior portion of the medulla oblongata and forms the medial lemniscus.[3]  - Lateral spinothalamic: carries pain and temperature information.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "If the Babinski reflex is seen after 12 months of age, it may indicate an abnormality in the corticospinal system.[23]  Romberg Test  - The Romberg test is used in the evaluation of posterior column disease.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    }
+   ]
+  },
+  {
+   "id": "lst",
+   "name": "Lateral spinothalamic tract",
+   "direction": "ascending",
+   "funiculus": "lateral",
+   "hcp": null,
+   "quotes": [
+    {
+     "text": "The dorsal column decussates at the superior portion of the medulla oblongata and forms the medial lemniscus.[3]  - Lateral spinothalamic: carries pain and temperature information.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The lateral spinothalamic tract decussates at the anterior commissure, 2 segments above the entry to the spinal cord.[3]  - Anterior spinothalamic: carries crude touch and pressure information.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "Its decussation is similar to the lateral spinothalamic tract.[3][4]  - Dorsal and ventral spinocerebellar: transmit unconscious proprioception sensory information to the cerebellum.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "- Lamina III has intermediate-sized cells, including antenna-like and radial neurons.[7] Many of these cells contain GABA or glycine and are also considered inhibitory.[9]  - Lamina IV contains antenna-like and transverse cells, with dendrites that mainly go to Laminas II and III and whose axons are thought primarily to enter the spinothalamic tract.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    }
+   ]
+  },
+  {
+   "id": "ast",
+   "name": "Anterior spinothalamic tract",
+   "direction": "ascending",
+   "funiculus": "anterior",
+   "hcp": null,
+   "quotes": [
+    {
+     "text": "The lateral spinothalamic tract decussates at the anterior commissure, 2 segments above the entry to the spinal cord.[3]  - Anterior spinothalamic: carries crude touch and pressure information.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The anterior spinothalamic tract carries sensory input about crude touch.",
+     "chapter": "Neuroanatomy, Spinothalamic Tract",
+     "id": "statpearls:article-29365"
+    },
+    {
+     "text": "The anterior funiculus will contain descending motor fibers of olivospinal, tectospinal, lateral vestibulospinal, medial vestibulospinal, anterior corticospinal, anterior spinothalamic, spino-olivary, spino-tectal, and reticulospinal tracts.",
+     "chapter": "Neuroanatomy, Spinal Cord",
+     "id": "statpearls:article-29308"
+    }
+   ]
+  },
+  {
+   "id": "scb",
+   "name": "Dorsal and ventral spinocerebellar tracts",
+   "direction": "ascending",
+   "funiculus": "lateral",
+   "hcp": null,
+   "quotes": [
+    {
+     "text": "Its decussation is similar to the lateral spinothalamic tract.[3][4]  - Dorsal and ventral spinocerebellar: transmit unconscious proprioception sensory information to the cerebellum.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The ventral spinocerebellar tract does not decussate, while the dorsal spinocerebellar tract decussates twice, making both tracts ipsilateral.[3][5]  Descending Tracts - Lateral and anterior corticospinal: involved in conscious control of the skeletal muscle.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "- Lamina VII is composed of homogenous medium-sized multipolar neurons and contains, in individual segments, well-defined nuclei, including the intermediolateral nucleus (T1-L1), which has autonomic functions, and the dorsal nucleus of Clarke (T1-L2), which make up the dorsal spinocerebellar tract.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "There is widespread demyelination of the spinocerebellar tracts, lateral corticospinal tracts, and the dorsal columns.",
+     "chapter": "Neuroanatomy, Lateral Corticospinal Tract",
+     "id": "statpearls:article-36654"
+    }
+   ]
+  },
+  {
+   "id": "lcst",
+   "name": "Lateral corticospinal tract",
+   "direction": "descending",
+   "funiculus": "lateral",
+   "hcp": "CST",
+   "quotes": [
+    {
+     "text": "Most lateral corticospinal tract fibers decussate at the inferior portion of the medulla oblongata.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The lateral corticospinal tract also called the pyramidal tract, innervates the contralateral muscles of the limbs, while the anterior corticospinal tract innervates the proximal muscles of the trunk.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The aberrant pyramidal tract separates from the corticospinal tract within the midbrain and pons, then descends through the medial lemniscus.[6] This collateral pathway may provide an alternative motor pathway in the case of a cerebral infarct, which will be a topic of discussion below.[2]  After leaving the brainstem and entering the spinal cord, the fibers run down through the anterior and lateral corticospinal tract.",
+     "chapter": "Neuroanatomy, Corticospinal Cord Tract",
+     "id": "statpearls:article-36750"
+    },
+    {
+     "text": "The lateral corticospinal tract fibers have previously decussated at the level of the pyramid and synapse at a neuron on the anterior horn when they get to the appropriate level.",
+     "chapter": "Neuroanatomy, Corticospinal Cord Tract",
+     "id": "statpearls:article-36750"
+    }
+   ]
+  },
+  {
+   "id": "acst",
+   "name": "Anterior corticospinal tract",
+   "direction": "descending",
+   "funiculus": "anterior",
+   "hcp": "CST",
+   "quotes": [
+    {
+     "text": "The ventral spinocerebellar tract does not decussate, while the dorsal spinocerebellar tract decussates twice, making both tracts ipsilateral.[3][5]  Descending Tracts - Lateral and anterior corticospinal: involved in conscious control of the skeletal muscle.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "In contrast, the anterior corticospinal tract descends ipsilaterally in the spinal cord and decussates at the segmental level.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "The lateral corticospinal tract also called the pyramidal tract, innervates the contralateral muscles of the limbs, while the anterior corticospinal tract innervates the proximal muscles of the trunk.",
+     "chapter": "Physiology, Spinal Cord",
+     "id": "statpearls:article-29330"
+    },
+    {
+     "text": "As a result, the neural structure of the corticospinal tract takes up more surface area in the upper pons than in the lower pons.[4] As the corticospinal tract continues to travel down into the medulla, 75 to 90% of the fibers will decussate to the contralateral side via the pyramidal decussation.[5][3] The 5 to 15% of fibers that do not decussate within the pyramidal decussation make up the anterior corticospinal tract.",
+     "chapter": "Neuroanatomy, Corticospinal Cord Tract",
+     "id": "statpearls:article-36750"
+    }
+   ]
+  }
+ ],
+ "licence": "StatPearls, CC BY-NC-ND 4.0 (sentences unchanged)",
+ "rule": "the 31 pairs (8 C, 12 T, 5 L, 5 S, 1 Co) as quoted. Their placement in the app uses only quoted landmarks (cord from the C1 vertebra level to the lower third of L1; enlargements C4-T2 and L2-S3 segments) with segments spaced evenly between the ends; the even spacing is an approximation and is labelled so. Tracts: sentences that name the tract, filed mechanically (tract name in the sentence), from the spinal cord and tract chapters. Cross-section positions in the app are a labelled schematic based on the funiculus named in the tract's own description."
+}
