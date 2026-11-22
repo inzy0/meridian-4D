@@ -1,0 +1,233 @@
+{
+ "source": "Reactome Content Service (CC0)",
+ "pathways": {
+  "R-HSA-70171": {
+   "name": "Glycolysis",
+   "n_reactions": 23
+  },
+  "R-HSA-70263": {
+   "name": "Gluconeogenesis",
+   "n_reactions": 17
+  },
+  "R-HSA-71403": {
+   "name": "Citric acid cycle (TCA cycle)",
+   "n_reactions": 23
+  },
+  "R-HSA-70268": {
+   "name": "Pyruvate metabolism",
+   "n_reactions": 31
+  },
+  "R-HSA-77289": {
+   "name": "Mitochondrial Fatty Acid Beta-Oxidation",
+   "n_reactions": 47
+  },
+  "R-HSA-611105": {
+   "name": "Respiratory electron transport",
+   "n_reactions": 47
+  },
+  "R-HSA-163210": {
+   "name": "Formation of ATP by chemiosmotic coupling",
+   "n_reactions": 3
+  },
+  "R-HSA-70221": {
+   "name": "Glycogen breakdown (glycogenolysis)",
+   "n_reactions": 16
+  },
+  "R-HSA-3322077": {
+   "name": "Glycogen synthesis",
+   "n_reactions": 22
+  },
+  "R-HSA-71288": {
+   "name": "Creatine metabolism",
+   "n_reactions": 6
+  },
+  "R-HSA-70635": {
+   "name": "Urea cycle",
+   "n_reactions": 17
+  },
+  "R-HSA-74182": {
+   "name": "Ketone body metabolism",
+   "n_reactions": 11
+  },
+  "R-HSA-390522": {
+   "name": "Striated Muscle Contraction",
+   "n_reactions": 4
+  },
+  "R-HSA-445355": {
+   "name": "Smooth Muscle Contraction",
+   "n_reactions": 16
+  },
+  "R-HSA-5576891": {
+   "name": "Cardiac conduction",
+   "n_reactions": 33
+  },
+  "R-HSA-74751": {
+   "name": "Insulin receptor signalling cascade",
+   "n_reactions": 23
+  },
+  "R-HSA-163359": {
+   "name": "Glucagon signaling in metabolic regulation",
+   "n_reactions": 6
+  },
+  "R-HSA-1480926": {
+   "name": "O2/CO2 exchange in erythrocytes",
+   "n_reactions": 14
+  },
+  "R-HSA-189085": {
+   "name": "Digestion of dietary carbohydrate",
+   "n_reactions": 13
+  },
+  "R-HSA-71336": {
+   "name": "Pentose phosphate pathway",
+   "n_reactions": 20
+  },
+  "R-HSA-75105": {
+   "name": "Fatty acyl-CoA biosynthesis",
+   "n_reactions": 25
+  },
+  "R-HSA-163560": {
+   "name": "Triglyceride catabolism",
+   "n_reactions": 17
+  },
+  "R-HSA-75109": {
+   "name": "Triglyceride biosynthesis",
+   "n_reactions": 7
+  },
+  "R-HSA-191273": {
+   "name": "Cholesterol biosynthesis",
+   "n_reactions": 45
+  },
+  "R-HSA-196757": {
+   "name": "Metabolism of folate and pterines",
+   "n_reactions": 31
+  },
+  "R-HSA-196741": {
+   "name": "Cobalamin (Cbl, vitamin B12) transport and metabolism",
+   "n_reactions": 27
+  },
+  "R-HSA-196791": {
+   "name": "Vitamin D (calciferol) metabolism",
+   "n_reactions": 19
+  },
+  "R-HSA-6806664": {
+   "name": "Metabolism of vitamin K",
+   "n_reactions": 4
+  },
+  "R-HSA-196807": {
+   "name": "Nicotinate metabolism",
+   "n_reactions": 28
+  },
+  "R-HSA-196819": {
+   "name": "Vitamin B1 (thiamin) metabolism",
+   "n_reactions": 5
+  },
+  "R-HSA-196836": {
+   "name": "Vitamin C (ascorbate) metabolism",
+   "n_reactions": 9
+  },
+  "R-HSA-189451": {
+   "name": "Heme biosynthesis",
+   "n_reactions": 20
+  },
+  "R-HSA-917937": {
+   "name": "Iron uptake and transport",
+   "n_reactions": 33
+  },
+  "R-HSA-209905": {
+   "name": "Catecholamine biosynthesis",
+   "n_reactions": 6
+  },
+  "R-HSA-209931": {
+   "name": "Serotonin and melatonin biosynthesis",
+   "n_reactions": 4
+  },
+  "R-HSA-209968": {
+   "name": "Thyroxine biosynthesis",
+   "n_reactions": 11
+  },
+  "R-HSA-194002": {
+   "name": "Glucocorticoid biosynthesis",
+   "n_reactions": 9
+  },
+  "R-HSA-193048": {
+   "name": "Androgen biosynthesis",
+   "n_reactions": 10
+  },
+  "R-HSA-193144": {
+   "name": "Estrogen biosynthesis",
+   "n_reactions": 8
+  },
+  "R-HSA-381771": {
+   "name": "Synthesis, secretion, and inactivation of Glucagon-like Peptide-1 (GLP-1)",
+   "n_reactions": 8
+  },
+  "R-HSA-422356": {
+   "name": "Regulation of insulin secretion",
+   "n_reactions": 38
+  },
+  "R-HSA-5653890": {
+   "name": "Lactose synthesis",
+   "n_reactions": 3
+  },
+  "R-HSA-70895": {
+   "name": "Branched-chain amino acid catabolism",
+   "n_reactions": 27
+  },
+  "R-HSA-8964539": {
+   "name": "Glutamate and glutamine metabolism",
+   "n_reactions": 14
+  },
+  "R-HSA-8964540": {
+   "name": "Alanine metabolism",
+   "n_reactions": 4
+  },
+  "R-HSA-112310": {
+   "name": "Neurotransmitter release cycle",
+   "n_reactions": 37
+  },
+  "R-HSA-264642": {
+   "name": "Acetylcholine Neurotransmitter Release Cycle",
+   "n_reactions": 6
+  },
+  "R-HSA-5578775": {
+   "name": "Ion homeostasis",
+   "n_reactions": 17
+  },
+  "R-HSA-5578768": {
+   "name": "Physiological factors",
+   "n_reactions": 6
+  },
+  "R-HSA-76002": {
+   "name": "Platelet activation, signaling and aggregation",
+   "n_reactions": 119
+  },
+  "R-HSA-166658": {
+   "name": "Complement cascade",
+   "n_reactions": 72
+  },
+  "R-HSA-1236975": {
+   "name": "Antigen processing-Cross presentation",
+   "n_reactions": 28
+  },
+  "R-HSA-211945": {
+   "name": "Phase I - Functionalization of compounds",
+   "n_reactions": 104
+  },
+  "R-HSA-156580": {
+   "name": "Phase II - Conjugation of compounds",
+   "n_reactions": 72
+  },
+  "R-HSA-2187338": {
+   "name": "Visual phototransduction",
+   "n_reactions": 87
+  },
+  "R-HSA-194068": {
+   "name": "Bile acid and bile salt metabolism",
+   "n_reactions": 87
+  },
+  "R-HSA-8935690": {
+   "name": "Digestion",
+   "n_reactions": 24
+  }
+ }
+}

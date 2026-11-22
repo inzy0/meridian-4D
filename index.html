@@ -12,12 +12,13 @@
   "three/addons/": "/meridian-4D/rt/vendor/three/addons/"
 } }
 </script>
-<script>window.__STATIC_SITE = true; try { if (/^(clinical|molecular|genome)$/.test(localStorage.getItem('anatomy-lab-mode') || '')) localStorage.removeItem('anatomy-lab-mode'); if (localStorage.getItem('nt-autoconv') === null) localStorage.setItem('nt-autoconv', '0'); } catch (e) {}</script>
-<style>.tabs [data-mode=clinical], .tabs [data-mode=molecular], .tabs [data-mode=genome], .ts-gene, .ts-dna, #ts-reader [data-ch], #gn-mol { display: none !important; }
+<script>window.__STATIC_SITE = true; try { if (localStorage.getItem('nt-autoconv') === null) localStorage.setItem('nt-autoconv', '0'); } catch (e) {}</script>
+<script type="module" src="/meridian-4D/js/static_api.js"></script>
+<style>
 #static-banner { background: #2a1d05; color: #ffd166; font: 12px system-ui; padding: 6px 14px; border-bottom: 1px solid #ffd16655; } #static-banner a { color: #ffd166; }</style>
 </head>
 <body>
-<div id="static-banner">Public static demo of the Meridian Anatomy Lab: free, non-commercial, for education only; not a diagnostic device and not medical advice. Clinical search, care pathways, medications, DNA → Protein and Body systems need the local server and are not included here. Your camera stays on your device; notes stay in your browser. <a href="/meridian-4D/CREDITS.html">Credits and licences</a>.</div>
+<div id="static-banner">Public static demo of the Meridian Anatomy Lab: free, non-commercial, for education only; not a diagnostic device and not medical advice. Clinical chapters, care pathways, medications and Body systems are precomputed for the web; DNA → Protein covers a learning set of genes (the full local app has all 19,336). Your camera stays on your device; notes stay in your browser. <a href="/meridian-4D/CREDITS.html">Credits and licences</a>.</div>
 <header class="hdr">
   <div class="brand">
     <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">

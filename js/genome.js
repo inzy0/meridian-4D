@@ -294,7 +294,7 @@ const SCENES = {
     narr(`<b>Level 4 · the gene neighbourhood</b> (1.1 Mb around ${esc(d.symbol)}). Real neighbouring genes (click to follow one) and ${(c.ccre || []).length} ENCODE regulatory elements: switches that help decide when and where the gene is read.`);
   },
   helix(d) {
-    const cdsStart = d.cds[0][0], seq = d.dna.slice(cdsStart, cdsStart + 36), comp = { A: 'T', T: 'A', G: 'C', C: 'G', N: 'N' };
+    const cdsStart = d.dna_cds ?? d.cds[0][0], seq = d.dna.slice(cdsStart, cdsStart + 36), comp = { A: 'T', T: 'A', G: 'C', C: 'G', N: 'N' };
     const g = new THREE.Group(); root.add(g); const rise = 3.4, R0 = 10, n = seq.length, P1 = [], P2 = [];
     for (let i = 0; i < n; i++) {
       const a = (i / 10.5) * Math.PI * 2, y = (i - n / 2) * rise;

@@ -1,0 +1,103 @@
+{
+ "map": {
+  "brain": {
+   "layer": null,
+   "re": "gyrus|hippocamp|thalamus|hypothalamus|insula|white matter of|colliculus|cingulate|internal capsule|occipital lobe|parietal lobule|pineal|habenula|tuber cinereum"
+  },
+  "liver": {
+   "re": "liver|hepatovenous segment"
+  },
+  "gallbladder": {
+   "re": "gallbladder|cystic duct"
+  },
+  "intestine": {
+   "re": "duodenum|jejunum|ileum|colon|appendix|rectum|ileocecal|cecum"
+  },
+  "stomach 1": {
+   "re": "^stomach$"
+  },
+  "esophagus": {
+   "re": "^esophagus$"
+  },
+  "pancreas": {
+   "re": "^pancreas$|pancreatic duct"
+  },
+  "kidney": {
+   "re": "^kidney$"
+  },
+  "urinary bladder": {
+   "re": "urinary bladder"
+  },
+  "lung": {
+   "re": "bronchial tree|main bronchus|^lung$"
+  },
+  "heart muscle": {
+   "re": "wall of ventricle|wall of atrium|papillary muscle"
+  },
+  "skeletal muscle": {
+   "layer": "muscles",
+   "re": "."
+  },
+  "blood vessel": {
+   "layer": "arteries|veins",
+   "re": "."
+  },
+  "skin 1": {
+   "layer": "skin",
+   "re": "."
+  },
+  "tongue": {
+   "re": "^tongue$"
+  },
+  "salivary gland": {
+   "re": "submandibular gland|sublingual gland|parotid"
+  },
+  "retina": {
+   "re": "retina"
+  },
+  "choroid plexus": {
+   "re": "ventricular system|choroid plexus"
+  },
+  "pituitary gland": {
+   "re": "pituitary"
+  },
+  "adrenal gland": {
+   "re": "adrenal gland"
+  },
+  "testis": {
+   "re": "^testis$"
+  },
+  "epididymis": {
+   "re": "epididymis"
+  },
+  "seminal vesicle": {
+   "re": "seminal vesicle"
+  },
+  "prostate": {
+   "re": "^prostate$"
+  },
+  "lymphoid tissue": {
+   "re": "^spleen$|thymus"
+  },
+  "bone marrow": {
+   "layer": "skeleton",
+   "re": "^(femur|hip bone|sternum|humerus)$|vertebra$|\\brib$"
+  },
+  "smooth muscle": {
+   "re": "duodenum|jejunum|ileum|colon|stomach|urinary bladder|esophagus"
+  }
+ },
+ "not_in_model": [
+  "adipose tissue",
+  "parathyroid gland",
+  "thyroid gland",
+  "breast",
+  "placenta",
+  "fallopian tube",
+  "cervix",
+  "ovary",
+  "vagina",
+  "endometrium 1"
+ ],
+ "note": "HPA tissue -> BodyParts3D structures by name pattern (side words removed). Bone marrow is shown on the main marrow-bearing bones; smooth muscle on the hollow organs. The reference body is male: female organs are not in it."
+}
