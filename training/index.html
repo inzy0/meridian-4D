@@ -18,8 +18,8 @@
 <script type="module" src="/meridian-4D/js/static_api.js"></script>
 <style>
 #static-banner { background: #2a1d05; color: #ffd166; font: 12px system-ui; padding: 6px 14px; border-bottom: 1px solid #ffd16655; } #static-banner a { color: #ffd166; }</style>
-<script>(function(){var go=function(){if(location.hash!=='#train'){history.replaceState(null,'','#train');}};go();
-try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventListener('hashchange',function(){if(location.hash!=='#train'){location.hash='#train';}});})();</script>
+<script>(function(){var ok=/^#train(\/|$)/;var go=function(){if(!ok.test(location.hash)){history.replaceState(null,'','#train');}};go();
+try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventListener('hashchange',function(){if(!ok.test(location.hash)){location.hash='#train';}});})();</script>
 <style>.tabs button:not([data-mode=train]){display:none!important}#nt-fab{display:none!important}</style>
 </head>
 <body>
