@@ -217,6 +217,13 @@
       <div id="bio-out" class="bio-out"></div>
       <p class="fine">Inverse dynamics from the tracked pose, body mass and population segment parameters (<span id="bio-src"></span>). Quasi-static unless acceleration is included. The two-foot split uses the lever rule (the true split cannot be known from motion alone); the centre of pressure is placed at each foot's centre; the head centre of mass is approximated at the mid-ear point. "Group the moment requires" is the muscle group that must produce the net moment; co-contraction is not visible. Red = required group (colour scaled to 1.5 N·m/kg, not a measured activation), blue = opposing group. Green arrows = ground reaction (length = share of body weight); orange/cyan spheres at joints = net moment size (orange extensor-type, cyan flexor-type); ball = centre of mass (green over the base of support, red outside). Not validated against force plates or EMG.</p>
     </section>
+    <section class="card eq-card" id="eq-card">
+      <div class="card-h"><h2>Equipment (4D)</h2><button id="eq-test" class="ghost-btn" title="Check the mechanics code against hand calculations">Self-test</button></div>
+      <div class="cls-tools"><label>Item <select id="eq-pick"></select></label></div>
+      <div id="eq-body" class="eq-body"><p class="fine muted">Loading the equipment catalogue…</p></div>
+      <div id="eq-test-out"></div>
+      <p class="fine">Barbells, discs, collars, rack, bench and platform use the dimensions quoted from the IWF Technical and Competition Rules 2024 and the IPF Technical Rulebook 2026 (page and quote shown, checked against the rulebook text when the catalogue is built). Other items have no governing standard: their shape is illustrative and their load is what you enter. Loads come from mechanics (weight, band stretch, cable tension, lever, sled friction) and are added to the inverse dynamics; they are estimates, not measurements.</p>
+    </section>
     <section class="card drill-card">
       <div class="card-h"><h2>Drill detection (automatic)</h2>
         <span><button id="drill-test" class="ghost-btn">Recognition test</button> <button id="drill-csv" class="ghost-btn">CSV</button> <button id="drill-reset" class="ghost-btn">Reset</button></span></div>

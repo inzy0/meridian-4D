@@ -69,6 +69,10 @@ if (typeof window !== "undefined") window.__anatomyLab = { L, get BIO() { return
 // Movement studio (js/movement_studio.js) poses the twin itself and paints muscle roles through these.
 export function labHooks() { return { applyMatrices, applyLook, stopExercise, stopDemo: () => { L.demo = null; const b = $('#lab-demo'); if (b) b.textContent = 'Demo motion'; const n = $('#lab-demo-name'); if (n) n.textContent = ''; } }; }
 export function labExtras() { return { BIO, posedPoint, restLandmarks, LANDMARK_SEG }; }
+// js/equipment.js: external loads fed into inverse dynamics, and a per-frame hook to move the equipment with the twin
+let LOAD_PROVIDER = null; const FRAME_HOOKS = new Set();
+export function setLoadProvider(fn) { LOAD_PROVIDER = fn; }
+export function onLabFrame(fn) { FRAME_HOOKS.add(fn); return () => FRAME_HOOKS.delete(fn); }
 
 let labStarted = null;
 export function startMotionLab() { return (labStarted ||= startMotionLabInner()); }
@@ -102,6 +106,7 @@ async function startMotionLabInner() {
   L.M = poseMatrices(L.rig, {}); applyMatrices();
   renderAudit();
   import('./movement_studio.js').then((m) => m.initStudio()).catch((e) => console.error('movement studio', e));
+  import('./equipment.js').then((m) => m.initEquipment()).catch((e) => console.error('equipment', e));
   status.textContent = `${L.rig.segs.size} rigid segments · ${Object.keys(L.rig.J).length} joint centres · ${Object.keys(L.rig.LM).length} bony landmarks. Start the camera, or press Demo.`;
   subscribeFrames(onFrame);
   renderer.setAnimationLoop(tick);
@@ -352,6 +357,7 @@ function tick(now) {
   if (L.studio) L.studio.step(now / 1000); else if (L.exercise) exerciseStep(now / 1000); else if (L.demo) demoStep(now / 1000);
   if ($('#lab-autorot').checked) { const q = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.004); L.camera.position.sub(L.controls.target).applyQuaternion(q).add(L.controls.target); }
   L.pc?.tick(); L.controls.update();
+  for (const f of FRAME_HOOKS) { try { f(now / 1000); } catch (e) { console.error('lab frame hook', e); } }
   L.renderer.render(L.scene, L.camera);
   drawLabels();
   if (now - uiT > 150) { uiT = now; updatePanels(now / 1000); }
@@ -823,7 +829,8 @@ function stepBiomech(t) {
     const dt1 = a.t - b.t, dt2 = b.t - c.t;
     if (dt1 > 0.02 && dt2 > 0.02) comAcc = a.com.clone().sub(b.com).multiplyScalar(1 / dt1).sub(b.com.clone().sub(c.com).multiplyScalar(1 / dt2)).multiplyScalar(2 / (dt1 + dt2));
   }
-  const r = analyse(L.W, L.R, { mass: BIO.mass, sex: BIO.sex, comAcc, axes: { up: new THREE.Vector3(0, 1, 0), ant: new THREE.Vector3(0, 0, A.anterior), left: new THREE.Vector3(A.leftX, 0, 0) } });
+  const loads = LOAD_PROVIDER ? LOAD_PROVIDER(L.W, t) : [];
+  const r = analyse(L.W, L.R, { mass: BIO.mass, sex: BIO.sex, comAcc, loads, axes: { up: new THREE.Vector3(0, 1, 0), ant: new THREE.Vector3(0, 0, A.anterior), left: new THREE.Vector3(A.leftX, 0, 0) } });
   BIO.hist.push({ t, com: r.com.clone() }); while (BIO.hist.length > 30) BIO.hist.shift();
   const m = L.meas || {};
   const vel = {

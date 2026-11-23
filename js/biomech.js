@@ -81,7 +81,11 @@ export function analyse(W, R, opts) {
   const com = S.reduce((a, s) => a.addScaledVector(s.cm, s.mass), new THREE.Vector3());
   // dynamic term from COM acceleration (smoothed by caller); quasi-static if absent
   const acc = opts.comAcc || new THREE.Vector3();
-  const Ftot = new THREE.Vector3(acc.x * M, (G + acc.y) * M, acc.z * M);
+  // external loads (js/equipment.js): [{ at: 'hand'|'foot'|'knee'|'trunk', side: 'l'|'r'|null, p: Vector3 (W space), F: Vector3 N acting ON the body }]
+  // Whole body: GRF + body weight + ΣF_ext = M·a  ->  GRF = M·(a + g·ŷ) − ΣF_ext
+  const loads = opts.loads || [];
+  const Fext = loads.reduce((a, l) => a.add(l.F), new THREE.Vector3());
+  const Ftot = new THREE.Vector3(acc.x * M, (G + acc.y) * M, acc.z * M).sub(Fext);
   // ground contact
   const foot = (k) => { const he = W[k === 'l' ? 29 : 30], to = W[k === 'l' ? 31 : 32]; return { he, to, c: mid(he, to), low: Math.min(he.y, to.y) }; };
   const fl = foot('l'), fr = foot('r'); const ground = Math.min(fl.low, fr.low);
@@ -115,10 +119,12 @@ export function analyse(W, R, opts) {
     const sh = W[k === 'l' ? 11 : 12], el = W[k === 'l' ? 13 : 14], wr = W[k === 'l' ? 15 : 16];
     const F = grf[k], C = cop[k];
     // bottom-up lower limb: moment the muscles must supply = -(external moments on the distal chain)
-    const ext = (about, segs) => segs.reduce((m, nm) => m.add(torqueOf(segW(nm, k).cm, g(segW(nm, k).mass), about)), torqueOf(C, F, about));
-    const mAnk = ext(an, ['foot']).negate(), mKnee = ext(kn, ['foot', 'shank']).negate(), mHip = ext(hp, ['foot', 'shank', 'thigh']).negate();
+    const legL = (lv) => loads.filter((l) => l.side === k && lv.includes(l.at));
+    const ext = (about, segs, lv) => legL(lv).reduce((m, l) => m.add(torqueOf(l.p, l.F, about)), segs.reduce((m, nm) => m.add(torqueOf(segW(nm, k).cm, g(segW(nm, k).mass), about)), torqueOf(C, F, about)));
+    const mAnk = ext(an, ['foot'], ['foot']).negate(), mKnee = ext(kn, ['foot', 'shank'], ['foot', 'ankle', 'knee']).negate(), mHip = ext(hp, ['foot', 'shank', 'thigh'], ['foot', 'ankle', 'knee']).negate();
     // top-down upper limb (hand free): weight of the distal segments only
-    const extU = (about, segs) => segs.reduce((m, nm) => m.add(torqueOf(segW(nm, k).cm, g(segW(nm, k).mass), about)), new THREE.Vector3());
+    const handL = loads.filter((l) => l.side === k && l.at === 'hand');
+    const extU = (about, segs) => handL.reduce((m, l) => m.add(torqueOf(l.p, l.F, about)), segs.reduce((m, nm) => m.add(torqueOf(segW(nm, k).cm, g(segW(nm, k).mass), about)), new THREE.Vector3()));
     const mWr = extU(wr, ['hand']).negate(), mEl = extU(el, ['hand', 'forearm']).negate(), mSh = extU(sh, ['hand', 'forearm', 'upperarm']).negate();
     const flexAxisLimb = (u, v, fallback) => { const a = v.clone().normalize().cross(u.clone().normalize()); return a.length() > 0.2 ? a.normalize() : fallback; };
     const latOut = latP.clone().multiplyScalar(s), latOutT = latT.clone().multiplyScalar(s);
@@ -135,10 +141,11 @@ export function analyse(W, R, opts) {
   // lumbosacral, about the mid-hip point: top-down from head, trunk-above and arms
   const L5 = mid(W[23], W[24]);
   const above = S.filter((s) => ['head', 'trunk', 'upperarm', 'forearm', 'hand'].includes(s.name));
-  const mL5 = above.reduce((m, s) => m.add(torqueOf(s.cm, g(s.mass * (s.name === 'trunk' ? 32.29 / 43.46 : 1)), L5)), new THREE.Vector3()).negate();
+  const mL5 = loads.filter((l) => l.at === 'hand' || l.at === 'trunk').reduce((m, l) => m.add(torqueOf(l.p, l.F, L5)),
+    above.reduce((m, s) => m.add(torqueOf(s.cm, g(s.mass * (s.name === 'trunk' ? 32.29 / 43.46 : 1)), L5)), new THREE.Vector3())).negate();
   J.lumbar = { pos: L5, sag: mL5.dot(upP.clone().cross(antP).normalize()), groups: ['trunk_flexors', 'trunk_extensors'] };
 
-  return { com, grf, cop, wl, onL, onR, inside, J, Ftot, bodyWeightN: M * G };
+  return { com, grf, cop, wl, onL, onR, inside, J, Ftot, Fext, loads, bodyWeightN: M * G };
 }
 
 function pointInHull2D(p, pts, pad) {
