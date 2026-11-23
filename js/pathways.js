@@ -59,6 +59,12 @@ export async function setupPathways(B, scene, hooks) {
       else if (st.k === 't') { const L = tractFor(st.v, side); if (L) { tracts.push(L); add = centreLine(L, prev); } }
       else if (st.k === 'thal') { const t = thalamus(side); if (t) add = [t.clone()]; }
       else if (st.k === 'cord') { const c = cordPt(st.v, side); if (c) add = [c]; }
+      else if (st.k === 'n' || st.k === 'a') { // atlas nuclei (CIT168 / Harvard AAN); AAN missing -> labelled approximate brainstem station
+        const m = B.nucleusMesh?.(st.v, side);
+        if (m) { meshes.push(m); m.geometry.computeBoundingSphere(); add = [m.geometry.boundingSphere.center.clone()]; }
+        else if (st.k === 'a' && B.aanFallback?.[st.v]) { const fb = B.aanFallback[st.v], mm = fb[0] === 's' ? meshFor(fb[1], side) : named(fb[0] === 'pons' ? 'segment of metencephalon' : 'segment of hindbrain');
+          if (mm) { meshes.push(mm); mm.geometry.computeBoundingSphere(); add = [mm.geometry.boundingSphere.center.clone().addScaledVector(B.right || new THREE.Vector3(1, 0, 0), (side === 'R' ? 1 : -1) * 0.002)]; st.approx = fb[fb.length - 1]; } }
+      }
       else if (st.k === 'hind' || st.k === 'pons') { const m = named(st.k === 'hind' ? 'segment of hindbrain' : 'segment of metencephalon'); if (m) { meshes.push(m); m.geometry.computeBoundingSphere(); add = [m.geometry.boundingSphere.center.clone().addScaledVector(B.right || new THREE.Vector3(1, 0, 0), (side === 'R' ? 1 : -1) * 0.003)]; } }
       if (!add || !add.length) { missing.push(st.label); continue; }
       marks.push({ i: pts.length, label: st.label }); pts.push(...add);
@@ -70,6 +76,7 @@ export async function setupPathways(B, scene, hooks) {
     return { pts: clean, marks, meshes, tracts, missing, side };
   }
 
+  B.resolveRoute = (steps, side = 'L') => build({ steps: steps.map(([k, v, label]) => ({ k, v, label: label || v })) }, side);
   function show(pw, extra = false) {
     if (!extra) { clear(); P.cur = pw; }
     const R = build(pw, P.side);

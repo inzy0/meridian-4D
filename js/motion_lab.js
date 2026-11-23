@@ -66,6 +66,8 @@ export function labState() { return L; }
 if (typeof window !== "undefined") window.__anatomyLab = { L, get BIO() { return BIO; }, rec: (ids) => recognitionTest(ids), selfTest: () => selfTest(),
   pose: (p) => { L.demo = false; const { W } = landmarksFrom(commanded(p)); L.W = W; L.vis = null; L.src = "demo"; L.Fref = L.FrefRest; step(performance.now() / 1000); },
   view: (dir) => { const c = L.atlas.box.getCenter(new THREE.Vector3()), h = L.atlas.box.getSize(new THREE.Vector3()).y, A = L.atlas.anchors; const d = { front: [0, 0, A.anterior], side: [A.leftX, 0, 0], back: [0, 0, -A.anterior] }[dir]; L.camera.position.set(c.x + d[0] * h * 2.2, c.y, c.z + d[2] * h * 2.2); L.controls.target.copy(c); L.controls.update(); } }; // for inspection in the browser console
+// Movement studio (js/movement_studio.js) poses the twin itself and paints muscle roles through these.
+export function labHooks() { return { applyMatrices, applyLook, stopExercise, stopDemo: () => { L.demo = null; const b = $('#lab-demo'); if (b) b.textContent = 'Demo motion'; const n = $('#lab-demo-name'); if (n) n.textContent = ''; } }; }
 export function labExtras() { return { BIO, posedPoint, restLandmarks, LANDMARK_SEG }; }
 
 let labStarted = null;
@@ -99,6 +101,7 @@ async function startMotionLabInner() {
   setupUI();
   L.M = poseMatrices(L.rig, {}); applyMatrices();
   renderAudit();
+  import('./movement_studio.js').then((m) => m.initStudio()).catch((e) => console.error('movement studio', e));
   status.textContent = `${L.rig.segs.size} rigid segments · ${Object.keys(L.rig.J).length} joint centres · ${Object.keys(L.rig.LM).length} bony landmarks. Start the camera, or press Demo.`;
   subscribeFrames(onFrame);
   renderer.setAnimationLoop(tick);
@@ -193,7 +196,7 @@ function applyMatrices() {
 // ------------------------------------------------------------------ live frames (from the camera loop)
 const NEED = [0, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
 function onFrame(fr) {
-  if (!L.rig || L.demo || ($('#mode-lab').hidden && $('#mode-diag').hidden && !L.mirrorAR)) return;
+  if (!L.rig || L.demo || L.studio || ($('#mode-lab').hidden && $('#mode-diag').hidden && !L.mirrorAR)) return;
   const res = fr.pose; if (!res?.worldLandmarks?.length) return;
   const w = L.smoother.apply(res.worldLandmarks[0], fr.t);
   const vis = res.landmarks[0].map((p) => p.visibility ?? 1);
@@ -346,7 +349,7 @@ function twinAngles() {
 let uiT = 0;
 function tick(now) {
   if ($('#mode-lab').hidden) return;
-  if (L.exercise) exerciseStep(now / 1000); else if (L.demo) demoStep(now / 1000);
+  if (L.studio) L.studio.step(now / 1000); else if (L.exercise) exerciseStep(now / 1000); else if (L.demo) demoStep(now / 1000);
   if ($('#lab-autorot').checked) { const q = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), 0.004); L.camera.position.sub(L.controls.target).applyQuaternion(q).add(L.controls.target); }
   L.pc?.tick(); L.controls.update();
   L.renderer.render(L.scene, L.camera);
@@ -539,9 +542,9 @@ function setupUI() {
   $('#lab-show-lm').onchange = (e) => { L.showLM = e.target.checked; applyDepth(); };
   $('#lab-show-labels').onchange = (e) => { L.showLabels = e.target.checked; };
   $('#lab-ghost').onchange = (e) => { L.ghost.visible = e.target.checked; };
-  $('#lab-cam').onclick = async () => { await startMirror(); extern.pose = true; const v = $('#lab-video'); v.srcObject = $('#cam').srcObject; v.play().catch(() => {}); L.demo = null; $('#lab-demo').textContent = 'Demo motion'; $('#lab-demo-name').textContent = ''; };
+  $('#lab-cam').onclick = async () => { L.studio?.stop(); await startMirror(); extern.pose = true; const v = $('#lab-video'); v.srcObject = $('#cam').srcObject; v.play().catch(() => {}); L.demo = null; $('#lab-demo').textContent = 'Demo motion'; $('#lab-demo-name').textContent = ''; };
   $('#lab-calib').onclick = calibrate;
-  $('#lab-demo').onclick = () => { L.demo = L.demo ? null : true; $('#lab-demo').textContent = L.demo ? 'Stop demo' : 'Demo motion'; if (!L.demo) { $('#lab-demo-name').textContent = ''; } };
+  $('#lab-demo').onclick = () => { L.studio?.stop(); L.demo = L.demo ? null : true; $('#lab-demo').textContent = L.demo ? 'Stop demo' : 'Demo motion'; if (!L.demo) { $('#lab-demo-name').textContent = ''; } };
   $('#lab-selftest-btn').onclick = selfTest;
   setupViewAndCameras();
   setupExerciseLibrary();
@@ -1048,7 +1051,7 @@ function setupExerciseLibrary() {
   $('#ex-speed').oninput = () => { if (L.exercise) L.exercise.speed = +$('#ex-speed').value / 100; };
 }
 function startExercise(id) {
-  L.demo = false; L.exercise = { id, t0: performance.now() / 1000, speed: +$('#ex-speed').value / 100, phase: 0 };
+  L.studio?.stop(); L.demo = false; L.exercise = { id, t0: performance.now() / 1000, speed: +$('#ex-speed').value / 100, phase: 0 };
   const D = DRILLS.find((d) => d.id === id), prof = DRILL_SIM[id];
   const actions = new Set();
   for (const [k, v] of Object.entries(prof)) { const base = k.replace(/^[lr]/, ''); const a = PARAM_ACTION[base]; if (a) { actions.add(a); if (MUSCLE_ACTIONS[a]?.anta) actions.add(MUSCLE_ACTIONS[a].anta); } }

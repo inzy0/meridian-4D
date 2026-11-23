@@ -14,7 +14,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`).toLowerCase();
 const now = () => new Date().toISOString();
 const fmtT = (iso) => new Date(iso).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
-const TAB = { mirror: 'Live Mirror', lab: 'Motion Lab 4D', diag: 'Diagnostics', atlas: '3D Atlas', brain: 'Brain map', molecular: 'Body systems', clinical: 'Clinical', tests: 'Tests & labs', genome: 'DNA → Protein', imaging: 'Imaging', ext: 'Extensions' };
+const TAB = { mirror: 'Live Mirror', lab: 'Motion Lab 4D', diag: 'Diagnostics', atlas: '3D Atlas', brain: 'Brain map', molecular: 'Body systems', clinical: 'Clinical', tests: 'Tests & labs', genome: 'DNA → Protein', imaging: 'Imaging', train: 'Training 4D', ext: 'Extensions' };
 const EXT_OF = (type, name) => (name && /\.([a-z0-9]{2,5})$/i.test(name) ? name.split('.').pop().toLowerCase() : type.includes('webm') ? 'webm' : type.includes('ogg') ? 'ogg' : type.includes('mp4') ? 'mp4' : type.includes('png') ? 'png' : type.includes('jpeg') ? 'jpg' : type.includes('gif') ? 'gif' : type.includes('webp') ? 'webp' : type.includes('pdf') ? 'pdf' : type.includes('wav') ? 'wav' : type.includes('mpeg') ? 'mp3' : 'txt');
 
 // ------------------------------------------------------------------ storage (IndexedDB + project-folder mirror)

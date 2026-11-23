@@ -130,7 +130,7 @@ async function browseDrugs(q = '', cls = '') {
   $('#dr-cls').onchange = (e) => browseDrugs($('#dr-q').value, e.target.value);
   host.querySelectorAll('[data-drug]').forEach((b) => (b.onclick = () => openDrug(b.dataset.drug)));
 }
-async function openDrug(g) {
+export async function openDrug(g) {
   const d = await (await fetch(`/api/drugs/get?g=${encodeURIComponent(g)}`)).json(); const R = $('#cl-reader');
   if (d.error) { R.innerHTML = `<p class="muted">${esc(d.error)}</p>`; return; }
   window.__noteCtx = { hash: 'clinical', id: d.statpearls || null, label: `${d.generic.toLowerCase()} (drug)` };

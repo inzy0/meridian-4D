@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import { startMotionLab, labState, labExtras, bioOverlay } from './motion_lab.js';
 import { subscribeFrames, extern } from './mirror.js';
 import { studio, materialFor, tissueKind } from './look.js';
+import { FIT, refine, errors, drawLandmarks, alignment, startLearn, resetProportions } from './mirror_fit.js';
 
 const $ = (s) => document.querySelector(s);
 const REGIONS = [
@@ -33,10 +34,20 @@ export function initMirrorAR() {
   $('#ar-bio').addEventListener('change', (e) => { AR.bio = e.target.checked; const B = labExtras().BIO; B.on = AR.bio || $('#bio-on').checked; $('#ar-bio-out').hidden = !AR.bio; });
   $('#ar-showall').addEventListener('click', () => { AR.hidden.clear(); REGIONS.forEach(([k]) => { AR.regionState[k] = 'show'; }); document.querySelectorAll('.ar-reg').forEach((b) => { b.dataset.state = 'show'; }); applyLook(); });
   $('#ar-canvas').addEventListener('click', pickBone);
+  $('#ar-fitmode').addEventListener('change', (e) => { FIT.mode = e.target.value; FIT.err = { g: [], s: [] }; });
+  $('#ar-lm').addEventListener('change', (e) => { FIT.lm = e.target.checked; if (!FIT.lm) { const c = $('#ar-lm-canvas'); c.getContext('2d').clearRect(0, 0, c.width, c.height); } });
+  $('#ar-align').addEventListener('change', (e) => { FIT.align = e.target.checked; $('#ar-align-out').hidden = !FIT.align; });
+  $('#ar-learn').addEventListener('click', () => {
+    let n = 3; const b = $('#ar-learn'); b.disabled = true;
+    const tick = () => { if (n > 0) { $('#ar-fitmsg').textContent = `Stand still facing the camera, arms by your sides, whole body in view… ${n}`; n--; setTimeout(tick, 1000); return; }
+      $('#ar-fitmsg').textContent = 'Learning your proportions (2 s)…';
+      startLearn((out) => { b.disabled = false; const k = Object.keys(out); $('#ar-fitmsg').textContent = k.length ? `Learned ${k.length} segment lengths: ${k.map((x) => `${x.replace('_', ' ')} ×${out[x].toFixed(2)}`).join(', ')}. Saved in this browser.` : 'Not enough clear frames: keep the whole body in view, limbs straight, and try again.'; }); };
+    tick(); });
+  $('#ar-unlearn').addEventListener('click', () => { resetProportions(); $('#ar-fitmsg').textContent = 'Proportions reset to the reference skeleton.'; });
 }
 
 export async function setMirrorAR(on) {
-  AR.on = on; $('#ar-bar').hidden = !on; $('#ar-canvas').hidden = !on;
+  AR.on = on; $('#ar-bar').hidden = !on; $('#ar-canvas').hidden = !on; $('#ar-lm-canvas').hidden = !on; $('#ar-align-out').hidden = !on || !FIT.align;
   extern.pose = on || extern.pose;
   if (on && !AR.ready) {
     $('#ar-status').textContent = 'Loading the skeleton rig…';
@@ -117,8 +128,13 @@ function onFrame(fr) {
   if (src.length < 4) { $('#ar-status').textContent = 'Need the head and shoulders (4+ tracked points) in view to place the skeleton.'; AR.renderer.clear(); return; }
   const fit = fitSimilarity(src, dst, L);
   AR.fit = fit;
-  AR.groups.forEach((g, key) => { const m = L.M.get(key); if (m) { g.matrix.copy(m); g.matrixWorldNeedsUpdate = true; } });
+  const { M: Ms, used } = refine(L.rig, L.M, fit, raw, W, H);
+  AR.groups.forEach((g, key) => { const m = Ms.get(key); if (m) { g.matrix.copy(m); g.matrixWorldNeedsUpdate = true; } });
   setProjection(fit, W, H, L);
+  const lc = $('#ar-lm-canvas'); if (lc.width !== W || lc.height !== H) { lc.width = W; lc.height = H; }
+  drawLandmarks(lc.getContext('2d'), L.rig, Ms, fit, W, H);
+  const er = errors(L.rig, L.M, Ms, fit, raw, W, H);
+  if (FIT.align && fr.t - (AR.alignT || 0) > 0.25) { AR.alignT = fr.t; renderAlign(alignment(raw, W, H), er); }
   // force arrows, joint moment markers and centre of mass from the biomechanics model (same twin space)
   if (AR.bioClone) { AR.scene.remove(AR.bioClone); AR.bioClone = null; }
   const bg = AR.bio ? bioOverlay() : null;
@@ -126,7 +142,9 @@ function onFrame(fr) {
   AR.renderer.render(AR.scene, AR.cam);
   const cue = L.lastCue && performance.now() / 1000 - L.lastCue.t < 4 ? L.lastCue : null;
   const ce = $('#ar-cue'); ce.hidden = !cue; if (cue) { ce.textContent = cue.text; ce.className = `ar-cue ${cue.ok ? 'ok' : 'bad'}`; }
-  $('#ar-status').textContent = `Skeleton fitted to ${src.length} tracked joints · fit error ${fit.rms.toFixed(1)} px`;
+  const pct = (v) => (er.sw && v != null ? ` (${((100 * v) / er.sw).toFixed(1)}% of shoulder width)` : '');
+  $('#ar-status').textContent = `Whole-skeleton fit on ${src.length} joints: ${fit.rms.toFixed(1)} px rms · ${FIT.mode === 'segment' ? `${used} segments placed on your joints` : 'per-segment placement off'}` +
+    (er.heldG != null ? ` · held-out (eyes, heels) error: global ${er.heldG.toFixed(1)} px${pct(er.heldG)} → per-segment ${er.heldS.toFixed(1)} px${pct(er.heldS)} (mean of ${er.n} frames)` : '');
   if (AR.muscles && fr.t - lastLook > 0.3) { lastLook = fr.t; applyLook(); }
   if (AR.bio) renderBioHud(fr, W, H);
 }
@@ -159,6 +177,12 @@ function setProjection(f, W, H) {
   const P = new THREE.Matrix4().set(m00, m01, 0, m03, m10, m11, 0, m13, 0, 0, dz, 0, 0, 0, 0, 1);
   AR.cam.projectionMatrix.copy(P); AR.cam.projectionMatrixInverse.copy(P).invert();
   AR.cam.matrixWorld.identity(); AR.cam.matrixWorldInverse.identity();
+}
+
+function renderAlign(a, er) {
+  const host = $('#ar-align-out'); if (!host) return;
+  host.innerHTML = `<div><b>Alignment</b> · ${a.view === 'unknown' ? 'step fully into view' : `${a.view} view`}</div>` + a.rows.map(([n, , t]) => `<div>${n}: <b>${t}</b></div>`).join('') +
+    `<div class="muted">2D image-plane estimates from the tracked landmarks; depend on camera height and angle; not validated (gate V1).</div>`;
 }
 
 function pickBone(e) {

@@ -19,6 +19,7 @@ import { setupAutonomic, autonomicPanel, organHtml } from './autonomic.js';
 import { setupSpinal, spinalPanel, spinalLabels } from './spinal.js';
 import { setupZNerves, zCheck } from './znerves.js';
 import { setupPathways } from './pathways.js';
+import { setupNeurochem, neurochemPanel, regionCard, G_NET } from './neurochem.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -135,7 +136,22 @@ export async function startBrain() {
   camera.position.copy(B.center.clone().add(new THREE.Vector3(r * 0.9 * -A.leftX, r * 0.35, r * 0.9 * A.anterior))); controls.target.copy(B.center); controls.update();
   B.pc = pointerControls({ controls, camera, canvas, pick: surfacePicker(camera, canvas, () => B.meshes.filter((m) => m.visible)) }); B.pc.setHome();
 
+  try { B.ncInfo = await setupNeurochem(B, root, toAtlas); } catch (e) { console.error('neurochem', e); }
   buildUI(); autonomicPanel(B, selectOrgan); applyAll(); setupPicking(canvas);
+  neurochemPanel(B, {
+    cortex: (mode) => { // normal / ghost / hide / scatter the cerebral cortex so deep structures can be seen
+      const cortexGroups = new Set(['Frontal lobe', 'Parietal lobe', 'Temporal lobe', 'Occipital lobe', 'Insula', 'Limbic system', 'Cerebral white matter']);
+      document.querySelectorAll('[data-grp]').forEach((c) => { if (cortexGroups.has(c.dataset.grp)) c.checked = mode !== 'hide'; });
+      $('#br-cortex').value = mode === 'ghost' ? 12 : 100; $('#br-explode').value = mode === 'scatter' ? 60 : 0; applyAll();
+    },
+    showGroup: (g) => { const cb = document.querySelector(`[data-grp="${g}"]`); if (cb && !cb.checked) { cb.checked = true; applyAll(); } },
+    onShow: () => { // focus view: labels off, peripheral nerve layers off, cortex ghosted, so nuclei and live routes are visible
+      $('#br-labels').checked = false;
+      document.querySelectorAll('[data-grp]').forEach((c) => { if (/Z-Anatomy|Cranial nerves|Organs|Vertebral|Pelvis|Rib cage|Skull|arteries/.test(c.dataset.grp)) c.checked = false; });
+      document.querySelectorAll('[data-tr]').forEach((c) => { c.checked = false; });
+      $('#br-cortex').value = 12; applyAll();
+    },
+  });
   setupPathways(B, scene, { showTracts: (Ls) => { Ls.forEach((L) => { const cb = document.querySelector(`[data-tr="${L.userData.idx}"]`); if (cb) cb.checked = true; }); applyAll(); } }).catch((e) => console.error('pathways', e));
   spinalPanel(B, {
     isolate: () => {
@@ -167,7 +183,7 @@ function buildUI() {
     <br><b>Placement:</b> the atlas is in MNI space and is fitted to this body's brain by matching bounding boxes axis by axis (approximate; scale ${B.fit.map((f) => (f.sc * 1000).toFixed(3)).join(' / ')} mm per mm). Up to ${TJ.max_lines_per_tract} streamlines per tract are drawn, resampled to ${TJ.n_pts} points.
     <br><b>Brain structures, nerves, arteries:</b> BodyParts3D (DBCLS), CC BY 4.0.`;
   // regions (structure groups)
-  $('#br-regions').innerHTML = `<ul class="st-list">${[...B.groups.entries()].map(([g, ms]) => `<li><label><input type="checkbox" data-grp="${esc(g)}" ${g === 'Skull' || g === 'Cerebral arteries' || g === 'Rib cage' ? '' : 'checked'}> <span class="sw" style="background:${ms[0].userData.color}"></span> ${esc(g)} <small>${ms.length}</small></label></li>`).join('')}</ul>`;
+  $('#br-regions').innerHTML = `<ul class="st-list">${[...B.groups.entries()].map(([g, ms]) => `<li><label><input type="checkbox" data-grp="${esc(g)}" ${g === 'Skull' || g === 'Cerebral arteries' || g === 'Rib cage' || g === G_NET ? '' : 'checked'}> <span class="sw" style="background:${ms[0].userData.color}"></span> ${esc(g)} <small>${ms.length}</small></label></li>`).join('')}</ul>`;
   document.querySelectorAll('[data-grp]').forEach((cb) => (cb.onchange = applyAll));
   // tracts grouped by family
   const fam = new Map(); B.tracts.forEach((L) => { const c = L.userData.tract.category; if (!fam.has(c)) fam.set(c, []); fam.get(c).push(L); });
@@ -288,6 +304,7 @@ async function selectMesh(m) {
   const p = m.userData.part;
   $('#br-info').innerHTML = `<h3 class="st-h">${esc(p.name)}</h3><p class="fine">${esc(m.userData.group)} · BodyParts3D ${esc(p.id)}</p><div class="st-about"><p class="fine muted">Loading…</p></div>`;
   $('#br-info .st-about').innerHTML = await aboutHtml(p.name);
+  regionCard(m);
 }
 function setupPicking(canvas) {
   const ray = new THREE.Raycaster(); ray.params.Line.threshold = 0.0015; const ndc = new THREE.Vector2(), tip = $('#brain-pick');

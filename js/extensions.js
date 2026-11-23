@@ -37,6 +37,7 @@ export const EXT = [
   ['Histology', 'HistologyGuide', 'https://histologyguide.com/', 'Virtual microscope slides with descriptions.', 'free', ddg('histologyguide.com'), 'all rights reserved; personal use'],
   ['Histology', 'University of Michigan Virtual Slide Box', 'https://histology.medicine.umich.edu/', 'Histology and pathology virtual slides.', 'free', ddg('histology.medicine.umich.edu'), 'terms: see site'],
   ['Histology', 'Blue Histology (UWA)', 'https://www.lab.anhb.uwa.edu.au/mb140/', 'Histology tutorials.', 'free', null, 'terms: see site'],
+  ['Anatomy', 'The Folded Mind (neuropsychiatry 3D brain atlas)', 'https://thefoldedmind.com/en/', 'Clinician-made 3D brain on the MNI template: 104 structures, Panksepp systems, 8 neurotransmitter pathways, Yeo networks, 10 psychiatric diagnoses, 13 medications, MRI split view, weekly research newsletter.', 'free', ddg('thefoldedmind.com'), 'texts, images and design © A. M. Çetin: short quotes with attribution and link only; links only here (its open source atlases are used directly)'],
   ['Anatomy', 'Z-Anatomy', 'https://www.z-anatomy.com/', 'Open 3D atlas (its nerves are in this app’s Brain map).', 'free', null, 'CC BY-SA 4.0'],
   ['Anatomy', 'TeachMeAnatomy', 'https://teachmeanatomy.info/', 'Anatomy by region with clinical notes.', 'free', wp('https://teachmeanatomy.info'), 'terms: see site'],
   ['Anatomy', 'Kenhub', 'https://www.kenhub.com/', 'Anatomy articles and quizzes.', 'free tier', ddg('kenhub.com'), 'terms: see site'],

@@ -6,15 +6,16 @@
 <title>Meridian Anatomy Lab</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='14' fill='none' stroke='%236fd3ff' stroke-width='4'/%3E%3Cpath d='M24 3v8M24 37v8M3 24h8M37 24h8' stroke='%236fd3ff' stroke-width='4'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/meridian-4D/css/lab.css">
+<link rel="stylesheet" href="/meridian-4D/css/training.css">
 <script type="importmap">
 { "imports": {
   "three": "/meridian-4D/rt/vendor/three/three.module.js",
   "three/addons/": "/meridian-4D/rt/vendor/three/addons/"
 } }
 </script>
-<script>window.__STATIC_SITE = true; try { if (localStorage.getItem('nt-autoconv') === null) localStorage.setItem('nt-autoconv', '0'); } catch (e) {}</script>
+<script>window.__STATIC_SITE = true; try { if (localStorage.getItem('anatomy-lab-mode') === 'train') localStorage.removeItem('anatomy-lab-mode'); if (localStorage.getItem('nt-autoconv') === null) localStorage.setItem('nt-autoconv', '0'); } catch (e) {}</script>
 <script type="module" src="/meridian-4D/js/static_api.js"></script>
-<style>
+<style>.tabs [data-mode=train] { display: none !important; } 
 #static-banner { background: #2a1d05; color: #ffd166; font: 12px system-ui; padding: 6px 14px; border-bottom: 1px solid #ffd16655; } #static-banner a { color: #ffd166; }</style>
 </head>
 <body>
@@ -43,6 +44,7 @@
     <button role="tab" data-mode="tests" aria-selected="false">Tests &amp; labs</button>
     <button role="tab" data-mode="genome" aria-selected="false">DNA → Protein</button>
     <button role="tab" data-mode="imaging" aria-selected="false">Imaging</button>
+    <button role="tab" data-mode="train" aria-selected="false">Training 4D</button>
     <button role="tab" data-mode="ext" aria-selected="false">Extensions</button>
   </nav>
   <div class="chips">
@@ -60,7 +62,9 @@
       <canvas id="overlay"></canvas>
       <div class="hud-ring" aria-hidden="true"></div>
       <canvas id="ar-canvas" class="ar-canvas" hidden></canvas>
+      <canvas id="ar-lm-canvas" class="ar-canvas ar-lm" hidden></canvas>
       <div id="ar-bio-out" class="ar-bio" hidden></div>
+      <div id="ar-align-out" class="ar-align" hidden></div>
       <div id="ar-cue" class="ar-cue" hidden></div>
       <div id="lens" class="lens" hidden><canvas id="lens-gl"></canvas><canvas id="lens-hud"></canvas></div>
       <div class="stage-cta">
@@ -88,6 +92,10 @@
       <div class="grp"><span class="lbl">Look</span><label><input type="radio" name="ar-style" value="xray" checked> X-ray</label><label><input type="radio" name="ar-style" value="anat"> Anatomical</label>
         <span class="lbl">Opacity</span><input id="ar-opacity" type="range" min="10" max="100" value="75" aria-label="Skeleton opacity"></div>
       <div class="grp"><label><input id="ar-muscles" type="checkbox"> Muscles</label><label><input id="ar-bio" type="checkbox"> Biomechanics</label></div>
+      <div class="grp"><span class="lbl">Fit</span><select id="ar-fitmode" aria-label="Bone placement"><option value="segment">Per-segment: each bone on your joints</option><option value="global">Whole skeleton only</option></select>
+        <button id="ar-learn" class="ghost-btn">Learn my proportions</button><button id="ar-unlearn" class="ghost-btn">Reset</button>
+        <label><input id="ar-lm" type="checkbox" checked> Bony landmarks</label><label><input id="ar-align" type="checkbox" checked> Alignment</label></div>
+      <p id="ar-fitmsg" class="fine" style="margin:0;flex-basis:100%"></p>
       <p id="ar-status" class="fine" style="margin:0;flex-basis:100%">Click a region to cycle show → fade → hide. Click a bone on the image to hide it.</p>
     </div>
     <div id="scan-bar" class="scan-bar" hidden>
@@ -161,6 +169,7 @@
     </div>
   </section>
   <aside class="side">
+    <section class="card ms-card" id="ms-card"><h2>Movement studio 4D</h2><p class="fine">Loading…</p></section>
     <section class="card" id="ex-card"></section>
     <section class="card">
       <h2>Setup</h2>
@@ -297,6 +306,7 @@
       <div id="br-matrix-wrap"><canvas id="br-matrix" width="560" height="420"></canvas></div>
       <div id="br-conn" class="fine"></div>
     </section>
+    <section class="card"><div class="card-h"><h2>Neurochemistry, networks &amp; diagnoses (live)</h2></div><div id="br-nc" class="fine"></div></section>
     <section class="card"><div class="card-h"><h2>Signal pathways: inputs, outputs, feedback loops (live)</h2></div><div id="br-paths" class="fine"></div></section>
     <section class="card"><div class="card-h"><h2>Spinal cord: segments, roots, tracts</h2></div><div id="br-spinal" class="fine"></div></section>
     <section class="card"><div class="card-h"><h2>Spinal cord · autonomic nervous system · organs</h2><span class="btnrow"><button id="br-head" class="ghost-btn">Brain view</button><button id="br-body" class="ghost-btn">Whole-body view</button></span></div><div id="br-auto" class="fine"></div></section>
@@ -401,6 +411,10 @@
       <p class="fine">Cut planes slice the model the way CT and MRI slice the body (axial, coronal, sagittal). This is a single reference anatomy, not a scan.</p>
     </section>
     <section class="card">
+      <div class="card-h"><h2>Dissection table · movement</h2><a class="ghost-btn" href="#lab" id="atlas-to-studio" onclick="if (window.__studio) setTimeout(() => window.__studio.start('Hip abduction / adduction'), 60); else window.__pendingStudio = { base: 'Hip abduction / adduction' };">Open Movement studio</a></div>
+      <p class="fine">The same BodyParts3D body, posed: supine, prone, side-lying, seated, quadruped and more on a plinth or steel dissection table, performing each Training System movement with agonists, synergists, stabilisers and antagonists coloured. Use the Depth control there to dissect layer by layer.</p>
+    </section>
+    <section class="card">
       <h2>Find a structure</h2>
       <input id="atlas-search" type="search" placeholder="e.g. femur, deltoid, aorta" autocomplete="off">
       <ul id="atlas-results" class="results"></ul>
@@ -411,6 +425,12 @@
     </section>
     <p class="fine attrib">3D anatomy: BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International. Viewer © this project.</p>
   </aside>
+</main>
+
+<!-- ============================================================ TRAINING SYSTEM (owner's workbook) -->
+<main id="mode-train" class="mode train" hidden>
+  <nav class="tr-nav" id="tr-nav" aria-label="Training System pages"></nav>
+  <section class="tr-main" id="tr-main"><p class="muted">Loading the Training System…</p></section>
 </main>
 
 <!-- ============================================================ IMAGING -->
