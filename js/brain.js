@@ -20,6 +20,7 @@ import { setupSpinal, spinalPanel, spinalLabels } from './spinal.js';
 import { setupZNerves, zCheck } from './znerves.js';
 import { setupPathways } from './pathways.js';
 import { setupNeurochem, neurochemPanel, regionCard, G_NET } from './neurochem.js';
+import { areasPanel } from './areas.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -138,6 +139,11 @@ export async function startBrain() {
 
   try { B.ncInfo = await setupNeurochem(B, root, toAtlas); } catch (e) { console.error('neurochem', e); }
   buildUI(); autonomicPanel(B, selectOrgan); applyAll(); setupPicking(canvas);
+  areasPanel(B, { select: (m) => { // make it visible, fly to it, select it (card + region card)
+    const cb = document.querySelector(`[data-grp="${m.userData.group}"]`); if (cb && !cb.checked) { cb.checked = true; applyAll(); }
+    m.visible = true; m.geometry.computeBoundingSphere(); B.pc.flyTo(m.geometry.boundingSphere.center.clone(), Math.max(0.08, m.geometry.boundingSphere.radius * 6));
+    if (B.selMesh !== m) selectMesh(m);
+  } });
   neurochemPanel(B, {
     cortex: (mode) => { // normal / ghost / hide / scatter the cerebral cortex so deep structures can be seen
       const cortexGroups = new Set(['Frontal lobe', 'Parietal lobe', 'Temporal lobe', 'Occipital lobe', 'Insula', 'Limbic system', 'Cerebral white matter']);
