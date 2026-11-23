@@ -75,11 +75,37 @@ const H = {
   'exercises/custom'() { return { custom: [], workouts: [], sessions: [] }; },
 };
 
+// ---- Training 4D: Python in the browser (ts_worker.js); the visitor's profile / athletes kept in IndexedDB
+let TSW = null, tsSeq = 0; const tsWait = new Map();
+const idb = () => new Promise((res, rej) => { const r = indexedDB.open('meridian-ts', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+const kvGet = async (k) => { const d = await idb(); return new Promise((res) => { const q = d.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); }); };
+const kvSet = async (k, v) => { const d = await idb(); return new Promise((res) => { const t = d.transaction('kv', 'readwrite'); t.objectStore('kv').put(v, k); t.oncomplete = () => res(); t.onerror = () => res(); }); };
+function tsCall(msg) {
+  if (!TSW) {
+    TSW = new Worker(new URL('./ts_worker.js', import.meta.url));
+    TSW.onmessage = (e) => { const w = tsWait.get(e.data.id); if (w) { tsWait.delete(e.data.id); w(e.data); } };
+    TSW.__boot = (async () => { const [profile, athletes] = await Promise.all([kvGet('profile'), kvGet('athletes')]);
+      return new Promise((res) => { const id = ++tsSeq; tsWait.set(id, res); TSW.postMessage({ id, kind: 'boot', base: SAPI + 'ts/', state: { profile, athletes } }); }); })();
+  }
+  return TSW.__boot.then((b) => (b.ok ? new Promise((res) => { const id = ++tsSeq; tsWait.set(id, res); TSW.postMessage({ id, ...msg }); }) : b));
+}
+async function tsRoute(url, method, init) {
+  const path = url.pathname.replace(/^.*(\/api\/)/, '/api/');
+  if (/^\/api\/ts\/(sync|upload)/.test(path)) return json({ ok: false, error: 'Workbook sync is part of the owner\u2019s local app; the public site uses a fixed, privacy-cleaned copy.' }, 200);
+  const query = {}; url.searchParams.forEach((v, k) => { (query[k] ||= []).push(v); });
+  let body = {}; if (method !== 'GET' && init.body) { try { body = JSON.parse(init.body); } catch { body = {}; } }
+  const r = await tsCall({ method, path, query, body });
+  if (!r.ok) return json({ error: `Training engine (in-browser): ${r.error}` }, 500);
+  if (r.persist) { if (r.persist.profile) kvSet('profile', r.persist.profile); if (r.persist.athletes) kvSet('athletes', r.persist.athletes); }
+  return json(r.obj, r.code || 200);
+}
+
 window.fetch = async (input, init = {}) => {
   const url = new URL(typeof input === 'string' ? input : input.url, location.href);
   const m = url.pathname.match(/\/api\/(.+)$/);
   if (!m) return realFetch(input, init);
   const route = m[1], method = (init.method || (typeof input !== 'string' && input.method) || 'GET').toUpperCase();
+  if (/^(ts|ath)\//.test(route)) return tsRoute(url, method, init);
   if (method !== 'GET') return json({ ok: false, error: 'offline: the public site keeps this in your browser only' }, 503);
   const h = H[route];
   if (!h) return json({ error: 'not available on the public site' }, 404);
