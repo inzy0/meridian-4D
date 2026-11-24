@@ -44,6 +44,7 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
     <button role="tab" data-mode="lab" aria-selected="false">Motion Lab 4D</button>
     <button role="tab" data-mode="diag" aria-selected="false">Diagnostics</button>
     <button role="tab" data-mode="atlas" aria-selected="false">3D Atlas</button>
+    <button role="tab" data-mode="tissue" aria-selected="false">Tissue 4D</button>
     <button role="tab" data-mode="brain" aria-selected="false">Brain map</button>
     <button role="tab" data-mode="molecular" aria-selected="false">Body systems</button>
     <button role="tab" data-mode="clinical" aria-selected="false">Clinical</button>
@@ -375,6 +376,9 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
 <main id="mode-genome" class="mode" hidden><div id="gn-body"></div></main>
 
 <!-- ============================================================ EXTENSIONS -->
+<!-- ============================================================ TISSUE LAB 4D (js/tissue.js) -->
+<main id="mode-tissue" class="mode" hidden></main>
+
 <main id="mode-ext" class="mode" hidden>
   <section class="card"><div class="card-h"><h2>Extensions: free medical learning resources</h2></div>
     <p class="fine">Pathology, radiology, dermatology, histology, anatomy, sports medicine and rehabilitation, labs, drugs, genetics, literature, guidelines and exam learning. Links open each site in your browser; this page stores none of their content. Free to read unless marked otherwise; a "Premium" section lists paid resources worth the cost (links only, nothing copied).</p></section>
