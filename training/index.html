@@ -44,7 +44,6 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
     <button role="tab" data-mode="lab" aria-selected="false">Motion Lab 4D</button>
     <button role="tab" data-mode="diag" aria-selected="false">Diagnostics</button>
     <button role="tab" data-mode="atlas" aria-selected="false">3D Atlas</button>
-    <button role="tab" data-mode="tissue" aria-selected="false">Tissue 4D</button>
     <button role="tab" data-mode="brain" aria-selected="false">Brain map</button>
     <button role="tab" data-mode="molecular" aria-selected="false">Body systems</button>
     <button role="tab" data-mode="clinical" aria-selected="false">Clinical</button>
@@ -388,6 +387,7 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
 <!-- ============================================================ 3D ATLAS -->
 <main id="mode-atlas" class="mode" hidden>
   <section class="atlas-stage">
+    <div class="atlas-views"><a class="chip-btn on" href="#atlas">Structures</a><a class="chip-btn" href="#tissue">Tissue, fascia &amp; chains</a></div>
     <canvas id="atlas-canvas"></canvas>
     <div id="atlas-status" class="atlas-status muted">Open this tab to load the reference anatomy.</div>
     <div id="atlas-pick" class="atlas-pick" hidden></div>

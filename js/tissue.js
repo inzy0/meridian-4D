@@ -9,6 +9,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { loadAtlas } from './atlas_data.js';
 import { studio } from './look.js';
+import { chainsPanel, chainTick } from './tissue_chains.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -18,16 +19,16 @@ const CAT = {
   'joint (other)': ['Other joint tissue', '#9aa7c7'], other: ['Other', '#9aa7c7'],
 };
 const T = { started: false, atlas: null, scene: null, cam: null, ctl: null, ren: null, meshes: [], tissue: [], muscles: [], bones: [], nerves: [], tendons: [], book: null, know: null,
-  show: { bone: true, muscle: true, tendon: true, insertion: true, origin: false, ligament: true, capsule: true, meniscus: true, labrum: true, disc: false, fascia: false, bursa: true, nerve: true, 'joint (other)': false, other: false },
+  show: { skin: false, artery: false, vein: false, organ: false, cns: false, bone: true, muscle: true, tendon: true, insertion: true, origin: false, ligament: true, capsule: true, meniscus: true, labrum: true, disc: false, fascia: false, bursa: true, nerve: true, 'joint (other)': false, other: false },
   muscleOp: 0.28, side: 'left', focus: null, pulse: 0, task: null, P: null };
 
 export async function startTissue() {
   if (T.started) return; T.started = true;
   const host = $('#mode-tissue');
-  host.innerHTML = `<section class="stage-wrap"><div class="tis-stage"><canvas id="tis-canvas"></canvas><div id="tis-pick" class="atlas-pick" hidden></div><div id="tis-status" class="atlas-status muted">Loading…</div>
+  host.innerHTML = `<section class="stage-wrap"><div class="tis-stage"><div class="atlas-views"><a class="chip-btn" href="#atlas">Structures</a><a class="chip-btn on" href="#tissue">Tissue, fascia &amp; chains</a></div><canvas id="tis-canvas"></canvas><div id="tis-pick" class="atlas-pick" hidden></div><div id="tis-status" class="atlas-status muted">Loading…</div>
       <div class="tis-legend" id="tis-legend"></div></div>
       <div class="layers lab-bar" id="tis-bar"></div></section>
-    <aside class="side tis-side"><section class="card"><div class="bar tis-tabs">${[['explore', 'Explore'], ['map', 'Tendon map'], ['lab', '4D lab'], ['plan', 'Plan'], ['learn', 'Learn'], ['cards', 'Cards'], ['src', 'Sources']].map(([k, v], i) => `<button class="chip-btn ${i ? '' : 'on'}" data-t="${k}">${v}</button>`).join('')}</div></section><div id="tis-panel"></div></aside>`;
+    <aside class="side tis-side"><section class="card"><div class="bar tis-tabs">${[['explore', 'Explore'], ['chains', 'Fascial chains'], ['map', 'Tendon map'], ['lab', '4D lab'], ['plan', 'Plan'], ['learn', 'Learn'], ['cards', 'Cards'], ['src', 'Sources']].map(([k, v], i) => `<button class="chip-btn ${i ? '' : 'on'}" data-t="${k}">${v}</button>`).join('')}</div></section><div id="tis-panel"></div></aside>`;
   host.querySelectorAll('[data-t]').forEach((b) => (b.onclick = () => { host.querySelectorAll('[data-t]').forEach((x) => x.classList.toggle('on', x === b)); panel(b.dataset.t); }));
   const [book, know] = await Promise.all([fetch('/meridian-4D/rt/tissue/booklet.json').then((r) => r.json()).catch(() => null), fetch('/meridian-4D/rt/tissue/knowledge.json').then((r) => r.json()).catch(() => null)]);
   T.book = book; T.know = know;
@@ -50,8 +51,9 @@ async function scene3d() {
   const mat = (color, op = 1, extra = {}) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.5, clearcoat: 0.25, transparent: op < 1, opacity: op, depthWrite: op >= 0.6, side: THREE.DoubleSide, ...extra });
   for (const { part, geometry } of A.parts) {
     let kind = null;
-    if (part.layer === 'skeleton') kind = 'bone'; else if (part.layer === 'muscles') kind = /tendon/i.test(part.name) ? 'tendon' : 'muscle';
+    if (part.layer === 'skeleton') kind = 'bone'; else if (part.layer === 'muscles') kind = /tendon/i.test(part.name) ? 'tendon' : 'muscle'; else kind = { skin: 'skin', arteries: 'artery', veins: 'vein', organs: 'organ', nerves: 'cns' }[part.layer];
     if (!kind) continue;
+    if (['skin', 'artery', 'vein', 'organ', 'cns'].includes(kind)) { const lc = { skin: 0xd9b59a, artery: 0xff3b3b, vein: 0x4d7cff, organ: 0xe9a6ff, cns: 0xffd84d }[kind], op = kind === 'skin' ? 0.25 : 1; const m = new THREE.Mesh(geometry, mat(lc, op)); m.userData = { kind, name: part.name, side: /left/.test(part.name) ? 'left' : /right/.test(part.name) ? 'right' : null, base: op }; m.visible = false; scene.add(m); T.meshes.push(m); continue; }
     const m = new THREE.Mesh(geometry, mat(kind === 'bone' ? 0xf1ead8 : kind === 'tendon' ? 0xf6f1de : 0xd9545f, kind === 'muscle' ? T.muscleOp : 1, kind === 'tendon' ? { emissive: 0x000000 } : {}));
     m.userData = { kind, name: part.name, side: /\bleft\b/.test(part.name) ? 'left' : /\bright\b/.test(part.name) ? 'right' : null };
     scene.add(m); T.meshes.push(m); (kind === 'bone' ? T.bones : kind === 'tendon' ? T.tendons : T.muscles).push(m);
@@ -64,6 +66,7 @@ async function scene3d() {
     for (let i = 0; i < p.vCount; i++) { const o = (p.vOff + i) * 3, v = T.P(pos[o], pos[o + 1], pos[o + 2]); arr[3 * i] = v.x; arr[3 * i + 1] = v.y; arr[3 * i + 2] = v.z; }
     const ii = new Uint32Array(p.iCount); for (let i = 0; i < p.iCount; i++) ii[i] = idx[p.iOff + i] - 0;
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(arr, 3)); g.setIndex(new THREE.BufferAttribute(ii, 1)); g.computeVertexNormals(); g.computeBoundingSphere();
+    if (p.cat === 'muscle') { const m = new THREE.Mesh(g, mat(0xd9545f, T.muscleOp)); m.userData = { kind: 'muscle', name: `${p.side ? `${p.side} ` : ''}${p.n}`, raw: p.raw, side: p.side, part: p, z: true }; scene.add(m); T.meshes.push(m); T.muscles.push(m); continue; }
     const col = (CAT[p.cat] || CAT.other)[1], op = p.cat === 'fascia' ? 0.35 : p.cat === 'bursa' ? 0.7 : 1;
     const m = new THREE.Mesh(g, mat(col, op)); m.userData = { kind: p.cat, name: `${p.side ? `${p.side} ` : ''}${p.n}`, raw: p.raw, side: p.side, part: p, base: op };
     scene.add(m); T.meshes.push(m); T.tissue.push(m);
@@ -88,13 +91,13 @@ async function scene3d() {
   cam.position.set(cc.x, cc.y, cc.z + (A.anchors.anterior || 1) * h * 2.2); ctl.target.copy(cc); ctl.update(); T.home = { pos: cam.position.clone(), tgt: cc.clone() };
   status.textContent = `${meta.parts.length} tissue parts (${Object.entries(meta.counts).map(([k, n]) => `${n} ${k}`).join(', ')}) · ${T.muscles.length} muscles · ${T.bones.length} bones. Click any structure.`;
   bar(); applyLook(); pickSetup();
-  const tick = (t) => { requestAnimationFrame(tick); if ($('#mode-tissue').hidden) return; ctl.update(); pulse(t); ren.render(scene, cam); };
+  const tick = (t) => { requestAnimationFrame(tick); if ($('#mode-tissue').hidden) return; ctl.update(); pulse(t); chainTick(t); ren.render(scene, cam); };
   requestAnimationFrame(tick);
 }
 function bar() {
-  const n = (k) => (k === 'bone' ? T.bones.length : k === 'muscle' ? T.muscles.length : k === 'tendon' ? T.tendons.length : k === 'nerve' ? 'Z' : T.meta.counts[k] || 0);
-  const label = { bone: 'Bones', muscle: 'Muscles', tendon: 'Tendons', nerve: 'Nerves', ...Object.fromEntries(Object.entries(CAT).map(([k, v]) => [k, v[0]])) };
-  const col = { bone: '#f1ead8', muscle: '#d9545f', tendon: '#f6f1de', nerve: '#ffd84d', ...Object.fromEntries(Object.entries(CAT).map(([k, v]) => [k, v[1]])) };
+  const n = (k) => (k === 'bone' ? T.bones.length : k === 'muscle' ? T.muscles.length : k === 'tendon' ? T.tendons.length : k === 'nerve' ? 'Z' : ['skin', 'artery', 'vein', 'organ', 'cns'].includes(k) ? T.meshes.filter((m) => m.userData.kind === k).length : T.meta.counts[k] || 0);
+  const label = { skin: 'Skin', artery: 'Arteries', vein: 'Veins', organ: 'Organs', cns: 'Brain & cord', bone: 'Bones', muscle: 'Muscles', tendon: 'Tendons', nerve: 'Peripheral nerves', ...Object.fromEntries(Object.entries(CAT).map(([k, v]) => [k, v[0]])) };
+  const col = { skin: '#d9b59a', artery: '#ff3b3b', vein: '#4d7cff', organ: '#e9a6ff', cns: '#ffd84d', bone: '#f1ead8', muscle: '#d9545f', tendon: '#f6f1de', nerve: '#ffd84d', ...Object.fromEntries(Object.entries(CAT).map(([k, v]) => [k, v[1]])) };
   $('#tis-bar').innerHTML = Object.keys(T.show).map((k) => `<label><input type="checkbox" data-s="${k}" ${T.show[k] ? 'checked' : ''}> <i class="sw" style="background:${col[k]}"></i>${label[k]} <small>${n(k)}</small></label>`).join('')
     + `<label>Muscle opacity <input type="range" id="tis-mop" min="0" max="100" value="${Math.round(T.muscleOp * 100)}"></label><label>Side <select id="tis-side"><option value="left">Left</option><option value="right">Right</option><option value="both">Both</option></select></label><button class="ghost-btn" id="tis-home">Reset view</button>`;
   $('#tis-bar').querySelectorAll('[data-s]').forEach((c) => (c.onchange = () => { T.show[c.dataset.s] = c.checked; applyLook(); }));
@@ -168,6 +171,7 @@ function pulse(t) {
 // ------------------------------------------------------------------ panels
 function panel(t) {
   const P = $('#tis-panel'); if (!T.book) { P.innerHTML = '<section class="card"><p class="muted">Tissue data not built yet (tools/tissue_build.py).</p></section>'; return; }
+  if (t === 'chains') { chainsPanel(P, T, md, (set) => { T.focus = set ? { key: null, set, near: [], nerves: [] } : null; if (set) ['muscle', 'fascia', 'ligament', 'tendon'].forEach((k) => { T.show[k] = true; }); bar(); applyLook(); }); return; }
   ({ explore, map: tendonMap, lab: lab4d, plan, learn, cards, src: sources })[t](P);
 }
 function explore(P) {

@@ -7,7 +7,8 @@ let labLoaded = false;
 let brainLoaded = false;
 
 function setMode(mode) {
-  document.querySelectorAll('.tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.mode === mode)));
+  const tab = mode === 'tissue' ? 'atlas' : mode; // Tissue, fascia & chains is the second view of the 3D Atlas tab
+  document.querySelectorAll('.tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.mode === tab)));
   document.querySelectorAll('main.mode').forEach((m) => { m.hidden = m.id !== `mode-${mode}`; });
   if (mode === 'atlas' && !atlasLoaded) {
     atlasLoaded = true;
