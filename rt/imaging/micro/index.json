@@ -1,0 +1,3093 @@
+{
+"source": "MedMNIST+ (Zenodo 10.5281/zenodo.10519652), licence cc-by-4.0",
+"sets": {
+"pathmnist": {
+"title": "Colorectal tissue (H&E)",
+"labels": {
+"0": "adipose",
+"1": "background",
+"2": "debris",
+"3": "lymphocytes",
+"4": "mucus",
+"5": "smooth muscle",
+"6": "normal colon mucosa",
+"7": "cancer-associated stroma",
+"8": "colorectal adenocarcinoma epithelium"
+},
+"items": [
+{
+"file": "8_0.jpg",
+"cls": 8
+},
+{
+"file": "4_1.jpg",
+"cls": 4
+},
+{
+"file": "4_2.jpg",
+"cls": 4
+},
+{
+"file": "8_3.jpg",
+"cls": 8
+},
+{
+"file": "4_4.jpg",
+"cls": 4
+},
+{
+"file": "4_5.jpg",
+"cls": 4
+},
+{
+"file": "8_6.jpg",
+"cls": 8
+},
+{
+"file": "0_7.jpg",
+"cls": 0
+},
+{
+"file": "6_8.jpg",
+"cls": 6
+},
+{
+"file": "8_9.jpg",
+"cls": 8
+},
+{
+"file": "8_10.jpg",
+"cls": 8
+},
+{
+"file": "6_11.jpg",
+"cls": 6
+},
+{
+"file": "8_12.jpg",
+"cls": 8
+},
+{
+"file": "6_13.jpg",
+"cls": 6
+},
+{
+"file": "0_14.jpg",
+"cls": 0
+},
+{
+"file": "5_15.jpg",
+"cls": 5
+},
+{
+"file": "0_16.jpg",
+"cls": 0
+},
+{
+"file": "2_17.jpg",
+"cls": 2
+},
+{
+"file": "0_18.jpg",
+"cls": 0
+},
+{
+"file": "5_19.jpg",
+"cls": 5
+},
+{
+"file": "2_20.jpg",
+"cls": 2
+},
+{
+"file": "0_21.jpg",
+"cls": 0
+},
+{
+"file": "1_22.jpg",
+"cls": 1
+},
+{
+"file": "8_23.jpg",
+"cls": 8
+},
+{
+"file": "8_24.jpg",
+"cls": 8
+},
+{
+"file": "0_25.jpg",
+"cls": 0
+},
+{
+"file": "1_26.jpg",
+"cls": 1
+},
+{
+"file": "6_27.jpg",
+"cls": 6
+},
+{
+"file": "6_28.jpg",
+"cls": 6
+},
+{
+"file": "0_29.jpg",
+"cls": 0
+},
+{
+"file": "0_30.jpg",
+"cls": 0
+},
+{
+"file": "8_31.jpg",
+"cls": 8
+},
+{
+"file": "0_32.jpg",
+"cls": 0
+},
+{
+"file": "0_33.jpg",
+"cls": 0
+},
+{
+"file": "1_34.jpg",
+"cls": 1
+},
+{
+"file": "7_35.jpg",
+"cls": 7
+},
+{
+"file": "5_36.jpg",
+"cls": 5
+},
+{
+"file": "3_37.jpg",
+"cls": 3
+},
+{
+"file": "4_38.jpg",
+"cls": 4
+},
+{
+"file": "6_39.jpg",
+"cls": 6
+},
+{
+"file": "5_40.jpg",
+"cls": 5
+},
+{
+"file": "6_41.jpg",
+"cls": 6
+},
+{
+"file": "4_42.jpg",
+"cls": 4
+},
+{
+"file": "8_43.jpg",
+"cls": 8
+},
+{
+"file": "0_44.jpg",
+"cls": 0
+},
+{
+"file": "3_45.jpg",
+"cls": 3
+},
+{
+"file": "6_46.jpg",
+"cls": 6
+},
+{
+"file": "2_47.jpg",
+"cls": 2
+},
+{
+"file": "6_48.jpg",
+"cls": 6
+},
+{
+"file": "7_49.jpg",
+"cls": 7
+},
+{
+"file": "3_50.jpg",
+"cls": 3
+},
+{
+"file": "1_51.jpg",
+"cls": 1
+},
+{
+"file": "3_52.jpg",
+"cls": 3
+},
+{
+"file": "3_53.jpg",
+"cls": 3
+},
+{
+"file": "0_54.jpg",
+"cls": 0
+},
+{
+"file": "1_55.jpg",
+"cls": 1
+},
+{
+"file": "7_56.jpg",
+"cls": 7
+},
+{
+"file": "0_57.jpg",
+"cls": 0
+},
+{
+"file": "0_58.jpg",
+"cls": 0
+},
+{
+"file": "0_59.jpg",
+"cls": 0
+},
+{
+"file": "4_60.jpg",
+"cls": 4
+},
+{
+"file": "4_61.jpg",
+"cls": 4
+},
+{
+"file": "4_62.jpg",
+"cls": 4
+},
+{
+"file": "0_63.jpg",
+"cls": 0
+},
+{
+"file": "8_64.jpg",
+"cls": 8
+},
+{
+"file": "3_65.jpg",
+"cls": 3
+},
+{
+"file": "4_66.jpg",
+"cls": 4
+},
+{
+"file": "0_67.jpg",
+"cls": 0
+},
+{
+"file": "7_68.jpg",
+"cls": 7
+},
+{
+"file": "4_69.jpg",
+"cls": 4
+},
+{
+"file": "0_70.jpg",
+"cls": 0
+},
+{
+"file": "8_71.jpg",
+"cls": 8
+},
+{
+"file": "0_72.jpg",
+"cls": 0
+},
+{
+"file": "6_73.jpg",
+"cls": 6
+},
+{
+"file": "2_74.jpg",
+"cls": 2
+},
+{
+"file": "6_75.jpg",
+"cls": 6
+},
+{
+"file": "7_76.jpg",
+"cls": 7
+},
+{
+"file": "1_77.jpg",
+"cls": 1
+},
+{
+"file": "1_78.jpg",
+"cls": 1
+},
+{
+"file": "2_79.jpg",
+"cls": 2
+},
+{
+"file": "3_80.jpg",
+"cls": 3
+},
+{
+"file": "0_81.jpg",
+"cls": 0
+},
+{
+"file": "4_82.jpg",
+"cls": 4
+},
+{
+"file": "0_83.jpg",
+"cls": 0
+},
+{
+"file": "3_84.jpg",
+"cls": 3
+},
+{
+"file": "8_85.jpg",
+"cls": 8
+},
+{
+"file": "4_86.jpg",
+"cls": 4
+},
+{
+"file": "0_87.jpg",
+"cls": 0
+},
+{
+"file": "0_88.jpg",
+"cls": 0
+},
+{
+"file": "4_89.jpg",
+"cls": 4
+},
+{
+"file": "8_90.jpg",
+"cls": 8
+},
+{
+"file": "5_91.jpg",
+"cls": 5
+},
+{
+"file": "8_92.jpg",
+"cls": 8
+},
+{
+"file": "0_93.jpg",
+"cls": 0
+},
+{
+"file": "3_94.jpg",
+"cls": 3
+},
+{
+"file": "4_95.jpg",
+"cls": 4
+},
+{
+"file": "8_96.jpg",
+"cls": 8
+},
+{
+"file": "0_97.jpg",
+"cls": 0
+},
+{
+"file": "0_98.jpg",
+"cls": 0
+},
+{
+"file": "1_99.jpg",
+"cls": 1
+},
+{
+"file": "8_100.jpg",
+"cls": 8
+},
+{
+"file": "3_101.jpg",
+"cls": 3
+},
+{
+"file": "8_102.jpg",
+"cls": 8
+},
+{
+"file": "3_103.jpg",
+"cls": 3
+},
+{
+"file": "3_104.jpg",
+"cls": 3
+},
+{
+"file": "3_105.jpg",
+"cls": 3
+},
+{
+"file": "4_106.jpg",
+"cls": 4
+},
+{
+"file": "0_107.jpg",
+"cls": 0
+},
+{
+"file": "1_108.jpg",
+"cls": 1
+},
+{
+"file": "1_109.jpg",
+"cls": 1
+},
+{
+"file": "4_110.jpg",
+"cls": 4
+},
+{
+"file": "0_111.jpg",
+"cls": 0
+},
+{
+"file": "1_112.jpg",
+"cls": 1
+},
+{
+"file": "1_113.jpg",
+"cls": 1
+},
+{
+"file": "2_114.jpg",
+"cls": 2
+},
+{
+"file": "3_115.jpg",
+"cls": 3
+},
+{
+"file": "1_116.jpg",
+"cls": 1
+},
+{
+"file": "0_117.jpg",
+"cls": 0
+},
+{
+"file": "8_118.jpg",
+"cls": 8
+},
+{
+"file": "4_119.jpg",
+"cls": 4
+},
+{
+"file": "0_120.jpg",
+"cls": 0
+},
+{
+"file": "4_121.jpg",
+"cls": 4
+},
+{
+"file": "6_122.jpg",
+"cls": 6
+},
+{
+"file": "8_123.jpg",
+"cls": 8
+},
+{
+"file": "4_124.jpg",
+"cls": 4
+},
+{
+"file": "8_126.jpg",
+"cls": 8
+},
+{
+"file": "1_127.jpg",
+"cls": 1
+},
+{
+"file": "4_128.jpg",
+"cls": 4
+},
+{
+"file": "5_129.jpg",
+"cls": 5
+},
+{
+"file": "8_131.jpg",
+"cls": 8
+},
+{
+"file": "8_132.jpg",
+"cls": 8
+},
+{
+"file": "8_134.jpg",
+"cls": 8
+},
+{
+"file": "4_135.jpg",
+"cls": 4
+},
+{
+"file": "3_138.jpg",
+"cls": 3
+},
+{
+"file": "1_139.jpg",
+"cls": 1
+},
+{
+"file": "8_140.jpg",
+"cls": 8
+},
+{
+"file": "6_141.jpg",
+"cls": 6
+},
+{
+"file": "7_142.jpg",
+"cls": 7
+},
+{
+"file": "8_143.jpg",
+"cls": 8
+},
+{
+"file": "4_144.jpg",
+"cls": 4
+},
+{
+"file": "1_146.jpg",
+"cls": 1
+},
+{
+"file": "2_147.jpg",
+"cls": 2
+},
+{
+"file": "3_148.jpg",
+"cls": 3
+},
+{
+"file": "4_149.jpg",
+"cls": 4
+},
+{
+"file": "5_150.jpg",
+"cls": 5
+},
+{
+"file": "5_151.jpg",
+"cls": 5
+},
+{
+"file": "4_153.jpg",
+"cls": 4
+},
+{
+"file": "8_154.jpg",
+"cls": 8
+},
+{
+"file": "1_155.jpg",
+"cls": 1
+},
+{
+"file": "7_156.jpg",
+"cls": 7
+},
+{
+"file": "1_158.jpg",
+"cls": 1
+},
+{
+"file": "6_159.jpg",
+"cls": 6
+},
+{
+"file": "1_160.jpg",
+"cls": 1
+},
+{
+"file": "4_161.jpg",
+"cls": 4
+},
+{
+"file": "5_162.jpg",
+"cls": 5
+},
+{
+"file": "6_163.jpg",
+"cls": 6
+},
+{
+"file": "1_164.jpg",
+"cls": 1
+},
+{
+"file": "8_165.jpg",
+"cls": 8
+},
+{
+"file": "2_166.jpg",
+"cls": 2
+},
+{
+"file": "5_168.jpg",
+"cls": 5
+},
+{
+"file": "3_170.jpg",
+"cls": 3
+},
+{
+"file": "4_171.jpg",
+"cls": 4
+},
+{
+"file": "6_172.jpg",
+"cls": 6
+},
+{
+"file": "3_173.jpg",
+"cls": 3
+},
+{
+"file": "2_175.jpg",
+"cls": 2
+},
+{
+"file": "7_176.jpg",
+"cls": 7
+},
+{
+"file": "4_177.jpg",
+"cls": 4
+},
+{
+"file": "8_178.jpg",
+"cls": 8
+},
+{
+"file": "8_179.jpg",
+"cls": 8
+},
+{
+"file": "5_182.jpg",
+"cls": 5
+},
+{
+"file": "7_183.jpg",
+"cls": 7
+},
+{
+"file": "4_185.jpg",
+"cls": 4
+},
+{
+"file": "1_186.jpg",
+"cls": 1
+},
+{
+"file": "4_189.jpg",
+"cls": 4
+},
+{
+"file": "7_190.jpg",
+"cls": 7
+},
+{
+"file": "7_196.jpg",
+"cls": 7
+},
+{
+"file": "1_199.jpg",
+"cls": 1
+},
+{
+"file": "7_203.jpg",
+"cls": 7
+},
+{
+"file": "3_207.jpg",
+"cls": 3
+},
+{
+"file": "1_209.jpg",
+"cls": 1
+},
+{
+"file": "1_215.jpg",
+"cls": 1
+},
+{
+"file": "1_216.jpg",
+"cls": 1
+},
+{
+"file": "3_218.jpg",
+"cls": 3
+},
+{
+"file": "6_219.jpg",
+"cls": 6
+},
+{
+"file": "7_220.jpg",
+"cls": 7
+},
+{
+"file": "2_222.jpg",
+"cls": 2
+},
+{
+"file": "2_226.jpg",
+"cls": 2
+},
+{
+"file": "1_227.jpg",
+"cls": 1
+},
+{
+"file": "1_228.jpg",
+"cls": 1
+},
+{
+"file": "5_229.jpg",
+"cls": 5
+},
+{
+"file": "5_230.jpg",
+"cls": 5
+},
+{
+"file": "3_234.jpg",
+"cls": 3
+},
+{
+"file": "7_235.jpg",
+"cls": 7
+},
+{
+"file": "6_239.jpg",
+"cls": 6
+},
+{
+"file": "2_241.jpg",
+"cls": 2
+},
+{
+"file": "3_242.jpg",
+"cls": 3
+},
+{
+"file": "6_243.jpg",
+"cls": 6
+},
+{
+"file": "5_245.jpg",
+"cls": 5
+},
+{
+"file": "7_250.jpg",
+"cls": 7
+},
+{
+"file": "3_251.jpg",
+"cls": 3
+},
+{
+"file": "6_253.jpg",
+"cls": 6
+},
+{
+"file": "3_254.jpg",
+"cls": 3
+},
+{
+"file": "3_256.jpg",
+"cls": 3
+},
+{
+"file": "1_258.jpg",
+"cls": 1
+},
+{
+"file": "3_261.jpg",
+"cls": 3
+},
+{
+"file": "7_263.jpg",
+"cls": 7
+},
+{
+"file": "3_265.jpg",
+"cls": 3
+},
+{
+"file": "5_270.jpg",
+"cls": 5
+},
+{
+"file": "6_271.jpg",
+"cls": 6
+},
+{
+"file": "2_273.jpg",
+"cls": 2
+},
+{
+"file": "6_278.jpg",
+"cls": 6
+},
+{
+"file": "7_279.jpg",
+"cls": 7
+},
+{
+"file": "1_284.jpg",
+"cls": 1
+},
+{
+"file": "5_285.jpg",
+"cls": 5
+},
+{
+"file": "1_289.jpg",
+"cls": 1
+},
+{
+"file": "3_290.jpg",
+"cls": 3
+},
+{
+"file": "3_294.jpg",
+"cls": 3
+},
+{
+"file": "5_297.jpg",
+"cls": 5
+},
+{
+"file": "6_298.jpg",
+"cls": 6
+},
+{
+"file": "7_300.jpg",
+"cls": 7
+},
+{
+"file": "7_304.jpg",
+"cls": 7
+},
+{
+"file": "3_308.jpg",
+"cls": 3
+},
+{
+"file": "5_313.jpg",
+"cls": 5
+},
+{
+"file": "5_315.jpg",
+"cls": 5
+},
+{
+"file": "7_330.jpg",
+"cls": 7
+},
+{
+"file": "6_333.jpg",
+"cls": 6
+},
+{
+"file": "5_343.jpg",
+"cls": 5
+},
+{
+"file": "5_348.jpg",
+"cls": 5
+},
+{
+"file": "5_353.jpg",
+"cls": 5
+},
+{
+"file": "6_358.jpg",
+"cls": 6
+},
+{
+"file": "7_364.jpg",
+"cls": 7
+},
+{
+"file": "6_366.jpg",
+"cls": 6
+},
+{
+"file": "7_368.jpg",
+"cls": 7
+},
+{
+"file": "6_370.jpg",
+"cls": 6
+},
+{
+"file": "6_372.jpg",
+"cls": 6
+},
+{
+"file": "7_380.jpg",
+"cls": 7
+},
+{
+"file": "2_383.jpg",
+"cls": 2
+},
+{
+"file": "7_392.jpg",
+"cls": 7
+},
+{
+"file": "5_393.jpg",
+"cls": 5
+},
+{
+"file": "6_397.jpg",
+"cls": 6
+},
+{
+"file": "2_399.jpg",
+"cls": 2
+},
+{
+"file": "7_407.jpg",
+"cls": 7
+},
+{
+"file": "5_409.jpg",
+"cls": 5
+},
+{
+"file": "5_411.jpg",
+"cls": 5
+},
+{
+"file": "6_414.jpg",
+"cls": 6
+},
+{
+"file": "7_420.jpg",
+"cls": 7
+},
+{
+"file": "7_426.jpg",
+"cls": 7
+},
+{
+"file": "7_433.jpg",
+"cls": 7
+},
+{
+"file": "2_434.jpg",
+"cls": 2
+},
+{
+"file": "7_436.jpg",
+"cls": 7
+},
+{
+"file": "7_438.jpg",
+"cls": 7
+},
+{
+"file": "5_449.jpg",
+"cls": 5
+},
+{
+"file": "5_459.jpg",
+"cls": 5
+},
+{
+"file": "5_471.jpg",
+"cls": 5
+},
+{
+"file": "5_472.jpg",
+"cls": 5
+},
+{
+"file": "5_477.jpg",
+"cls": 5
+},
+{
+"file": "2_480.jpg",
+"cls": 2
+},
+{
+"file": "2_482.jpg",
+"cls": 2
+},
+{
+"file": "2_532.jpg",
+"cls": 2
+},
+{
+"file": "2_571.jpg",
+"cls": 2
+},
+{
+"file": "2_575.jpg",
+"cls": 2
+},
+{
+"file": "2_600.jpg",
+"cls": 2
+},
+{
+"file": "2_635.jpg",
+"cls": 2
+},
+{
+"file": "2_646.jpg",
+"cls": 2
+},
+{
+"file": "2_647.jpg",
+"cls": 2
+},
+{
+"file": "2_655.jpg",
+"cls": 2
+},
+{
+"file": "2_657.jpg",
+"cls": 2
+},
+{
+"file": "2_670.jpg",
+"cls": 2
+},
+{
+"file": "2_688.jpg",
+"cls": 2
+},
+{
+"file": "2_704.jpg",
+"cls": 2
+}
+],
+"shape": [
+224,
+224,
+3
+],
+"cite": "Kather JN et al. (2019) PLoS Med 16(1):e1002730, CRC-VAL-HE-7K; via MedMNIST+ (Yang et al. 2023), CC BY 4.0",
+"stain": {
+"pmcid": "PMC6345440",
+"text": "HE-stained human cancer tissue slides from four patient cohorts were used in this study."
+},
+"tests": [
+"Histology (H&E staining) and cytology",
+"Fecal calprotectin"
+],
+"description": "The PathMNIST is based on a prior study for predicting survival from colorectal cancer histology slides, providing a dataset (NCT-CRC-HE-100K) of 100,000 non-overlapping image patches from hematoxylin & eosin stained histological images, and a test dataset (CRC-VAL-HE-7K) of 7,180 image patches from a different clinical center. The dataset is comprised of 9 types of tissues, resulting in a multi-class classification task. We resize the source images of 3×224×224 into 3×28×28, and split NCT-CRC-HE-100K into training and validation set with a ratio of 9:1. The CRC-VAL-HE-7K is treated as the test set."
+},
+"bloodmnist": {
+"title": "Peripheral blood cells (May Grünwald-Giemsa)",
+"labels": {
+"0": "basophil",
+"1": "eosinophil",
+"2": "erythroblast",
+"3": "immature granulocytes(myelocytes, metamyelocytes and promyelocytes)",
+"4": "lymphocyte",
+"5": "monocyte",
+"6": "neutrophil",
+"7": "platelet"
+},
+"items": [
+{
+"file": "3_0.jpg",
+"cls": 3
+},
+{
+"file": "0_1.jpg",
+"cls": 0
+},
+{
+"file": "1_2.jpg",
+"cls": 1
+},
+{
+"file": "3_3.jpg",
+"cls": 3
+},
+{
+"file": "1_4.jpg",
+"cls": 1
+},
+{
+"file": "1_5.jpg",
+"cls": 1
+},
+{
+"file": "3_6.jpg",
+"cls": 3
+},
+{
+"file": "1_7.jpg",
+"cls": 1
+},
+{
+"file": "6_8.jpg",
+"cls": 6
+},
+{
+"file": "1_9.jpg",
+"cls": 1
+},
+{
+"file": "5_10.jpg",
+"cls": 5
+},
+{
+"file": "6_11.jpg",
+"cls": 6
+},
+{
+"file": "6_12.jpg",
+"cls": 6
+},
+{
+"file": "6_13.jpg",
+"cls": 6
+},
+{
+"file": "2_14.jpg",
+"cls": 2
+},
+{
+"file": "4_15.jpg",
+"cls": 4
+},
+{
+"file": "4_16.jpg",
+"cls": 4
+},
+{
+"file": "3_17.jpg",
+"cls": 3
+},
+{
+"file": "6_18.jpg",
+"cls": 6
+},
+{
+"file": "4_19.jpg",
+"cls": 4
+},
+{
+"file": "6_20.jpg",
+"cls": 6
+},
+{
+"file": "6_21.jpg",
+"cls": 6
+},
+{
+"file": "3_22.jpg",
+"cls": 3
+},
+{
+"file": "5_23.jpg",
+"cls": 5
+},
+{
+"file": "1_24.jpg",
+"cls": 1
+},
+{
+"file": "6_25.jpg",
+"cls": 6
+},
+{
+"file": "7_26.jpg",
+"cls": 7
+},
+{
+"file": "1_27.jpg",
+"cls": 1
+},
+{
+"file": "3_28.jpg",
+"cls": 3
+},
+{
+"file": "1_29.jpg",
+"cls": 1
+},
+{
+"file": "1_30.jpg",
+"cls": 1
+},
+{
+"file": "7_31.jpg",
+"cls": 7
+},
+{
+"file": "6_32.jpg",
+"cls": 6
+},
+{
+"file": "5_33.jpg",
+"cls": 5
+},
+{
+"file": "6_34.jpg",
+"cls": 6
+},
+{
+"file": "6_35.jpg",
+"cls": 6
+},
+{
+"file": "0_36.jpg",
+"cls": 0
+},
+{
+"file": "5_37.jpg",
+"cls": 5
+},
+{
+"file": "1_38.jpg",
+"cls": 1
+},
+{
+"file": "6_39.jpg",
+"cls": 6
+},
+{
+"file": "1_40.jpg",
+"cls": 1
+},
+{
+"file": "7_41.jpg",
+"cls": 7
+},
+{
+"file": "7_42.jpg",
+"cls": 7
+},
+{
+"file": "7_43.jpg",
+"cls": 7
+},
+{
+"file": "3_44.jpg",
+"cls": 3
+},
+{
+"file": "3_45.jpg",
+"cls": 3
+},
+{
+"file": "0_46.jpg",
+"cls": 0
+},
+{
+"file": "1_47.jpg",
+"cls": 1
+},
+{
+"file": "3_48.jpg",
+"cls": 3
+},
+{
+"file": "1_49.jpg",
+"cls": 1
+},
+{
+"file": "5_50.jpg",
+"cls": 5
+},
+{
+"file": "1_51.jpg",
+"cls": 1
+},
+{
+"file": "2_52.jpg",
+"cls": 2
+},
+{
+"file": "0_53.jpg",
+"cls": 0
+},
+{
+"file": "3_54.jpg",
+"cls": 3
+},
+{
+"file": "5_55.jpg",
+"cls": 5
+},
+{
+"file": "2_56.jpg",
+"cls": 2
+},
+{
+"file": "1_57.jpg",
+"cls": 1
+},
+{
+"file": "6_58.jpg",
+"cls": 6
+},
+{
+"file": "6_59.jpg",
+"cls": 6
+},
+{
+"file": "4_60.jpg",
+"cls": 4
+},
+{
+"file": "3_61.jpg",
+"cls": 3
+},
+{
+"file": "6_62.jpg",
+"cls": 6
+},
+{
+"file": "7_63.jpg",
+"cls": 7
+},
+{
+"file": "7_64.jpg",
+"cls": 7
+},
+{
+"file": "0_65.jpg",
+"cls": 0
+},
+{
+"file": "4_66.jpg",
+"cls": 4
+},
+{
+"file": "1_67.jpg",
+"cls": 1
+},
+{
+"file": "7_68.jpg",
+"cls": 7
+},
+{
+"file": "2_69.jpg",
+"cls": 2
+},
+{
+"file": "1_70.jpg",
+"cls": 1
+},
+{
+"file": "3_71.jpg",
+"cls": 3
+},
+{
+"file": "3_72.jpg",
+"cls": 3
+},
+{
+"file": "4_73.jpg",
+"cls": 4
+},
+{
+"file": "3_74.jpg",
+"cls": 3
+},
+{
+"file": "6_75.jpg",
+"cls": 6
+},
+{
+"file": "1_76.jpg",
+"cls": 1
+},
+{
+"file": "0_77.jpg",
+"cls": 0
+},
+{
+"file": "6_78.jpg",
+"cls": 6
+},
+{
+"file": "1_79.jpg",
+"cls": 1
+},
+{
+"file": "3_80.jpg",
+"cls": 3
+},
+{
+"file": "5_81.jpg",
+"cls": 5
+},
+{
+"file": "1_82.jpg",
+"cls": 1
+},
+{
+"file": "7_83.jpg",
+"cls": 7
+},
+{
+"file": "3_84.jpg",
+"cls": 3
+},
+{
+"file": "4_85.jpg",
+"cls": 4
+},
+{
+"file": "7_86.jpg",
+"cls": 7
+},
+{
+"file": "1_87.jpg",
+"cls": 1
+},
+{
+"file": "0_88.jpg",
+"cls": 0
+},
+{
+"file": "3_89.jpg",
+"cls": 3
+},
+{
+"file": "2_90.jpg",
+"cls": 2
+},
+{
+"file": "2_91.jpg",
+"cls": 2
+},
+{
+"file": "4_92.jpg",
+"cls": 4
+},
+{
+"file": "4_93.jpg",
+"cls": 4
+},
+{
+"file": "3_94.jpg",
+"cls": 3
+},
+{
+"file": "1_95.jpg",
+"cls": 1
+},
+{
+"file": "2_96.jpg",
+"cls": 2
+},
+{
+"file": "1_97.jpg",
+"cls": 1
+},
+{
+"file": "7_98.jpg",
+"cls": 7
+},
+{
+"file": "7_99.jpg",
+"cls": 7
+},
+{
+"file": "2_100.jpg",
+"cls": 2
+},
+{
+"file": "5_101.jpg",
+"cls": 5
+},
+{
+"file": "5_102.jpg",
+"cls": 5
+},
+{
+"file": "4_103.jpg",
+"cls": 4
+},
+{
+"file": "7_104.jpg",
+"cls": 7
+},
+{
+"file": "3_105.jpg",
+"cls": 3
+},
+{
+"file": "2_106.jpg",
+"cls": 2
+},
+{
+"file": "6_107.jpg",
+"cls": 6
+},
+{
+"file": "2_108.jpg",
+"cls": 2
+},
+{
+"file": "3_109.jpg",
+"cls": 3
+},
+{
+"file": "3_110.jpg",
+"cls": 3
+},
+{
+"file": "6_111.jpg",
+"cls": 6
+},
+{
+"file": "5_112.jpg",
+"cls": 5
+},
+{
+"file": "6_113.jpg",
+"cls": 6
+},
+{
+"file": "6_114.jpg",
+"cls": 6
+},
+{
+"file": "0_115.jpg",
+"cls": 0
+},
+{
+"file": "0_116.jpg",
+"cls": 0
+},
+{
+"file": "6_117.jpg",
+"cls": 6
+},
+{
+"file": "2_118.jpg",
+"cls": 2
+},
+{
+"file": "6_119.jpg",
+"cls": 6
+},
+{
+"file": "5_120.jpg",
+"cls": 5
+},
+{
+"file": "7_121.jpg",
+"cls": 7
+},
+{
+"file": "3_122.jpg",
+"cls": 3
+},
+{
+"file": "1_123.jpg",
+"cls": 1
+},
+{
+"file": "7_124.jpg",
+"cls": 7
+},
+{
+"file": "1_125.jpg",
+"cls": 1
+},
+{
+"file": "4_126.jpg",
+"cls": 4
+},
+{
+"file": "7_127.jpg",
+"cls": 7
+},
+{
+"file": "2_128.jpg",
+"cls": 2
+},
+{
+"file": "2_129.jpg",
+"cls": 2
+},
+{
+"file": "2_130.jpg",
+"cls": 2
+},
+{
+"file": "5_131.jpg",
+"cls": 5
+},
+{
+"file": "5_132.jpg",
+"cls": 5
+},
+{
+"file": "4_133.jpg",
+"cls": 4
+},
+{
+"file": "1_134.jpg",
+"cls": 1
+},
+{
+"file": "3_135.jpg",
+"cls": 3
+},
+{
+"file": "1_136.jpg",
+"cls": 1
+},
+{
+"file": "4_137.jpg",
+"cls": 4
+},
+{
+"file": "1_138.jpg",
+"cls": 1
+},
+{
+"file": "2_139.jpg",
+"cls": 2
+},
+{
+"file": "1_140.jpg",
+"cls": 1
+},
+{
+"file": "1_141.jpg",
+"cls": 1
+},
+{
+"file": "6_142.jpg",
+"cls": 6
+},
+{
+"file": "6_143.jpg",
+"cls": 6
+},
+{
+"file": "4_145.jpg",
+"cls": 4
+},
+{
+"file": "3_148.jpg",
+"cls": 3
+},
+{
+"file": "6_151.jpg",
+"cls": 6
+},
+{
+"file": "2_152.jpg",
+"cls": 2
+},
+{
+"file": "0_154.jpg",
+"cls": 0
+},
+{
+"file": "6_155.jpg",
+"cls": 6
+},
+{
+"file": "7_157.jpg",
+"cls": 7
+},
+{
+"file": "4_158.jpg",
+"cls": 4
+},
+{
+"file": "3_161.jpg",
+"cls": 3
+},
+{
+"file": "3_163.jpg",
+"cls": 3
+},
+{
+"file": "0_164.jpg",
+"cls": 0
+},
+{
+"file": "7_165.jpg",
+"cls": 7
+},
+{
+"file": "6_167.jpg",
+"cls": 6
+},
+{
+"file": "7_168.jpg",
+"cls": 7
+},
+{
+"file": "5_169.jpg",
+"cls": 5
+},
+{
+"file": "3_170.jpg",
+"cls": 3
+},
+{
+"file": "7_171.jpg",
+"cls": 7
+},
+{
+"file": "3_172.jpg",
+"cls": 3
+},
+{
+"file": "6_173.jpg",
+"cls": 6
+},
+{
+"file": "5_174.jpg",
+"cls": 5
+},
+{
+"file": "5_175.jpg",
+"cls": 5
+},
+{
+"file": "6_176.jpg",
+"cls": 6
+},
+{
+"file": "7_181.jpg",
+"cls": 7
+},
+{
+"file": "7_182.jpg",
+"cls": 7
+},
+{
+"file": "7_184.jpg",
+"cls": 7
+},
+{
+"file": "5_186.jpg",
+"cls": 5
+},
+{
+"file": "4_187.jpg",
+"cls": 4
+},
+{
+"file": "2_188.jpg",
+"cls": 2
+},
+{
+"file": "5_189.jpg",
+"cls": 5
+},
+{
+"file": "7_190.jpg",
+"cls": 7
+},
+{
+"file": "3_193.jpg",
+"cls": 3
+},
+{
+"file": "2_195.jpg",
+"cls": 2
+},
+{
+"file": "7_196.jpg",
+"cls": 7
+},
+{
+"file": "3_197.jpg",
+"cls": 3
+},
+{
+"file": "7_199.jpg",
+"cls": 7
+},
+{
+"file": "4_201.jpg",
+"cls": 4
+},
+{
+"file": "5_202.jpg",
+"cls": 5
+},
+{
+"file": "0_208.jpg",
+"cls": 0
+},
+{
+"file": "5_213.jpg",
+"cls": 5
+},
+{
+"file": "0_216.jpg",
+"cls": 0
+},
+{
+"file": "2_217.jpg",
+"cls": 2
+},
+{
+"file": "5_219.jpg",
+"cls": 5
+},
+{
+"file": "2_223.jpg",
+"cls": 2
+},
+{
+"file": "7_227.jpg",
+"cls": 7
+},
+{
+"file": "7_228.jpg",
+"cls": 7
+},
+{
+"file": "7_231.jpg",
+"cls": 7
+},
+{
+"file": "7_236.jpg",
+"cls": 7
+},
+{
+"file": "0_238.jpg",
+"cls": 0
+},
+{
+"file": "0_240.jpg",
+"cls": 0
+},
+{
+"file": "5_243.jpg",
+"cls": 5
+},
+{
+"file": "0_244.jpg",
+"cls": 0
+},
+{
+"file": "5_249.jpg",
+"cls": 5
+},
+{
+"file": "2_259.jpg",
+"cls": 2
+},
+{
+"file": "5_261.jpg",
+"cls": 5
+},
+{
+"file": "4_263.jpg",
+"cls": 4
+},
+{
+"file": "5_268.jpg",
+"cls": 5
+},
+{
+"file": "4_269.jpg",
+"cls": 4
+},
+{
+"file": "4_271.jpg",
+"cls": 4
+},
+{
+"file": "0_277.jpg",
+"cls": 0
+},
+{
+"file": "4_280.jpg",
+"cls": 4
+},
+{
+"file": "4_282.jpg",
+"cls": 4
+},
+{
+"file": "0_283.jpg",
+"cls": 0
+},
+{
+"file": "0_286.jpg",
+"cls": 0
+},
+{
+"file": "5_289.jpg",
+"cls": 5
+},
+{
+"file": "2_291.jpg",
+"cls": 2
+},
+{
+"file": "4_292.jpg",
+"cls": 4
+},
+{
+"file": "4_293.jpg",
+"cls": 4
+},
+{
+"file": "0_300.jpg",
+"cls": 0
+},
+{
+"file": "2_301.jpg",
+"cls": 2
+},
+{
+"file": "0_302.jpg",
+"cls": 0
+},
+{
+"file": "4_309.jpg",
+"cls": 4
+},
+{
+"file": "2_311.jpg",
+"cls": 2
+},
+{
+"file": "4_317.jpg",
+"cls": 4
+},
+{
+"file": "4_318.jpg",
+"cls": 4
+},
+{
+"file": "2_320.jpg",
+"cls": 2
+},
+{
+"file": "5_324.jpg",
+"cls": 5
+},
+{
+"file": "2_325.jpg",
+"cls": 2
+},
+{
+"file": "4_330.jpg",
+"cls": 4
+},
+{
+"file": "2_331.jpg",
+"cls": 2
+},
+{
+"file": "5_335.jpg",
+"cls": 5
+},
+{
+"file": "2_339.jpg",
+"cls": 2
+},
+{
+"file": "5_341.jpg",
+"cls": 5
+},
+{
+"file": "0_342.jpg",
+"cls": 0
+},
+{
+"file": "4_345.jpg",
+"cls": 4
+},
+{
+"file": "0_346.jpg",
+"cls": 0
+},
+{
+"file": "2_348.jpg",
+"cls": 2
+},
+{
+"file": "2_349.jpg",
+"cls": 2
+},
+{
+"file": "0_353.jpg",
+"cls": 0
+},
+{
+"file": "5_367.jpg",
+"cls": 5
+},
+{
+"file": "4_368.jpg",
+"cls": 4
+},
+{
+"file": "0_374.jpg",
+"cls": 0
+},
+{
+"file": "0_384.jpg",
+"cls": 0
+},
+{
+"file": "0_393.jpg",
+"cls": 0
+},
+{
+"file": "0_396.jpg",
+"cls": 0
+},
+{
+"file": "0_400.jpg",
+"cls": 0
+},
+{
+"file": "0_419.jpg",
+"cls": 0
+}
+],
+"shape": [
+224,
+224,
+3
+],
+"cite": "Acevedo A et al. (2020) Data in Brief 30:105474; via MedMNIST+ (Yang et al. 2023), CC BY 4.0",
+"stain": {
+"pmcid": "PMC7182702",
+"text": "In a second step, the blood smears were automatically stained using May Grünwald-Giemsa [2] in the autostainer Sysmex SP1000i."
+},
+"tests": [
+"Complete blood count (CBC)",
+"Peripheral blood smear"
+],
+"description": "The BloodMNIST is based on a dataset of individual normal cells, captured from individuals without infection, hematologic or oncologic disease and free of any pharmacologic treatment at the moment of blood collection. It contains a total of 17,092 images and is organized into 8 classes. We split the source dataset with a ratio of 7:1:2 into training, validation and test set. The source images with resolution 3×360×363 pixels are center-cropped into 3×200×200, and then resized into 3×28×28."
+},
+"tissuemnist": {
+"title": "Kidney cortex cells (BBBC051)",
+"labels": {
+"0": "Collecting Duct, Connecting Tubule",
+"1": "Distal Convoluted Tubule",
+"2": "Glomerular endothelial cells",
+"3": "Interstitial endothelial cells",
+"4": "Leukocytes",
+"5": "Podocytes",
+"6": "Proximal Tubule Segments",
+"7": "Thick Ascending Limb"
+},
+"items": [
+{
+"file": "0_0.jpg",
+"cls": 0
+},
+{
+"file": "6_1.jpg",
+"cls": 6
+},
+{
+"file": "7_2.jpg",
+"cls": 7
+},
+{
+"file": "0_3.jpg",
+"cls": 0
+},
+{
+"file": "7_4.jpg",
+"cls": 7
+},
+{
+"file": "7_5.jpg",
+"cls": 7
+},
+{
+"file": "6_6.jpg",
+"cls": 6
+},
+{
+"file": "6_7.jpg",
+"cls": 6
+},
+{
+"file": "0_8.jpg",
+"cls": 0
+},
+{
+"file": "0_9.jpg",
+"cls": 0
+},
+{
+"file": "6_10.jpg",
+"cls": 6
+},
+{
+"file": "1_11.jpg",
+"cls": 1
+},
+{
+"file": "3_12.jpg",
+"cls": 3
+},
+{
+"file": "4_13.jpg",
+"cls": 4
+},
+{
+"file": "6_14.jpg",
+"cls": 6
+},
+{
+"file": "6_15.jpg",
+"cls": 6
+},
+{
+"file": "0_16.jpg",
+"cls": 0
+},
+{
+"file": "0_17.jpg",
+"cls": 0
+},
+{
+"file": "6_18.jpg",
+"cls": 6
+},
+{
+"file": "7_19.jpg",
+"cls": 7
+},
+{
+"file": "3_20.jpg",
+"cls": 3
+},
+{
+"file": "7_21.jpg",
+"cls": 7
+},
+{
+"file": "7_22.jpg",
+"cls": 7
+},
+{
+"file": "0_23.jpg",
+"cls": 0
+},
+{
+"file": "4_24.jpg",
+"cls": 4
+},
+{
+"file": "4_25.jpg",
+"cls": 4
+},
+{
+"file": "4_26.jpg",
+"cls": 4
+},
+{
+"file": "2_27.jpg",
+"cls": 2
+},
+{
+"file": "0_28.jpg",
+"cls": 0
+},
+{
+"file": "5_29.jpg",
+"cls": 5
+},
+{
+"file": "0_30.jpg",
+"cls": 0
+},
+{
+"file": "0_31.jpg",
+"cls": 0
+},
+{
+"file": "6_32.jpg",
+"cls": 6
+},
+{
+"file": "6_33.jpg",
+"cls": 6
+},
+{
+"file": "0_34.jpg",
+"cls": 0
+},
+{
+"file": "6_35.jpg",
+"cls": 6
+},
+{
+"file": "0_36.jpg",
+"cls": 0
+},
+{
+"file": "0_37.jpg",
+"cls": 0
+},
+{
+"file": "6_38.jpg",
+"cls": 6
+},
+{
+"file": "1_39.jpg",
+"cls": 1
+},
+{
+"file": "3_40.jpg",
+"cls": 3
+},
+{
+"file": "0_41.jpg",
+"cls": 0
+},
+{
+"file": "6_42.jpg",
+"cls": 6
+},
+{
+"file": "6_43.jpg",
+"cls": 6
+},
+{
+"file": "7_44.jpg",
+"cls": 7
+},
+{
+"file": "0_45.jpg",
+"cls": 0
+},
+{
+"file": "7_46.jpg",
+"cls": 7
+},
+{
+"file": "6_47.jpg",
+"cls": 6
+},
+{
+"file": "7_48.jpg",
+"cls": 7
+},
+{
+"file": "7_49.jpg",
+"cls": 7
+},
+{
+"file": "0_50.jpg",
+"cls": 0
+},
+{
+"file": "0_51.jpg",
+"cls": 0
+},
+{
+"file": "1_52.jpg",
+"cls": 1
+},
+{
+"file": "2_53.jpg",
+"cls": 2
+},
+{
+"file": "4_54.jpg",
+"cls": 4
+},
+{
+"file": "6_55.jpg",
+"cls": 6
+},
+{
+"file": "7_56.jpg",
+"cls": 7
+},
+{
+"file": "7_57.jpg",
+"cls": 7
+},
+{
+"file": "0_58.jpg",
+"cls": 0
+},
+{
+"file": "6_59.jpg",
+"cls": 6
+},
+{
+"file": "6_60.jpg",
+"cls": 6
+},
+{
+"file": "3_61.jpg",
+"cls": 3
+},
+{
+"file": "6_62.jpg",
+"cls": 6
+},
+{
+"file": "6_63.jpg",
+"cls": 6
+},
+{
+"file": "2_64.jpg",
+"cls": 2
+},
+{
+"file": "0_65.jpg",
+"cls": 0
+},
+{
+"file": "0_66.jpg",
+"cls": 0
+},
+{
+"file": "0_67.jpg",
+"cls": 0
+},
+{
+"file": "0_68.jpg",
+"cls": 0
+},
+{
+"file": "0_69.jpg",
+"cls": 0
+},
+{
+"file": "4_70.jpg",
+"cls": 4
+},
+{
+"file": "0_71.jpg",
+"cls": 0
+},
+{
+"file": "2_72.jpg",
+"cls": 2
+},
+{
+"file": "0_73.jpg",
+"cls": 0
+},
+{
+"file": "0_74.jpg",
+"cls": 0
+},
+{
+"file": "0_75.jpg",
+"cls": 0
+},
+{
+"file": "6_76.jpg",
+"cls": 6
+},
+{
+"file": "6_77.jpg",
+"cls": 6
+},
+{
+"file": "0_78.jpg",
+"cls": 0
+},
+{
+"file": "3_79.jpg",
+"cls": 3
+},
+{
+"file": "3_80.jpg",
+"cls": 3
+},
+{
+"file": "0_81.jpg",
+"cls": 0
+},
+{
+"file": "6_82.jpg",
+"cls": 6
+},
+{
+"file": "0_83.jpg",
+"cls": 0
+},
+{
+"file": "6_84.jpg",
+"cls": 6
+},
+{
+"file": "6_85.jpg",
+"cls": 6
+},
+{
+"file": "5_88.jpg",
+"cls": 5
+},
+{
+"file": "3_89.jpg",
+"cls": 3
+},
+{
+"file": "1_90.jpg",
+"cls": 1
+},
+{
+"file": "6_91.jpg",
+"cls": 6
+},
+{
+"file": "3_92.jpg",
+"cls": 3
+},
+{
+"file": "1_93.jpg",
+"cls": 1
+},
+{
+"file": "6_95.jpg",
+"cls": 6
+},
+{
+"file": "6_96.jpg",
+"cls": 6
+},
+{
+"file": "6_97.jpg",
+"cls": 6
+},
+{
+"file": "5_100.jpg",
+"cls": 5
+},
+{
+"file": "2_101.jpg",
+"cls": 2
+},
+{
+"file": "6_104.jpg",
+"cls": 6
+},
+{
+"file": "6_105.jpg",
+"cls": 6
+},
+{
+"file": "1_108.jpg",
+"cls": 1
+},
+{
+"file": "7_116.jpg",
+"cls": 7
+},
+{
+"file": "3_117.jpg",
+"cls": 3
+},
+{
+"file": "4_118.jpg",
+"cls": 4
+},
+{
+"file": "3_119.jpg",
+"cls": 3
+},
+{
+"file": "2_122.jpg",
+"cls": 2
+},
+{
+"file": "7_126.jpg",
+"cls": 7
+},
+{
+"file": "4_128.jpg",
+"cls": 4
+},
+{
+"file": "1_131.jpg",
+"cls": 1
+},
+{
+"file": "7_134.jpg",
+"cls": 7
+},
+{
+"file": "1_135.jpg",
+"cls": 1
+},
+{
+"file": "3_137.jpg",
+"cls": 3
+},
+{
+"file": "3_139.jpg",
+"cls": 3
+},
+{
+"file": "3_148.jpg",
+"cls": 3
+},
+{
+"file": "3_149.jpg",
+"cls": 3
+},
+{
+"file": "3_151.jpg",
+"cls": 3
+},
+{
+"file": "7_156.jpg",
+"cls": 7
+},
+{
+"file": "5_158.jpg",
+"cls": 5
+},
+{
+"file": "7_160.jpg",
+"cls": 7
+},
+{
+"file": "7_161.jpg",
+"cls": 7
+},
+{
+"file": "3_162.jpg",
+"cls": 3
+},
+{
+"file": "7_163.jpg",
+"cls": 7
+},
+{
+"file": "3_168.jpg",
+"cls": 3
+},
+{
+"file": "1_173.jpg",
+"cls": 1
+},
+{
+"file": "4_175.jpg",
+"cls": 4
+},
+{
+"file": "7_180.jpg",
+"cls": 7
+},
+{
+"file": "7_181.jpg",
+"cls": 7
+},
+{
+"file": "1_183.jpg",
+"cls": 1
+},
+{
+"file": "3_184.jpg",
+"cls": 3
+},
+{
+"file": "2_185.jpg",
+"cls": 2
+},
+{
+"file": "3_187.jpg",
+"cls": 3
+},
+{
+"file": "7_190.jpg",
+"cls": 7
+},
+{
+"file": "7_193.jpg",
+"cls": 7
+},
+{
+"file": "1_195.jpg",
+"cls": 1
+},
+{
+"file": "5_196.jpg",
+"cls": 5
+},
+{
+"file": "3_197.jpg",
+"cls": 3
+},
+{
+"file": "3_198.jpg",
+"cls": 3
+},
+{
+"file": "7_199.jpg",
+"cls": 7
+},
+{
+"file": "3_200.jpg",
+"cls": 3
+},
+{
+"file": "4_201.jpg",
+"cls": 4
+},
+{
+"file": "5_202.jpg",
+"cls": 5
+},
+{
+"file": "7_204.jpg",
+"cls": 7
+},
+{
+"file": "7_206.jpg",
+"cls": 7
+},
+{
+"file": "5_207.jpg",
+"cls": 5
+},
+{
+"file": "1_208.jpg",
+"cls": 1
+},
+{
+"file": "7_212.jpg",
+"cls": 7
+},
+{
+"file": "3_214.jpg",
+"cls": 3
+},
+{
+"file": "5_215.jpg",
+"cls": 5
+},
+{
+"file": "7_216.jpg",
+"cls": 7
+},
+{
+"file": "3_220.jpg",
+"cls": 3
+},
+{
+"file": "7_222.jpg",
+"cls": 7
+},
+{
+"file": "7_226.jpg",
+"cls": 7
+},
+{
+"file": "3_227.jpg",
+"cls": 3
+},
+{
+"file": "3_230.jpg",
+"cls": 3
+},
+{
+"file": "1_238.jpg",
+"cls": 1
+},
+{
+"file": "5_240.jpg",
+"cls": 5
+},
+{
+"file": "1_243.jpg",
+"cls": 1
+},
+{
+"file": "4_245.jpg",
+"cls": 4
+},
+{
+"file": "4_247.jpg",
+"cls": 4
+},
+{
+"file": "3_250.jpg",
+"cls": 3
+},
+{
+"file": "3_252.jpg",
+"cls": 3
+},
+{
+"file": "5_253.jpg",
+"cls": 5
+},
+{
+"file": "1_255.jpg",
+"cls": 1
+},
+{
+"file": "5_264.jpg",
+"cls": 5
+},
+{
+"file": "1_267.jpg",
+"cls": 1
+},
+{
+"file": "4_272.jpg",
+"cls": 4
+},
+{
+"file": "4_277.jpg",
+"cls": 4
+},
+{
+"file": "2_280.jpg",
+"cls": 2
+},
+{
+"file": "4_284.jpg",
+"cls": 4
+},
+{
+"file": "3_286.jpg",
+"cls": 3
+},
+{
+"file": "5_289.jpg",
+"cls": 5
+},
+{
+"file": "1_293.jpg",
+"cls": 1
+},
+{
+"file": "3_296.jpg",
+"cls": 3
+},
+{
+"file": "4_298.jpg",
+"cls": 4
+},
+{
+"file": "4_300.jpg",
+"cls": 4
+},
+{
+"file": "5_305.jpg",
+"cls": 5
+},
+{
+"file": "5_306.jpg",
+"cls": 5
+},
+{
+"file": "1_311.jpg",
+"cls": 1
+},
+{
+"file": "1_312.jpg",
+"cls": 1
+},
+{
+"file": "4_319.jpg",
+"cls": 4
+},
+{
+"file": "5_323.jpg",
+"cls": 5
+},
+{
+"file": "1_328.jpg",
+"cls": 1
+},
+{
+"file": "1_329.jpg",
+"cls": 1
+},
+{
+"file": "5_337.jpg",
+"cls": 5
+},
+{
+"file": "1_365.jpg",
+"cls": 1
+},
+{
+"file": "4_376.jpg",
+"cls": 4
+},
+{
+"file": "2_382.jpg",
+"cls": 2
+},
+{
+"file": "1_385.jpg",
+"cls": 1
+},
+{
+"file": "2_386.jpg",
+"cls": 2
+},
+{
+"file": "4_390.jpg",
+"cls": 4
+},
+{
+"file": "1_392.jpg",
+"cls": 1
+},
+{
+"file": "4_396.jpg",
+"cls": 4
+},
+{
+"file": "2_399.jpg",
+"cls": 2
+},
+{
+"file": "4_405.jpg",
+"cls": 4
+},
+{
+"file": "2_409.jpg",
+"cls": 2
+},
+{
+"file": "5_418.jpg",
+"cls": 5
+},
+{
+"file": "1_426.jpg",
+"cls": 1
+},
+{
+"file": "2_427.jpg",
+"cls": 2
+},
+{
+"file": "5_429.jpg",
+"cls": 5
+},
+{
+"file": "4_430.jpg",
+"cls": 4
+},
+{
+"file": "5_431.jpg",
+"cls": 5
+},
+{
+"file": "5_434.jpg",
+"cls": 5
+},
+{
+"file": "4_436.jpg",
+"cls": 4
+},
+{
+"file": "4_437.jpg",
+"cls": 4
+},
+{
+"file": "4_443.jpg",
+"cls": 4
+},
+{
+"file": "4_455.jpg",
+"cls": 4
+},
+{
+"file": "4_458.jpg",
+"cls": 4
+},
+{
+"file": "4_463.jpg",
+"cls": 4
+},
+{
+"file": "1_475.jpg",
+"cls": 1
+},
+{
+"file": "5_480.jpg",
+"cls": 5
+},
+{
+"file": "1_483.jpg",
+"cls": 1
+},
+{
+"file": "1_484.jpg",
+"cls": 1
+},
+{
+"file": "5_497.jpg",
+"cls": 5
+},
+{
+"file": "1_500.jpg",
+"cls": 1
+},
+{
+"file": "2_503.jpg",
+"cls": 2
+},
+{
+"file": "1_507.jpg",
+"cls": 1
+},
+{
+"file": "2_517.jpg",
+"cls": 2
+},
+{
+"file": "2_519.jpg",
+"cls": 2
+},
+{
+"file": "5_520.jpg",
+"cls": 5
+},
+{
+"file": "4_523.jpg",
+"cls": 4
+},
+{
+"file": "5_535.jpg",
+"cls": 5
+},
+{
+"file": "2_541.jpg",
+"cls": 2
+},
+{
+"file": "5_543.jpg",
+"cls": 5
+},
+{
+"file": "2_558.jpg",
+"cls": 2
+},
+{
+"file": "5_571.jpg",
+"cls": 5
+},
+{
+"file": "5_606.jpg",
+"cls": 5
+},
+{
+"file": "5_617.jpg",
+"cls": 5
+},
+{
+"file": "5_618.jpg",
+"cls": 5
+},
+{
+"file": "2_624.jpg",
+"cls": 2
+},
+{
+"file": "5_639.jpg",
+"cls": 5
+},
+{
+"file": "2_653.jpg",
+"cls": 2
+},
+{
+"file": "2_664.jpg",
+"cls": 2
+},
+{
+"file": "2_670.jpg",
+"cls": 2
+},
+{
+"file": "2_721.jpg",
+"cls": 2
+},
+{
+"file": "2_747.jpg",
+"cls": 2
+},
+{
+"file": "2_842.jpg",
+"cls": 2
+},
+{
+"file": "2_923.jpg",
+"cls": 2
+},
+{
+"file": "2_925.jpg",
+"cls": 2
+},
+{
+"file": "2_929.jpg",
+"cls": 2
+},
+{
+"file": "2_939.jpg",
+"cls": 2
+},
+{
+"file": "2_957.jpg",
+"cls": 2
+}
+],
+"shape": [
+224,
+224
+],
+"cite": "Broad Bioimage Benchmark Collection BBBC051; via MedMNIST+ (Yang et al. 2023), CC BY 4.0",
+"stain": null,
+"tests": [
+"Urinalysis",
+"Creatinine and eGFR",
+"Cystatin C"
+],
+"description": "We use the BBBC051, available from the Broad Bioimage Benchmark Collection. The dataset contains 236,386 human kidney cortex cells, segmented from 3 reference tissue specimens and organized into 8 categories. We split the source dataset with a ratio of 7:1:2 into training, validation and test set. Each gray-scale image is 32×32×7 pixels, where 7 denotes 7 slices. We take maximum values across the slices and resize them into 28×28 gray-scale images."
+}
+}
+}
