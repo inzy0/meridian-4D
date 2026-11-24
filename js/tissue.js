@@ -307,6 +307,7 @@ function learn(P) {
   $('#bk-q').onkeydown = (e) => { if (e.key !== 'Enter') return; const q = e.target.value.trim().toLowerCase(); const i = C.findIndex((c) => c.md.toLowerCase().includes(q)); if (i >= 0) show(i, e.target.value.trim()); };
   show(C.findIndex((c) => c.title.startsWith('Chapter 1')) >= 0 ? C.findIndex((c) => c.title.startsWith('Chapter 1')) : 0);
 }
+const UNV = (t) => (/from memory/i.test(t) ? ' <span class="unv" title="The booklet marks this as written from memory; its source was not opened for the booklet. Treat as unverified.">unverified</span>' : '');
 function inline(s) {
   return esc(s).replace(/\\~/g, '~').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*]+)\*/g, '<i>$1</i>')
     .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
@@ -319,14 +320,14 @@ function md(src) {
     if (/^```/.test(l)) { const buf = []; i++; while (i < L.length && !/^```/.test(L[i])) buf.push(L[i++]); i++; out.push(`<pre class="code">${esc(buf.join('\n'))}</pre>`); continue; }
     if (/^###\s/.test(l)) { out.push(`<h3>${inline(l.slice(4))}</h3>`); i++; continue; }
     if (l.startsWith('|') && /^\|\s*:?-{3}/.test(L[i + 1] || '')) { const cols = l.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim()); i += 2; const rows = []; while (i < L.length && L[i].startsWith('|')) rows.push(L[i++].trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim())); out.push(table({ cols, rows })); continue; }
-    if (/^\s*([-*]|\d+\.)\s/.test(l)) { const ord = /^\s*\d+\./.test(l), items = []; while (i < L.length && /^\s*([-*]|\d+\.)\s/.test(L[i])) { let it = L[i++].replace(/^\s*([-*]|\d+\.)\s/, ''); while (i < L.length && /^\s{2,}\S/.test(L[i]) && !/^\s*([-*]|\d+\.)\s/.test(L[i])) it += ' ' + L[i++].trim(); items.push(it); } out.push(`<${ord ? 'ol' : 'ul'}>${items.map((x) => `<li>${inline(x.replace(/^\[ \] /, '☐ '))}</li>`).join('')}</${ord ? 'ol' : 'ul'}>`); continue; }
+    if (/^\s*([-*]|\d+\.)\s/.test(l)) { const ord = /^\s*\d+\./.test(l), items = []; while (i < L.length && /^\s*([-*]|\d+\.)\s/.test(L[i])) { let it = L[i++].replace(/^\s*([-*]|\d+\.)\s/, ''); while (i < L.length && /^\s{2,}\S/.test(L[i]) && !/^\s*([-*]|\d+\.)\s/.test(L[i])) it += ' ' + L[i++].trim(); items.push(it); } out.push(`<${ord ? 'ol' : 'ul'}>${items.map((x) => `<li>${inline(x.replace(/^\[ \] /, '☐ '))}${UNV(x)}</li>`).join('')}</${ord ? 'ol' : 'ul'}>`); continue; }
     if (!l.trim()) { i++; continue; }
     const buf = [l]; i++; while (i < L.length && L[i].trim() && !/^(#|\||```|\s*([-*]|\d+\.)\s)/.test(L[i])) buf.push(L[i++]);
-    out.push(`<p>${inline(buf.join(' '))}</p>`);
+    out.push(`<p>${inline(buf.join(' '))}${UNV(buf.join(' '))}</p>`);
   }
   return out.join('');
 }
-function table(t) { if (!t) return ''; return `<div class="tt-wrap" style="max-height:none"><table class="tt"><thead><tr>${t.cols.map((c) => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${t.rows.map((r) => `<tr>${r.map((c) => `<td class="mini">${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
+function table(t) { if (!t) return ''; return `<div class="tt-wrap" style="max-height:none"><table class="tt"><thead><tr>${t.cols.map((c) => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${t.rows.map((r) => `<tr>${r.map((c, i) => `<td class="mini">${inline(c)}${i === r.length - 1 ? UNV(r.join(' ')) : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
 
 // ---- cards: spaced repetition from the booklet's own tables
 function deck() {
@@ -350,7 +351,7 @@ function cards(P) {
   const q = due()[0];
   P.innerHTML = `<section class="card"><div class="card-h"><h2>Flashcards</h2><small>${D.length} cards from the booklet's tables</small></div>
     <p class="mini">Boxes (Leitner): ${boxes.map((n, b) => `<span class="pill">${b}: ${n}</span>`).join(' ')} · due now ${due().length}. Right moves a card up a box (next review 1, 3, 7, 14, 30 days); wrong sends it back to box 0. Saved in this browser.</p></section>
-    ${q ? `<section class="card flash"><div class="mini">${esc(q.c.src)}</div><h3>${inline(q.c.q)}</h3><div id="fl-a" class="note" hidden>${inline(q.c.a)}</div>
+    ${q ? `<section class="card flash"><div class="mini">${esc(q.c.src)}</div><h3>${inline(q.c.q)}</h3><div id="fl-a" class="note" hidden>${inline(q.c.a)}${UNV(q.c.a)}</div>
       <div class="bar"><button class="primary small" id="fl-show">Show answer</button><button class="ghost-btn" id="fl-ok" hidden>✓ I knew it</button><button class="ghost-btn" id="fl-no" hidden>✗ Not yet</button></div></section>` : '<section class="card"><p>All cards reviewed for now. Come back later.</p></section>'}`;
   if (!q) return;
   $('#fl-show').onclick = () => { $('#fl-a').hidden = false; $('#fl-show').hidden = true; $('#fl-ok').hidden = false; $('#fl-no').hidden = false; };
