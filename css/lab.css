@@ -668,3 +668,26 @@ blockquote.q footer { font-size: 11px; color: var(--muted); margin-top: 4px; }
 .ms-organ h3 { margin: 0 0 4px; text-transform: capitalize; } .ms-note { color: #ff8fb3; }
 #ms-info { overflow: auto; }
 .ml-side .ml-view { width: 100%; height: 340px; min-height: 340px; flex: none; aspect-ratio: auto; } .ml-side .ml-view img { object-fit: contain; }
+
+/* ---- Body systems: Function explorer */
+.bf-card .bf-tabs { margin: 6px 0; }
+.bf-layer { gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.bf-sys > div { margin: 4px 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.bf-sys small { min-width: 100%; opacity: .7; }
+.bf-tree, .bf-tree ul { padding-left: 16px; margin: 4px 0; }
+.bf-tree li { margin: 3px 0; line-height: 1.6; }
+.bf-p { font-size: 12px; padding: 2px 8px; border-left-width: 3px; }
+.bf-steps { list-style: none; padding: 0; margin: 8px 0; }
+.bf-step { display: flex; gap: 10px; margin: 0 0 10px; }
+.bf-n { flex: 0 0 24px; height: 24px; border-radius: 50%; background: #ff8c42; color: #10131f; font-weight: 700; display: grid; place-items: center; font-size: 12px; }
+.bf-step > div { flex: 1; min-width: 0; }
+.bf-q { margin: 4px 0 6px; padding: 6px 10px; border-left: 3px solid #4cc9f0; background: rgba(76, 201, 240, .07); font-size: 12.5px; line-height: 1.45; }
+.bf-q small { display: block; opacity: .7; margin-top: 3px; font-size: 11px; }
+.bf-nq { font-size: 11.5px; color: #ffb4a2; margin: 3px 0 6px; }
+.bf-nq::before { content: "⚠ "; }
+.bf-t { margin: 4px 0 8px; }
+.bf-cell { width: 100%; height: auto; border-radius: 10px; margin: 6px 0; display: block; }
+.bf-list { list-style: none; padding: 0; }
+.bf-list li { margin: 6px 0; }
+.bf-day { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
+.bf-day .on { outline: 2px solid #ff8c42; }

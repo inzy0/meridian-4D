@@ -49,9 +49,9 @@ export async function startMolecular() {
   const box = atlas.box, c = box.getCenter(new THREE.Vector3()), h = box.getSize(new THREE.Vector3()).y;
   camera.position.set(c.x, c.y, c.z + atlas.anchors.anterior * h * 2.0); controls.target.copy(c); controls.update();
   M.pc = pointerControls({ controls, camera, canvas, pick: surfacePicker(camera, canvas, () => M.meshes.filter((m) => m.userData.opT > 0.2)) }); M.pc.setHome();
-  setupUI(); picking(canvas); setupPhysiology(M); import('./learn.js').then((m) => m.setupLearn());
+  setupUI(); picking(canvas); setupPhysiology(M); import('./learn.js').then((m) => m.setupLearn()); import('./body_function.js').then((m) => m.setupFunction(M));
   status.textContent = `${M.tissueOf.size} of ${Object.keys(TM.map).length + TM.not_in_model.length} Protein Atlas tissues are on this body · search a gene or a pathway, or click a coloured organ`;
-  renderer.setAnimationLoop(() => { M.pc.tick(); controls.update(); if (!M.cur) M.onTick?.(performance.now()); animate(); renderer.render(scene, camera); });
+  renderer.setAnimationLoop(() => { M.pc.tick(); controls.update(); if (!M.cur) M.onTick?.(performance.now()); M.onFrame?.(performance.now()); animate(); renderer.render(scene, camera); });
   window.__mol = M;
   topSystems();
 }
@@ -67,6 +67,7 @@ function animate() {
 }
 // paint tissues: values {tissue: number}; log scale onto the inferno colour map
 function paint(values, label) {
+  M.onPaint?.();
   const L = lut('inferno'), max = Math.max(1e-9, ...Object.values(values));
   for (const m of M.meshes) {
     const vs = m.userData.tissues.map((t) => values[t]).filter((v) => v != null);

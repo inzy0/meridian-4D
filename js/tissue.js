@@ -31,7 +31,7 @@ export async function startTissue() {
     <aside class="side tis-side"><section class="card"><div class="bar tis-tabs">${[['explore', 'Explore'], ['chains', 'Fascial chains'], ['map', 'Tendon map'], ['lab', '4D lab'], ['plan', 'Plan'], ['learn', 'Learn'], ['cards', 'Cards'], ['src', 'Sources']].map(([k, v], i) => `<button class="chip-btn ${i ? '' : 'on'}" data-t="${k}">${v}</button>`).join('')}</div></section><div id="tis-panel"></div></aside>`;
   host.querySelectorAll('[data-t]').forEach((b) => (b.onclick = () => { host.querySelectorAll('[data-t]').forEach((x) => x.classList.toggle('on', x === b)); panel(b.dataset.t); }));
   const [book, know] = await Promise.all([fetch('/meridian-4D/rt/tissue/booklet.json').then((r) => r.json()).catch(() => null), fetch('/meridian-4D/rt/tissue/knowledge.json').then((r) => r.json()).catch(() => null)]);
-  T.book = book; T.know = know;
+  T.book = book; T.know = know; T.books = await fetch('/meridian-4D/rt/tissue/booklets.json').then((r) => r.json()).catch(() => ({ books: [], rule: '' }));
   panel('explore');
   await scene3d();
 }
@@ -298,9 +298,38 @@ function plan(P) {
 }
 
 // ---- learn: booklet reader
-function learn(P) {
+// booklet picker: the owner's Tendon Booklet, then the open-library booklets (quoted sentences only)
+async function learn(P) {
+  T.books ||= await fetch('/meridian-4D/rt/tissue/booklets.json').then((r) => r.json()).catch(() => ({ books: [] }));
+  const pick = `<section class="card"><div class="bar">${[['own', 'The Tendon Booklet (owner)'], ...T.books.books.map((b) => [b.id, b.title])].map(([k, v]) => `<button class="chip-btn ${k === (T.bk || 'own') ? 'on' : ''}" data-bk="${k}">${esc(v)}</button>`).join('')}</div></section>`;
+  if ((T.bk || 'own') !== 'own') return openBook(P, pick);
+  learnOwn(P, pick);
+  P.querySelectorAll('[data-bk]').forEach((b) => (b.onclick = () => { T.bk = b.dataset.bk; learn(P); }));
+}
+const BOOK_LAYERS = { muscle: ['muscle', 'tendon', 'bone'], fascia: ['fascia', 'muscle', 'bone'], tendon: ['tendon', 'insertion', 'origin', 'muscle', 'bone'], ligament: ['ligament', 'capsule', 'bone'],
+  cartilage: ['meniscus', 'labrum', 'disc', 'capsule', 'bone', 'joint (other)'], bone: ['bone'] };
+function openBook(P, pick) {
+  const B = T.books.books.find((b) => b.id === T.bk), qn = B.chapters.reduce((a, c) => a + c.quotes.length, 0);
+  if (BOOK_LAYERS[B.id] && T.meshes?.length) { Object.keys(T.show).forEach((k) => { T.show[k] = BOOK_LAYERS[B.id].includes(k); }); T.focus = null; bar(); applyLook(); }
+  const cite = (q) => `${esc(q.title)}${q.page ? `, ${esc(q.page)}` : q.section ? ` · ${esc(q.section)}` : ''} (${esc(q.licence)})`;
+  P.innerHTML = `${pick}<section class="card"><div class="card-h"><h2>${esc(B.title)}</h2><small>${qn} quoted sentences · ${B.chapters.length} chapters</small></div>
+    <p class="mini">Built from the open library (OpenStax Anatomy &amp; Physiology 2e pages and StatPearls chapters on this tissue): every paragraph is a sentence quoted unchanged with its source, chosen because it names the tissue and the chapter's topic. Nothing is summarised or written by a model, so thin chapters stay thin. The 3D view shows this tissue's layers.</p>
+    <input class="tr-in" id="bk-q" placeholder="Search this booklet"><div class="bar" style="margin-top:6px">${B.chapters.map((c, i) => `<button class="chip-btn" data-c="${i}">${esc(c.n)} · ${esc(c.title)} <small>${c.quotes.length}</small></button>`).join('')}</div></section><section class="card bk" id="bk-body"></section>`;
+  const show = (i, q = '') => {
+    const c = B.chapters[i], hl = (s) => (q ? esc(s).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>') : esc(s));
+    $('#bk-body').innerHTML = `<h2 style="text-transform:none;letter-spacing:0">Chapter ${esc(c.n)} — ${esc(c.title)}</h2>
+      ${c.quotes.length ? c.quotes.map((x) => `<p>“${hl(x.text)}”<br><small class="fine">${cite(x)}</small></p>`).join('') : '<p class="muted">No sentence in the open library names this tissue and this topic.</p>'}
+      ${c.reviews.length ? `<h3>Newest open-access systematic reviews / guidelines on this</h3><ul>${c.reviews.map((r) => `<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/${esc(r.pmcid)}/" target="_blank" rel="noopener">${esc(r.title)}</a> <small>${esc(r.journal || '')} ${esc(r.year || '')}</small></li>`).join('')}</ul><p class="fine">Titles only; read the paper for its findings.</p>` : ''}`;
+    P.querySelectorAll('[data-c]').forEach((b) => b.classList.toggle('on', +b.dataset.c === i));
+  };
+  P.querySelectorAll('[data-c]').forEach((b) => (b.onclick = () => show(+b.dataset.c, $('#bk-q').value.trim())));
+  $('#bk-q').onkeydown = (e) => { if (e.key !== 'Enter') return; const q = e.target.value.trim().toLowerCase(); const i = B.chapters.findIndex((c) => c.quotes.some((x) => x.text.toLowerCase().includes(q))); if (i >= 0) show(i, e.target.value.trim()); };
+  P.querySelectorAll('[data-bk]').forEach((b) => (b.onclick = () => { T.bk = b.dataset.bk; learn(P); }));
+  show(0);
+}
+function learnOwn(P, pick) {
   const C = T.book.chapters;
-  P.innerHTML = `<section class="card"><div class="card-h"><h2>${esc(T.book.title)}</h2></div><p class="mini">${esc(T.book.byline)} · ${esc(T.book.note)}</p>
+  P.innerHTML = `${pick}<section class="card"><div class="card-h"><h2>${esc(T.book.title)}</h2></div><p class="mini">${esc(T.book.byline)} · ${esc(T.book.note)}</p>
     <input class="tr-in" id="bk-q" placeholder="Search the booklet"><div class="bar" style="margin-top:6px">${C.map((c, i) => `<button class="chip-btn" data-c="${i}">${esc(c.title.replace(/^Chapter (\d+) — /, '$1 · '))}</button>`).join('')}</div></section><section class="card bk" id="bk-body"></section>`;
   const show = (i, q = '') => { const c = C[i]; let h = md(c.md); if (q) h = h.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>'); $('#bk-body').innerHTML = `<h2 style="text-transform:none;letter-spacing:0">${esc(c.title)}</h2>${h}`; P.querySelectorAll('[data-c]').forEach((b) => b.classList.toggle('on', +b.dataset.c === i)); };
   P.querySelectorAll('[data-c]').forEach((b) => (b.onclick = () => show(+b.dataset.c, $('#bk-q').value.trim())));
@@ -341,6 +370,8 @@ function deck() {
   add('5.1 Summary table', (r) => ({ q: `Training mode: ${r.Mode} — best use?`, a: `${r['What it is']} · best use: ${r['Best use']} (${r.Grade})` }));
   add('2.3 Viscoelasticity', (r) => ({ q: `Viscoelastic effect: ${r.Effect}?`, a: `${r['What happens']} · ${r['Why it matters']}` }));
   (T.book.glossary.match(/\*([^*]+)\* is ([^.]+)\./g) || []).forEach((g) => { const m = /\*([^*]+)\* is ([^.]+)\./.exec(g); D.push({ q: `Define: ${m[1]}`, a: m[2], src: 'Words used throughout' }); });
+  // open-library booklets: definitional sentences, quoted unchanged (appended so existing card progress keeps its index)
+  for (const b of T.books?.books || []) for (const c of b.cards) D.push({ q: `${b.title.replace(/^The | Booklet$|: open-library companion/g, '')}: what is "${c.term}"?`, a: `“${c.text}” (${c.title}${c.page ? `, ${c.page}` : ''})`, src: b.title });
   return D;
 }
 function cards(P) {
@@ -349,7 +380,7 @@ function cards(P) {
   const save = () => { try { localStorage.setItem('tissue-cards', JSON.stringify(S)); } catch { /* blocked */ } };
   const boxes = [0, 1, 2, 3, 4, 5].map((b) => D.filter((_, i) => (S[i]?.box || 0) === b).length);
   const q = due()[0];
-  P.innerHTML = `<section class="card"><div class="card-h"><h2>Flashcards</h2><small>${D.length} cards from the booklet's tables</small></div>
+  P.innerHTML = `<section class="card"><div class="card-h"><h2>Flashcards</h2><small>${D.length} cards: the Tendon Booklet's tables + definitions quoted in the open-library booklets</small></div>
     <p class="mini">Boxes (Leitner): ${boxes.map((n, b) => `<span class="pill">${b}: ${n}</span>`).join(' ')} · due now ${due().length}. Right moves a card up a box (next review 1, 3, 7, 14, 30 days); wrong sends it back to box 0. Saved in this browser.</p></section>
     ${q ? `<section class="card flash"><div class="mini">${esc(q.c.src)}</div><h3>${inline(q.c.q)}</h3><div id="fl-a" class="note" hidden>${inline(q.c.a)}${UNV(q.c.a)}</div>
       <div class="bar"><button class="primary small" id="fl-show">Show answer</button><button class="ghost-btn" id="fl-ok" hidden>✓ I knew it</button><button class="ghost-btn" id="fl-no" hidden>✗ Not yet</button></div></section>` : '<section class="card"><p>All cards reviewed for now. Come back later.</p></section>'}`;
