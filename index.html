@@ -45,6 +45,7 @@
     <button role="tab" data-mode="genome" aria-selected="false">DNA → Protein</button>
     <button role="tab" data-mode="imaging" aria-selected="false">Imaging</button>
     <button role="tab" data-mode="train" aria-selected="false">Training 4D</button>
+    <button role="tab" data-mode="emergency" aria-selected="false">Emergency</button>
     <button role="tab" data-mode="space" aria-selected="false">Space</button>
     <button role="tab" data-mode="ext" aria-selected="false">Extensions</button>
     <button role="tab" data-mode="about" aria-selected="false">About</button>
@@ -375,6 +376,9 @@
 <!-- ============================================================ TISSUE LAB 4D (js/tissue.js) -->
 <main id="mode-tissue" class="mode" hidden></main>
 
+<main id="mode-emergency" class="mode" hidden>
+  <div id="emergency-body" class="emergency"></div>
+</main>
 <main id="mode-space" class="mode" hidden>
   <div id="space-body" class="space"></div>
 </main>
