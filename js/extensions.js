@@ -10,6 +10,7 @@
 
 import { coursesHtml, bindCourses } from './courses.js';
 import { aiToolsHtml, bindAiTools } from './ai_tools.js';
+import { alphaxivHtml, bindAlphaxiv } from './alphaxiv.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -223,13 +224,13 @@ export function extLinksFor(q, groups = null) {
 export function startExtensions() {
   const host = $('#ext-body'); if (!host || host.dataset.ok) return; host.dataset.ok = '1';
   const groups = [...new Set(EXT.map((e) => e[0]))];
-  host.innerHTML = coursesHtml() + aiToolsHtml() + `<div class="ext-search"><input id="ext-q" type="search" placeholder="Search a term across every resource (e.g. ferritin, ACL tear, Lachman, psoriasis)" autocomplete="off"><span class="fine">Opens each site's own search in a new tab. Nothing is sent anywhere until you click a link.</span></div>
+  host.innerHTML = coursesHtml() + alphaxivHtml() + aiToolsHtml() + `<div class="ext-search"><input id="ext-q" type="search" placeholder="Search a term across every resource (e.g. ferritin, ACL tear, Lachman, psoriasis)" autocomplete="off"><span class="fine">Opens each site's own search in a new tab. Nothing is sent anywhere until you click a link.</span></div>
     <div id="ext-hits"></div>
     ${groups.map((g) => `<section class="card"><div class="card-h"><h2>${esc(g)}</h2></div><div class="ext-grid">${EXT.filter((e) => e[0] === g).map((e) => `
       <div class="ext-card"><a href="${esc(e[2])}" target="_blank" rel="noopener noreferrer"><b>${esc(e[1])}</b></a>${e[7] ? ` <span class="pill ${e[7] === 'Unique' ? 'uniq' : ''}">${esc(e[7])}</span>` : ''}
         <p class="fine">${esc(e[3])}</p><p class="fine"><span class="ext-acc ${e[4] === 'free' ? 'ok' : ''}">${esc(e[4])}</span> · ${esc(e[6])}${e[5] ? '' : ' · no search link'}</p></div>`).join('')}</div></section>`).join('')}
     <p class="fine cite">Checked on 2026-11-22: DermNet (images CC BY-NC-ND; terms ban automated harvesting), HistologyGuide, WebPath and the Rehabilitation Measures Database (all rights reserved, personal use), MedlinePlus (medical-test pages public domain). PathologyOutlines, Radiopaedia and Physiopedia did not serve their terms pages to the check. That is why these appear as links and none of their content is stored here. "Free" is what the site states today; sites can change their terms.</p>`;
-  bindCourses(host); bindAiTools(host);
+  bindCourses(host); bindAlphaxiv(host); bindAiTools(host);
   let tm = null;
   $('#ext-q').oninput = () => { clearTimeout(tm); tm = setTimeout(() => { const q = $('#ext-q').value.trim(); $('#ext-hits').innerHTML = q ? `<section class="card"><div class="card-h"><h2>Search “${esc(q)}” in</h2></div>${extLinksFor(q)}</section>` : ''; }, 200); };
 }

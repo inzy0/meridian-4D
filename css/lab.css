@@ -1053,3 +1053,9 @@ blockquote.q footer { font-size: 11px; color: var(--muted); margin-top: 4px; }
 #ai-q { flex: 1 1 180px; min-width: 140px; }
 .ai-q { margin: 6px 0; padding: 4px 10px; border-left: 3px solid rgba(111, 211, 255, .5); font-size: 13px; color: var(--ink, #e6edf6); }
 .ai-q cite { display: block; font-size: 11px; color: var(--muted); font-style: normal; margin-top: 2px; }
+
+/* alphaXiv panel (Extensions) */
+.ax-card { border-color: rgba(180, 155, 255, .35); }
+#ax-id { flex: 1 1 160px; min-width: 120px; }
+.ax-frame iframe { width: 100%; height: 72vh; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: #fff; }
+.ax-frame.tall iframe { height: 92vh; }

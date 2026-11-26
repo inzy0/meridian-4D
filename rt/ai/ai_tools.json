@@ -123,6 +123,22 @@
    "quote_src": "the site's own description"
   },
   {
+   "kind": "web",
+   "ref": "https://www.alphaxiv.org/",
+   "name": "alphaXiv",
+   "maker": "alphaXiv",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-27",
+   "status": 200,
+   "url": "https://www.alphaxiv.org/",
+   "quote": "Discuss, discover, and read arXiv papers. Explore trending papers, see recent activity and discussions, and follow authors of arXiv papers on alphaXiv.",
+   "quote_src": "the site's own description"
+  },
+  {
    "kind": "hf",
    "ref": "ncbi/MedCPT-Query-Encoder",
    "name": "MedCPT",
