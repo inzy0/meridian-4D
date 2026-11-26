@@ -15,6 +15,11 @@ export function initSearch() {
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); open(); }
   });
+  // deep link from the crawlable topic pages (pages/*.html): ?go=<route> opens that item, then the URL is tidied
+  try {
+    const g = new URLSearchParams(location.search).get('go');
+    if (g) { history.replaceState(null, '', location.pathname + (g.startsWith('#') ? g : location.hash)); setTimeout(() => go({ go: g }), 600); }
+  } catch { /* ignore */ }
 }
 
 async function index() {
@@ -116,7 +121,7 @@ async function requests() {
 
 const wait = async (fn, n = 60) => { for (let i = 0; i < n; i++) { const v = fn(); if (v) return v; await new Promise((r) => setTimeout(r, 250)); } return null; };
 async function go(h) {
-  dlg.close();
+  dlg?.close();
   const [type, ...rest] = h.go.split(':'); const arg = rest.join(':');
   if (h.go.startsWith('#')) { location.hash = h.go; return; }
   if (type === 'tests') { location.hash = '#tests'; (await import('./tests.js')).startTests(arg); return; }
