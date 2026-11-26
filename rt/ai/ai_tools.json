@@ -1,0 +1,1161 @@
+{
+ "checked": "2026-11-26",
+ "groups": {
+  "lit": "Research & literature",
+  "llm": "Medical language models",
+  "text": "Clinical text & NLP",
+  "img": "Medical imaging",
+  "path": "Pathology, skin, eye & sound",
+  "mol": "Molecules, proteins & drugs",
+  "learn": "Learning & study",
+  "care": "Care, access & accessibility",
+  "gen": "General assistants"
+ },
+ "items": [
+  {
+   "kind": "web",
+   "ref": "https://www.ncbi.nlm.nih.gov/research/pubtator3/",
+   "name": "PubTator3",
+   "maker": "NCBI / NLM",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.ncbi.nlm.nih.gov/research/pubtator3/",
+   "status": 200
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.semanticscholar.org/",
+   "name": "Semantic Scholar",
+   "maker": "Allen Institute for AI",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.semanticscholar.org/",
+   "status": 200,
+   "quote": "Semantic Scholar uses groundbreaking AI and engineering to understand the semantics of scientific literature to help Scholars discover relevant research.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://elicit.com/",
+   "name": "Elicit",
+   "maker": "Elicit",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://elicit.com/",
+   "status": 200,
+   "quote": "Elicit helps you synthesize evidence, understand the landscape, design programs and experiments, draft proposals, and weigh tradeoffs. Trusted by over 7 million researchers and 8 of the top 20 pharmaceutical companies",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://consensus.app/",
+   "name": "Consensus",
+   "maker": "Consensus",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S",
+    "C"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://consensus.app/",
+   "status": 200,
+   "quote": "Consensus is an AI academic search engine for peer-reviewed literature—your research OS for finding, organizing, and analyzing science 10x faster.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://scite.ai/",
+   "name": "scite",
+   "maker": "scite / Research Solutions",
+   "group": "lit",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://scite.ai/",
+   "status": 200,
+   "quote": "Scite searches 300M+ scholarly articles to give you citation-backed answers and show you how every claim is supported or disputed.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.researchrabbit.ai/",
+   "name": "ResearchRabbit",
+   "maker": "ResearchRabbit",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.researchrabbit.ai/",
+   "status": 200,
+   "quote": "Save hours on your literature review. Use ResearchRabbit to find related papers, build citation maps, and track research trends — powered by AI.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.connectedpapers.com/",
+   "name": "Connected Papers",
+   "maker": "Connected Papers",
+   "group": "lit",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.connectedpapers.com/",
+   "status": 200,
+   "quote": "Connected Papers is a visual tool to help researchers and applied scientists find academic papers relevant to their field of work.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "hf",
+   "ref": "ncbi/MedCPT-Query-Encoder",
+   "name": "MedCPT",
+   "maker": "NCBI / NLM",
+   "group": "lit",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/ncbi/MedCPT-Query-Encoder",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "public-domain",
+   "licence_link": "LICENSE",
+   "gated": false,
+   "task": "feature-extraction",
+   "downloads_30d": 33603,
+   "updated": "2023-12-03",
+   "quote": "",
+   "quote_src": ""
+  },
+  {
+   "kind": "web",
+   "ref": "https://notebooklm.google/",
+   "name": "NotebookLM",
+   "maker": "Google",
+   "group": "learn",
+   "audience": [
+    "S",
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://notebooklm.google/",
+   "status": 200,
+   "quote": "Meet Gemini Notebook, the AI research tool and thinking partner that can analyze your sources, turn complexity into clarity and transform your content.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.openevidence.com/",
+   "name": "OpenEvidence",
+   "maker": "OpenEvidence",
+   "group": "lit",
+   "audience": [
+    "C",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.openevidence.com/",
+   "status": 200,
+   "quote": "America’s Official Medical Knowledge Platform. OpenEvidence is the leading medical platform for healthcare professionals, featuring answers grounded in peer-reviewed research from NEJM, JAMA, Nature, NCCN, Cochrane, and more.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://glass.health/",
+   "name": "Glass Health",
+   "maker": "Glass Health",
+   "group": "learn",
+   "audience": [
+    "C",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://glass.health/",
+   "status": 200,
+   "quote": "Trusted clinical AI grounded in the leading medical evidence, built to democratize clinical intelligence and advance human health worldwide.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/medgemma-4b-it",
+   "name": "MedGemma 4B (multimodal)",
+   "maker": "Google Health AI",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/medgemma-4b-it",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "image-text-to-text",
+   "downloads_30d": 476073,
+   "updated": "2025-10-28",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/medgemma-27b-text-it",
+   "name": "MedGemma 27B (text)",
+   "maker": "Google Health AI",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/medgemma-27b-text-it",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "text-generation",
+   "downloads_30d": 11139,
+   "updated": "2025-09-16",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/txgemma-9b-chat",
+   "name": "TxGemma 9B",
+   "maker": "Google",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/txgemma-9b-chat",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "text-generation",
+   "downloads_30d": 344,
+   "updated": "2025-04-10",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "epfl-llm/meditron-7b",
+   "name": "Meditron 7B",
+   "maker": "EPFL",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/epfl-llm/meditron-7b",
+   "status": 200,
+   "licence": "llama2",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": "auto",
+   "task": "text-generation",
+   "downloads_30d": 617,
+   "updated": "2023-12-07",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "BioMistral/BioMistral-7B",
+   "name": "BioMistral 7B",
+   "maker": "Avignon Univ. / Nantes Univ.",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/BioMistral/BioMistral-7B",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 7168,
+   "updated": "2024-02-21",
+   "quote": "In this paper, we introduce BioMistral, an open-source LLM tailored for the biomedical domain, utilizing Mistral as its foundation model and further pre-trained on PubMed Central.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "aaditya/Llama3-OpenBioLLM-8B",
+   "name": "OpenBioLLM 8B",
+   "maker": "Saama AI Labs",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/aaditya/Llama3-OpenBioLLM-8B",
+   "status": 200,
+   "licence": "llama3",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 2023,
+   "updated": "2025-01-18",
+   "quote": "Introducing OpenBioLLM-8B: A State-of-the-Art Open Source Biomedical Large Language Model",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "m42-health/Llama3-Med42-8B",
+   "name": "Med42 8B",
+   "maker": "M42 Health",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/m42-health/Llama3-Med42-8B",
+   "status": 200,
+   "licence": "llama3",
+   "licence_name": "llama3",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 1736,
+   "updated": "2024-08-20",
+   "quote": "Finetuned from model: Llama3 - 8B & 70B Instruct",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "FreedomIntelligence/HuatuoGPT-o1-8B",
+   "name": "HuatuoGPT-o1 8B",
+   "maker": "CUHK-Shenzhen",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/FreedomIntelligence/HuatuoGPT-o1-8B",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 458,
+   "updated": "2024-12-30",
+   "quote": "HuatuoGPT-o1 is a medical LLM designed for advanced medical reasoning.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "Henrychur/MMed-Llama-3-8B",
+   "name": "MMed-Llama 3 (multilingual)",
+   "maker": "SJTU / Shanghai AI Lab",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/Henrychur/MMed-Llama-3-8B",
+   "status": 200,
+   "licence": "llama3",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 328,
+   "updated": "2024-05-24",
+   "quote": "MMed-Llama 3 builds upon the foundation of Llama 3 and has been further pretrained on MMedC, a comprehensive multilingual medical corpus.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "stanford-crfm/BioMedLM",
+   "name": "BioMedLM 2.7B",
+   "maker": "Stanford CRFM",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/stanford-crfm/BioMedLM",
+   "status": 200,
+   "licence": "bigscience-bloom-rail-1.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 1271,
+   "updated": "2024-03-28",
+   "quote": "Paper: BioMedLM: A 2.7B Parameter Language Model Trained On Biomedical Text",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "microsoft/biogpt",
+   "name": "BioGPT",
+   "maker": "Microsoft Research",
+   "group": "llm",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/microsoft/biogpt",
+   "status": 200,
+   "licence": "mit",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 15535,
+   "updated": "2023-02-03",
+   "quote": "In this paper, we propose BioGPT, a domain-specific generative Transformer language model pre-trained on large-scale biomedical literature.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "emilyalsentzer/Bio_ClinicalBERT",
+   "name": "Bio_ClinicalBERT",
+   "maker": "Alsentzer et al.",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT",
+   "status": 200,
+   "licence": "mit",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "fill-mask",
+   "downloads_30d": 2656066,
+   "updated": "2024-12-03",
+   "quote": "The Publicly Available Clinical BERT Embeddings paper contains four unique clinicalBERT models: initialized with BERT-Base (casedL-12H-768A-12) or BioBERT (BioBERT-Base v1.0 + PubMed 200K + PMC 270K) & trained on either all MIMIC notes or only discharge summaries.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "dmis-lab/biobert-v1.1",
+   "name": "BioBERT",
+   "maker": "DMIS Lab, Korea Univ.",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/dmis-lab/biobert-v1.1",
+   "status": 200,
+   "licence": "",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "feature-extraction",
+   "downloads_30d": 14512,
+   "updated": "2021-05-19",
+   "quote": "",
+   "quote_src": ""
+  },
+  {
+   "kind": "hf",
+   "ref": "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext",
+   "name": "BiomedBERT (PubMedBERT)",
+   "maker": "Microsoft Research",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext",
+   "status": 200,
+   "licence": "mit",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "fill-mask",
+   "downloads_30d": 3421265,
+   "updated": "2023-11-06",
+   "quote": "BiomedBERT is pretrained from scratch using abstracts from PubMed and full-text articles from PubMedCentral.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "gh",
+   "ref": "allenai/scispacy",
+   "name": "scispaCy",
+   "maker": "Allen Institute for AI",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/allenai/scispacy",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 2003,
+   "updated": "2025-12-04",
+   "archived": false,
+   "quote": "A full spaCy pipeline and models for scientific/biomedical documents.",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "medspacy/medspacy",
+   "name": "medspaCy",
+   "maker": "medspaCy team (Univ. of Utah / VA)",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/medspacy/medspacy",
+   "status": 200,
+   "licence": "MIT",
+   "stars": 688,
+   "updated": "2026-06-04",
+   "archived": false,
+   "quote": "Library for clinical NLP with spaCy.",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "apache/ctakes",
+   "name": "Apache cTAKES",
+   "maker": "Apache Software Foundation",
+   "group": "text",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/apache/ctakes",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 143,
+   "updated": "2026-11-04",
+   "archived": false,
+   "quote": "Apache cTAKES is a Natural Language Processing (NLP) platform for clinical text.",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "hf",
+   "ref": "openai/whisper-large-v3",
+   "name": "Whisper large-v3 (speech to text)",
+   "maker": "OpenAI",
+   "group": "text",
+   "audience": [
+    "R",
+    "C"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/openai/whisper-large-v3",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "automatic-speech-recognition",
+   "downloads_30d": 3141206,
+   "updated": "2024-08-12",
+   "quote": "Whisper is a state-of-the-art model for automatic speech recognition (ASR) and speech translation, proposed in the paper Robust Speech Recognition via Large-Scale Weak Supervision by Alec Radford et al. from OpenAI.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "gh",
+   "ref": "Project-MONAI/MONAI",
+   "name": "MONAI",
+   "maker": "Project MONAI (NVIDIA, King's College London et al.)",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/Project-MONAI/MONAI",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 8869,
+   "updated": "2026-11-26",
+   "archived": false,
+   "quote": "AI Toolkit for Healthcare Imaging",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "MIC-DKFZ/nnUNet",
+   "name": "nnU-Net",
+   "maker": "DKFZ",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/MIC-DKFZ/nnUNet",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 9070,
+   "updated": "2026-11-25",
+   "archived": false,
+   "quote": "",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "wasserth/TotalSegmentator",
+   "name": "TotalSegmentator",
+   "maker": "Univ. Hospital Basel",
+   "group": "img",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/wasserth/TotalSegmentator",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 3187,
+   "updated": "2026-11-25",
+   "archived": false,
+   "quote": "Tool for robust segmentation of >100 important anatomical structures in CT and MR images",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "bowang-lab/MedSAM",
+   "name": "MedSAM",
+   "maker": "Wang Lab, Univ. of Toronto",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/bowang-lab/MedSAM",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 4459,
+   "updated": "2025-05-07",
+   "archived": false,
+   "quote": "Segment Anything in Medical Images",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "hf",
+   "ref": "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+   "name": "BiomedCLIP",
+   "maker": "Microsoft Research",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+   "status": 200,
+   "licence": "mit",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "zero-shot-image-classification",
+   "downloads_30d": 135280,
+   "updated": "2025-01-14",
+   "quote": "BiomedCLIP is a biomedical vision-language foundation model that is pretrained on PMC-15M, a dataset of 15 million figure-caption pairs extracted from biomedical research articles in PubMed Central, using contrastive learning.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "microsoft/rad-dino",
+   "name": "RAD-DINO (chest X-ray encoder)",
+   "maker": "Microsoft Research",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/microsoft/rad-dino",
+   "status": 200,
+   "licence": "",
+   "licence_name": "mit",
+   "licence_link": "",
+   "gated": false,
+   "task": "image-feature-extraction",
+   "downloads_30d": 130025,
+   "updated": "2026-05-12",
+   "quote": "RAD-DINO is a vision transformer model trained to encode chest X-rays using the self-supervised learning method DINOv2.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "microsoft/llava-med-v1.5-mistral-7b",
+   "name": "LLaVA-Med",
+   "maker": "Microsoft Research",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/microsoft/llava-med-v1.5-mistral-7b",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "image-text-to-text",
+   "downloads_30d": 4294,
+   "updated": "2025-11-24",
+   "quote": "Large Language and Vision Assistant for bioMedicine (i.e., “LLaVA-Med”) is a large language and vision model trained using a curriculum learning method for adapting LLaVA to the biomedical domain.",
+   "quote_src": "model card"
+  },
+  {
+   "kind": "hf",
+   "ref": "StanfordAIMI/CheXagent-8b",
+   "name": "CheXagent",
+   "maker": "Stanford AIMI",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/StanfordAIMI/CheXagent-8b",
+   "status": 200,
+   "licence": "",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "text-generation",
+   "downloads_30d": 1173,
+   "updated": "2024-03-01",
+   "quote": "",
+   "quote_src": ""
+  },
+  {
+   "kind": "hf",
+   "ref": "google/cxr-foundation",
+   "name": "CXR Foundation",
+   "maker": "Google Health AI",
+   "group": "img",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/cxr-foundation",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "image-classification",
+   "downloads_30d": 39,
+   "updated": "2025-02-20",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/path-foundation",
+   "name": "Path Foundation",
+   "maker": "Google Health AI",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/path-foundation",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "image-classification",
+   "downloads_30d": 27,
+   "updated": "2025-02-20",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "MahmoodLab/UNI",
+   "name": "UNI (pathology)",
+   "maker": "Mahmood Lab, Harvard / MGB",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/MahmoodLab/UNI",
+   "status": 200,
+   "licence": "cc-by-nc-nd-4.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": "auto",
+   "task": "image-feature-extraction",
+   "downloads_30d": 121898,
+   "updated": "2025-03-06",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "MahmoodLab/CONCH",
+   "name": "CONCH (pathology vision-language)",
+   "maker": "Mahmood Lab, Harvard / MGB",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/MahmoodLab/CONCH",
+   "status": 200,
+   "licence": "cc-by-nc-nd-4.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": "auto",
+   "task": "image-feature-extraction",
+   "downloads_30d": 80758,
+   "updated": "2024-05-05",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "prov-gigapath/prov-gigapath",
+   "name": "Prov-GigaPath",
+   "maker": "Providence / Microsoft",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/prov-gigapath/prov-gigapath",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": "auto",
+   "task": "image-feature-extraction",
+   "downloads_30d": 42019,
+   "updated": "2026-08-07",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "paige-ai/Virchow",
+   "name": "Virchow",
+   "maker": "Paige",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/paige-ai/Virchow",
+   "status": 200,
+   "licence": "apache-2.0",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": "auto",
+   "task": "image-feature-extraction",
+   "downloads_30d": 9205,
+   "updated": "2024-09-03",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/derm-foundation",
+   "name": "Derm Foundation",
+   "maker": "Google Health AI",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/derm-foundation",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "image-classification",
+   "downloads_30d": 195,
+   "updated": "2025-04-01",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "gh",
+   "ref": "rmaphoh/RETFound_MAE",
+   "name": "RETFound (retina)",
+   "maker": "UCL / Moorfields",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/rmaphoh/RETFound",
+   "status": 200,
+   "licence": "NOASSERTION",
+   "stars": 696,
+   "updated": "2026-11-17",
+   "archived": false,
+   "quote": "Vision Foundation Models for Medical AI, including RETFound, DINOv2, DINOv3",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "hf",
+   "ref": "google/hear",
+   "name": "HeAR (health acoustics)",
+   "maker": "Google Health AI",
+   "group": "path",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/google/hear",
+   "status": 200,
+   "licence": "other",
+   "licence_name": "health-ai-developer-foundations",
+   "licence_link": "https://developers.google.com/health-ai-developer-foundations/terms",
+   "gated": "auto",
+   "task": "",
+   "downloads_30d": 21,
+   "updated": "2025-04-17",
+   "quote": "",
+   "quote_src": "model card is gated: sign in on Hugging Face to read it"
+  },
+  {
+   "kind": "gh",
+   "ref": "google-deepmind/alphafold3",
+   "name": "AlphaFold 3",
+   "maker": "Google DeepMind",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/google-deepmind/alphafold3",
+   "status": 200,
+   "licence": "Apache-2.0",
+   "stars": 8816,
+   "updated": "2026-11-19",
+   "archived": false,
+   "quote": "AlphaFold 3 inference pipeline.",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://alphafold.ebi.ac.uk/",
+   "name": "AlphaFold Protein Structure Database",
+   "maker": "EMBL-EBI / Google DeepMind",
+   "group": "mol",
+   "audience": [
+    "R",
+    "S"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://alphafold.ebi.ac.uk/",
+   "status": 200,
+   "quote": "AlphaFold Protein Structure Database",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "gh",
+   "ref": "jwohlwend/boltz",
+   "name": "Boltz",
+   "maker": "MIT Jameel Clinic",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/jwohlwend/boltz",
+   "status": 200,
+   "licence": "MIT",
+   "stars": 4347,
+   "updated": "2026-05-29",
+   "archived": false,
+   "quote": "Official repository for the Boltz biomolecular interaction models",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "hf",
+   "ref": "facebook/esm2_t33_650M_UR50D",
+   "name": "ESM-2 (protein language model)",
+   "maker": "Meta AI",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://huggingface.co/facebook/esm2_t33_650M_UR50D",
+   "status": 200,
+   "licence": "mit",
+   "licence_name": "",
+   "licence_link": "",
+   "gated": false,
+   "task": "fill-mask",
+   "downloads_30d": 2968578,
+   "updated": "2023-03-21",
+   "quote": "",
+   "quote_src": ""
+  },
+  {
+   "kind": "gh",
+   "ref": "RosettaCommons/RFdiffusion",
+   "name": "RFdiffusion",
+   "maker": "Baker Lab, IPD",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/RosettaCommons/RFdiffusion",
+   "status": 200,
+   "licence": "NOASSERTION",
+   "stars": 3149,
+   "updated": "2026-10-28",
+   "archived": false,
+   "quote": "Code for running RFdiffusion",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "gh",
+   "ref": "chemprop/chemprop",
+   "name": "Chemprop",
+   "maker": "MIT (Coley / Green groups)",
+   "group": "mol",
+   "audience": [
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://github.com/chemprop/chemprop",
+   "status": 200,
+   "licence": "NOASSERTION",
+   "stars": 2536,
+   "updated": "2026-11-12",
+   "archived": false,
+   "quote": "Message Passing Neural Networks for Molecule Property Prediction",
+   "quote_src": "repository description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.bemyeyes.com/",
+   "name": "Be My Eyes",
+   "maker": "Be My Eyes",
+   "group": "care",
+   "audience": [
+    "P"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.bemyeyes.com/",
+   "status": 200,
+   "quote": "Experience the benefits of accessible technology with Be My Eyes. Connect with volunteers for real-time assistance via video.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.seeingai.com/",
+   "name": "Seeing AI",
+   "maker": "Microsoft",
+   "group": "care",
+   "audience": [
+    "P"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.seeingai.com/",
+   "status": 200
+  },
+  {
+   "kind": "web",
+   "ref": "https://ada.com/",
+   "name": "Ada",
+   "maker": "Ada Health",
+   "group": "care",
+   "audience": [
+    "P"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://ada.com/",
+   "status": 200,
+   "quote": "Hi. We're Ada. Our symptom assessment helps people manage their health, and our enterprise solutions help our partners improve health and care. See how we can help you too.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://claude.ai/",
+   "name": "Claude",
+   "maker": "Anthropic",
+   "group": "gen",
+   "audience": [
+    "S",
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://claude.ai/",
+   "status": 403
+  },
+  {
+   "kind": "web",
+   "ref": "https://chatgpt.com/",
+   "name": "ChatGPT",
+   "maker": "OpenAI",
+   "group": "gen",
+   "audience": [
+    "S",
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://chatgpt.com/",
+   "status": 200,
+   "quote": "Use ChatGPT to answer questions, write, create images, complete work, and code—all in one place. Get started for free or download the app.",
+   "quote_src": "the site's own description"
+  },
+  {
+   "kind": "web",
+   "ref": "https://gemini.google.com/",
+   "name": "Gemini",
+   "maker": "Google",
+   "group": "gen",
+   "audience": [
+    "S",
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://gemini.google.com/",
+   "status": 200
+  },
+  {
+   "kind": "web",
+   "ref": "https://www.perplexity.ai/",
+   "name": "Perplexity",
+   "maker": "Perplexity",
+   "group": "gen",
+   "audience": [
+    "S",
+    "R"
+   ],
+   "checked": "2026-11-26",
+   "url": "https://www.perplexity.ai/",
+   "status": 200,
+   "quote": "Perplexity is a free AI-powered answer engine that provides accurate, trusted, and real-time answers to any question.",
+   "quote_src": "the site's own description"
+  }
+ ]
+}

@@ -1047,3 +1047,9 @@ blockquote.q footer { font-size: 11px; color: var(--muted); margin-top: 4px; }
 .cr-lv h3 { margin: 12px 0 6px; } .cr-lv h3 small { color: var(--muted); font-weight: 400; }
 .cr-v { display: inline-block; padding: 0 7px; border-radius: 999px; font-weight: 700; font-size: 11px; background: rgba(255,255,255,.08); }
 .cr-c.v1 .cr-v { background: rgba(111, 211, 255, .2); } .cr-c.v2 .cr-v { background: rgba(100, 230, 168, .22); } .cr-c.v3 .cr-v { background: rgba(180, 155, 255, .25); } .cr-c.v4 .cr-v { background: rgba(255, 192, 103, .28); }
+
+/* AI directory (Extensions) */
+.ai-card { border-color: rgba(111, 211, 255, .35); }
+#ai-q { flex: 1 1 180px; min-width: 140px; }
+.ai-q { margin: 6px 0; padding: 4px 10px; border-left: 3px solid rgba(111, 211, 255, .5); font-size: 13px; color: var(--ink, #e6edf6); }
+.ai-q cite { display: block; font-size: 11px; color: var(--muted); font-style: normal; margin-top: 2px; }
