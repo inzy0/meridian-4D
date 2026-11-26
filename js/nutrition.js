@@ -54,6 +54,7 @@ function render(host) {
   <section class="card"><div class="nu-topics" id="nu-topics"></div><div id="nu-topic"></div></section>
   <section class="card" id="nu-plan"></section>
   <section class="card" id="nu-shelf"></section>
+  <section class="card" id="nu-supps"></section>
   <section class="card" id="nu-rehab"></section>
   <section class="card" id="nu-track"></section>
   <section class="card"><div class="card-h"><h2>Deficiencies: signs, foods, who is at risk</h2><small>quoted from StatPearls · top foods from USDA</small></div><div class="nu-defs" id="nu-defs"></div><div id="nu-def"></div></section>
@@ -189,6 +190,7 @@ function plan() {
     <div class="nu-tile"><small>Fat</small><b>${r0(T.fat[0])}–${r0(T.fat[1])}</b><span>g/day (20–35% of energy)</span></div>
     <div class="nu-tile"><small>Carbohydrate</small><b>${r0(T.carb)}</b><span>g/day (the rest of the energy)</span></div>
   </div>
+  ${visual(T, meals)}
   ${T.kcal < 1200 ? `<p class="nu-warn">This target is below 1,200 kcal/day, the range the source calls a low-energy diet:</p>${rule('vlcd')}` : ''}
   ${T.note ? `<p class="nu-warn">${esc(T.note)}</p>` : ''}
   ${T.glyco ? `<p><b>Competition phase, glycogen:</b> ${r0(T.glyco[0])}–${r0(T.glyco[1])} g carbohydrate/day (8–12 g/kg) to maximise glycogen stores before the event.</p>${rule('carb_glyco')}` : ''}
@@ -230,6 +232,19 @@ function plan() {
   el.querySelectorAll('[data-addto]').forEach((b) => (b.onclick = () => openPicker(b.dataset.addto)));
   window.__nuPlus?.refresh?.();
   el.querySelectorAll('[data-del]').forEach((b) => (b.onclick = () => { const [k, j] = b.dataset.del.split('|'); P.foods[k].splice(Number(j), 1); save('nu-plan', P); plan(); }));
+}
+// energy split donut + per-meal stacked bars (protein / carbohydrate / fat, in kcal)
+function visual(T, meals) {
+  const parts = [[T.protMid * 4, '#4cc9f0', 'Protein'], [T.carb * 4, '#ffd23f', 'Carbohydrate'], [T.fatMid * 9, '#ff8c42', 'Fat']];
+  const tot = parts.reduce((a, x) => a + x[0], 0) || 1; let a0 = 0;
+  const arcs = parts.map(([v, c]) => { const f = v / tot, a1 = a0 + f * Math.PI * 2, P = (a) => `${60 + 48 * Math.sin(a)} ${60 - 48 * Math.cos(a)}`;
+    const d = `M60 60 L${P(a0)} A48 48 0 ${f > 0.5 ? 1 : 0} 1 ${P(a1)} Z`; a0 = a1; return `<path d="${d}" fill="${c}"/>`; }).join('');
+  const mx = Math.max(1, ...meals.map((m) => m.p * 4 + m.c * 4 + m.f * 9));
+  return `<div class="nu-vis"><div class="nu-donut"><svg viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Energy split">${arcs}<circle cx="60" cy="60" r="27" fill="var(--bg2)"/>
+      <text x="60" y="58" text-anchor="middle" class="nu-dk">${r0(T.kcal)}</text><text x="60" y="72" text-anchor="middle" class="nu-du">kcal/day</text></svg>
+      <div>${parts.map(([v, c, n]) => `<div class="nu-lg"><i style="background:${c}"></i>${n} <b>${r0(v / tot * 100)}%</b></div>`).join('')}</div></div>
+    <div class="nu-mbars">${meals.map((m) => { const seg = [[m.p * 4, '#4cc9f0'], [m.c * 4, '#ffd23f'], [m.f * 9, '#ff8c42']];
+      return `<div class="nu-mb"><span>${hhmm(m.t)} ${esc(m.name)}</span><div class="nu-mbt" style="width:${((m.p * 4 + m.c * 4 + m.f * 9) / mx * 100).toFixed(1)}%">${seg.map(([v, c]) => `<i style="flex:${v};background:${c}"></i>`).join('')}</div><b>${r0(m.kcal)}</b></div>`; }).join('')}</div></div>`;
 }
 // day timeline: meals as blocks, breaks between them, the training session
 function timeline(meals, p) {

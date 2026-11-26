@@ -10,14 +10,19 @@ const r0 = (x) => Math.round(x), r1 = (x) => Math.round(x * 10) / 10;
 const today = () => new Date().toISOString().slice(0, 10);
 const daysBetween = (a, b) => Math.floor((new Date(b) - new Date(a)) / 86400000);
 const TIMING = ['with breakfast', 'mid-morning', 'with lunch', 'afternoon', 'pre-training', 'post-training', 'with dinner', 'bedtime', 'any time'];
-let LOG = null, pref = 'indian';
+let LOG = null, pref = 'indian', SUP = null, supCat = '', supSel = null, supQ = '';
+const SUPIC = { vitamin: '💊', mineral: '🧂', hydration: '💧', 'fatty acid': '🐟', protein: '🥛', recovery: '🦴', performance: '⚡', gut: '🦠' };
+const FOODIC = [[/rice|millet|sorghum|oats|quinoa|pasta|bread|chapati|roti|flour/i, '🌾'], [/lentil|chickpea|mung|pigeon|bean|tofu|besan/i, '🫘'], [/milk|yogurt|cheese|butter|ghee/i, '🥛'],
+  [/chicken|beef|egg|fish|salmon|tuna/i, '🍗'], [/banana|mango|guava|papaya|apple|blueberr|avocado/i, '🍎'], [/spinach|okra|cauliflower|broccoli|potato|sweet potato|turmeric/i, '🥦'], [/peanut|almond|walnut|oil/i, '🥜']];
+const foodIcon = (n) => (FOODIC.find(([rx]) => rx.test(n)) || [0, '🍽'])[1];
 const loadLog = () => { try { return JSON.parse(localStorage.getItem('nu-log') || '[]') || []; } catch { return []; } };
 const saveLog = () => { try { localStorage.setItem('nu-log', JSON.stringify(LOG)); } catch { /* storage blocked */ } };
 
-export function initPlus(api) {
+export async function initPlus(api) {
   A = api; LOG = loadLog();
-  window.__nuPlus = { refresh: () => { track(); rehab(); } };
-  shelf(); rehab(); track();
+  window.__nuPlus = { refresh: () => { track(); rehab(); }, sheet: () => sheet() };
+  if (!SUP) SUP = await fetch('/meridian-4D/rt/nutrition/supplements.json').then((r) => r.json()).catch(() => null);
+  shelf(); supps(); rehab(); track();
 }
 
 // ------------------------------------------------------------------ shelves
@@ -27,14 +32,15 @@ async function shelf() {
   const ids = pref === 'both' ? [...new Set([...A.N.shelves.indian, ...A.N.shelves.international])] : A.N.shelves[pref];
   const byId = new Map(F.rows.map((f) => [f.id, f]));
   const meals = A.meals();
-  el.innerHTML = `<div class="card-h"><h2>Food shelf</h2><small>tap a food to add 100 g to a meal · USDA values per 100 g</small></div>
+  el.innerHTML = `<div class="card-h"><h2>Food shelf</h2><span><small>tap a food to add 100 g to a meal · USDA values per 100 g</small> <button class="ghost-btn tiny" id="nu-sheet">📄 Plan sheet (print / PDF)</button></span></div>
     <div class="nu-who">Style: ${[['indian', 'Indian kitchen'], ['international', 'International'], ['both', 'Both']].map(([k, n]) => `<button class="ghost-btn ${pref === k ? 'on' : ''}" data-pref="${k}">${n}</button>`).join('')}
       <label>add to <select id="nu-shmeal">${meals.map((m) => `<option>${A.esc(m.name)}</option>`).join('')}</select></label></div>
     <div class="nu-shelf">${ids.map((id) => byId.get(id)).filter(Boolean).map((f) => `<button class="nu-sf" data-sf="${f.id}" title="${A.esc(f.name)}">
-      <b>${A.esc(f.name.replace(/\s*\(.*?\)/g, '').split(',').slice(0, 2).join(','))}</b>
+      <span class="nu-fi">${foodIcon(f.name)}</span><b>${A.esc(f.name.replace(/\s*\(.*?\)/g, '').split(',').slice(0, 2).join(','))}</b>
       <small>${A.val(f, 'kcal')} kcal · P ${A.val(f, 'p')} · C ${A.val(f, 'c')} · F ${A.val(f, 'f')}</small></button>`).join('')}</div>
     <p class="fine">The shelves are a quick-pick list of everyday foods found in the USDA table; dishes such as paneer, idli or dosa are not in the USDA table and are left out rather than substituted. Use “+ food” in the plan to search all 7,793 foods.</p>`;
   el.querySelectorAll('[data-pref]').forEach((b) => (b.onclick = () => { pref = b.dataset.pref; shelf(); }));
+  $('#nu-sheet').onclick = () => sheet();
   el.querySelectorAll('[data-sf]').forEach((b) => (b.onclick = () => {
     const f = byId.get(Number(b.dataset.sf)); const meal = $('#nu-shmeal').value; const P = A.P;
     (P.foods[meal] = P.foods[meal] || []).push({ id: f.id, name: f.name, g: 100, kcal: A.val(f, 'kcal') || 0, p: A.val(f, 'p') || 0, c: A.val(f, 'c') || 0, f: A.val(f, 'f') || 0 });
@@ -85,7 +91,7 @@ async function rehab() {
     </div>
     ${cur ? `<div class="nu-today"><h3>Today: ${A.esc(cur.name)} · day ${ph.dayIn + 1} of ${ph.len}</h3>
       <div class="nu-today-g"><div><h4>Foods highlighted for this phase</h4>${(r.foods[cur.id] || []).map((id) => byId.get(id)).filter(Boolean).map((f) => `<span class="nu-hi">★ ${A.esc(f.name.split(',').slice(0, 2).join(','))}</span>`).join('') || '<p class="fine">None yet: star foods below.</p>'}</div>
-      <div><h4>Your schedule today</h4>${r.supps.filter((s) => suppOn(r, s, day)).map((s) => `<div class="nu-due"><b>${A.esc(s.name)}</b> ${A.esc(s.amount || '')} · ${A.esc(s.timing)}${s.note ? ` · <small>${A.esc(s.note)}</small>` : ''}</div>`).join('') || '<p class="fine">Nothing due today (or on a break).</p>'}
+      <div><h4>Your schedule today</h4>${r.supps.filter((s) => suppOn(r, s, day)).map((s) => `<div class="nu-due"><b>${A.esc(s.name)}</b> ${A.esc(s.amount || '')} · ${A.esc(s.timing)}${s.note ? ` · <small>${A.esc(s.note)}</small>` : ''}${s.quote ? `<div class="nu-dq">“${A.esc(s.quote)}”</div>` : ''}</div>`).join('') || '<p class="fine">Nothing due today (or on a break).</p>'}
         ${r.supps.filter((s) => !suppOn(r, s, day) && (!s.phases?.length || s.phases.includes(cur.id))).map((s) => `<div class="nu-due off">${A.esc(s.name)}: break this week</div>`).join('')}</div></div></div>` : `<div class="nu-today"><h3>The planned phases are complete (day ${day + 1}).</h3></div>`}
     <h3>Phases</h3>
     <div class="nu-phases">${r.phases.map((p, i) => { const q = N.phases.find((x) => x.id === p.id); return `<details class="nu-ph" ${i === ph.i ? 'open' : ''} style="--c:${colors[i % colors.length]}">
@@ -93,6 +99,7 @@ async function rehab() {
       <div class="nu-form"><label>Name <input data-pn="${i}" value="${A.esc(p.name)}"></label><label>Length (days) <input data-pd="${i}" type="number" min="1" max="730" value="${p.days}"></label>
         <label>= ${r1((Number(p.days) || 0) / 7)} weeks</label></div>
       ${q ? q.quotes.map(A.quote).join('') : ''}
+      ${SUP ? (() => { const hits = SUP.items.flatMap((it) => it.fields.rehab.filter((x) => (x.phases || []).includes(p.id)).map((x) => ({ it, x }))); return hits.length ? `<h4>Supplements the sources link to this phase</h4>${hits.map(({ it, x }) => `<div class="nu-phs"><button class="ghost-btn tiny" data-supgo="${it.id}">${SUPIC[it.cat] || '💊'} ${A.esc(it.name)}</button>${A.quote(x)}</div>`).join('')}` : ''; })() : ''}
       <h4>Foods to highlight in this phase</h4>
       <div class="nu-shelf small">${[...new Set([...A.N.shelves.indian, ...A.N.shelves.international])].map((id) => byId.get(id)).filter(Boolean).map((f) => `<button class="nu-sf ${(r.foods[p.id] || []).includes(f.id) ? 'star' : ''}" data-star="${p.id}|${f.id}">${(r.foods[p.id] || []).includes(f.id) ? '★' : '☆'} ${A.esc(f.name.replace(/\s*\(.*?\)/g, '').split(',').slice(0, 2).join(','))}</button>`).join('')}</div>
     </details>`; }).join('')}</div>
@@ -107,7 +114,7 @@ async function rehab() {
         <td><input data-s="${i}" data-f="note" value="${A.esc(s.note || '')}" placeholder="why / who advised"></td><td><button class="ghost-btn tiny" data-srm="${i}">×</button></td></tr>`).join('') || '<tr><td colspan="8" class="muted">No items yet.</td></tr>'}
     </tbody></table>
     <button class="ghost-btn tiny" id="nu-sadd">+ item</button>
-    <p class="nu-warn">Amounts are yours or your clinician's: this site does not suggest supplement doses. Check every medicine and supplement with the anti-doping tools below if you compete. The evidence for each supplement is quoted under <a href="#nutrition/supps">Supplements</a> and <a href="#nutrition/rehab">Rehabilitation nutrition</a>.</p>`;
+    <p class="nu-warn">Amounts you type are yours or your clinician's. Quoted source amounts appear on each supplement card and travel with “Add to my schedule”. Check every medicine and supplement with the anti-doping tools below if you compete. The evidence for each supplement is quoted under <a href="#nutrition/supps">Supplements</a> and <a href="#nutrition/rehab">Rehabilitation nutrition</a>.</p>`;
   const P = A.P; const redo = () => { A.save(); rehab(); };
   $('#nu-rstart').onchange = (e) => { r.start = e.target.value || today(); redo(); };
   el.querySelectorAll('[data-pn]').forEach((i) => (i.onchange = () => { r.phases[Number(i.dataset.pn)].name = i.value; redo(); }));
@@ -121,6 +128,7 @@ async function rehab() {
     const all = r.phases.map((p) => p.id); let l = s.phases?.length ? [...s.phases] : [...all]; if (c.checked) { if (!l.includes(pid)) l.push(pid); } else l = l.filter((x) => x !== pid);
     s.phases = l.length === all.length ? [] : l; redo(); }));
   el.querySelectorAll('[data-srm]').forEach((b) => (b.onclick = () => { r.supps.splice(Number(b.dataset.srm), 1); redo(); }));
+  el.querySelectorAll('[data-supgo]').forEach((b) => (b.onclick = () => { supSel = b.dataset.supgo; supps(); $('#nu-supps').scrollIntoView({ behavior: 'smooth' }); }));
   void P;
 }
 
@@ -201,4 +209,78 @@ function track() {
       if (/^\d{4}-\d{2}-\d{2}$/.test(e.date)) LOG = LOG.filter((x) => x.date !== e.date).concat(e); }
     LOG.sort((a, b) => a.date.localeCompare(b.date)); saveLog(); track();
   };
+}
+
+// ------------------------------------------------------------------ supplement shelf (quoted amounts, owner decision 2026-11-26)
+const SF = [['daily', '🟢', 'Daily requirement'], ['protocol', '🔵', 'How much (as stated in the source)'], ['when', '🕒', 'When'], ['cycle', '🔁', 'How long, loading and breaks'],
+  ['limit', '⚠️', 'Upper limits and safety'], ['doping', '🏅', 'Anti-doping'], ['why', '📖', 'What the sources say']];
+async function supps() {
+  const el = $('#nu-supps'); if (!el || !SUP) { if (el) el.innerHTML = ''; return; }
+  const cats = SUP.categories, t = supQ.trim().toLowerCase();
+  const list = SUP.items.filter((i) => (!supCat || i.cat === supCat) && (!t || i.name.toLowerCase().includes(t)));
+  const it = SUP.items.find((i) => i.id === supSel);
+  const F = await A.foods();
+  el.innerHTML = `<div class="card-h"><h2>Supplement shelf</h2><small>${SUP.items.length} items · every amount quoted from its source</small></div>
+    <div class="nu-supnote">${SUP.general.slice(0, 3).map((g) => `<p>“${A.esc(g.text)}” <span class="cite">${A.esc(g.src)}</span></p>`).join('')}</div>
+    <div class="nu-who"><button class="ghost-btn ${supCat ? '' : 'on'}" data-scat="">All</button>${Object.entries(cats).map(([k, n]) => `<button class="ghost-btn ${supCat === k ? 'on' : ''}" data-scat="${k}">${SUPIC[k] || ''} ${A.esc(n)}</button>`).join('')}
+      <input id="nu-supq" type="search" placeholder="Search: creatine, vitamin D…" value="${A.esc(supQ)}"></div>
+    <div class="nu-supgrid">${list.map((i) => `<button class="nu-supc ${i.id === supSel ? 'on' : ''}" data-sup="${i.id}"><span class="nu-supi">${SUPIC[i.cat] || '💊'}</span><b>${A.esc(i.name)}</b>
+      <span class="nu-badges">${SF.filter(([k]) => i.fields[k]?.length && k !== 'why').map(([k, ic, n]) => `<i title="${A.esc(n)}">${ic}</i>`).join('')}${i.fields.deficiency.length ? '<i title="Clinician-led deficiency treatment">🩺</i>' : ''}${i.fields.rehab.length ? '<i title="Rehabilitation">🦴</i>' : ''}</span></button>`).join('')}</div>
+    <div id="nu-supd">${it ? supDetail(it, F) : '<p class="fine">Choose a supplement to see its card.</p>'}</div>
+    <p class="fine">${A.esc(SUP.method)} Check every product with Global DRO and a third-party testing programme if you compete (links in the anti-doping section). Pregnancy, kidney or liver disease, and prescription medicines change what is safe: ask your doctor or pharmacist.</p>`;
+  el.querySelectorAll('[data-scat]').forEach((b) => (b.onclick = () => { supCat = b.dataset.scat; supps(); }));
+  el.querySelectorAll('[data-sup]').forEach((b) => (b.onclick = () => { supSel = b.dataset.sup; supps(); }));
+  $('#nu-supq').oninput = (e) => { supQ = e.target.value; const pos = e.target.selectionStart; supps().then(() => { const i = $('#nu-supq'); i.focus(); i.setSelectionRange(pos, pos); }); };
+  const add = el.querySelector('[data-supadd]'); if (add) add.onclick = () => {
+    const r = R(); const q = (it.fields.protocol[0] || it.fields.daily[0]);
+    r.supps.push({ name: it.name, amount: '', timing: /casein|sleep/i.test(it.name) ? 'bedtime' : /caffeine|bicarbonate|beta/i.test(it.name) ? 'pre-training' : 'with breakfast',
+      phases: [], on: '', off: '', note: q ? `quoted: ${q.title}` : '', quote: q ? q.text : '' });
+    A.save(); rehab(); add.textContent = '✓ added to your schedule'; };
+}
+function supDetail(it, F) {
+  const top = (F && it.food) ? F.rows.filter((f) => A.val(f, it.food) && !/^(Baby Foods|Restaurant Foods|Fast Foods|Spices and Herbs|American Indian\/Alaska Native Foods)$/.test(f.cat) && !/powder|supplement|fortified|enriched|with iron|ready-to-eat|freeze-dried|formula|dry mix/i.test(f.name))
+    .sort((a, b) => A.val(b, it.food) - A.val(a, it.food)).slice(0, 6) : [];
+  const block = ([k, ic, n]) => it.fields[k]?.length ? `<div class="nu-sb nu-sb-${k}"><h4>${ic} ${n}</h4>${it.fields[k].map(A.quote).join('')}</div>` : '';
+  return `<article class="nu-supart"><div class="card-h"><h3>${SUPIC[it.cat] || '💊'} ${A.esc(it.name)}</h3><span><button class="ghost-btn tiny" data-supadd>+ Add to my schedule</button>
+      <a class="ghost-btn tiny" href="https://www.globaldro.com/" target="_blank" rel="noopener">Check status (Global DRO)</a></span></div>
+    <div class="nu-sbs">${SF.slice(0, 6).map(block).join('')}</div>
+    ${it.fields.rehab.length ? `<div class="nu-sb nu-sb-rehab"><h4>🦴 Rehabilitation (phase tags)</h4>${it.fields.rehab.map((x) => `<div>${(x.phases || []).map((p) => `<span class="nu-pt">${p.toUpperCase()}</span>`).join('')}${A.quote(x)}</div>`).join('')}</div>` : ''}
+    ${it.fields.deficiency.length ? `<details class="nu-sb nu-sb-def"><summary>🩺 Treating a diagnosed deficiency (clinician-led)</summary><p class="nu-warn">These amounts treat a deficiency confirmed by a blood test and are given and monitored by a doctor; they are not everyday doses.</p>${it.fields.deficiency.map(A.quote).join('')}</details>` : ''}
+    ${top.length ? `<div class="nu-sb"><h4>🍽 Richest everyday foods (USDA, per 100 g)</h4><ol class="nu-topl">${top.map((f) => `<li>${A.esc(f.name.split(',').slice(0, 3).join(','))} <b>${A.val(f, it.food)}</b></li>`).join('')}</ol></div>` : ''}
+    ${block(SF[6])}
+    <p class="fine">Sources: ${it.sources.map((s) => `<a href="${A.esc(s.url)}" target="_blank" rel="noopener">${A.esc(s.title)}</a> (${A.esc(s.lic)})`).join(' · ')}</p></article>`;
+}
+
+// ------------------------------------------------------------------ plan sheet: one printable page (print or save as PDF)
+async function sheet() {
+  const T = A.targets(), meals = A.meals(), P = A.P, r = P.rehab, day = r ? Math.max(0, daysBetween(r.start, today())) : 0;
+  const ph = r ? phaseAt(r, day) : null, cur = r && ph && r.phases[ph.i];
+  const w7 = last(7), kAvg = avg(w7.map((e) => e.kcal)), pAvg = avg(w7.map((e) => e.p));
+  const kc = T.protMid * 4 + T.carb * 4 + T.fatMid * 9 || 1, seg = [[T.protMid * 4 / kc, '#4cc9f0', 'Protein'], [T.carb * 4 / kc, '#ffd23f', 'Carbohydrate'], [T.fatMid * 9 / kc, '#ff8c42', 'Fat']];
+  let a0 = 0; const arcs = seg.map(([f, c]) => { const a1 = a0 + f * Math.PI * 2, x0 = 60 + 50 * Math.sin(a0), y0 = 60 - 50 * Math.cos(a0), x1 = 60 + 50 * Math.sin(a1), y1 = 60 - 50 * Math.cos(a1);
+    const d = `M60 60 L${x0} ${y0} A50 50 0 ${f > 0.5 ? 1 : 0} 1 ${x1} ${y1} Z`; a0 = a1; return `<path d="${d}" fill="${c}"/>`; }).join('');
+  const due = r ? r.supps.filter((s) => s.name) : [];
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>Nutrition plan sheet</title><style>
+    body{font:13px/1.45 system-ui,sans-serif;color:#111;max-width:820px;margin:24px auto;padding:0 16px} h1{font-size:20px;margin:0} h2{font-size:15px;border-bottom:2px solid #2a9d8f;padding-bottom:3px;margin:18px 0 6px}
+    table{width:100%;border-collapse:collapse} td,th{border:1px solid #ccc;padding:4px 6px;text-align:left;vertical-align:top} .tiles{display:flex;gap:8px;flex-wrap:wrap} .tile{border:1px solid #ccc;border-radius:8px;padding:6px 10px;min-width:110px}
+    .tile b{font-size:18px;display:block} .q{font-size:11.5px;color:#333;border-left:3px solid #2a9d8f;padding-left:6px;margin:3px 0} .muted{color:#666;font-size:11px} .row{display:flex;gap:16px;align-items:center}
+    .sign{margin-top:28px;display:flex;gap:40px} .sign div{border-top:1px solid #333;padding-top:3px;min-width:220px} @media print{button{display:none}}</style></head><body>
+    <button onclick="print()">Print / save as PDF</button>
+    <div class="row"><div><h1>Nutrition plan sheet</h1><div class="muted">Meridian Anatomy Lab · ${new Date().toLocaleDateString()} · ${P.who === 'athlete' ? 'athlete' : 'everyday'} · goal: ${A.esc(P.goal)} · training: ${A.esc(P.mode)}</div></div>
+      <svg width="120" height="120" viewBox="0 0 120 120">${arcs}<circle cx="60" cy="60" r="26" fill="#fff"/><text x="60" y="64" text-anchor="middle" font-size="12" font-weight="700">${Math.round(T.kcal)}</text></svg>
+      <div>${seg.map(([f, c, n]) => `<div><span style="display:inline-block;width:10px;height:10px;background:${c}"></span> ${n} ${Math.round(f * 100)}%</div>`).join('')}</div></div>
+    <h2>Daily targets ${T.own ? '(your own numbers)' : ''}</h2><div class="tiles">
+      <div class="tile">Energy<b>${Math.round(T.kcal)} kcal</b></div><div class="tile">Protein<b>${Math.round(T.prot[0])}${T.prot[1] !== T.prot[0] ? `–${Math.round(T.prot[1])}` : ''} g</b></div>
+      <div class="tile">Carbohydrate<b>${Math.round(T.carb)} g</b></div><div class="tile">Fat<b>${Math.round(T.fat[0])}${T.fat[1] !== T.fat[0] ? `–${Math.round(T.fat[1])}` : ''} g</b></div>
+      ${P.own?.water ? `<div class="tile">Water<b>${P.own.water} L</b></div>` : ''}</div>
+    <h2>Meals</h2><table><tr><th>Time</th><th>Meal</th><th>kcal</th><th>P g</th><th>C g</th><th>F g</th><th>Foods</th></tr>
+      ${meals.map((m) => { const f = P.foods[m.name] || []; return `<tr><td>${String(Math.floor(m.t / 60) % 24).padStart(2, '0')}:${String(m.t % 60).padStart(2, '0')}</td><td>${m.post ? '⚡ ' : ''}${A.esc(m.name)}</td><td>${Math.round(m.kcal)}</td><td>${Math.round(m.p)}</td><td>${Math.round(m.c)}</td><td>${Math.round(m.f)}</td><td>${f.map((x) => `${A.esc(x.name.split(',').slice(0, 2).join(','))} ${x.g} g`).join('; ')}</td></tr>`; }).join('')}</table>
+    ${r ? `<h2>Rehabilitation: ${cur ? `${A.esc(cur.name)}, day ${ph.dayIn + 1} of ${ph.len}` : 'phases complete'} (started ${A.esc(r.start)})</h2>
+      <table><tr><th>Item</th><th>Amount (yours)</th><th>When</th><th>Take / break (weeks)</th><th>Quoted source amount</th></tr>
+      ${due.map((s) => `<tr><td>${A.esc(s.name)}</td><td>${A.esc(s.amount || '')}</td><td>${A.esc(s.timing)}</td><td>${s.on || 'all'} / ${s.off || 0}</td><td>${s.quote ? `<div class="q">${A.esc(s.quote)}</div><div class="muted">${A.esc(s.note || '')}</div>` : ''}</td></tr>`).join('') || '<tr><td colspan="5" class="muted">No items.</td></tr>'}</table>` : ''}
+    <h2>Last 7 days</h2><p>${w7.length} days logged · energy ${kAvg != null ? Math.round(kAvg) : '—'} kcal/day · protein ${pAvg != null ? Math.round(pAvg) : '—'} g/day</p>
+    <p class="muted">Targets from the Mifflin-St Jeor equation and quoted rules (ISSN, StatPearls, OpenStax); supplement amounts are quoted from their sources. Education only, not a medical prescription.</p>
+    <div class="sign"><div>Prepared by</div><div>Reviewed by (clinician / dietitian)</div></div></body></html>`;
+  const w = window.open('', '_blank'); if (!w) { alert('Allow pop-ups to open the plan sheet.'); return; }
+  w.document.write(html); w.document.close();
 }
