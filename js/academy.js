@@ -158,7 +158,7 @@ function bindFigs(root) {
 const commonsItem = (m) => ({ key: m.file, kind: 'image', src: `/meridian-4D/rt/academy/img/${m.file}`, title: m.title, caption: m.description,
   credit: `${esc(m.author || '')}${m.credit ? ` · ${esc(m.credit)}` : ''} · <a href="${esc(m.licence_url || m.page)}" target="_blank" rel="noopener">${esc(m.licence)}</a> · <a href="${esc(m.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>` });
 const mskItem = (m) => ({ key: m.file, kind: m.kind, src: `/meridian-4D/rt/academy/${m.file}`, title: `${m.label || 'Figure'} · ${m.title}`, caption: m.caption,
-  credit: `${esc(m.journal)} ${esc(m.year)} · <a href="https://pmc.ncbi.nlm.nih.gov/articles/${esc(m.pmcid)}/" target="_blank" rel="noopener">${esc(m.pmcid)}</a> · <a href="${esc(m.lic_url)}" target="_blank" rel="noopener">${esc(m.lic)}</a> · caption quoted unchanged; arrows and labels are the authors'` });
+  credit: `${esc(m.journal)} ${esc(m.year)} · <a href="https://pmc.ncbi.nlm.nih.gov/articles/${esc(m.pmcid)}/" target="_blank" rel="noopener">${esc(m.pmcid)}</a> · <a href="${esc(m.lic_url)}" target="_blank" rel="noopener">${esc(m.lic)}</a> · caption quoted unchanged; arrows and labels are the authors'${m.reencoded ? ` · ${esc(m.reencoded)}` : ''}` });
 
 function joints() {
   const el = $('#ac-main');

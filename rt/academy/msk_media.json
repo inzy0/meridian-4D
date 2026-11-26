@@ -718,7 +718,8 @@
    "cyst",
    "calcific",
    "nerve"
-  ]
+  ],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "video",
@@ -738,7 +739,8 @@
   ],
   "tags": [
    "normal"
-  ]
+  ],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "image",
@@ -984,7 +986,8 @@
   "tags": [
    "fasciitis",
    "injection"
-  ]
+  ],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "image",
@@ -1453,7 +1456,8 @@
   "joints": [
    "spine_other"
   ],
-  "tags": []
+  "tags": [],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "video",
@@ -1470,7 +1474,8 @@
   "joints": [
    "spine_other"
   ],
-  "tags": []
+  "tags": [],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "video",
@@ -1487,7 +1492,8 @@
   "joints": [
    "wrist_hand"
   ],
-  "tags": []
+  "tags": [],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  },
  {
   "kind": "image",
@@ -4089,6 +4095,7 @@
   ],
   "tags": [
    "tear"
-  ]
+  ],
+  "reencoded": "re-encoded to web size (max 720p) for this site; content unchanged"
  }
 ]
