@@ -71,45 +71,92 @@ export function angleDeg(a, b, c) {
 // Flexion of a hinge joint: 0 = straight, grows as the joint bends.
 export const hingeFlexion = (p, j, n) => 180 - angleDeg(p, j, n);
 
-// Shoulder: elevation of the arm from the side of the trunk, and the plane it
-// is raised in (flexion = forward, abduction = sideways), from a torso frame
-// built on the world landmarks. MediaPipe world axes: x right, y DOWN, z toward
-// the camera is negative.
-export function shoulderAngles(w, side) {
+// One trunk frame for both sides (built on the world landmarks; MediaPipe world axes: x right, y DOWN, z toward
+// the camera negative). up = mid-hip -> mid-shoulder; right = left shoulder -> right shoulder, made perpendicular to
+// up; fwd = up x right (pointing out of the chest). Using one frame for both sides removes the left/right handedness
+// flip of the earlier per-side frame, so mirror-image movements give the same numbers.
+export function trunkFrame(w) {
   const ls = w[11], rs = w[12], lh = w[23], rh = w[24];
-  const sh = side === 'l' ? ls : rs, el = side === 'l' ? w[13] : w[14];
-  const midS = { x: (ls.x + rs.x) / 2, y: (ls.y + rs.y) / 2, z: (ls.z + rs.z) / 2 };
-  const midH = { x: (lh.x + rh.x) / 2, y: (lh.y + rh.y) / 2, z: (lh.z + rh.z) / 2 };
-  const down = unit(sub(midH, midS));
-  const lat0 = unit(sub(side === 'l' ? ls : rs, side === 'l' ? rs : ls)); // outward for this side
-  const fwd = unit(cross(down, lat0));
-  const lat = unit(cross(fwd, down));
-  const arm = unit(sub(el, sh));
-  const elevation = (Math.acos(Math.max(-1, Math.min(1, dot(arm, down)))) * 180) / Math.PI;
-  const f = dot(arm, fwd), l = dot(arm, lat);
-  // Sign of fwd depends on the side's cross-product handedness; use magnitude
-  // ratio for plane and keep elevation unsigned.
-  const plane = Math.abs(f) > Math.abs(l) ? 'flexion' : 'abduction';
-  return { elevation, plane, planeDeg: (Math.atan2(Math.abs(f), Math.abs(l)) * 180) / Math.PI };
+  const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, z: (a.z + b.z) / 2 });
+  const mS = mid(ls, rs), mH = mid(lh, rh);
+  const up = unit(sub(mS, mH));
+  const r0 = sub(rs, ls);
+  const right = unit([r0[0] - dot(r0, up) * up[0], r0[1] - dot(r0, up) * up[1], r0[2] - dot(r0, up) * up[2]]);
+  let fwd = unit(cross(up, right));
+  // the chest faces the camera when the trunk is not turned away: world z of a point in front of the chest is
+  // more negative; flip if the cross product points backwards (keeps "forward" anatomical for any handedness)
+  const nose = w[0];
+  if (nose && dot(sub(nose, mS), fwd) < 0) fwd = [-fwd[0], -fwd[1], -fwd[2]];
+  return { mS, mH, up, right, fwd };
+}
+
+// Set-up check: how much the trunk is turned (yaw) and leaning (roll) relative to the camera. Depth from one camera
+// is the least certain axis, so a turned trunk makes the far side read differently from the near side.
+export function trunkPose(w) {
+  const F = trunkFrame(w);
+  let yaw = (Math.atan2(F.right[2], F.right[0]) * 180) / Math.PI; // shoulder line vs the image x axis
+  if (yaw > 90) yaw -= 180; else if (yaw < -90) yaw += 180; // 0 = shoulders square to the camera, either handedness
+  const roll = (Math.atan2(F.up[0], -F.up[1]) * 180) / Math.PI; // 0 = trunk upright (y is down)
+  return { yaw, roll };
+}
+
+// Elevation of a limb segment from the trunk and the PLANE it is raised in, both sides on the same conventions:
+//   elevation  angle between the segment and "down the trunk" (0 = hanging by the side)
+//   planeDeg   direction of elevation around the trunk axis, measured from the frontal plane:
+//              0 = abduction (frontal plane), ~30-45 = scaption (scapular plane), 90 = flexion (sagittal plane),
+//              negative = behind the frontal plane (extension side), beyond 90 = crossing the body
+// The lateral axis is mirrored for the left side, so "outward" is positive on both sides.
+export function segmentAngles(w, side, proximal, distal) {
+  const F = trunkFrame(w);
+  const out = side === 'l' ? [-F.right[0], -F.right[1], -F.right[2]] : F.right;
+  const down = [-F.up[0], -F.up[1], -F.up[2]];
+  const seg = unit(sub(w[distal], w[proximal]));
+  const elevation = (Math.acos(Math.max(-1, Math.min(1, dot(seg, down)))) * 180) / Math.PI;
+  const f = dot(seg, F.fwd), l = dot(seg, out);
+  const planeDeg = (Math.atan2(f, l) * 180) / Math.PI;
+  return { elevation, planeDeg, sagittal: (Math.atan2(f, dot(seg, down)) * 180) / Math.PI, frontal: (Math.atan2(l, dot(seg, down)) * 180) / Math.PI };
+}
+export function planeName(planeDeg, elevation) {
+  if (elevation < 15) return 'neutral';
+  if (planeDeg < -20) return 'extension';
+  if (planeDeg < 20) return 'abduction';
+  if (planeDeg < 60) return 'scaption';
+  if (planeDeg <= 120) return 'flexion';
+  return 'horizontal adduction';
+}
+export function shoulderAngles(w, side) {
+  const a = segmentAngles(w, side, side === 'l' ? 11 : 12, side === 'l' ? 13 : 14);
+  return { ...a, plane: planeName(a.planeDeg, a.elevation) };
+}
+export function hipAngles(w, side) {
+  const a = segmentAngles(w, side, side === 'l' ? 23 : 24, side === 'l' ? 25 : 26);
+  return { ...a, plane: planeName(a.planeDeg, a.elevation) };
 }
 
 // Per-joint live state: smoothed angle, angular velocity, session ROM, history.
 export class JointTrack {
   constructor(id, label, zone) {
     this.id = id; this.label = label; this.zone = zone;
-    this.f = new OneEuro(1.2, 0.05, 1.0);
+    this.f = new OneEuro(0.5, 0.04, 1.0); // lower cutoff at rest (steadier holds), speed term keeps fast moves responsive
     this.angle = NaN; this.vel = 0; this.min = Infinity; this.max = -Infinity;
-    this.hist = []; this.extra = '';
+    this.hist = []; this.extra = ''; this.raw5 = []; this.sd = NaN; this.planeDeg = NaN;
     this.lastT = -1;
   }
-  update(raw, tSec, extra = '') {
+  update(raw, tSec, extra = '', planeDeg = NaN) {
     if (!Number.isFinite(raw)) return;
-    if (this.lastT >= 0 && tSec - this.lastT > 0.5) this.f.reset();
+    if (this.lastT >= 0 && tSec - this.lastT > 0.5) { this.f.reset(); this.raw5 = []; }
     this.lastT = tSec;
-    this.angle = this.f.filter(raw, tSec); this.vel = this.f.dx; this.extra = extra;
+    // median of the last 5 detections removes single-frame landmark jumps before the adaptive filter
+    this.raw5.push(raw); if (this.raw5.length > 5) this.raw5.shift();
+    const med = [...this.raw5].sort((a, b) => a - b)[this.raw5.length >> 1];
+    this.angle = this.f.filter(med, tSec); this.vel = this.f.dx; this.extra = extra;
+    if (Number.isFinite(planeDeg)) this.planeDeg = Number.isFinite(this.planeDeg) ? this.planeDeg + 0.3 * (planeDeg - this.planeDeg) : planeDeg;
     this.min = Math.min(this.min, this.angle); this.max = Math.max(this.max, this.angle);
     this.hist.push([tSec, this.angle]);
     while (this.hist.length && tSec - this.hist[0][0] > 10) this.hist.shift();
+    const last1 = this.hist.filter((h) => tSec - h[0] <= 1).map((h) => h[1]);
+    const m = last1.reduce((a, b) => a + b, 0) / (last1.length || 1);
+    this.sd = last1.length > 4 ? Math.sqrt(last1.reduce((a, b) => a + (b - m) ** 2, 0) / last1.length) : NaN; // stability over the last second
   }
   fresh(tSec) { return this.lastT >= 0 && tSec - this.lastT < 0.5; }
   resetRom() { this.min = Infinity; this.max = -Infinity; }

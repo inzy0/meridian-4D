@@ -8,7 +8,7 @@ import {
   handBones, CARPALS, handJoints, FACE_OVAL, JAW, EYE_R, EYE_L, NOSE, SKULL_LABELS, BRAIN_LABELS,
   POSE_BONES, POSE_JOINTS, MUSCLE_ACTIONS, MODEL_ACCURACY, OPENSTAX_AP2E,
 } from './anatomy_maps.js';
-import { LandmarkSmoother, extrapolate, hingeFlexion, shoulderAngles, JointTrack, phaseOf } from './kinematics.js';
+import { LandmarkSmoother, extrapolate, hingeFlexion, shoulderAngles, hipAngles, trunkPose, JointTrack, phaseOf } from './kinematics.js';
 import { scanner, initScannerUI, setScannerEnabled, updateScanner } from './scanner.js';
 import { initMirrorAR, setMirrorAR } from './mirror_ar.js';
 import { multicam, fusePose, setMulticamModel } from './multicam.js';
@@ -145,6 +145,9 @@ export function initMirrorUI() {
   initMirrorAR();
   document.body.classList.toggle('xray-tint', state.layers.tint);
   $('#rom-reset').addEventListener('click', () => state.joints.forEach((j) => j.resetRom()));
+  $('#calib-btn')?.addEventListener('click', startCalibration);
+  $('#calib-clear')?.addEventListener('click', () => { state.calib = {}; try { localStorage.removeItem('mx-calib'); } catch { /* blocked */ } state.joints.forEach((j) => j.resetRom()); calibStatus(); });
+  calibStatus();
   $('#rec-btn').addEventListener('click', toggleRecording);
   $('#joint-table').addEventListener('click', (e) => {
     const tr = e.target.closest('tr[data-id]'); if (tr) state.selected = tr.dataset.id;
@@ -243,11 +246,16 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
-function track(id, label, zone, raw, t, extra) {
+// neutral calibration: offsets measured while standing still in the neutral position (arms by the sides, elbows and
+// knees straight, facing the camera) are subtracted, so both sides read 0 at neutral (goniometer convention)
+state.calib = (() => { try { return JSON.parse(localStorage.getItem('mx-calib') || '{}') || {}; } catch { return {}; } })();
+function track(id, label, zone, raw, t, extra, planeDeg) {
   let j = state.joints.get(id);
   if (state.predicting) return j; // display-only frames never update angles, range of motion or recordings
   if (!j) { j = new JointTrack(id, label, zone); state.joints.set(id, j); if (!state.selected) state.selected = id; }
-  j.update(raw, t, extra);
+  if (state.calibrating && Number.isFinite(raw)) (state.calibrating.s[id] ||= []).push(raw);
+  const off = state.calib.offsets?.[id] || 0;
+  j.update(Number.isFinite(raw) ? raw - off : raw, t, extra, planeDeg);
   if (state.recording && Number.isFinite(j.angle)) state.recording.push([t.toFixed(3), id, j.angle.toFixed(2), j.vel.toFixed(1), extra]);
   return j;
 }
@@ -275,8 +283,14 @@ function render(canvas, res, t) {
       for (const jd of POSE_JOINTS) {
         const vis = (i) => (raw[i].visibility ?? 1) >= 0.5 && raw[i].y < 1.02 && raw[i].y > -0.02;
         if (!vis(jd.j) || !vis(jd.n) || (jd.p !== undefined && !vis(jd.p))) continue;
-        if (jd.kind === 'hinge') track(jd.id, jd.label, jd.zone, hingeFlexion(world[jd.p], world[jd.j], world[jd.n]), t, jd.action);
-        else { const s = shoulderAngles(world, jd.side); track(jd.id, jd.label, jd.zone, s.elevation, t, s.plane); }
+        if (jd.action === 'hip') { const s = hipAngles(world, jd.id[0]); track(jd.id, jd.label, jd.zone, s.elevation, t, s.plane, s.planeDeg); }
+        else if (jd.kind === 'hinge') track(jd.id, jd.label, jd.zone, hingeFlexion(world[jd.p], world[jd.j], world[jd.n]), t, jd.action);
+        else { const s = shoulderAngles(world, jd.side); track(jd.id, jd.label, jd.zone, s.elevation, t, s.plane, s.planeDeg); }
+      }
+      if (!state.predicting) { // set-up check: trunk turn and lean relative to the camera (smoothed)
+        const tp = trunkPose(world); const k = 0.15;
+        state.trunk = state.trunk ? { yaw: state.trunk.yaw + k * (tp.yaw - state.trunk.yaw), roll: state.trunk.roll + k * (tp.roll - state.trunk.roll) } : tp;
+        if (state.calibrating) state.calibrating.trunk.push(tp);
       }
     }
     const inFrame = (i) => raw[i].x > -0.02 && raw[i].x < 1.02 && raw[i].y > -0.02 && raw[i].y < 1.02 && (raw[i].visibility ?? 1) >= 0.5;
@@ -587,12 +601,39 @@ function layoutLabels(ctx, labels, W, H) {
   ctx.restore();
 }
 
+function startCalibration() {
+  let n = 3; state.calibrating = { s: {}, trunk: [], t0: performance.now() };
+  const el = $('#calib-status'); el.innerHTML = 'Stand still: arms by your sides, palms in, elbows and knees straight, facing the camera… 3';
+  const iv = setInterval(() => { n--; if (n > 0) { el.innerHTML = `Stand still… ${n}`; return; } clearInterval(iv); finishCalibration(); }, 1000);
+}
+function finishCalibration() {
+  const c = state.calibrating; state.calibrating = null;
+  const med = (a) => { const x = [...a].sort((p, q) => p - q); return x[x.length >> 1]; };
+  const offsets = {}, spread = {};
+  for (const [id, v] of Object.entries(c.s)) { if (v.length < 15) continue; const m = med(v); offsets[id] = m;
+    const mm = v.reduce((a, b) => a + b, 0) / v.length; spread[id] = Math.sqrt(v.reduce((a, b) => a + (b - mm) ** 2, 0) / v.length); }
+  const yaw = c.trunk.length ? med(c.trunk.map((x) => x.yaw)) : NaN, roll = c.trunk.length ? med(c.trunk.map((x) => x.roll)) : NaN;
+  state.calib = { offsets, spread, yaw, roll, when: new Date().toISOString(), samples: Object.values(c.s).reduce((a, v) => Math.max(a, v.length), 0) };
+  try { localStorage.setItem('mx-calib', JSON.stringify(state.calib)); } catch { /* blocked */ }
+  state.joints.forEach((j) => j.resetRom()); calibStatus();
+}
+function calibStatus() {
+  const el = $('#calib-status'); if (!el) return;
+  const c = state.calib; if (!c?.offsets) { el.innerHTML = 'Not calibrated: angles are raw. Calibrate once per set-up for matched left and right readings.'; return; }
+  const ok = Math.abs(c.yaw) <= 8 && Math.abs(c.roll) <= 5;
+  el.innerHTML = `Calibrated ${new Date(c.when).toLocaleTimeString()} · ${Object.keys(c.offsets).length} joints · neutral offsets ${Object.entries(c.offsets).map(([k, v]) => `${k.replace('_', ' ')} ${v.toFixed(1)}°`).join(', ')}
+    · stillness ±${Math.max(0, ...Object.values(c.spread || {})).toFixed(1)}° · trunk turn ${c.yaw.toFixed(1)}°, lean ${c.roll.toFixed(1)}° ${ok ? '<b class="ok">set-up good</b>' : '<b class="warn">face the camera squarely and stand upright, then calibrate again</b>'}`;
+}
+
 // ------------------------------------------------------------------ panels
 function actionFor(j) {
   const ph = phaseOf(j.vel); if (ph === 'holding') return null;
   if (j.extra === 'finger') return ph === 'flexing' ? 'finger_flexion' : 'finger_extension';
   if (j.extra === 'flexion') return ph === 'flexing' ? 'shoulder_flexion' : 'shoulder_extension';
-  if (j.extra === 'abduction') return ph === 'flexing' ? 'shoulder_abduction' : 'shoulder_adduction';
+  if (j.extra === 'abduction' || j.extra === 'scaption') return ph === 'flexing' ? 'shoulder_abduction' : 'shoulder_adduction';
+  if (j.extra === 'extension' && j.id.endsWith('shoulder')) return ph === 'flexing' ? 'shoulder_extension' : 'shoulder_flexion';
+  if (j.id.endsWith('hip')) return ph === 'flexing' ? 'hip_flexion' : 'hip_extension';
+  if (j.extra === 'neutral' || j.extra === 'horizontal adduction') return null;
   return `${j.extra}_${ph === 'flexing' ? 'flexion' : 'extension'}`;
 }
 
@@ -601,12 +642,22 @@ function updatePanels(t) {
   // joint table
   $('#joint-table tbody').innerHTML = rows.filter((j) => j.extra !== 'finger' || /PIP|Thumb MCP/.test(j.label)).map((j) => {
     const ph = phaseOf(j.vel);
-    const plane = j.id.endsWith('shoulder') ? ` <small>${j.extra}</small>` : '';
+    const plane = (j.id.endsWith('shoulder') || j.id.endsWith('hip')) && Number.isFinite(j.planeDeg) ? ` <small>${j.extra} · plane ${j.planeDeg.toFixed(0)}°</small>` : '';
     return `<tr data-id="${j.id}" class="${j.id === state.selected ? 'sel' : ''} ${ph !== 'holding' ? 'hot' : ''}">
-      <td>${j.label}${plane}</td><td class="mono">${j.angle.toFixed(0)}°</td>
-      <td class="mono">${j.min.toFixed(0)}–${j.max.toFixed(0)}°</td><td class="mono">${j.vel > 0 ? '+' : ''}${j.vel.toFixed(0)}</td></tr>`;
+      <td>${j.label}${plane}</td><td class="mono">${j.angle.toFixed(1)}°${Number.isFinite(j.sd) ? `<small class="${j.sd <= 1 ? 'ok' : 'muted'}"> ±${j.sd.toFixed(1)}</small>` : ''}</td>
+      <td class="mono">${j.min.toFixed(1)}–${j.max.toFixed(1)}°</td><td class="mono">${j.vel > 0 ? '+' : ''}${j.vel.toFixed(0)}</td></tr>`;
   }).join('') || '<tr><td colspan="4" class="muted">Step into view: face, hands or full body.</td></tr>';
 
+  // left vs right symmetry (same conventions on both sides; differences over 5° highlighted)
+  const sym = $('#sym-table tbody');
+  if (sym) {
+    const pairs = ['shoulder', 'elbow', 'hip', 'knee'].map((k) => [k, state.joints.get(`l_${k}`), state.joints.get(`r_${k}`)]).filter(([, l, r]) => l?.fresh(t) && r?.fresh(t));
+    sym.innerHTML = pairs.map(([k, l, r]) => { const d = l.angle - r.angle, dr = l.max - r.max;
+      return `<tr><td>${k}</td><td class="mono">${l.angle.toFixed(1)}°</td><td class="mono">${r.angle.toFixed(1)}°</td><td class="mono ${Math.abs(d) > 5 ? 'warn' : 'ok'}">${d > 0 ? '+' : ''}${d.toFixed(1)}°</td>
+        <td class="mono ${Math.abs(dr) > 5 ? 'warn' : ''}">${l.max.toFixed(1)} / ${r.max.toFixed(1)}°</td></tr>`; }).join('') || '<tr><td colspan="5" class="muted">Both sides of a joint in view to compare.</td></tr>';
+    const tr = state.trunk; const st = $('#setup-live');
+    if (st && tr) st.innerHTML = `Live set-up: trunk turn <b class="${Math.abs(tr.yaw) <= 8 ? 'ok' : 'warn'}">${tr.yaw.toFixed(1)}°</b> · lean <b class="${Math.abs(tr.roll) <= 5 ? 'ok' : 'warn'}">${tr.roll.toFixed(1)}°</b> (aim for under 8° and 5°)`;
+  }
   // zones
   const zones = new Map();
   rows.forEach((j) => { const hot = phaseOf(j.vel) !== 'holding'; zones.set(j.zone, (zones.get(j.zone) || false) || hot); });

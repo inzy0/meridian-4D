@@ -141,10 +141,15 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
     <section class="card">
       <div class="card-h"><h2>Joint angles</h2>
         <span><button id="rom-reset" class="ghost-btn">Reset ROM</button> <button id="rec-btn" class="ghost-btn">Record angles</button> <small id="rec-count" class="muted"></small></span></div>
-      <table id="joint-table"><thead><tr><th>Joint</th><th>Now</th><th>Range</th><th>°/s</th></tr></thead><tbody></tbody></table>
+      <div class="calib"><button id="calib-btn" class="ghost-btn">◎ Calibrate neutral (3 s)</button> <button id="calib-clear" class="ghost-btn tiny">clear</button>
+        <p class="fine" id="calib-status"></p><p class="fine" id="setup-live"></p></div>
+      <table id="joint-table"><thead><tr><th>Joint</th><th>Now ± stability</th><th>Range</th><th>°/s</th></tr></thead><tbody></tbody></table>
+      <h3 class="sym-h">Left vs right</h3>
+      <table id="sym-table"><thead><tr><th>Joint</th><th>Left</th><th>Right</th><th>L − R</th><th>Max L / R</th></tr></thead><tbody></tbody></table>
+      <p class="fine">Shoulders and hips: elevation from the trunk, and the plane it is in (0° frontal = abduction, about 30–45° = scapular plane / scaption, 90° sagittal = flexion, negative = extension), from one trunk frame shared by both sides. Readings are filtered (median of 5, then adaptive) and shown to 0.1° with their stability over the last second; stability under ±1° means a precise reading. Accuracy against a goniometer depends on the camera set-up (single camera, estimated depth): calibrate, face the camera squarely, keep the whole body in view.</p>
       <div class="spark-h"><small>Last 10 s: <b id="spark-label">—</b></small></div>
       <canvas id="spark" width="360" height="90"></canvas>
-      <p class="fine">Angles come from 3D landmarks estimated by one camera. Not yet validated against a goniometer or motion capture (gate V1).</p>
+      <p class="fine">Angles come from 3D landmarks estimated by one camera. Not yet validated against a goniometer or motion capture (gate V1). For the best accuracy choose the High accuracy performance mode (heavy pose model).</p>
     </section>
     <section class="card">
       <h2>Active zones</h2>
