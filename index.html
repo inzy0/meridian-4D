@@ -45,12 +45,15 @@
     <button role="tab" data-mode="genome" aria-selected="false">DNA → Protein</button>
     <button role="tab" data-mode="imaging" aria-selected="false">Imaging</button>
     <button role="tab" data-mode="train" aria-selected="false">Training 4D</button>
+    <button role="tab" data-mode="nutrition" aria-selected="false">Nutrition</button>
     <button role="tab" data-mode="emergency" aria-selected="false">Emergency</button>
     <button role="tab" data-mode="space" aria-selected="false">Space</button>
     <button role="tab" data-mode="ext" aria-selected="false">Extensions</button>
     <button role="tab" data-mode="about" aria-selected="false">About</button>
   </nav>
   <div class="chips">
+    <button class="chip sq-btn" id="sq-open" title="Search the whole site (Ctrl+K)">🔍 Search <kbd>Ctrl K</kbd></button>
+    <button class="chip mp-btn" id="mp-open" title="Mini video player (YouTube)">▶ Player</button>
     <a class="author" href="https://www.linkedin.com/in/dr-inzamam-shaikh-pt-05059a199/" target="_blank" rel="noopener noreferrer" title="Inzamam Shaikh on LinkedIn">
       <span class="author-ring"><img src="/meridian-4D/img/author.jpg" alt="Inzamam Shaikh" width="30" height="30" loading="eager" decoding="async"></span>
       <span class="author-txt"><small>Created by</small><b>Inzamam Shaikh</b></span>
@@ -376,6 +379,9 @@
 <!-- ============================================================ TISSUE LAB 4D (js/tissue.js) -->
 <main id="mode-tissue" class="mode" hidden></main>
 
+<main id="mode-nutrition" class="mode" hidden>
+  <div id="nutrition-body" class="nutrition"></div>
+</main>
 <main id="mode-emergency" class="mode" hidden>
   <div id="emergency-body" class="emergency"></div>
 </main>
