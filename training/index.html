@@ -47,6 +47,7 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
     <button role="tab" data-mode="tests" aria-selected="false">Tests &amp; labs</button>
     <button role="tab" data-mode="genome" aria-selected="false">DNA → Protein</button>
     <button role="tab" data-mode="imaging" aria-selected="false">Imaging</button>
+    <button role="tab" data-mode="academy" aria-selected="false">Imaging Academy</button>
     <button role="tab" data-mode="train" aria-selected="false">Training 4D</button>
     <button role="tab" data-mode="nutrition" aria-selected="false">Nutrition</button>
     <button role="tab" data-mode="emergency" aria-selected="false">Emergency</button>
@@ -56,6 +57,7 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
   </nav>
   <div class="chips">
     <button class="chip sq-btn" id="sq-open" title="Search the whole site (Ctrl+K)">🔍 Search <kbd>Ctrl K</kbd></button>
+    <button class="chip mp-btn" id="an-open" title="Draw on the page: pencil, highlighter, laser pointer, pins (Alt+D)">✏ Draw</button>
     <button class="chip mp-btn" id="mp-open" title="Mini video player (YouTube)">▶ Player</button>
     <a class="author" href="https://www.linkedin.com/in/dr-inzamam-shaikh-pt-05059a199/" target="_blank" rel="noopener noreferrer" title="Inzamam Shaikh on LinkedIn">
       <span class="author-ring"><img src="/meridian-4D/img/author.jpg" alt="Inzamam Shaikh" width="30" height="30" loading="eager" decoding="async"></span>
@@ -382,6 +384,9 @@ try{localStorage.setItem('anatomy-lab-mode','train');}catch(e){}window.addEventL
 <!-- ============================================================ TISSUE LAB 4D (js/tissue.js) -->
 <main id="mode-tissue" class="mode" hidden></main>
 
+<main id="mode-academy" class="mode" hidden>
+  <div id="academy-body" class="academy"></div>
+</main>
 <main id="mode-nutrition" class="mode" hidden>
   <div id="nutrition-body" class="nutrition"></div>
 </main>

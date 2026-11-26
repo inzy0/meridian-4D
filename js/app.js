@@ -34,6 +34,7 @@ function setMode(mode) {
   if (mode === 'genome') import('./genome.js').then((m) => m.startGenome()).catch((e) => console.error(e));
   if (mode === 'train') import('./training.js').then((m) => m.startTraining()).catch((e) => { const el = document.querySelector('#tr-main'); if (el) el.innerHTML = `<p class="muted">Training System failed to load: ${e.message}</p>`; console.error(e); });
   if (mode === 'tissue') import('./tissue.js').then((m) => m.startTissue()).catch((e) => { const el = document.querySelector('#tis-status'); if (el) el.textContent = `Tissue Lab failed to load: ${e.message}`; console.error(e); });
+  if (mode === 'academy') import('./academy.js').then((m) => m.startAcademy()).catch((e) => console.error(e));
   if (mode === 'nutrition') import('./nutrition.js').then((m) => m.startNutrition()).catch((e) => console.error(e));
   if (mode === 'emergency') import('./emergency.js').then((m) => m.startEmergency()).catch((e) => console.error(e));
   if (mode === 'space') import('./space.js').then((m) => m.startSpace()).catch((e) => console.error(e));
@@ -51,7 +52,8 @@ document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('cli
 initMirrorUI();
 import('./site_search.js').then((m) => m.initSearch()).catch((e) => console.error(e));
 import('./mini_player.js').then((m) => m.initPlayer()).catch((e) => console.error(e));
-const MODES = ['mirror', 'lab', 'diag', 'atlas', 'tissue', 'brain', 'molecular', 'clinical', 'tests', 'genome', 'imaging', 'train', 'nutrition', 'emergency', 'space', 'ext', 'about'];
+import('./annotate.js').then((m) => m.initAnnotate()).catch((e) => console.error(e));
+const MODES = ['mirror', 'lab', 'diag', 'atlas', 'tissue', 'brain', 'molecular', 'clinical', 'tests', 'genome', 'imaging', 'academy', 'train', 'nutrition', 'emergency', 'space', 'ext', 'about'];
 let saved = 'mirror';
 try { saved = localStorage.getItem('anatomy-lab-mode') || 'mirror'; } catch { /* ignore */ }
 const fromHash = () => MODES.find((m) => m === location.hash.slice(1).split('/')[0]);

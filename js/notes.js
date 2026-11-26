@@ -53,7 +53,7 @@ export async function initNotes() {
     <header id="nt-head"><b>Notes</b><span id="nt-status" class="nt-fine"></span>
       <span class="nt-sp"></span>
       <button data-v="edit" class="nt-hb on" title="Notes">Notes</button><button data-v="map" class="nt-hb" title="Node map">Nodes</button><button data-v="files" class="nt-hb" title="All recordings and files">Media</button>
-      <button id="nt-dock" class="nt-hb" title="Dock left / right">⇆</button><button id="nt-min" class="nt-hb" title="Close (Alt+N)">✕</button></header>
+      <button id="nt-draw" class="nt-hb" title="Draw on the page: pencil, highlighter, laser, pins (Alt+D)">✏ Draw</button><button id="nt-dock" class="nt-hb" title="Dock left / right">⇆</button><button id="nt-min" class="nt-hb" title="Close (Alt+N)">✕</button></header>
     <div id="nt-body">
       <aside id="nt-side"><div class="nt-row"><input id="nt-q" type="search" placeholder="Search notes"><button id="nt-new" class="nt-btn pri" title="New note">＋</button></div><div id="nt-tags"></div><ul id="nt-list"></ul>
         <label class="nt-fine"><input type="checkbox" id="nt-autoconv"> Auto-convert recordings (audio → MP3, video → MP4)</label>
@@ -75,6 +75,7 @@ export async function initNotes() {
   addEventListener('keydown', (e) => { if (e.altKey && (e.key === 'n' || e.key === 'N')) { e.preventDefault(); toggle(); } });
   P.querySelectorAll('[data-v]').forEach((b) => (b.onclick = () => { S.view = b.dataset.v; P.querySelectorAll('[data-v]').forEach((x) => x.classList.toggle('on', x === b)); render(); }));
   P.querySelector('#nt-new').onclick = () => newNote();
+  P.querySelector('#nt-draw').onclick = () => import('./annotate.js').then((m) => { m.initAnnotate(); m.toggle(); });
   P.querySelector('#nt-q').oninput = (e) => { S.q = e.target.value.toLowerCase(); renderList(); };
   P.querySelector('#nt-backup').onclick = backup;
   const ac = P.querySelector('#nt-autoconv'); ac.checked = S.autoConv; ac.onchange = () => { S.autoConv = ac.checked; try { localStorage.setItem('nt-autoconv', ac.checked ? '1' : '0'); } catch { /* blocked */ } };
@@ -339,6 +340,12 @@ async function photo() {
   const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight; c.getContext('2d').drawImage(v, 0, 0); st.getTracks().forEach((t) => t.stop());
   c.toBlob((b) => attach(b, `Photo ${new Date().toLocaleString()}`), 'image/jpeg', 0.92);
 }
+// used by the drawing tools (js/annotate.js): attach an image to the open note, or a new one
+export async function attachToNote(blob, name) {
+  if (!S.cur) await newNote();
+  await attach(blob, name);
+}
+
 async function snap3d() {
   if (!S.cur) await newNote();
   const cs = [...document.querySelectorAll('main.mode:not([hidden]) canvas')].filter((c) => c.width > 200 && c.offsetParent);

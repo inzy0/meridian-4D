@@ -6,7 +6,7 @@
 // with a copy button. Nothing is generated or added to the site automatically: the owner sources answers by hand.
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const KIND = { tab: 'Tab', emergency: 'Emergency', nutrition: 'Nutrition', test: 'Tests & labs', clinical: 'Clinical', body: 'Body systems', tissue: 'Tissue 4D', atlas: '3D Atlas', train: 'Training 4D' };
+const KIND = { academy: 'Imaging Academy', tab: 'Tab', emergency: 'Emergency', nutrition: 'Nutrition', test: 'Tests & labs', clinical: 'Clinical', body: 'Body systems', tissue: 'Tissue 4D', atlas: '3D Atlas', train: 'Training 4D' };
 let IX = null, dlg = null, sel = 0, hits = [], local = null;
 
 export function initSearch() {

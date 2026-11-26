@@ -53,6 +53,9 @@ function render(host) {
   </section>
   <section class="card"><div class="nu-topics" id="nu-topics"></div><div id="nu-topic"></div></section>
   <section class="card" id="nu-plan"></section>
+  <section class="card" id="nu-shelf"></section>
+  <section class="card" id="nu-rehab"></section>
+  <section class="card" id="nu-track"></section>
   <section class="card"><div class="card-h"><h2>Deficiencies: signs, foods, who is at risk</h2><small>quoted from StatPearls · top foods from USDA</small></div><div class="nu-defs" id="nu-defs"></div><div id="nu-def"></div></section>
   <section class="card"><div class="card-h"><h2>Food quality checklist</h2><small>tick what your week already does · saved in this browser</small></div><div id="nu-check"></div></section>
   <section class="card"><div class="card-h"><h2>Food table</h2><small>7,793 foods · per 100 g · USDA FoodData Central (CC0)</small></div>
@@ -67,6 +70,7 @@ function render(host) {
   host.querySelectorAll('[data-who]').forEach((b) => (b.onclick = () => { who = b.dataset.who; const v = vis(); if (!v.some((t) => t.id === topic)) topic = (v[0] || {}).id; render(host); }));
   host.querySelectorAll('[data-go]').forEach((b) => (b.onclick = () => goTopic(b.dataset.go)));
   topics(); showTopic(); plan(); defs(); checklist(); foodSearch();
+  import('./nutrition_plus.js').then((m) => m.initPlus(API)).catch((e) => console.error(e));
 }
 
 const vis = () => N.topics.filter((t) => t.level === level && (who === 'all' || t.group === who || t.group === 'both'));
@@ -104,17 +108,31 @@ function targets(p, who2 = p.who) {
   if (p.goal === 'gain') { kcal = tdee + Number(p.surplus || 0); note = 'No quoted surplus figure was found in the library; the surplus is your own choice (agree it with a coach or dietitian).'; }
   if (p.goal === 'rehab') { const lo = 25 * p.w, hi = 30 * p.w; kRule = 'rehab_energy'; note = `Rehabilitation range from the quote: ${r0(lo)}–${r0(hi)} kcal/day (25–30 kcal/kg).`; kcal = Math.max(tdee, lo); }
   const [pr, plo, phi] = protRange(p, who2);
-  const prot = [plo * p.w, phi * p.w];
-  const protMid = (prot[0] + prot[1]) / 2;
-  const fat = [0.20 * kcal / 9, 0.35 * kcal / 9];
-  const fatMid = 0.275 * kcal / 9;
+  let prot = [plo * p.w, phi * p.w];
+  let protMid = (prot[0] + prot[1]) / 2;
+  let fat = [0.20 * kcal / 9, 0.35 * kcal / 9];
+  let fatMid = 0.275 * kcal / 9;
   let carb = Math.max(0, (kcal - protMid * 4 - fatMid * 9) / 4);
   const glyco = (p.goal === 'compete' && (p.mode === 'endurance' || p.mode === 'team')) ? [8 * p.w, 12 * p.w] : null;
-  return { bmr, tdee, kcal, kRule, note, pr, plo, phi, prot, protMid, fat, fatMid, carb, glyco };
+  let own = false;
+  if (p.own?.on && who2 === p.who) { // the visitor's own numbers replace the calculated ones
+    own = true; const o = p.own;
+    if (o.kcal) kcal = Number(o.kcal);
+    if (o.p) { prot = [Number(o.p), Number(o.p)]; protMid = Number(o.p); }
+    if (o.f) { fat = [Number(o.f), Number(o.f)]; fatMid = Number(o.f); }
+    carb = o.c ? Number(o.c) : Math.max(0, (kcal - protMid * 4 - fatMid * 9) / 4);
+  }
+  return { bmr, tdee, kcal, kRule, note, pr, plo, phi, prot, protMid, fat, fatMid, carb, glyco, own };
 }
 function mealPlan(p, T) {
   const n = Number(p.meals), wake = toMin(p.wake), sess = toMin(p.sess);
   let slots = [];
+  if (p.mealsCustom?.length) { // the visitor's own meals: name, time and share of the day
+    const sum = p.mealsCustom.reduce((a, m) => a + (Number(m.pct) || 0), 0) || 1;
+    return p.mealsCustom.map((m) => { const f = (Number(m.pct) || 0) / sum; const t = toMin(m.time);
+      return { name: m.name || 'Meal', t, pct: f, post: p.mode !== 'none' && t >= sess + Number(p.dur) && t - (sess + Number(p.dur)) <= 120,
+        kcal: T.kcal * f, p: T.protMid * f, c: T.carb * f, f: T.fatMid * f }; }).sort((a, b) => a.t - b.t);
+  }
   const gap = Math.max(180, Math.min(240, Math.round((14 * 60) / Math.max(1, n - 1))));
   for (let i = 0; i < n; i++) slots.push({ name: i === 0 ? 'Breakfast' : i === n - 1 && n > 2 ? 'Last meal' : `Meal ${i + 1}`, t: wake + 30 + i * gap });
   if (p.skipBf) slots = slots.slice(1);
@@ -155,8 +173,13 @@ function plan() {
     ${p.mode !== 'none' ? `<label>Session (min) <input data-k="dur" type="number" min="10" max="480" value="${p.dur}"></label><label>Session starts <input data-k="sess" type="time" value="${p.sess}"></label>` : ''}
     <label>Wake time <input data-k="wake" type="time" value="${p.wake}"></label>
     <label>Meals per day <select data-k="meals">${opt([[3, '3'], [4, '4'], [5, '5'], [6, '6']], p.meals)}</select></label>
-    <label class="nu-chk"><input data-k="skipBf" type="checkbox" ${p.skipBf ? 'checked' : ''}> I skip breakfast</label>
+    <label class="nu-chk"><input data-k="skipBf" type="checkbox" ${p.skipBf ? 'checked' : ''} ${p.mealsCustom?.length ? 'disabled title="Using your own meals"' : ''}> I skip breakfast</label>
   </div>
+  <details class="nu-own" ${p.own?.on ? 'open' : ''}><summary>✎ Use my own numbers ${p.own?.on ? '<b class="nu-badge">on</b>' : ''}</summary>
+    <div class="nu-form">
+      <label class="nu-chk"><input id="nu-own-on" type="checkbox" ${p.own?.on ? 'checked' : ''}> replace the calculated targets</label>
+      ${[['kcal', 'Energy (kcal)'], ['p', 'Protein (g)'], ['c', 'Carbohydrate (g, blank = rest)'], ['f', 'Fat (g)'], ['water', 'Water (L)'], ['fib', 'Fibre (g)']].map(([k, n]) => `<label>${n} <input data-own="${k}" type="number" min="0" step="any" value="${esc(p.own?.[k] ?? '')}"></label>`).join('')}
+    </div><p class="fine">Your numbers are used for the meal plan and the tracker. Water and fibre are tracking goals only.</p></details>
   ${p.age < 18 ? '<p class="nu-warn">Under 18: growth changes energy needs; plan with a paediatric dietitian. The numbers below are not for you.</p>' : ''}
   <div class="nu-tiles">
     <div class="nu-tile"><small>Resting energy (BMR)</small><b>${r0(T.bmr)}</b><span>kcal/day</span></div>
@@ -173,7 +196,10 @@ function plan() {
     <p class="fine">BMR: Mifflin-St Jeor equation (10 × weight kg + 6.25 × height cm − 5 × age + 5 for men, −161 for women). ${esc(N.mifflin.cite)} <a href="${esc(N.mifflin.doi)}" target="_blank" rel="noopener">DOI</a>. Activity factors 1.2, 1.375, 1.55, 1.725, 1.9 span the quoted range.</p>
     ${rule('bmr')}${rule('activity')}${T.kRule ? rule(T.kRule) : ''}${rule(T.pr)}${rule('amdr')}${rule('prot_meal')}${rule('prot_spread')}
   </details>
-  <h3>Meal plan ${p.skipBf ? '(breakfast skipped: its share moves to the other meals)' : ''}</h3>
+  <div class="card-h"><h3>Meal plan ${p.mealsCustom?.length ? '(your meals)' : p.skipBf ? '(breakfast skipped: its share moves to the other meals)' : ''}</h3>
+    <span><button class="ghost-btn tiny" id="nu-medit">✎ Customise meals</button>${p.mealsCustom?.length ? ' <button class="ghost-btn tiny" id="nu-mauto">Back to automatic</button>' : ''}</span></div>
+  ${timeline(meals, p)}
+  <div id="nu-meditor" hidden></div>
   <table class="tt nu-meals"><thead><tr><th>Time</th><th>Meal</th><th>kcal</th><th>Protein g</th><th>Carb g</th><th>Fat g</th><th>Foods you chose</th></tr></thead><tbody>
   ${meals.map((m, i) => { const key = m.name; const chosen = (p.foods[key] || []); const tot = foodTotals(chosen);
     return `<tr class="${m.post ? 'nu-post' : ''}"><td>${hhmm(m.t)}</td><td>${m.post ? '⚡ ' : ''}${esc(m.name)}${m.added ? ' <small>(added after training)</small>' : ''}</td><td>${r0(m.kcal)}</td><td>${r0(m.p)}</td><td>${r0(m.c)}</td><td>${r0(m.f)}</td>
@@ -196,8 +222,45 @@ function plan() {
     if (['age', 'h', 'w', 'act', 'dur', 'meals', 'surplus', 'deficit'].includes(k)) v = Number(v);
     P[k] = v; save('nu-plan', P); plan();
   }));
+  const own = () => { P.own = P.own || {}; return P.own; };
+  el.querySelector('#nu-own-on').onchange = (e) => { own().on = e.target.checked; save('nu-plan', P); plan(); };
+  el.querySelectorAll('[data-own]').forEach((i) => (i.onchange = () => { own()[i.dataset.own] = i.value === '' ? '' : Number(i.value); save('nu-plan', P); plan(); }));
+  el.querySelector('#nu-medit').onclick = () => mealEditor(meals);
+  const ma = el.querySelector('#nu-mauto'); if (ma) ma.onclick = () => { P.mealsCustom = null; save('nu-plan', P); plan(); };
   el.querySelectorAll('[data-addto]').forEach((b) => (b.onclick = () => openPicker(b.dataset.addto)));
+  window.__nuPlus?.refresh?.();
   el.querySelectorAll('[data-del]').forEach((b) => (b.onclick = () => { const [k, j] = b.dataset.del.split('|'); P.foods[k].splice(Number(j), 1); save('nu-plan', P); plan(); }));
+}
+// day timeline: meals as blocks, breaks between them, the training session
+function timeline(meals, p) {
+  if (!meals.length) return '';
+  const t0 = Math.min(toMin(p.wake), ...meals.map((m) => m.t)) - 30, t1 = Math.max(...meals.map((m) => m.t), p.mode !== 'none' ? toMin(p.sess) + Number(p.dur) : 0) + 60;
+  const span = Math.max(60, t1 - t0), X = (t) => ((t - t0) / span * 100).toFixed(2);
+  const gaps = meals.slice(1).map((m, i) => ({ a: meals[i].t + 30, b: m.t, h: (m.t - meals[i].t) / 60 }));
+  return `<div class="nu-tl" aria-label="Day timeline">
+    ${p.mode !== 'none' ? `<div class="nu-tl-s" style="left:${X(toMin(p.sess))}%;width:${(Number(p.dur) / span * 100).toFixed(2)}%" title="Training ${esc(p.sess)}, ${p.dur} min">training</div>` : ''}
+    ${gaps.map((g) => `<div class="nu-tl-g" style="left:${X(g.a)}%;width:${Math.max(0, (g.b - g.a) / span * 100).toFixed(2)}%">${g.h >= 1.5 ? `${g.h.toFixed(1)} h break` : ''}</div>`).join('')}
+    ${meals.map((m) => `<div class="nu-tl-m ${m.post ? 'post' : ''}" style="left:${X(m.t)}%" title="${esc(m.name)} ${hhmm(m.t)} · ${r0(m.kcal)} kcal"><b>${hhmm(m.t)}</b><span>${esc(m.name)}</span></div>`).join('')}
+  </div>`;
+}
+function mealEditor(meals) {
+  const ed = $('#nu-meditor'); ed.hidden = false;
+  const rows = (P.mealsCustom?.length ? P.mealsCustom : meals.map((m) => ({ name: m.name, time: hhmm(m.t), pct: Math.round(100 / meals.length) }))).map((m) => ({ ...m }));
+  const draw = () => {
+    const sum = rows.reduce((a, m) => a + (Number(m.pct) || 0), 0);
+    ed.innerHTML = `<table class="tt nu-me"><thead><tr><th>Meal</th><th>Time</th><th>Share of the day %</th><th></th></tr></thead><tbody>
+      ${rows.map((m, i) => `<tr><td><input data-r="${i}" data-f="name" value="${esc(m.name)}"></td><td><input data-r="${i}" data-f="time" type="time" value="${esc(m.time)}"></td>
+        <td><input data-r="${i}" data-f="pct" type="number" min="0" max="100" value="${m.pct}"></td><td><button class="ghost-btn tiny" data-rm="${i}">×</button></td></tr>`).join('')}</tbody></table>
+      <p class="fine">Shares add up to <b id="nu-msum">${sum}</b>% (scaled to 100% when used). Add a pre-training snack, a late meal, a fasting window: anything that fits your day.</p>
+      <button class="ghost-btn tiny" id="nu-madd">+ meal</button> <button class="ghost-btn tiny" id="nu-meven">Even split</button> <button class="ghost-btn" id="nu-msave">Use these meals</button> <button class="ghost-btn tiny" id="nu-mcancel">Cancel</button>`;
+    ed.querySelectorAll('[data-r]').forEach((i) => (i.oninput = () => { rows[Number(i.dataset.r)][i.dataset.f] = i.dataset.f === 'pct' ? Number(i.value) : i.value; ed.querySelector('#nu-msum').textContent = rows.reduce((a, m) => a + (Number(m.pct) || 0), 0); }));
+    ed.querySelectorAll('[data-rm]').forEach((b) => (b.onclick = () => { rows.splice(Number(b.dataset.rm), 1); draw(); }));
+    ed.querySelector('#nu-madd').onclick = () => { rows.push({ name: 'Snack', time: '16:00', pct: 10 }); draw(); };
+    ed.querySelector('#nu-meven').onclick = () => { rows.forEach((m) => { m.pct = Math.round(100 / rows.length); }); draw(); };
+    ed.querySelector('#nu-msave').onclick = () => { P.mealsCustom = rows.filter((m) => m.name); save('nu-plan', P); plan(); };
+    ed.querySelector('#nu-mcancel').onclick = () => { ed.hidden = true; };
+  };
+  draw();
 }
 function foodTotals(list) {
   const t = { kcal: 0, p: 0, c: 0, f: 0 };
@@ -280,4 +343,9 @@ function checklist() {
     <p class="fine"><span id="nu-cn">${Object.values(CHECK).filter(Boolean).length}</span> of ${t.quotes.length} ticked.</p>`;
   document.querySelectorAll('[data-c]').forEach((c) => (c.onchange = () => { CHECK[c.dataset.c] = c.checked; save('nu-check', CHECK); $('#nu-cn').textContent = Object.values(CHECK).filter(Boolean).length; }));
 }
+// what js/nutrition_plus.js (shelves, rehab phases, tracker) uses from here
+const API = {
+  get N() { return N; }, get P() { return P; }, save: () => save('nu-plan', P), plan: () => plan(), foods: () => foods(), val: (f, k) => val(f, k),
+  targets: () => targets(P), meals: () => mealPlan(P, targets(P)), totals: (l) => foodTotals(l), quote, cite, esc,
+};
 window.__nu = { get data() { return N; }, targets: (p) => targets({ ...DEF_PLAN, ...p }), goTopic };
